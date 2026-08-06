@@ -1,0 +1,32 @@
+@EndUserText.label : 'Migration Rules - Rule Configuration'
+@AbapCatalog.tableCategory : #TRANSPARENT
+@AbapCatalog.deliveryClass : #C
+@AbapCatalog.dataMaintenance : #ALLOWED
+define table zmig_rule_cfg {
+  key client       : abap.clnt not null;
+  key rule_id      : abap.char(10) not null;
+  bapi_name        : abap.char(30);
+  rule_type        : abap.char(20);    " VALUE_MAP | FALLBACK | FIXED | COPY | CONDITIONAL
+  target_field     : fieldname;
+  sequence         : abap.int4;
+  is_active        : abap_boolean;
+  description      : abap.char(80);
+}
+
+---
+
+@EndUserText.label : 'Migration Rules - Rule Details (mappings, sources, conditions)'
+@AbapCatalog.tableCategory : #TRANSPARENT
+@AbapCatalog.deliveryClass : #C
+@AbapCatalog.dataMaintenance : #ALLOWED
+define table zmig_rule_detail {
+  key client          : abap.clnt not null;
+  key rule_id         : abap.char(10) not null;
+  key sequence        : abap.int4 not null;
+  source_field        : fieldname;
+  condition_field     : fieldname;
+  condition_value     : abap.char(60);
+  source_value        : abap.char(60);
+  target_value        : abap.char(60);
+  fixed_value         : abap.char(60);
+}

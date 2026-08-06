@@ -1,0 +1,730 @@
+class CL_FINS_JE_CLEARING_REQ_HDLR definition
+  public
+  final
+  create public .
+
+public section.
+
+  interfaces IF_FINS_JE_CLEARING_REQ_HDLR .
+
+  methods POST_CLEARING_JE
+    importing
+      !IS_INPUT type FINS_JOURNAL_ENTRY_CLEARING_R3
+    exporting
+      !ET_MSG type BAPIRETTAB
+      !ES_OUTPUT type FINS_JOURNAL_ENTRY_CLEARING_C2 .
+  class-methods CHECK_MSG_ID
+    importing
+      !IS_INPUT type FINS_JOURNAL_ENTRY_CLEARING_R3
+    exporting
+      value(EV_RESULT) type ABAP_BOOL .
+  methods CONSTRUCTOR
+    importing
+      value(IV_INTERFACE_NAME) type CFD_SERVICE_INTERFACE_NAME default 'II_FINS_JOURNAL_ENTRY_BULK_CLE'
+      value(IV_OPERATION) type CFD_SERVICE_OPERATION default 'FINS_JOURNAL_ENTRY_BULK_CLEARI' .
+  methods SEND_MSG_TO_OUTBOUND
+    importing
+      !IS_OUTPUT type FINS_JOURNAL_ENTRY_CLEARING_C2
+    changing
+      value(CT_MSG) type BAPIRETTAB .
+protected section.
+private section.
+
+  data MO_MSG_HANDLER type ref to CL_FINS_ESR_MESSAGE_HANDLER .
+
+  methods CHECK_INPUT
+    importing
+      !IS_JE_INPUT type FINS_JOURNAL_ENTRY_CLEARING_R1
+    exporting
+      !ET_MSG type BAPIRETTAB .
+  methods MAP_INPUT_TO_POSTING_INTERFACE
+    importing
+      !IS_MESSAGE_HEADER type FINS_BUSINESS_DOCUMENT_MESSAG3
+      !IS_JE_INPUT type FINS_JOURNAL_ENTRY_CLEARING_R1
+    exporting
+      !ES_DOCHEADER type CL_FDC_CLEARING_DOCUMENT_INF=>TY_CLEARING_HEADER
+      !ET_APAR_ITEM_TO_BE_CLRD type CL_FDC_CLEARING_DOCUMENT_INF=>TTY_APAR_ITEM_TO_BE_CLRD
+      !ET_GL_ITEM_TO_BE_CLRD type CL_FDC_CLEARING_DOCUMENT_INF=>TTY_GL_ITEM_TO_BE_CLRD
+      !ET_MSG type BAPIRETTAB .
+ENDCLASS.
+
+
+
+CLASS CL_FINS_JE_CLEARING_REQ_HDLR IMPLEMENTATION.
+
+
+  METHOD check_input.
+
+*----- check Mandatory Field-----------------------------------------------------------*
+    IF is_je_input-glitems IS INITIAL AND is_je_input-aparitems IS INITIAL.
+      INSERT VALUE #( type       = 'E'
+                      number     = '008'
+                      id         = 'FINS_FI_POSTING_IF' ) INTO TABLE et_msg.
+      IF 1 = 2. MESSAGE e008(fins_fi_posting_if). ENDIF.
+      RETURN.
+    ENDIF.
+
+    IF is_je_input-company_code IS INITIAL.  " Company Code
+      INSERT VALUE #( type       = 'E'
+                      number     = '029'
+                      id         = 'FINS_FI_POSTING_IF' ) INTO TABLE et_msg.
+      IF 1 = 2. MESSAGE e029(fins_fi_posting_if). ENDIF.
+    ENDIF.
+
+    IF is_je_input-accounting_document_type IS INITIAL. " Accounting Document Type
+      INSERT VALUE #( type       = 'E'
+                      number     = '032'
+                      id         = 'FINS_FI_POSTING_IF' ) INTO TABLE et_msg.
+      IF 1 = 2. MESSAGE e032(fins_fi_posting_if). ENDIF.
+    ENDIF.
+
+    IF is_je_input-document_date IS INITIAL. " Document Date
+      INSERT VALUE #( type       = 'E'
+                      number     = '033'
+                      id         = 'FINS_FI_POSTING_IF' ) INTO TABLE et_msg.
+      IF 1 = 2. MESSAGE e033(fins_fi_posting_if). ENDIF.
+    ENDIF.
+
+    IF is_je_input-posting_date IS INITIAL. " Posting Date
+      INSERT VALUE #( type       = 'E'
+                      number     = '034'
+                      id         = 'FINS_FI_POSTING_IF' ) INTO TABLE et_msg.
+      IF 1 = 2. MESSAGE e034(fins_fi_posting_if). ENDIF.
+    ENDIF.
+
+    IF is_je_input-currency_code IS INITIAL. " Currency Code
+      INSERT VALUE #( type       = 'E'
+                      number     = '035'
+                      id         = 'FINS_FI_POSTING_IF' ) INTO TABLE et_msg.
+      IF 1 = 2. MESSAGE e035(fins_fi_posting_if). ENDIF.
+    ENDIF.
+
+*   GL Item
+    LOOP AT is_je_input-glitems ASSIGNING FIELD-SYMBOL(<ls_gl_item>).
+
+*      IF ( ( <ls_gl_item>-other_deduction_amount_in_dsp-currency_code NE is_je_input-currency_code ) AND <ls_gl_item>-other_deduction_amount_in_dsp-content IS NOT INITIAL ) OR
+*         ( ( <ls_gl_item>-partial_payment_amt_in_dsp_crc-currency_code NE is_je_input-currency_code ) AND <ls_gl_item>-partial_payment_amt_in_dsp_crc-content IS NOT INITIAL ).
+*
+*        INSERT VALUE #( type       = 'E'
+*                        number     = '053'
+*                        id         = 'FINS_FI_POSTING_IF' ) INTO TABLE et_msg.
+*        IF 1 = 2. MESSAGE e053(fins_fi_posting_if). ENDIF.
+*      ENDIF.
+
+      IF <ls_gl_item>-glaccount IS INITIAL.  " GL Account
+        INSERT VALUE #( type       = 'E'
+                        number     = '036'
+                        id         = 'FINS_FI_POSTING_IF'
+                        message_v1 = <ls_gl_item>-reference_document_item  ) INTO TABLE et_msg.
+        IF 1 = 2. MESSAGE e036(fins_fi_posting_if). ENDIF.
+      ENDIF.
+
+      IF <ls_gl_item>-fiscal_year IS INITIAL.  " Fiscal Year
+        INSERT VALUE #( type       = 'E'
+                        number     = '037'
+                        id         = 'FINS_FI_POSTING_IF'
+                        message_v1 = <ls_gl_item>-reference_document_item  ) INTO TABLE et_msg.
+        IF 1 = 2. MESSAGE e037(fins_fi_posting_if). ENDIF.
+      ENDIF.
+
+      IF <ls_gl_item>-accounting_document IS INITIAL. " Document to be cleared
+        INSERT VALUE #( type       = 'E'
+                        number     = '038'
+                        id         = 'FINS_FI_POSTING_IF'
+                        message_v1 = <ls_gl_item>-reference_document_item  ) INTO TABLE et_msg.
+        IF 1 = 2. MESSAGE e038(fins_fi_posting_if). ENDIF.
+      ENDIF.
+
+      IF <ls_gl_item>-accounting_document_item IS INITIAL. " Document Item
+        INSERT VALUE #( type       = 'E'
+                        number     = '039'
+                        id         = 'FINS_FI_POSTING_IF'
+                        message_v1 = <ls_gl_item>-reference_document_item  ) INTO TABLE et_msg.
+        IF 1 = 2. MESSAGE e039(fins_fi_posting_if). ENDIF.
+      ENDIF.
+    ENDLOOP.
+
+*   APAR
+    LOOP AT is_je_input-aparitems ASSIGNING FIELD-SYMBOL(<ls_apar_item>).
+
+      IF ( ( <ls_apar_item>-other_deduction_amount_in_dsp-currency_code NE is_je_input-currency_code ) AND <ls_apar_item>-other_deduction_amount_in_dsp-content IS NOT INITIAL ) OR
+         ( ( <ls_apar_item>-partial_payment_amt_in_dsp_crc-currency_code NE is_je_input-currency_code ) AND <ls_apar_item>-partial_payment_amt_in_dsp_crc-content IS NOT INITIAL ).
+        INSERT VALUE #( type       = 'E'
+                        number     = '053'
+                        id         = 'FINS_FI_POSTING_IF' ) INTO TABLE et_msg.
+        IF 1 = 2. MESSAGE e053(fins_fi_posting_if). ENDIF.
+      ENDIF.
+
+      IF <ls_apar_item>-account_type IS INITIAL.  " Account type
+        INSERT VALUE #( type       = 'E'
+                        number     = '040'
+                        id         = 'FINS_FI_POSTING_IF'
+                        message_v1 = <ls_apar_item>-reference_document_item  ) INTO TABLE et_msg.
+        IF 1 = 2. MESSAGE e040(fins_fi_posting_if). ENDIF.
+      ENDIF.
+
+      IF <ls_apar_item>-aparaccount IS INITIAL.  " APAR Account
+        INSERT VALUE #( type       = 'E'
+                        number     = '041'
+                        id         = 'FINS_FI_POSTING_IF'
+                        message_v1 = <ls_apar_item>-reference_document_item  ) INTO TABLE et_msg.
+        IF 1 = 2. MESSAGE e041(fins_fi_posting_if). ENDIF.
+      ENDIF.
+
+      IF <ls_apar_item>-fiscal_year IS INITIAL.
+        INSERT VALUE #( type       = 'E'
+                        number     = '037'
+                        id         = 'FINS_FI_POSTING_IF'
+                        message_v1 = <ls_apar_item>-reference_document_item  ) INTO TABLE et_msg.
+        IF 1 = 2. MESSAGE e037(fins_fi_posting_if). ENDIF.
+      ENDIF.
+
+      IF <ls_apar_item>-accounting_document IS INITIAL.
+        INSERT VALUE #( type       = 'E'
+                        number     = '038'
+                        id         = 'FINS_FI_POSTING_IF'
+                        message_v1 = <ls_apar_item>-reference_document_item  ) INTO TABLE et_msg.
+        IF 1 = 2. MESSAGE e038(fins_fi_posting_if). ENDIF.
+      ENDIF.
+
+      IF <ls_apar_item>-accounting_document_item IS INITIAL.
+        INSERT VALUE #( type       = 'E'
+                        number     = '039'
+                        id         = 'FINS_FI_POSTING_IF'
+                        message_v1 = <ls_apar_item>-reference_document_item  ) INTO TABLE et_msg.
+        IF 1 = 2. MESSAGE e039(fins_fi_posting_if). ENDIF.
+      ENDIF.
+
+    ENDLOOP.
+
+*----- Check Length -----------------------------------------------------------*
+    IF strlen( is_je_input-accounting_document_type ) > 2.  " Accouting Document Type
+      INSERT VALUE #( type       = 'E'
+                      number     = '042'
+                      id         = 'FINS_FI_POSTING_IF' ) INTO TABLE et_msg.
+      IF 1 = 2. MESSAGE e042(fins_fi_posting_if) WITH space. ENDIF.
+    ENDIF.
+
+  ENDMETHOD.
+
+
+  METHOD check_msg_id.
+
+    CLEAR ev_result.
+*------------Check message header id-------------------------------*
+    IF is_input-message_header-id-content IS INITIAL.
+      ev_result = abap_true.
+
+    ELSE.
+*------------Check sub message header id---------------------------*
+      LOOP AT is_input-journal_entry_clearing_request ASSIGNING FIELD-SYMBOL(<ls_je_clear>).
+        IF <ls_je_clear>-message_header-id-content IS INITIAL.
+          ev_result = abap_true.
+          RETURN.
+        ENDIF.
+      ENDLOOP.
+    ENDIF.
+
+  ENDMETHOD.
+
+
+  method CONSTRUCTOR.
+
+  endmethod.
+
+
+  method IF_FINS_JE_CLEARING_REQ_HDLR~COMMIT.
+
+    CLEAR es_msg.
+
+    CALL FUNCTION 'BAPI_TRANSACTION_COMMIT'
+      EXPORTING
+        wait   = abap_true
+      IMPORTING
+        return = es_msg.
+
+  endmethod.
+
+
+  METHOD if_fins_je_clearing_req_hdlr~post.
+
+    DATA: lo_fdc_clearing_document_inf TYPE REF TO cl_fdc_clearing_document_inf.
+
+    CLEAR: es_posted_document, et_msg.
+
+    IF lo_fdc_clearing_document_inf IS NOT BOUND.
+      CREATE OBJECT lo_fdc_clearing_document_inf.
+    ENDIF.
+
+    lo_fdc_clearing_document_inf->post(
+      EXPORTING
+        is_clearing_header      = is_docheader
+        it_apar_item_to_be_clrd = it_aparitem
+        it_gl_item_to_be_clrd   = it_accountgl
+        iv_test_run             = iv_test_run
+      IMPORTING
+            es_posted_document      = es_posted_document
+            et_message              = et_msg
+      RECEIVING
+            rv_error_occured        = rv_save_rejected
+    ).
+
+** Raise sucessful message for clearing document
+*    IF es_posted_document IS NOT INITIAL AND rv_save_rejected IS INITIAL.
+*
+*      LOOP AT it_aparitem ASSIGNING FIELD-SYMBOL(<fs_aparitem>).
+*        INSERT VALUE #( type       = 'S'
+*                        number     = '044'
+*                        id         = 'FINS_FI_POSTING_IF'
+*                        message_v1 = <fs_aparitem>-bukrs
+*                        message_v2 = <fs_aparitem>-gjahr
+*                        message_v3 = <fs_aparitem>-belnr
+*                        message_v4 = <fs_aparitem>-buzei ) INTO TABLE et_msg.
+*        IF 1 = 2. MESSAGE e044(fins_fi_posting_if). ENDIF.
+*      ENDLOOP.
+*
+*      LOOP AT it_accountgl ASSIGNING FIELD-SYMBOL(<fs_accountgl>).
+*        INSERT VALUE #( type       = 'S'
+*                        number     = '044'
+*                        id         = 'FINS_FI_POSTING_IF'
+*                        message_v1 = <fs_accountgl>-bukrs
+*                        message_v2 = <fs_accountgl>-gjahr
+*                        message_v3 = <fs_accountgl>-belnr
+*                        message_v4 = <fs_accountgl>-buzei ) INTO TABLE et_msg.
+*        IF 1 = 2. MESSAGE e044(fins_fi_posting_if). ENDIF.
+*      ENDLOOP.
+*    ELSEIF iv_test_run = abap_true.
+*      IF rv_save_rejected = abap_false AND et_msg IS INITIAL.
+*        INSERT VALUE #( type       = 'S'
+*                        number     = '046'
+*                        id         = 'FINS_FI_POSTING_IF'
+*                        message_v1 = cl_fdc_posting_impl=>co_fdc_s_accdoc_hdr_tcode-glapar_clearing_via_if
+*                        ) INTO TABLE et_msg.
+*        IF 1 = 2. MESSAGE e046(fins_fi_posting_if). ENDIF.
+*      ENDIF.
+*    ENDIF.
+  ENDMETHOD.
+
+
+  method IF_FINS_JE_CLEARING_REQ_HDLR~ROLLBACK.
+
+    CLEAR es_msg.
+
+    CALL FUNCTION 'BAPI_TRANSACTION_ROLLBACK'
+      IMPORTING
+        return = es_msg.
+
+  endmethod.
+
+
+  METHOD map_input_to_posting_interface.
+
+*----- maps input structure of service to bapi structures -------------------------------------*
+    DATA ls_gl_item           LIKE LINE OF et_gl_item_to_be_clrd.
+    DATA ls_apar_item         LIKE LINE OF et_apar_item_to_be_clrd.
+
+    FIELD-SYMBOLS <ls_gl_item> LIKE LINE OF is_je_input-glitems.
+    FIELD-SYMBOLS <ls_apar_item> LIKE LINE OF is_je_input-aparitems.
+
+    CLEAR: es_docheader, et_apar_item_to_be_clrd, et_gl_item_to_be_clrd, et_msg.
+
+*   document header
+    es_docheader-bukrs = is_je_input-company_code.
+*    es_docheader-belnr = is_je_input-accounting_document.
+    es_docheader-bktxt = is_je_input-document_header_text.
+    es_docheader-blart = is_je_input-accounting_document_type.
+    es_docheader-bldat = is_je_input-document_date.
+    es_docheader-budat = is_je_input-posting_date.
+    es_docheader-kursf = is_je_input-exchange_rate.
+    es_docheader-monat = is_je_input-fiscal_period.
+    es_docheader-usnam = is_je_input-created_by_user.
+    es_docheader-xblnr = is_je_input-reference_document.
+    es_docheader-waers = is_je_input-currency_code.
+    es_docheader-wwert = is_je_input-currency_translation_date.
+
+    IF is_je_input-accounting_document IS NOT INITIAL.
+      CALL FUNCTION 'CONVERSION_EXIT_ALPHA_INPUT'
+        EXPORTING
+          input  = is_je_input-accounting_document
+        IMPORTING
+          output = es_docheader-belnr.
+    ENDIF.
+
+*----- mapping of GL item --------------------------------------------------------------------*
+    LOOP AT is_je_input-glitems ASSIGNING <ls_gl_item>.
+      CLEAR ls_gl_item.
+
+* Document to be cleared
+      ls_gl_item-belnr = <ls_gl_item>-accounting_document.
+      CALL FUNCTION 'CONVERSION_EXIT_ALPHA_INPUT'
+        EXPORTING
+          input  = ls_gl_item-belnr
+        IMPORTING
+          output = ls_gl_item-belnr.
+
+      ls_gl_item-buzei = <ls_gl_item>-accounting_document_item.
+      CALL FUNCTION 'CONVERSION_EXIT_ALPHA_INPUT'
+        EXPORTING
+          input  = ls_gl_item-buzei
+        IMPORTING
+          output = ls_gl_item-buzei.
+
+* Company Code
+      IF <ls_gl_item>-company_code IS INITIAL.
+        ls_gl_item-bukrs = es_docheader-bukrs.
+      ELSE.
+        ls_gl_item-bukrs = <ls_gl_item>-company_code.
+      ENDIF.
+
+* Fiscal Year
+      ls_gl_item-gjahr = <ls_gl_item>-fiscal_year.
+
+* Open Item Account
+      ls_gl_item-hkont = <ls_gl_item>-glaccount-content.
+      CALL FUNCTION 'CONVERSION_EXIT_ALPHA_INPUT'
+        EXPORTING
+          input  = ls_gl_item-hkont
+        IMPORTING
+          output = ls_gl_item-hkont.
+
+      APPEND ls_gl_item TO et_gl_item_to_be_clrd.
+
+    ENDLOOP.
+
+*----- mapping of AP/AR item --------------------------------------------------------------------*
+    LOOP AT is_je_input-aparitems ASSIGNING <ls_apar_item>.
+      CLEAR ls_apar_item.
+
+* Document to be cleared
+      ls_apar_item-belnr = <ls_apar_item>-accounting_document.
+      CALL FUNCTION 'CONVERSION_EXIT_ALPHA_INPUT'
+        EXPORTING
+          input  = ls_apar_item-belnr
+        IMPORTING
+          output = ls_apar_item-belnr.
+
+      ls_apar_item-buzei = <ls_apar_item>-accounting_document_item.
+      CALL FUNCTION 'CONVERSION_EXIT_ALPHA_INPUT'
+        EXPORTING
+          input  = ls_apar_item-buzei
+        IMPORTING
+          output = ls_apar_item-buzei.
+
+* Company Code
+      IF <ls_apar_item>-company_code IS INITIAL.
+        ls_apar_item-bukrs = es_docheader-bukrs.
+      ELSE.
+        ls_apar_item-bukrs = <ls_apar_item>-company_code.
+      ENDIF.
+
+* Partial payment amount
+      ls_apar_item-ppamtdc = <ls_apar_item>-partial_payment_amt_in_dsp_crc-content.
+
+* Cash discount amount
+      ls_apar_item-cdamtdc = <ls_apar_item>-cash_discount_amount_in_dsp_cr-content.
+
+* Residual clearing amount
+      ls_apar_item-odamtdc = <ls_apar_item>-other_deduction_amount_in_dsp-content.
+      ls_apar_item-odreasoncode = <ls_apar_item>-payment_difference_reason.
+
+* Payment difference distribution
+      LOOP AT <ls_apar_item>-payment_difference_distributio INTO DATA(ls_pay_diff).
+        APPEND INITIAL LINE TO ls_apar_item-distribute_pay_diffs ASSIGNING FIELD-SYMBOL(<fs_pay_diff>).
+        <fs_pay_diff>-rstgr = ls_pay_diff-payment_difference_reason.
+        <fs_pay_diff>-restn = ls_pay_diff-other_deduction_amount_in_dsp-content.
+        <fs_pay_diff>-xref1 = ls_pay_diff-reference1idby_business_partne.
+        <fs_pay_diff>-xref2 = ls_pay_diff-reference2idby_business_partne.
+      ENDLOOP.
+
+* Fiscal Year
+      ls_apar_item-gjahr = <ls_apar_item>-fiscal_year.
+
+* Account Type
+      ls_apar_item-koart = <ls_apar_item>-account_type.
+
+* Creditor/Debtor
+      ls_apar_item-konko = <ls_apar_item>-aparaccount.
+      CALL FUNCTION 'CONVERSION_EXIT_ALPHA_INPUT'
+        EXPORTING
+          input  = ls_apar_item-konko
+        IMPORTING
+          output = ls_apar_item-konko.
+
+      APPEND ls_apar_item TO et_apar_item_to_be_clrd.
+
+    ENDLOOP.
+
+
+
+  ENDMETHOD.
+
+
+  METHOD post_clearing_je.
+
+    DATA ls_input   TYPE fins_journal_entry_clearing_r3.
+    DATA lt_msg     TYPE STANDARD TABLE OF bapiret2.
+    DATA ls_msg     TYPE bapiret2.
+    DATA lt_aif_msg TYPE bapirettab.
+
+    ls_input = is_input.
+
+    TRY.
+
+        CLEAR es_output.
+        TEST-SEAM uuid_ex_root.
+          es_output-message_header-uuid-content   = cl_system_uuid=>create_uuid_c32_static( ).
+        END-TEST-SEAM.
+        es_output-message_header-reference_id   = is_input-message_header-id.
+        es_output-message_header-reference_uuid = is_input-message_header-uuid.
+        es_output-message_header-recipient_business_system_id = is_input-message_header-sender_business_system_id.
+        es_output-message_header-sender_business_system_id = sy-sysid.
+        GET TIME STAMP FIELD es_output-message_header-creation_date_time.
+
+*-----  process single messages in bulk-----------------------------------------------------------------*
+        LOOP AT is_input-journal_entry_clearing_request ASSIGNING FIELD-SYMBOL(<ls_je_clearing>).
+          CLEAR: lt_msg[], ls_msg.
+
+          " get new instance of message handler for each single message in bulk
+          mo_msg_handler = NEW cl_fins_esr_message_handler( ).
+
+          APPEND INITIAL LINE TO es_output-journal_entry_clearing_confirm ASSIGNING FIELD-SYMBOL(<fs_confirm>).
+          TEST-SEAM uuid_ex_item."if the exception is raised on item level, item MSG ID is displayed and whole processing is stopped
+            <fs_confirm>-message_header-uuid-content =  cl_system_uuid=>create_uuid_c32_static( ).
+          END-TEST-SEAM.
+          <fs_confirm>-message_header-reference_id   = <ls_je_clearing>-message_header-id.
+          <fs_confirm>-message_header-reference_uuid = <ls_je_clearing>-message_header-uuid.
+          GET TIME STAMP FIELD <fs_confirm>-message_header-creation_date_time.
+
+*----- checks input data for consistency. ------------------------------------------------------------------*
+          check_input( EXPORTING is_je_input = <ls_je_clearing>-journal_entry
+                       IMPORTING et_msg      = lt_msg ).
+
+          " Collect messages
+          mo_msg_handler->add(
+                              EXPORTING
+                                it_message = lt_msg
+                              CHANGING ct_msg = lt_aif_msg
+                              ).
+
+          IF mo_msg_handler->has_severity_type_error( ) = abap_false.
+
+*-----  Proxy input data mapping to Post BAPI input --------------------------------------------------------*
+            me->map_input_to_posting_interface(
+              EXPORTING
+                is_message_header       = <ls_je_clearing>-message_header
+                is_je_input             = <ls_je_clearing>-journal_entry
+              IMPORTING
+                es_docheader            = DATA(ls_docheader)
+                et_apar_item_to_be_clrd = DATA(lt_apar_item_to_be_clrd)
+                et_gl_item_to_be_clrd   = DATA(lt_gl_item_to_be_clrd)
+                et_msg                  = lt_msg ).
+
+            " Collect messages
+            mo_msg_handler->add(
+                                EXPORTING
+                                  it_message = lt_msg
+                                CHANGING ct_msg = lt_aif_msg ).
+
+            IF mo_msg_handler->has_severity_type_error( ) = abap_false.
+
+              IF ls_input-message_header-test_data_indicator IS INITIAL.
+                "ls_docheader-ux_action = cl_fdc_posting_impl=>co_action_name-glpostingheader-post.
+                DATA(lv_test_run) = abap_false.
+
+                IF <ls_je_clearing>-message_header-test_data_indicator IS NOT INITIAL.
+                  "ls_docheader-ux_action = cl_fdc_posting_impl=>co_action_name-glpostingheader-simulate.
+                  lv_test_run = abap_true.
+                ENDIF.
+
+              ELSE.
+                "ls_docheader-ux_action = cl_fdc_posting_impl=>co_action_name-glpostingheader-simulate.
+                lv_test_run = abap_true.
+              ENDIF.
+              TEST-SEAM clearing_req_hdlr.
+                if_fins_je_clearing_req_hdlr~post(
+                  EXPORTING
+                    is_docheader = ls_docheader
+                    it_accountgl = lt_gl_item_to_be_clrd
+                    it_aparitem  = lt_apar_item_to_be_clrd
+                    iv_test_run  = lv_test_run
+                  IMPORTING
+                    es_posted_document = DATA(ls_posted_document)
+                    et_msg       = lt_msg
+                  RECEIVING
+                    rv_save_rejected = DATA(lv_save_rejected)
+                    ).
+              END-TEST-SEAM.
+* Raise sucessful message for clearing document
+              IF ls_posted_document IS NOT INITIAL AND lv_save_rejected IS INITIAL.
+
+                LOOP AT lt_apar_item_to_be_clrd ASSIGNING FIELD-SYMBOL(<fs_aparitem>).
+                  IF <fs_aparitem>-ppamtdc IS INITIAL.
+                    INSERT VALUE #( type       = 'S'
+                                    number     = '044'
+                                    id         = 'FINS_FI_POSTING_IF'
+                                    message_v1 = <fs_aparitem>-bukrs
+                                    message_v2 = <fs_aparitem>-gjahr
+                                    message_v3 = <fs_aparitem>-belnr
+                                    message_v4 = <fs_aparitem>-buzei ) INTO TABLE lt_msg.
+                    IF 1 = 2. MESSAGE e044(fins_fi_posting_if). ENDIF.
+                  ENDIF.
+                ENDLOOP.
+
+                LOOP AT lt_gl_item_to_be_clrd ASSIGNING FIELD-SYMBOL(<fs_accountgl>).
+                  INSERT VALUE #( type       = 'S'
+                                  number     = '044'
+                                  id         = 'FINS_FI_POSTING_IF'
+                                  message_v1 = <fs_accountgl>-bukrs
+                                  message_v2 = <fs_accountgl>-gjahr
+                                  message_v3 = <fs_accountgl>-belnr
+                                  message_v4 = <fs_accountgl>-buzei ) INTO TABLE lt_msg.
+                  IF 1 = 2. MESSAGE e044(fins_fi_posting_if). ENDIF.
+                ENDLOOP.
+
+              ELSEIF lv_test_run = abap_true.
+                IF lv_save_rejected = abap_false AND et_msg IS INITIAL.
+                  INSERT VALUE #( type       = 'S'
+                                  number     = '046'
+                                  id         = 'FINS_FI_POSTING_IF'
+                                  message_v1 = cl_fdc_posting_impl=>co_fdc_s_accdoc_hdr_tcode-glapar_clearing_via_if
+                                  ) INTO TABLE lt_msg.
+                  IF 1 = 2. MESSAGE e046(fins_fi_posting_if). ENDIF.
+                ENDIF.
+              ENDIF.
+            ENDIF.
+
+            <fs_confirm>-journal_entry_clearing_confirm-accounting_document = ls_posted_document-belnr.
+            <fs_confirm>-journal_entry_clearing_confirm-company_code        = ls_posted_document-bukrs.
+            <fs_confirm>-journal_entry_clearing_confirm-fiscal_year         = ls_posted_document-gjahr.
+
+            " Collect messages
+            mo_msg_handler->add(
+                                EXPORTING
+                                  it_message = lt_msg
+                                CHANGING ct_msg = lt_aif_msg ).
+
+            IF mo_msg_handler->has_severity_type_error( ) = abap_false AND lv_save_rejected = abap_false.
+              " Commit work
+              IF <ls_je_clearing>-message_header-test_data_indicator IS INITIAL.
+                if_fins_je_clearing_req_hdlr~commit( IMPORTING es_msg = ls_msg ).
+              ENDIF.
+
+              IF ls_msg IS NOT INITIAL.
+                mo_msg_handler->add(
+                                    EXPORTING
+                                      it_message = VALUE #( (  ls_msg ) )
+                                    CHANGING ct_msg = lt_aif_msg ).
+              ENDIF.
+
+            ENDIF.
+
+          ELSE.
+
+            " rollback
+            if_fins_je_clearing_req_hdlr~rollback( IMPORTING es_msg = ls_msg ).
+
+            IF ls_msg IS NOT INITIAL.
+              mo_msg_handler->add( EXPORTING
+                                        it_message = VALUE #( (  ls_msg ) )
+                                   CHANGING ct_msg = lt_aif_msg ).
+            ENDIF.
+
+          ENDIF.
+
+          mo_msg_handler->get_message_log(
+            IMPORTING
+              es_log = <fs_confirm>-log
+          ).
+
+*----- return sub-message id when process failed.------------------------------------------------------*
+          IF mo_msg_handler->has_severity_type_error( ) = abap_true.
+            APPEND VALUE #( type       = 'E'
+                            number     = '021'
+                            id         = 'FINS_FI_POSTING_IF'
+                            message_v1 = <ls_je_clearing>-message_header-id-content
+                             ) TO lt_aif_msg.
+          ELSE.
+            IF ls_posted_document IS NOT INITIAL.
+              APPEND VALUE #( type       = 'S'
+                              number     = '045'
+                              id         = 'FINS_FI_POSTING_IF'
+                              message_v1 = <ls_je_clearing>-message_header-id-content
+                               ) TO lt_aif_msg.
+            ELSE.
+              " Need to check
+            ENDIF.
+
+          ENDIF.
+        ENDLOOP.
+
+        et_msg[] = lt_aif_msg[].
+
+      CATCH cx_uuid_error INTO DATA(lr_uuid_error).
+        RAISE EXCEPTION TYPE cx_sapplco_standard_msg_fault
+          EXPORTING
+            textid          = lr_uuid_error->textid
+            previous        = lr_uuid_error
+            automatic_retry = abap_false.
+    ENDTRY.
+
+  ENDMETHOD.
+
+
+  method SEND_MSG_TO_OUTBOUND.
+* This method is to return all the messages to outbound service JournalEntryBulkClearingconfirmation_Out
+
+* Outbound Service Processing
+
+    DATA lv_default TYPE boole_d.
+
+    IF is_output IS NOT INITIAL.
+*     in cloud, if no sender system is provided, no further outbound logic should be executed at all. And no further warning messages at all.
+      IF CL_FINS=>is_cloud_active( ) = abap_true.
+        " Cloud
+        IF is_output-message_header-recipient_business_system_id IS NOT INITIAL.
+          cl_saps_com_ca_rec_det=>get_instance( )->get_receiver_by_bus_system(
+             EXPORTING
+               iv_comm_scenario_id          = if_fins_je_api_const=>cv_cs_0002 "'SAP_COM_0002'
+               iv_comm_service_id           = '0001'
+               iv_service_interface         = if_fins_je_api_const=>cs_service_interface-jecle_con "'CO_FINS_JOURNAL_ENTRY_BULK_CLE'
+               iv_recipient_business_system = is_output-message_header-recipient_business_system_id
+             IMPORTING
+               et_receiver                  = DATA(lt_receiver) ).
+
+          "delete irrelevant receiver Communication Arrangements according to sender system
+          DELETE lt_receiver WHERE bus_system_id <> is_output-message_header-recipient_business_system_id.
+        ENDIF.
+      ELSE.
+        " On Premise to Do
+        DATA(lp_def) = cl_fins_je_api_utility=>get_lp(
+            EXPORTING
+              iv_system_id   = is_output-message_header-recipient_business_system_id
+              iv_proxy_class = if_fins_je_api_const=>cs_proxy_class-jecle_con "'CO_FINS_JOURNAL_ENTRY_BULK_CLE'
+            IMPORTING
+              ev_default     = lv_default ).
+
+        IF lp_def IS NOT INITIAL.
+          APPEND INITIAL LINE TO lt_receiver ASSIGNING FIELD-SYMBOL(<fs_receiver>).
+          <fs_receiver>-logical_port = lp_def.
+        ENDIF.
+      ENDIF.
+
+      IF lt_receiver IS NOT INITIAL.
+* This FM must be set as remote and scope in the same client and user, otherwise the outbound service will not be called in case there is any error message in AIF
+* since error messages will cause a ROLLBACK WORK, which will cancel the outbound service exccution.
+        CALL FUNCTION 'FINS_AIF_JE_CLE_REQ_CONFIRM'
+          STARTING NEW TASK if_fins_je_api_const=>cs_aif_interface-jecle_con "<= start new task can only be used for remote FM
+          DESTINATION 'NONE'
+          EXPORTING
+            iv_system_id        = is_output-message_header-recipient_business_system_id
+            is_bulk_msg_log_cle = is_output.
+
+        "Message sent to logical port &1.
+        APPEND VALUE #( type       = 'S'
+                          id         = 'FINS_FI_POSTING_IF'
+                          number     = 155
+                          message_v1 = lp_def ) TO ct_msg.
+      ENDIF.
+    ENDIF.
+  endmethod.
+ENDCLASS.

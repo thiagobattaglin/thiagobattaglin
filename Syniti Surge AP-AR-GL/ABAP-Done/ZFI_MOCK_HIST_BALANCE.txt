@@ -1,0 +1,524 @@
+*&---------------------------------------------------------------------*
+*& Report ZFI_MOCK_HIST_BALANCE
+*& Mock Data Generator for GL Historic Balance Migration (ACDOCT)
+*& Reads real master data from SAP tables to ensure consistency,
+*& generates randomized amounts for testing purposes.
+*&---------------------------------------------------------------------*
+REPORT zfi_mock_hist_balance.
+
+*----------------------------------------------------------------------*
+* Class Definition
+*----------------------------------------------------------------------*
+CLASS lcl_mock_generator DEFINITION FINAL.
+
+  PUBLIC SECTION.
+
+    TYPES: BEGIN OF ty_balance,
+             rldnr         TYPE char2,          " Ledger (e.g. '0L')
+             bukrs         TYPE bukrs,          " Company Code
+             saknr         TYPE saknr,          " G/L Account Number
+             fb_segment    TYPE fb_segment,     " Segment
+             prctr         TYPE prctr,          " Profit Center
+             kostl         TYPE kostl,          " Cost Center
+             fkber         TYPE fkber,          " Functional Area
+             monat         TYPE monat,          " Fiscal Period
+             gjahr         TYPE gjahr,          " Fiscal Year
+             curr_transcur TYPE waers,          " Transaction Currency
+             amt_transcur  TYPE wrbtr,          " Amount in Transaction Currency
+             curr_compcur  TYPE waers,          " Company Code Currency
+             amt_compcur   TYPE wrbtr,          " Amount in Company Code Currency
+             curr_groupcur TYPE waers,          " Group Currency
+             amt_groupcur  TYPE wrbtr,          " Amount in Group Currency
+             curr_freecur  TYPE waers,          " Freely Defined Currency
+             amt_freecur   TYPE wrbtr,          " Amount in Freely Defined Currency
+           END OF ty_balance,
+
+           ty_balances TYPE STANDARD TABLE OF ty_balance WITH EMPTY KEY.
+
+    METHODS constructor
+      IMPORTING
+        ir_bukrs      TYPE ANY TABLE
+        ir_saknr      TYPE ANY TABLE
+        ir_prctr      TYPE ANY TABLE
+        ir_kostl      TYPE ANY TABLE
+        iv_gjahr_from TYPE gjahr
+        iv_gjahr_to   TYPE gjahr
+        iv_per_from   TYPE monat
+        iv_per_to     TYPE monat
+        iv_ledger     TYPE char2
+        iv_max_recs   TYPE i
+        iv_file       TYPE string
+        iv_srvfile    TYPE string
+        iv_groupcur   TYPE waers
+        iv_freecur    TYPE waers.
+
+    METHODS execute.
+
+  PRIVATE SECTION.
+
+    " Selection parameters
+    DATA: mt_bukrs      TYPE RANGE OF bukrs,
+          mt_saknr      TYPE RANGE OF saknr,
+          mt_prctr      TYPE RANGE OF prctr,
+          mt_kostl      TYPE RANGE OF kostl,
+          mv_gjahr_from TYPE gjahr,
+          mv_gjahr_to   TYPE gjahr,
+          mv_per_from   TYPE monat,
+          mv_per_to     TYPE monat,
+          mv_ledger     TYPE char2,
+          mv_max_recs   TYPE i,
+          mv_file       TYPE string,
+          mv_srvfile    TYPE string,
+          mv_groupcur   TYPE waers,
+          mv_freecur    TYPE waers.
+
+    " Master data pools (read from SAP)
+    TYPES: BEGIN OF ty_bukrs_data,
+             bukrs TYPE bukrs,
+             waers TYPE waers,
+           END OF ty_bukrs_data.
+
+    DATA: mt_bukrs_pool   TYPE STANDARD TABLE OF ty_bukrs_data WITH EMPTY KEY,
+          mt_saknr_pool   TYPE STANDARD TABLE OF saknr WITH EMPTY KEY,
+          mt_segment_pool TYPE STANDARD TABLE OF fb_segment WITH EMPTY KEY,
+          mt_prctr_pool   TYPE STANDARD TABLE OF prctr WITH EMPTY KEY,
+          mt_kostl_pool   TYPE STANDARD TABLE OF kostl WITH EMPTY KEY,
+          mt_fkber_pool   TYPE STANDARD TABLE OF fkber WITH EMPTY KEY.
+
+    " Output
+    DATA mt_output TYPE ty_balances.
+
+    METHODS load_master_data.
+    METHODS load_company_codes.
+    METHODS load_gl_accounts.
+    METHODS load_segments.
+    METHODS load_profit_centers.
+    METHODS load_cost_centers.
+    METHODS load_functional_areas.
+
+    METHODS generate_mock_records.
+    METHODS get_random_int
+      IMPORTING iv_min TYPE i iv_max TYPE i
+      RETURNING VALUE(rv_val) TYPE i.
+    METHODS get_random_amount
+      IMPORTING iv_min TYPE decfloat34 iv_max TYPE decfloat34
+      RETURNING VALUE(rv_amount) TYPE wrbtr.
+
+    METHODS build_csv RETURNING VALUE(rt_csv) TYPE string_table.
+    METHODS export_to_frontend IMPORTING VALUE(it_data) TYPE string_table.
+    METHODS export_to_appserver IMPORTING it_data TYPE string_table.
+    METHODS display_alv.
+    METHODS is_background RETURNING VALUE(rv_bg) TYPE abap_bool.
+
+ENDCLASS.
+
+*----------------------------------------------------------------------*
+* Class Implementation
+*----------------------------------------------------------------------*
+CLASS lcl_mock_generator IMPLEMENTATION.
+
+  METHOD constructor.
+    mt_bukrs      = ir_bukrs.
+    mt_saknr      = ir_saknr.
+    mt_prctr      = ir_prctr.
+    mt_kostl      = ir_kostl.
+    mv_gjahr_from = iv_gjahr_from.
+    mv_gjahr_to   = iv_gjahr_to.
+    mv_per_from   = iv_per_from.
+    mv_per_to     = iv_per_to.
+    mv_ledger     = iv_ledger.
+    mv_max_recs   = iv_max_recs.
+    mv_file       = iv_file.
+    mv_srvfile    = iv_srvfile.
+    mv_groupcur   = iv_groupcur.
+    mv_freecur    = iv_freecur.
+  ENDMETHOD.
+
+  METHOD is_background.
+    rv_bg = COND #( WHEN sy-batch = abap_true THEN abap_true ELSE abap_false ).
+  ENDMETHOD.
+
+  METHOD execute.
+
+    " Step 1: Load real master data from SAP tables
+    load_master_data( ).
+
+    " Validate that we have data to work with
+    IF mt_bukrs_pool IS INITIAL.
+      MESSAGE 'No Company Codes found for the given selection.' TYPE 'S' DISPLAY LIKE 'E'.
+      RETURN.
+    ENDIF.
+    IF mt_saknr_pool IS INITIAL.
+      MESSAGE 'No G/L Accounts found for the given selection.' TYPE 'S' DISPLAY LIKE 'E'.
+      RETURN.
+    ENDIF.
+
+    " Step 2: Generate mock records combining real master data with random amounts
+    generate_mock_records( ).
+
+    DATA(lv_count) = lines( mt_output ).
+    IF is_background( ).
+      WRITE: / |{ lv_count } mock records generated successfully.|.
+    ELSE.
+      MESSAGE |{ lv_count } mock records generated successfully.| TYPE 'S'.
+    ENDIF.
+
+    " Step 3: Export as CSV
+    DATA(lt_csv) = build_csv( ).
+
+    IF is_background( ).
+      export_to_appserver( lt_csv ).
+    ELSE.
+      export_to_frontend( lt_csv ).
+      display_alv( ).
+    ENDIF.
+
+  ENDMETHOD.
+
+  METHOD load_master_data.
+    load_company_codes( ).
+    load_gl_accounts( ).
+    load_segments( ).
+    load_profit_centers( ).
+    load_cost_centers( ).
+    load_functional_areas( ).
+
+    WRITE: / |Master data loaded:|.
+    WRITE: / |  Company Codes   : { lines( mt_bukrs_pool ) }|.
+    WRITE: / |  G/L Accounts    : { lines( mt_saknr_pool ) }|.
+    WRITE: / |  Segments        : { lines( mt_segment_pool ) }|.
+    WRITE: / |  Profit Centers  : { lines( mt_prctr_pool ) }|.
+    WRITE: / |  Cost Centers    : { lines( mt_kostl_pool ) }|.
+    WRITE: / |  Functional Areas: { lines( mt_fkber_pool ) }|.
+    ULINE.
+  ENDMETHOD.
+
+  METHOD load_company_codes.
+    " T001: Company Code master with local currency
+    SELECT bukrs, waers
+      FROM t001
+      INTO TABLE @mt_bukrs_pool
+      WHERE bukrs IN @mt_bukrs.
+  ENDMETHOD.
+
+  METHOD load_gl_accounts.
+    " SKA1: G/L Account master (chart of accounts level)
+    " We use SKB1 to get accounts that exist for the selected company codes
+    SELECT DISTINCT saknr
+      FROM skb1
+      INTO TABLE @mt_saknr_pool
+      WHERE bukrs IN @mt_bukrs
+        AND saknr IN @mt_saknr.
+
+    " Fallback: if SKB1 is empty, try SKA1
+    IF mt_saknr_pool IS INITIAL.
+      SELECT DISTINCT saknr
+        FROM ska1
+        INTO TABLE @mt_saknr_pool
+        WHERE saknr IN @mt_saknr.
+    ENDIF.
+  ENDMETHOD.
+
+  METHOD load_segments.
+    " Segments from FAGL_SEGM (Segment master)
+    SELECT DISTINCT segment
+      FROM fagl_segm
+      INTO TABLE @mt_segment_pool
+      WHERE segment <> @space.
+
+    " Fallback: if table doesn't exist or is empty, add a blank entry
+    IF mt_segment_pool IS INITIAL.
+      APPEND '' TO mt_segment_pool.
+    ENDIF.
+  ENDMETHOD.
+
+  METHOD load_profit_centers.
+    " CEPC: Profit Center master
+    SELECT DISTINCT prctr
+      FROM cepc
+      INTO TABLE @mt_prctr_pool
+      WHERE prctr IN @mt_prctr.
+
+    IF mt_prctr_pool IS INITIAL.
+      APPEND '' TO mt_prctr_pool.
+    ENDIF.
+  ENDMETHOD.
+
+  METHOD load_cost_centers.
+    " CSKS: Cost Center master
+    SELECT DISTINCT kostl
+      FROM csks
+      INTO TABLE @mt_kostl_pool
+      WHERE kostl IN @mt_kostl
+        AND bukrs IN @mt_bukrs.
+
+    IF mt_kostl_pool IS INITIAL.
+      APPEND '' TO mt_kostl_pool.
+    ENDIF.
+  ENDMETHOD.
+
+  METHOD load_functional_areas.
+    " TFKB: Functional Area master
+    SELECT DISTINCT fkber
+      FROM tfkb
+      INTO TABLE @mt_fkber_pool
+      WHERE fkber <> @space.
+
+    IF mt_fkber_pool IS INITIAL.
+      APPEND '' TO mt_fkber_pool.
+    ENDIF.
+  ENDMETHOD.
+
+  METHOD generate_mock_records.
+
+    DATA: lv_rec_count TYPE i VALUE 0.
+
+    DATA(lv_bukrs_count)   = lines( mt_bukrs_pool ).
+    DATA(lv_saknr_count)   = lines( mt_saknr_pool ).
+    DATA(lv_segment_count) = lines( mt_segment_pool ).
+    DATA(lv_prctr_count)   = lines( mt_prctr_pool ).
+    DATA(lv_kostl_count)   = lines( mt_kostl_pool ).
+    DATA(lv_fkber_count)   = lines( mt_fkber_pool ).
+
+    " Generate records up to the maximum
+    WHILE lv_rec_count < mv_max_recs.
+
+      " Pick random master data from pools
+      DATA(lv_bukrs_idx) = get_random_int( iv_min = 1 iv_max = lv_bukrs_count ).
+      READ TABLE mt_bukrs_pool INDEX lv_bukrs_idx ASSIGNING FIELD-SYMBOL(<bukrs>).
+
+      DATA(lv_saknr_idx) = get_random_int( iv_min = 1 iv_max = lv_saknr_count ).
+      READ TABLE mt_saknr_pool INDEX lv_saknr_idx ASSIGNING FIELD-SYMBOL(<saknr>).
+
+      DATA(lv_segment_idx) = get_random_int( iv_min = 1 iv_max = lv_segment_count ).
+      READ TABLE mt_segment_pool INDEX lv_segment_idx ASSIGNING FIELD-SYMBOL(<segment>).
+
+      DATA(lv_prctr_idx) = get_random_int( iv_min = 1 iv_max = lv_prctr_count ).
+      READ TABLE mt_prctr_pool INDEX lv_prctr_idx ASSIGNING FIELD-SYMBOL(<prctr>).
+
+      DATA(lv_kostl_idx) = get_random_int( iv_min = 1 iv_max = lv_kostl_count ).
+      READ TABLE mt_kostl_pool INDEX lv_kostl_idx ASSIGNING FIELD-SYMBOL(<kostl>).
+
+      DATA(lv_fkber_idx) = get_random_int( iv_min = 1 iv_max = lv_fkber_count ).
+      READ TABLE mt_fkber_pool INDEX lv_fkber_idx ASSIGNING FIELD-SYMBOL(<fkber>).
+
+      " Random fiscal year within range
+      DATA(lv_gjahr) = CONV gjahr( get_random_int(
+        iv_min = CONV #( mv_gjahr_from )
+        iv_max = CONV #( mv_gjahr_to ) ) ).
+
+      " Random fiscal period within range
+      DATA(lv_monat) = CONV monat( get_random_int(
+        iv_min = CONV #( mv_per_from )
+        iv_max = CONV #( mv_per_to ) ) ).
+
+      " Generate random amounts (can be negative for credit postings)
+      DATA(lv_amt_trans) = get_random_amount( iv_min = -999999 iv_max = 999999 ).
+      DATA(lv_amt_comp)  = get_random_amount( iv_min = -999999 iv_max = 999999 ).
+      DATA(lv_amt_group) = get_random_amount( iv_min = -999999 iv_max = 999999 ).
+      DATA(lv_amt_free)  = get_random_amount( iv_min = -999999 iv_max = 999999 ).
+
+      APPEND VALUE ty_balance(
+        rldnr         = mv_ledger
+        bukrs         = <bukrs>-bukrs
+        saknr         = <saknr>
+        fb_segment    = <segment>
+        prctr         = <prctr>
+        kostl         = <kostl>
+        fkber         = <fkber>
+        monat         = lv_monat
+        gjahr         = lv_gjahr
+        curr_transcur = <bukrs>-waers          " Use local currency as transaction currency
+        amt_transcur  = lv_amt_trans
+        curr_compcur  = <bukrs>-waers          " Company Code Currency from T001
+        amt_compcur   = lv_amt_comp
+        curr_groupcur = mv_groupcur            " Group currency from parameter
+        amt_groupcur  = lv_amt_group
+        curr_freecur  = mv_freecur             " Free currency from parameter
+        amt_freecur   = lv_amt_free
+      ) TO mt_output.
+
+      lv_rec_count = lv_rec_count + 1.
+
+    ENDWHILE.
+
+  ENDMETHOD.
+
+  METHOD get_random_int.
+    " Generate a random integer between iv_min and iv_max (inclusive)
+    DATA(lo_rnd) = cl_abap_random_int=>create(
+      seed = CONV i( sy-uzeit + sy-index )
+      min  = iv_min
+      max  = iv_max ).
+
+    rv_val = lo_rnd->get_next( ).
+  ENDMETHOD.
+
+  METHOD get_random_amount.
+    " Generate a random amount between min and max with 2 decimals
+    DATA(lo_rnd) = cl_abap_random_float=>create(
+      seed = CONV i( sy-uzeit + sy-index ) ).
+
+    DATA(lv_random) = lo_rnd->get_next( ).
+    DATA(lv_range) = iv_max - iv_min.
+    rv_amount = CONV wrbtr( iv_min + ( lv_random * lv_range ) ).
+
+    " Round to 2 decimal places
+    rv_amount = round( val = rv_amount dec = 2 ).
+  ENDMETHOD.
+
+  METHOD build_csv.
+
+    DATA(lv_sep) = ';'.
+
+    " Header row
+    APPEND |RLDNR{ lv_sep }|
+        && |BUKRS{ lv_sep }|
+        && |SAKNR{ lv_sep }|
+        && |FB_SEGMENT{ lv_sep }|
+        && |PRCTR{ lv_sep }|
+        && |KOSTL{ lv_sep }|
+        && |FKBER{ lv_sep }|
+        && |MONAT{ lv_sep }|
+        && |GJAHR{ lv_sep }|
+        && |CURR_TRANSCUR{ lv_sep }|
+        && |AMT_TRANSCUR{ lv_sep }|
+        && |CURR_COMPCUR{ lv_sep }|
+        && |AMT_COMPCUR{ lv_sep }|
+        && |CURR_GROUPCUR{ lv_sep }|
+        && |AMT_GROUPCUR{ lv_sep }|
+        && |CURR_FREECUR{ lv_sep }|
+        && |AMT_FREECUR|
+      TO rt_csv.
+
+    " Data rows
+    LOOP AT mt_output ASSIGNING FIELD-SYMBOL(<fs>).
+      APPEND |{ <fs>-rldnr }{ lv_sep }|
+          && |{ <fs>-bukrs }{ lv_sep }|
+          && |{ <fs>-saknr }{ lv_sep }|
+          && |{ <fs>-fb_segment }{ lv_sep }|
+          && |{ <fs>-prctr }{ lv_sep }|
+          && |{ <fs>-kostl }{ lv_sep }|
+          && |{ <fs>-fkber }{ lv_sep }|
+          && |{ <fs>-monat }{ lv_sep }|
+          && |{ <fs>-gjahr }{ lv_sep }|
+          && |{ <fs>-curr_transcur }{ lv_sep }|
+          && |{ <fs>-amt_transcur DECIMALS = 2 }{ lv_sep }|
+          && |{ <fs>-curr_compcur }{ lv_sep }|
+          && |{ <fs>-amt_compcur DECIMALS = 2 }{ lv_sep }|
+          && |{ <fs>-curr_groupcur }{ lv_sep }|
+          && |{ <fs>-amt_groupcur DECIMALS = 2 }{ lv_sep }|
+          && |{ <fs>-curr_freecur }{ lv_sep }|
+          && |{ <fs>-amt_freecur DECIMALS = 2 }|
+        TO rt_csv.
+    ENDLOOP.
+
+  ENDMETHOD.
+
+  METHOD export_to_frontend.
+    TRY.
+        cl_gui_frontend_services=>gui_download(
+          EXPORTING filename = mv_file  filetype = 'ASC'
+          CHANGING  data_tab = it_data ).
+        MESSAGE |File exported: { mv_file }| TYPE 'S'.
+      CATCH cx_root INTO DATA(lx_err).
+        MESSAGE |Export error: { lx_err->get_text( ) }| TYPE 'E'.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD export_to_appserver.
+    TRY.
+        OPEN DATASET mv_srvfile FOR OUTPUT IN TEXT MODE ENCODING UTF-8.
+        IF sy-subrc <> 0.
+          WRITE: / |ERROR: Could not open file: { mv_srvfile }|.
+          RETURN.
+        ENDIF.
+        LOOP AT it_data ASSIGNING FIELD-SYMBOL(<line>).
+          TRANSFER <line> TO mv_srvfile.
+        ENDLOOP.
+        CLOSE DATASET mv_srvfile.
+        WRITE: / |File exported to application server: { mv_srvfile }|.
+      CATCH cx_root INTO DATA(lx_err).
+        WRITE: / |Export error: { lx_err->get_text( ) }|.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD display_alv.
+    TRY.
+        DATA lo_alv TYPE REF TO cl_salv_table.
+        cl_salv_table=>factory( IMPORTING r_salv_table = lo_alv CHANGING t_table = mt_output ).
+        lo_alv->get_columns( )->set_optimize( abap_true ).
+        lo_alv->get_functions( )->set_all( abap_true ).
+        lo_alv->get_display_settings( )->set_list_header(
+          'GL Historic Balance - Mock Data Preview' ).
+        lo_alv->display( ).
+      CATCH cx_salv_msg INTO DATA(lx_msg).
+        MESSAGE |ALV error: { lx_msg->get_text( ) }| TYPE 'E'.
+    ENDTRY.
+  ENDMETHOD.
+
+ENDCLASS.
+
+*----------------------------------------------------------------------*
+* Selection Screen
+*----------------------------------------------------------------------*
+TABLES: skb1, csks, cepc.
+
+SELECTION-SCREEN BEGIN OF BLOCK b1 WITH FRAME TITLE TEXT-001.
+  PARAMETERS:     p_ledger TYPE char2 DEFAULT '0L'.            " Ledger
+  SELECT-OPTIONS: s_bukrs FOR skb1-bukrs,                      " Company Code
+                  s_saknr FOR skb1-saknr,                     " G/L Account
+                  s_kostl FOR csks-kostl,                     " Cost Center
+                  s_prctr FOR cepc-prctr.                     " Profit Center
+SELECTION-SCREEN END OF BLOCK b1.
+
+SELECTION-SCREEN BEGIN OF BLOCK b2 WITH FRAME TITLE TEXT-002.
+  PARAMETERS: p_gjfrom TYPE gjahr DEFAULT '2020' OBLIGATORY,  " Fiscal Year From
+              p_gjto   TYPE gjahr DEFAULT '2024' OBLIGATORY,  " Fiscal Year To
+              p_perfro TYPE monat DEFAULT '01' OBLIGATORY,    " Period From
+              p_perto  TYPE monat DEFAULT '12' OBLIGATORY.    " Period To
+SELECTION-SCREEN END OF BLOCK b2.
+
+SELECTION-SCREEN BEGIN OF BLOCK b3 WITH FRAME TITLE TEXT-003.
+  PARAMETERS: p_maxrec TYPE i DEFAULT 1000 OBLIGATORY,        " Max records to generate
+              p_grpcur TYPE waers DEFAULT 'USD',              " Group Currency
+              p_frecur TYPE waers DEFAULT 'EUR'.              " Free Currency
+SELECTION-SCREEN END OF BLOCK b3.
+
+SELECTION-SCREEN BEGIN OF BLOCK b4 WITH FRAME TITLE TEXT-004.
+  PARAMETERS: p_file   TYPE string LOWER CASE
+                DEFAULT 'C:\temp\gl_mock_hist_balance.csv',   " Frontend file
+              p_srvfil TYPE string LOWER CASE
+                DEFAULT '/tmp/gl_mock_hist_balance.csv'.      " App server file
+SELECTION-SCREEN END OF BLOCK b4.
+
+*----------------------------------------------------------------------*
+* Text Elements (create in SE38 text elements)
+*----------------------------------------------------------------------*
+* TEXT-001 = Selection Criteria
+* TEXT-002 = Fiscal Period Range
+* TEXT-003 = Generation Parameters
+* TEXT-004 = Output File
+
+*----------------------------------------------------------------------*
+* Main Program
+*----------------------------------------------------------------------*
+START-OF-SELECTION.
+
+  DATA(lo_generator) = NEW lcl_mock_generator(
+    ir_bukrs      = s_bukrs[]
+    ir_saknr      = s_saknr[]
+    ir_prctr      = s_prctr[]
+    ir_kostl      = s_kostl[]
+    iv_gjahr_from = p_gjfrom
+    iv_gjahr_to   = p_gjto
+    iv_per_from   = p_perfro
+    iv_per_to     = p_perto
+    iv_ledger     = p_ledger
+    iv_max_recs   = p_maxrec
+    iv_file       = p_file
+    iv_srvfile    = p_srvfil
+    iv_groupcur   = p_grpcur
+    iv_freecur    = p_frecur ).
+
+  lo_generator->execute( ).

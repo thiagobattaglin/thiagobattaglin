@@ -1,0 +1,755 @@
+*&---------------------------------------------------------------------*
+*& Report ZFI_EXTRACT_HIST_BALANCE
+*& Historical Balance Extraction for FI - Historical Balance Migration
+*&---------------------------------------------------------------------*
+REPORT zfi_extract_hist_balance.
+
+*----------------------------------------------------------------------*
+* Class Definition
+*----------------------------------------------------------------------*
+CLASS lcl_hist_balance_extractor DEFINITION FINAL.
+
+  PUBLIC SECTION.
+
+    "! Output structure matching the REAL Migration Cockpit template
+    "! Sheet: "Journal Entry Line Items" (S_ACDOCA structure)
+    TYPES: BEGIN OF ty_balance,
+             rldnr         TYPE c LENGTH 2,     " Ledger (e.g. '0L')
+             bukrs         TYPE bukrs,          " Company Code
+             saknr         TYPE saknr,          " G/L Account Number
+             fb_segment    TYPE fb_segment,     " Segment
+             prctr         TYPE prctr,          " Profit Center
+             kostl         TYPE kostl,          " Cost Center
+             fkber         TYPE fkber,          " Functional Area
+             monat         TYPE monat,          " Fiscal Period
+             gjahr         TYPE gjahr,          " Fiscal Year
+             curr_transcur TYPE waers,          " Transaction Currency
+             amt_transcur  TYPE wrbtr,          " Amount in Transaction Currency
+             curr_compcur  TYPE waers,          " Company Code Currency
+             amt_compcur   TYPE wrbtr,          " Amount in Company Code Currency
+             curr_groupcur TYPE waers,          " Group Currency
+             amt_groupcur  TYPE wrbtr,          " Amount in Group Currency
+             curr_freecur  TYPE waers,          " Freely Defined Currency
+             amt_freecur   TYPE wrbtr,          " Amount in Freely Defined Currency
+           END OF ty_balance,
+
+           ty_balances TYPE STANDARD TABLE OF ty_balance WITH EMPTY KEY.
+
+    "! Structure for "Relevant Ledger" sheet (S_ROOT structure)
+    TYPES: BEGIN OF ty_ledger,
+             rldnr TYPE c LENGTH 2,
+             bukrs TYPE bukrs,
+           END OF ty_ledger,
+
+           ty_ledgers TYPE SORTED TABLE OF ty_ledger WITH UNIQUE KEY rldnr bukrs.
+
+    "! Company code currency lookup structure
+    TYPES: BEGIN OF ty_t001_curr,
+             bukrs TYPE bukrs,
+             waers TYPE waers,          " Local Currency (Company Code Currency)
+           END OF ty_t001_curr.
+
+    "! Source system type enumeration
+    CONSTANTS: BEGIN OF gc_source,
+                 new_gl  TYPE c LENGTH 1 VALUE 'N',  " ECC New General Ledger
+                 classic TYPE c LENGTH 1 VALUE 'C',  " ECC Classic General Ledger
+                 s4hana  TYPE c LENGTH 1 VALUE 'S',  " S/4HANA Universal Journal
+               END OF gc_source.
+
+    "! Constructor - receives all selection parameters
+    METHODS constructor
+      IMPORTING
+        ir_bukrs   TYPE ANY TABLE
+        ir_gjahr   TYPE ANY TABLE
+        ir_saknr   TYPE ANY TABLE
+        ir_kostl   TYPE ANY TABLE
+        ir_prctr   TYPE ANY TABLE
+        iv_from    TYPE monat
+        iv_to      TYPE monat
+        iv_source  TYPE char1
+        iv_ledger  TYPE char2
+        iv_file    TYPE string
+        iv_srvfile TYPE string.
+
+    "! Main execution method
+    METHODS execute.
+
+
+  PRIVATE SECTION.
+
+    DATA: mt_bukrs   TYPE RANGE OF bukrs,
+          mt_gjahr   TYPE RANGE OF gjahr,
+          mt_saknr   TYPE RANGE OF saknr,
+          mt_kostl   TYPE RANGE OF kostl,
+          mt_prctr   TYPE RANGE OF prctr,
+          mv_from    TYPE monat,
+          mv_to      TYPE monat,
+          mv_source  TYPE c LENGTH 1,
+          mv_ledger  TYPE c LENGTH 2,
+          mv_file    TYPE string,
+          mv_srvfile TYPE string.
+
+    DATA mt_output  TYPE ty_balances.
+    DATA mt_ledgers TYPE ty_ledgers.
+    DATA mt_t001    TYPE HASHED TABLE OF ty_t001_curr WITH UNIQUE KEY bukrs.
+
+    METHODS is_background RETURNING VALUE(rv_bg) TYPE abap_bool.
+    METHODS load_currencies.
+    METHODS get_local_currency IMPORTING iv_bukrs TYPE bukrs RETURNING VALUE(rv_waers) TYPE waers.
+    METHODS extract_from_faglflext.
+    METHODS extract_from_glt0.
+    METHODS extract_from_acdoca.
+
+    "! Denormalize period columns into rows
+    METHODS denormalize_periods
+      IMPORTING
+        is_record   TYPE any
+        iv_bukrs    TYPE bukrs
+        iv_gjahr    TYPE gjahr
+        iv_saknr    TYPE saknr
+        iv_kostl    TYPE kostl      OPTIONAL
+        iv_prctr    TYPE prctr      OPTIONAL
+        iv_segment  TYPE fb_segment OPTIONAL
+        iv_fkber    TYPE fkber      OPTIONAL
+        iv_transcur TYPE waers      OPTIONAL
+        iv_compcur  TYPE waers      OPTIONAL
+        iv_groupcur TYPE waers      OPTIONAL.
+
+    METHODS get_period_amount
+      IMPORTING is_record TYPE any iv_prefix TYPE string iv_period TYPE i
+      RETURNING VALUE(rv_amount) TYPE wrbtr.
+
+    "! Build XML Spreadsheet 2003 output matching the real template
+    METHODS build_xml RETURNING VALUE(rv_xml) TYPE string.
+
+    "! Build CSV alternative (simpler for large volumes)
+    METHODS build_csv RETURNING VALUE(rt_csv) TYPE string_table.
+
+    METHODS export_to_frontend IMPORTING VALUE(it_data) TYPE string_table.
+    METHODS export_to_appserver IMPORTING it_data TYPE string_table.
+    METHODS write_spool_summary.
+    METHODS display_alv.
+
+    "! Write extracted data directly into staging tables (no file needed)
+    METHODS export_to_staging_tables
+      IMPORTING
+        iv_stg_root   TYPE tabname    " Staging table name for S_ROOT
+        iv_stg_acdoca TYPE tabname.   " Staging table name for S_ACDOCA
+
+ENDCLASS.
+
+*----------------------------------------------------------------------*
+* Class Implementation
+*----------------------------------------------------------------------*
+CLASS lcl_hist_balance_extractor IMPLEMENTATION.
+
+  METHOD constructor.
+    mt_bukrs   = ir_bukrs.
+    mt_gjahr   = ir_gjahr.
+    mt_saknr   = ir_saknr.
+    mt_kostl   = ir_kostl.
+    mt_prctr   = ir_prctr.
+    mv_from    = iv_from.
+    mv_to      = iv_to.
+    mv_source  = iv_source.
+    mv_ledger  = iv_ledger.
+    mv_file    = iv_file.
+    mv_srvfile = iv_srvfile.
+  ENDMETHOD.
+
+  METHOD is_background.
+    rv_bg = COND #( WHEN sy-batch = abap_true THEN abap_true ELSE abap_false ).
+  ENDMETHOD.
+
+  METHOD load_currencies.
+    " Read company code currencies from T001
+    SELECT bukrs, waers
+      FROM t001
+      INTO TABLE @DATA(lt_t001)
+      WHERE bukrs IN @mt_bukrs.
+
+    LOOP AT lt_t001 ASSIGNING FIELD-SYMBOL(<t001>).
+      INSERT VALUE ty_t001_curr( bukrs = <t001>-bukrs waers = <t001>-waers )
+        INTO TABLE mt_t001.
+    ENDLOOP.
+  ENDMETHOD.
+
+  METHOD get_local_currency.
+    READ TABLE mt_t001 WITH KEY bukrs = iv_bukrs ASSIGNING FIELD-SYMBOL(<t001>).
+    rv_waers = COND #( WHEN sy-subrc = 0 THEN <t001>-waers ).
+  ENDMETHOD.
+
+  METHOD execute.
+
+    load_currencies( ).
+
+    CASE mv_source.
+      WHEN gc_source-new_gl.   extract_from_faglflext( ).
+      WHEN gc_source-classic.  extract_from_glt0( ).
+      WHEN gc_source-s4hana.   extract_from_acdoca( ).
+    ENDCASE.
+
+    IF mt_output IS INITIAL.
+      IF is_background( ).
+        WRITE: / 'No data found for the given selection criteria.'.
+      ELSE.
+        MESSAGE 'No data found for the given selection criteria.' TYPE 'S' DISPLAY LIKE 'W'.
+      ENDIF.
+      RETURN.
+    ENDIF.
+
+    " Build unique ledger/company code combinations for Sheet 1
+    LOOP AT mt_output ASSIGNING FIELD-SYMBOL(<fs>).
+      INSERT VALUE ty_ledger( rldnr = <fs>-rldnr bukrs = <fs>-bukrs )
+        INTO TABLE mt_ledgers.
+    ENDLOOP.
+
+    DATA(lv_count) = lines( mt_output ).
+    IF is_background( ).
+      WRITE: / |{ lv_count } records extracted successfully.|.
+    ELSE.
+      MESSAGE |{ lv_count } records extracted successfully.| TYPE 'S'.
+    ENDIF.
+
+    " Build output as CSV (tab-separated to paste into XML template)
+    DATA(lt_csv) = build_csv( ).
+
+    IF is_background( ).
+      export_to_appserver( lt_csv ).
+      write_spool_summary( ).
+    ELSE.
+      export_to_frontend( lt_csv ).
+      display_alv( ).
+    ENDIF.
+
+  ENDMETHOD.
+
+  METHOD extract_from_faglflext.
+
+    " FAGLFLEXT CDS Compatibility View fields:
+    " RBUKRS, RYEAR, RACCT, RCNTR, PRCTR, SEGMENT, RFAREA, RTCUR
+    SELECT rbukrs, ryear,
+           racct, rcntr, prctr, segment, rfarea,
+           rtcur,
+           hsl01, hsl02, hsl03, hsl04, hsl05, hsl06,
+           hsl07, hsl08, hsl09, hsl10, hsl11, hsl12,
+           hsl13, hsl14, hsl15, hsl16,
+           tsl01, tsl02, tsl03, tsl04, tsl05, tsl06,
+           tsl07, tsl08, tsl09, tsl10, tsl11, tsl12,
+           tsl13, tsl14, tsl15, tsl16,
+           ksl01, ksl02, ksl03, ksl04, ksl05, ksl06,
+           ksl07, ksl08, ksl09, ksl10, ksl11, ksl12,
+           ksl13, ksl14, ksl15, ksl16
+      FROM faglflext
+      INTO TABLE @DATA(lt_fagl)
+      WHERE rldnr  = @mv_ledger
+        AND rrcty  = '0'
+        AND rvers  = '001'
+        AND rbukrs IN @mt_bukrs
+        AND ryear  IN @mt_gjahr
+        AND racct  IN @mt_saknr
+        AND prctr  IN @mt_prctr.
+
+    LOOP AT lt_fagl ASSIGNING FIELD-SYMBOL(<fs>).
+
+      DATA(lv_compcur) = get_local_currency( iv_bukrs = <fs>-rbukrs ).
+
+      denormalize_periods(
+        is_record   = <fs>
+        iv_bukrs    = <fs>-rbukrs
+        iv_gjahr    = <fs>-ryear
+        iv_saknr    = <fs>-racct
+        iv_kostl    = <fs>-rcntr
+        iv_prctr    = <fs>-prctr
+        iv_segment  = <fs>-segment
+        iv_fkber    = <fs>-rfarea
+        iv_transcur = <fs>-rtcur
+        iv_compcur  = lv_compcur ).
+    ENDLOOP.
+
+  ENDMETHOD.
+
+  METHOD extract_from_glt0.
+
+    " GLT0 fields: RBUKRS, RYEAR, RACCT, RTCUR
+    SELECT bukrs, ryear, racct, rtcur,
+           hsl01, hsl02, hsl03, hsl04, hsl05, hsl06,
+           hsl07, hsl08, hsl09, hsl10, hsl11, hsl12,
+           hsl13, hsl14, hsl15, hsl16,
+           tsl01, tsl02, tsl03, tsl04, tsl05, tsl06,
+           tsl07, tsl08, tsl09, tsl10, tsl11, tsl12,
+           tsl13, tsl14, tsl15, tsl16,
+           ksl01, ksl02, ksl03, ksl04, ksl05, ksl06,
+           ksl07, ksl08, ksl09, ksl10, ksl11, ksl12,
+           ksl13, ksl14, ksl15, ksl16
+      FROM glt0
+      INTO TABLE @DATA(lt_glt0)
+      WHERE rldnr  = @mv_ledger
+        AND rrcty  = '0'
+        AND rvers  = '001'
+        AND bukrs IN @mt_bukrs
+        AND ryear  IN @mt_gjahr
+        AND racct  IN @mt_saknr.
+
+    LOOP AT lt_glt0 ASSIGNING FIELD-SYMBOL(<fs>).
+
+      DATA(lv_compcur) = get_local_currency( iv_bukrs = <fs>-bukrs ).
+
+      denormalize_periods(
+        is_record   = <fs>
+        iv_bukrs    = <fs>-bukrs
+        iv_gjahr    = <fs>-ryear
+        iv_saknr    = <fs>-racct
+        iv_transcur = <fs>-rtcur
+        iv_compcur  = lv_compcur ).
+    ENDLOOP.
+
+  ENDMETHOD.
+
+  METHOD extract_from_acdoca.
+
+    " ACDOCA has all fields directly
+    SELECT rbukrs, gjahr, poper, racct,
+           rcntr, prctr, segment, rfarea,
+           rhcur, rtcur, rkcur,
+           SUM( hsl ) AS hsl,
+           SUM( tsl ) AS tsl,
+           SUM( ksl ) AS ksl,
+           SUM( wsl ) AS wsl
+      FROM acdoca
+      INTO TABLE @DATA(lt_acdoca)
+      WHERE rldnr  = @mv_ledger
+        AND rbukrs  IN @mt_bukrs
+        AND gjahr  IN @mt_gjahr
+        AND racct  IN @mt_saknr
+        AND prctr  IN @mt_prctr
+        AND poper  BETWEEN @mv_from AND @mv_to
+      GROUP BY rbukrs, gjahr, poper, racct,
+               rcntr, prctr, segment, rfarea,
+               rhcur, rtcur, rkcur.
+
+    LOOP AT lt_acdoca ASSIGNING FIELD-SYMBOL(<fs>).
+
+      DATA(lv_compcur) = get_local_currency( iv_bukrs = <fs>-rbukrs ).
+
+      APPEND VALUE ty_balance(
+        rldnr         = mv_ledger
+        bukrs         = <fs>-rbukrs
+        saknr         = <fs>-racct
+        fb_segment    = <fs>-segment
+        prctr         = <fs>-prctr
+        kostl         = <fs>-rcntr
+        fkber         = <fs>-rfarea
+        monat         = <fs>-poper
+        gjahr         = <fs>-gjahr
+        curr_transcur = <fs>-rtcur
+        amt_transcur  = <fs>-wsl
+        curr_compcur  = lv_compcur
+        amt_compcur   = <fs>-hsl
+        curr_groupcur = <fs>-rkcur
+        amt_groupcur  = <fs>-tsl
+      ) TO mt_output.
+
+    ENDLOOP.
+
+  ENDMETHOD.
+
+  METHOD denormalize_periods.
+
+    DO 16 TIMES.
+      DATA(lv_period) = sy-index.
+      CHECK lv_period BETWEEN mv_from AND mv_to.
+
+      " HSL = Company Code Currency amounts
+      DATA(lv_hsl) = get_period_amount( is_record = is_record iv_prefix = 'HSL' iv_period = lv_period ).
+      " TSL = Group Currency amounts
+      DATA(lv_tsl) = get_period_amount( is_record = is_record iv_prefix = 'TSL' iv_period = lv_period ).
+      " KSL = Transaction Currency amounts (in totals tables)
+      DATA(lv_ksl) = get_period_amount( is_record = is_record iv_prefix = 'KSL' iv_period = lv_period ).
+
+      " Skip zero-amount periods
+      CHECK lv_hsl <> 0 OR lv_tsl <> 0 OR lv_ksl <> 0.
+
+      APPEND VALUE ty_balance(
+        rldnr         = mv_ledger
+        bukrs         = iv_bukrs
+        saknr         = iv_saknr
+        fb_segment    = iv_segment
+        prctr         = iv_prctr
+        kostl         = iv_kostl
+        fkber         = iv_fkber
+        monat         = CONV #( lv_period )
+        gjahr         = iv_gjahr
+        curr_transcur = iv_transcur        " Transaction Currency
+        amt_transcur  = lv_ksl             " KSL = transaction currency in totals tables
+        curr_compcur  = iv_compcur         " Company Code Currency (from T001)
+        amt_compcur   = lv_hsl             " HSL = company code currency
+        curr_groupcur = ''                 " Group currency (fill if known)
+        amt_groupcur  = lv_tsl             " TSL = group currency
+      ) TO mt_output.
+
+    ENDDO.
+
+  ENDMETHOD.
+
+  METHOD get_period_amount.
+    DATA(lv_field) = |{ iv_prefix }{ iv_period WIDTH = 2 ALIGN = RIGHT PAD = '0' }|.
+    ASSIGN COMPONENT lv_field OF STRUCTURE is_record TO FIELD-SYMBOL(<fv>).
+    rv_amount = COND #( WHEN sy-subrc = 0 THEN <fv> ELSE 0 ).
+  ENDMETHOD.
+
+  METHOD build_csv.
+
+    " -----------------------------------------------------------------
+    " CSV with TAB separator matching the template structure
+    " Two sections: first lines for "Relevant Ledger", then for
+    " "Journal Entry Line Items"
+    " User pastes data starting from Row 9 in the XML template
+    " -----------------------------------------------------------------
+
+    " --- Section 1: Relevant Ledger ---
+    APPEND |--- SHEET: Relevant Ledger (paste from row 9) ---| TO rt_csv.
+    APPEND |RLDNR{ cl_abap_char_utilities=>horizontal_tab }BUKRS| TO rt_csv.
+
+    LOOP AT mt_ledgers ASSIGNING FIELD-SYMBOL(<led>).
+      APPEND |{ <led>-rldnr }{ cl_abap_char_utilities=>horizontal_tab }{ <led>-bukrs }|
+        TO rt_csv.
+    ENDLOOP.
+
+    APPEND || TO rt_csv.
+
+    " --- Section 2: Journal Entry Line Items ---
+    APPEND |--- SHEET: Journal Entry Line Items (paste from row 9) ---| TO rt_csv.
+    APPEND |RLDNR{ cl_abap_char_utilities=>horizontal_tab }|
+        && |BUKRS{ cl_abap_char_utilities=>horizontal_tab }|
+        && |SAKNR{ cl_abap_char_utilities=>horizontal_tab }|
+        && |FB_SEGMENT{ cl_abap_char_utilities=>horizontal_tab }|
+        && |PRCTR{ cl_abap_char_utilities=>horizontal_tab }|
+        && |KOSTL{ cl_abap_char_utilities=>horizontal_tab }|
+        && |FKBER{ cl_abap_char_utilities=>horizontal_tab }|
+        && |MONAT{ cl_abap_char_utilities=>horizontal_tab }|
+        && |GJAHR{ cl_abap_char_utilities=>horizontal_tab }|
+        && |CURR_TRANSCUR{ cl_abap_char_utilities=>horizontal_tab }|
+        && |AMT_TRANSCUR{ cl_abap_char_utilities=>horizontal_tab }|
+        && |CURR_COMPCUR{ cl_abap_char_utilities=>horizontal_tab }|
+        && |AMT_COMPCUR{ cl_abap_char_utilities=>horizontal_tab }|
+        && |CURR_GROUPCUR{ cl_abap_char_utilities=>horizontal_tab }|
+        && |AMT_GROUPCUR{ cl_abap_char_utilities=>horizontal_tab }|
+        && |CURR_FREECUR{ cl_abap_char_utilities=>horizontal_tab }|
+        && |AMT_FREECUR|
+      TO rt_csv.
+
+    DATA lv_tab TYPE c LENGTH 1.
+    lv_tab = cl_abap_char_utilities=>horizontal_tab.
+
+    LOOP AT mt_output ASSIGNING FIELD-SYMBOL(<fs>).
+      APPEND |{ <fs>-rldnr }{ lv_tab }|
+          && |{ <fs>-bukrs }{ lv_tab }|
+          && |{ <fs>-saknr }{ lv_tab }|
+          && |{ <fs>-fb_segment }{ lv_tab }|
+          && |{ <fs>-prctr }{ lv_tab }|
+          && |{ <fs>-kostl }{ lv_tab }|
+          && |{ <fs>-fkber }{ lv_tab }|
+          && |{ <fs>-monat }{ lv_tab }|
+          && |{ <fs>-gjahr }{ lv_tab }|
+          && |{ <fs>-curr_transcur }{ lv_tab }|
+          && |{ <fs>-amt_transcur DECIMALS = 2 }{ lv_tab }|
+          && |{ <fs>-curr_compcur }{ lv_tab }|
+          && |{ <fs>-amt_compcur DECIMALS = 2 }{ lv_tab }|
+          && |{ <fs>-curr_groupcur }{ lv_tab }|
+          && |{ <fs>-amt_groupcur DECIMALS = 2 }{ lv_tab }|
+          && |{ <fs>-curr_freecur }{ lv_tab }|
+          && |{ <fs>-amt_freecur DECIMALS = 2 }|
+        TO rt_csv.
+    ENDLOOP.
+
+  ENDMETHOD.
+
+  METHOD build_xml.
+    " Reserved for future XML Spreadsheet 2003 output generation
+    " For now, users should paste CSV data into the downloaded XML template
+    rv_xml = ''.
+  ENDMETHOD.
+
+  METHOD export_to_frontend.
+    TRY.
+        cl_gui_frontend_services=>gui_download(
+          EXPORTING filename = mv_file  filetype = 'ASC'
+          CHANGING  data_tab = it_data ).
+        MESSAGE |File exported to presentation server: { mv_file }| TYPE 'S'.
+      CATCH cx_root INTO DATA(lx_err).
+        MESSAGE |Frontend export error: { lx_err->get_text( ) }| TYPE 'E'.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD export_to_appserver.
+    TRY.
+        OPEN DATASET mv_srvfile FOR OUTPUT IN TEXT MODE ENCODING UTF-8.
+        IF sy-subrc <> 0.
+          WRITE: / |ERROR: Could not open file: { mv_srvfile }|.
+          RETURN.
+        ENDIF.
+        LOOP AT it_data ASSIGNING FIELD-SYMBOL(<line>).
+          TRANSFER <line> TO mv_srvfile.
+        ENDLOOP.
+        CLOSE DATASET mv_srvfile.
+        WRITE: / |File exported to application server: { mv_srvfile }|.
+      CATCH cx_root INTO DATA(lx_err).
+        WRITE: / |Export error: { lx_err->get_text( ) }|.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD write_spool_summary.
+    WRITE: / '============================================================'.
+    WRITE: / 'FI Historical Balance Extraction - Execution Summary'.
+    WRITE: / '============================================================'.
+    WRITE: / |Execution mode     : Background|.
+    WRITE: / |Source system       : { SWITCH string( mv_source
+                                        WHEN 'N' THEN 'ECC - New GL (FAGLFLEXT)'
+                                        WHEN 'C' THEN 'ECC - Classic GL (GLT0)'
+                                        WHEN 'S' THEN 'S/4HANA (ACDOCA)' ) }|.
+    WRITE: / |Ledger             : { mv_ledger }|.
+    WRITE: / |Records extracted   : { lines( mt_output ) }|.
+    WRITE: / |Company Codes       : { lines( mt_ledgers ) }|.
+    WRITE: / |Output file         : { mv_srvfile }|.
+    WRITE: / |Execution date      : { sy-datum DATE = USER }|.
+    WRITE: / |Execution time      : { sy-uzeit TIME = USER }|.
+    WRITE: / |User                : { sy-uname }|.
+    WRITE: / '============================================================'.
+
+    " Breakdown by company code
+    TYPES: BEGIN OF ty_summary, bukrs TYPE bukrs, count TYPE i, END OF ty_summary.
+    DATA lt_summary TYPE SORTED TABLE OF ty_summary WITH UNIQUE KEY bukrs.
+    LOOP AT mt_output ASSIGNING FIELD-SYMBOL(<fs>).
+      COLLECT VALUE ty_summary( bukrs = <fs>-bukrs count = 1 ) INTO lt_summary.
+    ENDLOOP.
+    WRITE: / 'Breakdown by Company Code:'.
+    LOOP AT lt_summary ASSIGNING FIELD-SYMBOL(<sum>).
+      WRITE: / |  { <sum>-bukrs } : { <sum>-count } records|.
+    ENDLOOP.
+  ENDMETHOD.
+
+  METHOD display_alv.
+    TRY.
+        DATA lo_alv TYPE REF TO cl_salv_table.
+        cl_salv_table=>factory( IMPORTING r_salv_table = lo_alv CHANGING t_table = mt_output ).
+        lo_alv->get_columns( )->set_optimize( abap_true ).
+        lo_alv->get_functions( )->set_all( abap_true ).
+        lo_alv->get_display_settings( )->set_list_header(
+          'FI Historical Balance - Migration Template Data (S_ACDOCA)' ).
+        lo_alv->display( ).
+      CATCH cx_salv_msg INTO DATA(lx_msg).
+        MESSAGE |ALV error: { lx_msg->get_text( ) }| TYPE 'E'.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD export_to_staging_tables.
+
+    " -----------------------------------------------------------------
+    " Step 1: Populate "Relevant Ledger" staging table (S_ROOT)
+    " -----------------------------------------------------------------
+    DATA: lr_root TYPE REF TO data.
+
+    TRY.
+        CREATE DATA lr_root TYPE TABLE OF (iv_stg_root).
+        ASSIGN lr_root->* TO FIELD-SYMBOL(<lt_root>).
+
+        LOOP AT mt_ledgers ASSIGNING FIELD-SYMBOL(<led>).
+          " Create a dynamic work area for the staging table
+          DATA lr_root_wa TYPE REF TO data.
+          CREATE DATA lr_root_wa TYPE (iv_stg_root).
+          ASSIGN lr_root_wa->* TO FIELD-SYMBOL(<ls_root>).
+
+          ASSIGN COMPONENT 'MANDT' OF STRUCTURE <ls_root> TO FIELD-SYMBOL(<fv>).
+          IF sy-subrc = 0. <fv> = sy-mandt. ENDIF.
+
+          ASSIGN COMPONENT 'RLDNR' OF STRUCTURE <ls_root> TO <fv>.
+          IF sy-subrc = 0. <fv> = <led>-rldnr. ENDIF.
+
+          ASSIGN COMPONENT 'BUKRS' OF STRUCTURE <ls_root> TO <fv>.
+          IF sy-subrc = 0. <fv> = <led>-bukrs. ENDIF.
+
+          INSERT <ls_root> INTO TABLE <lt_root>.
+        ENDLOOP.
+
+        " Insert into staging table
+        INSERT (iv_stg_root) FROM TABLE @<lt_root>.
+
+        IF sy-subrc = 0.
+          DATA(lv_root_count) = lines( <lt_root> ).
+          WRITE: / |Relevant Ledger: { lv_root_count } records inserted into { iv_stg_root }|.
+        ELSE.
+          WRITE: / |ERROR inserting into { iv_stg_root }|.
+        ENDIF.
+
+      CATCH cx_root INTO DATA(lx_root).
+        WRITE: / |Error on S_ROOT staging table: { lx_root->get_text( ) }|.
+    ENDTRY.
+
+    " -----------------------------------------------------------------
+    " Step 2: Populate "Journal Entry Line Items" staging table (S_ACDOCA)
+    " -----------------------------------------------------------------
+    DATA: lr_acdoca TYPE REF TO data.
+    DATA acdoca_teste TYPE acdoca.
+    TRY.
+        CREATE DATA lr_acdoca TYPE TABLE OF (iv_stg_acdoca).
+        ASSIGN lr_acdoca->* TO FIELD-SYMBOL(<lt_acdoca>).
+
+        LOOP AT mt_output ASSIGNING FIELD-SYMBOL(<fs>).
+          DATA lr_acdoca_wa TYPE REF TO data.
+          CREATE DATA lr_acdoca_wa TYPE (iv_stg_acdoca).
+          ASSIGN lr_acdoca_wa->* TO FIELD-SYMBOL(<ls_acdoca>).
+
+          " Map each field dynamically to the staging table structure
+          ASSIGN COMPONENT 'MANDT' OF STRUCTURE <ls_acdoca> TO <fv>.
+          IF sy-subrc = 0. <fv> = sy-mandt. ENDIF.
+
+          ASSIGN COMPONENT 'RLDNR' OF STRUCTURE <ls_acdoca> TO <fv>.
+          IF sy-subrc = 0. <fv> = <fs>-rldnr. ENDIF.
+
+          ASSIGN COMPONENT 'RBUKRS' OF STRUCTURE <ls_acdoca> TO <fv>.
+          IF sy-subrc = 0. <fv> = <fs>-bukrs. ENDIF.
+
+          ASSIGN COMPONENT 'RACCT' OF STRUCTURE <ls_acdoca> TO <fv>.
+          IF sy-subrc = 0. <fv> = <fs>-saknr. ENDIF.
+
+          ASSIGN COMPONENT 'FB_SEGMENT' OF STRUCTURE <ls_acdoca> TO <fv>.
+          IF sy-subrc = 0. <fv> = <fs>-fb_segment. ENDIF.
+
+          ASSIGN COMPONENT 'PRCTR' OF STRUCTURE <ls_acdoca> TO <fv>.
+          IF sy-subrc = 0. <fv> = <fs>-prctr. ENDIF.
+
+          ASSIGN COMPONENT 'KOSTL' OF STRUCTURE <ls_acdoca> TO <fv>.
+          IF sy-subrc = 0. <fv> = <fs>-kostl. ENDIF.
+
+          ASSIGN COMPONENT 'FKBER' OF STRUCTURE <ls_acdoca> TO <fv>.
+          IF sy-subrc = 0. <fv> = <fs>-fkber. ENDIF.
+
+          ASSIGN COMPONENT 'MONAT' OF STRUCTURE <ls_acdoca> TO <fv>.
+          IF sy-subrc = 0. <fv> = <fs>-monat. ENDIF.
+
+          ASSIGN COMPONENT 'GJAHR' OF STRUCTURE <ls_acdoca> TO <fv>.
+          IF sy-subrc = 0. <fv> = <fs>-gjahr. ENDIF.
+
+          ASSIGN COMPONENT 'CURR_TRANSCUR' OF STRUCTURE <ls_acdoca> TO <fv>.
+          IF sy-subrc = 0. <fv> = <fs>-curr_transcur. ENDIF.
+
+          ASSIGN COMPONENT 'AMT_TRANSCUR' OF STRUCTURE <ls_acdoca> TO <fv>.
+          IF sy-subrc = 0. <fv> = <fs>-amt_transcur. ENDIF.
+
+          ASSIGN COMPONENT 'CURR_COMPCUR' OF STRUCTURE <ls_acdoca> TO <fv>.
+          IF sy-subrc = 0. <fv> = <fs>-curr_compcur. ENDIF.
+
+          ASSIGN COMPONENT 'AMT_COMPCUR' OF STRUCTURE <ls_acdoca> TO <fv>.
+          IF sy-subrc = 0. <fv> = <fs>-amt_compcur. ENDIF.
+
+          ASSIGN COMPONENT 'CURR_GROUPCUR' OF STRUCTURE <ls_acdoca> TO <fv>.
+          IF sy-subrc = 0. <fv> = <fs>-curr_groupcur. ENDIF.
+
+          ASSIGN COMPONENT 'AMT_GROUPCUR' OF STRUCTURE <ls_acdoca> TO <fv>.
+          IF sy-subrc = 0. <fv> = <fs>-amt_groupcur. ENDIF.
+
+          ASSIGN COMPONENT 'CURR_FREECUR' OF STRUCTURE <ls_acdoca> TO <fv>.
+          IF sy-subrc = 0. <fv> = <fs>-curr_freecur. ENDIF.
+
+          ASSIGN COMPONENT 'AMT_FREECUR' OF STRUCTURE <ls_acdoca> TO <fv>.
+          IF sy-subrc = 0. <fv> = <fs>-amt_freecur. ENDIF.
+
+          INSERT <ls_acdoca> INTO TABLE <lt_acdoca>.
+        ENDLOOP.
+
+        " Insert all records into staging table
+        INSERT (iv_stg_acdoca) FROM TABLE @<lt_acdoca>.
+
+        IF sy-subrc = 0.
+          DATA(lv_acdoca_count) = lines( <lt_acdoca> ).
+          WRITE: / |Journal Entry Line Items: { lv_acdoca_count } records inserted into { iv_stg_acdoca }|.
+        ELSE.
+          WRITE: / |ERROR inserting into { iv_stg_acdoca }|.
+        ENDIF.
+
+      CATCH cx_root INTO DATA(lx_acdoca).
+        WRITE: / |Error on S_ACDOCA staging table: { lx_acdoca->get_text( ) }|.
+    ENDTRY.
+
+  ENDMETHOD.
+
+ENDCLASS.
+
+*----------------------------------------------------------------------*
+* Selection Screen
+*----------------------------------------------------------------------*
+TABLES: faglflext, csks, cepc.
+SELECTION-SCREEN BEGIN OF BLOCK b1 WITH FRAME TITLE TEXT-001.
+  PARAMETERS: p_source TYPE c LENGTH 1 DEFAULT 'N'
+              AS LISTBOX VISIBLE LENGTH 30.
+SELECTION-SCREEN END OF BLOCK b1.
+
+SELECTION-SCREEN BEGIN OF BLOCK b2 WITH FRAME TITLE TEXT-005.
+  PARAMETERS:     p_ledger TYPE c LENGTH 2 DEFAULT '0L'.     " Ledger
+  SELECT-OPTIONS: s_bukrs FOR faglflext-rbukrs OBLIGATORY,   " Company Code
+                  s_gjahr FOR faglflext-ryear  OBLIGATORY,   " Fiscal Year
+                  s_saknr FOR faglflext-racct,               " GL Account
+                  s_kostl FOR csks-kostl,                    " Cost Center
+                  s_prctr FOR cepc-prctr.                    " Profit Center
+  PARAMETERS: p_from TYPE monat DEFAULT '001',               " Period From
+              p_to   TYPE monat DEFAULT '012'.           " Period To
+SELECTION-SCREEN END OF BLOCK b2.
+
+SELECTION-SCREEN BEGIN OF BLOCK b3 WITH FRAME TITLE TEXT-003.
+  PARAMETERS: p_file TYPE string LOWER CASE
+              DEFAULT 'C:\temp\fi_hist_balance.txt'.
+SELECTION-SCREEN END OF BLOCK b3.
+
+SELECTION-SCREEN BEGIN OF BLOCK b4 WITH FRAME TITLE TEXT-004.
+  PARAMETERS: p_srvfl TYPE string LOWER CASE
+              DEFAULT '/usr/sap/trans/data/fi_hist_balance.txt'.
+SELECTION-SCREEN END OF BLOCK b4.
+
+*----------------------------------------------------------------------*
+* Listbox Initialization
+*----------------------------------------------------------------------*
+AT SELECTION-SCREEN OUTPUT.
+  CALL FUNCTION 'VRM_SET_VALUES'
+    EXPORTING
+      id     = 'P_SOURCE'
+      values = VALUE vrm_values(
+        ( key = 'N'  text = 'ECC - New GL (FAGLFLEXT)' )
+        ( key = 'C'  text = 'ECC - Classic GL (GLT0)' )
+        ( key = 'S'  text = 'S/4HANA (ACDOCA)' )
+      ).
+
+  LOOP AT SCREEN.
+    IF sy-batch = abap_true AND screen-group1 = 'ONL'.
+      screen-active = 0. MODIFY SCREEN.
+    ELSEIF sy-batch <> abap_true AND screen-group1 = 'BG'.
+      screen-active = 0. MODIFY SCREEN.
+    ENDIF.
+  ENDLOOP.
+
+*----------------------------------------------------------------------*
+* Validation
+*----------------------------------------------------------------------*
+AT SELECTION-SCREEN.
+  IF p_from > p_to.
+    MESSAGE 'Period From must be <= Period To.' TYPE 'E'.
+  ENDIF.
+
+*----------------------------------------------------------------------*
+* Main Entry Point
+*----------------------------------------------------------------------*
+START-OF-SELECTION.
+
+  NEW lcl_hist_balance_extractor(
+    ir_bukrs   = s_bukrs[]
+    ir_gjahr   = s_gjahr[]
+    ir_saknr   = s_saknr[]
+    ir_kostl   = s_kostl[]
+    ir_prctr   = s_prctr[]
+    iv_from    = p_from
+    iv_to      = p_to
+    iv_source  = p_source
+    iv_ledger  = p_ledger
+    iv_file    = p_file
+    iv_srvfile = p_srvfl
+  )->execute( ).

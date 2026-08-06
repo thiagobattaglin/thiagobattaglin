@@ -1,0 +1,84 @@
+Draft version of User stories to support migration of Legacy Account payables
+
+Overall, we can divide them into three user stories:
+
+1) Migrate AP via the Data migration Cockpit
+
+2) Enhance the load API to support migration of AP along with required mapping of fields
+
+3) Implement a Program to Automatically Clear Historical Account Payable Open Items Post Migration Cockpit Load
+
+
+User story 1: Load Account Payable Documents into S/4HANA via the Data Migration Cockpit (DMC)
+
+Description: As a Migration Consultant/Technical Engineer, I want to configure and execute the migration of legacy Account Payable documents into S/4HANA using the SAP Data Migration Cockpit (DMC) and the standard "Open Items — Accounts Payable" migration object, So that all historical vendor invoices and credit memos from the legacy system are accurately represented in S/4HANA prior to go-live, with full auditability and the ability to simulate before final execution.
+
+Background
+
+During the cutover from the legacy system to S/4HANA, outstanding and historically cleared Account Payable documents must be loaded into the new system. The SAP Data Migration Cockpit (DMC, transaction LTMC) provides a structured, template-driven approach to migrate these documents using the standard migration object "Open Items — Accounts Payable". Since the DMC does not support loading already-cleared documents in a cleared state, all documents — including those that were cleared in the legacy system — will be loaded as open items. A subsequent post-processing step (separate user story) will handle programmatic clearing of those items.
+
+
+Acceptance Criteria
+
+Successful able to load Account payable documents using the DMC to an SAP S/4 system
+
+
+User story 2: Enhance Load API to Support Account Payables Migration Object and Map Item Text Field for Post-Migration Identification
+
+Description: As a Technical Engineer, I want to enhance the existing Load API — which already creates and configures DMC migration projects for Sales Orders, Purchase
+
+Orders, and Production Orders — to additionally support the "Open Items — Accounts Payable" migration object, and to map the "Item Text" field of the AP target structure to a fixed constant value, So that Account Payable documents can be loaded through the same standardised API framework, and the post-migration clearing program can reliably identify all historically migrated AP open items by querying that constant value.
+
+
+Background
+
+An internal Load API was previously built to programmatically create and configure SAP Data Migration Cockpit (DMC) projects for Sales Orders, Purchase Orders, and Production Orders. The API interacts with the DMC APIs to create the migration project, add the relevant migration objects, and configure field mappings.
+
+As part of the Account Payables migration workstream, this API must be extended to include the "Open Items — Accounts Payable" DMC migration object. Additionally, the "Item Text" field (SGTXT) in the AP target structure must be mapped to a fixed constant value (e.g., MIGRATED_HIST_AP) during project configuration. This constant value acts as a migration marker: the post-migration clearing program will use it to filter and identify all AP line items that originated from the legacy system load, distinguishing them from regular AP postings created in S/4HANA after go-live.
+
+Acceptance Criteria
+
+1. Migration object added: The enhanced API creates a DMC migration project that includes the "Open Items — Accounts Payable" migration object alongside the existing Sales Order, Purchase Order, and Production Order objects (where applicable to the project scope).
+
+2. Item Text field mapped to constant: Within the AP migration object's target field mapping configuration, the "Item Text" field (SGTXT on the AP document line item) is mapped to a fixed constant value (value to be confirmed with the business/migration team, e.g., MIGRATED_HIST_AP). This mapping is applied automatically by the API — no manual configuration in the DMC UI is required.
+
+
+User story 3: Implement a Program to Automatically Clear Historical Account Payable Open Items Post Migration Cockpit Load
+
+Description:
+
+As a Technical Engineer, I want to develop a Clean Core-compliant ABAP program that identifies migrated Account Payable open items and programmatically clears them using only released SAP APIs, So that all vendor line items loaded via the Migration
+
+Cockpit accurately reflect their cleared/closed state from the legacy system, without any manual clearing effort or custom modifications to standard SAP objects.
+
+
+Background
+
+The Migration Cockpit loads legacy cleared Account Payable documents (vendor invoices, credit memos, and their corresponding payment postings) into S/4HANA as open items, since direct loading of already-cleared FI documents is not natively supported. These items land in the open item table BSIK but should reside in the cleared item table BSAK to accurately reflect the legacy system state.
+
+A post-processing ABAP program is required to identify these migrated open vendor line items per company code and vendor account, match the correct debit/credit pairs (e.g., invoice against payment), and post a clearing document through the standard FI clearing logic. The program must handle large volumes reliably, log all outcomes, and be safe to re-run without creating duplicate postings.
+
+
+Acceptance Criteria
+
+1. Correct identification of open items: The program selects only AP open items (from BSIK) that were loaded via the Migration Cockpit and have not yet been cleared, filtered by company code and optionally by a migration reference field or document date range.
+
+2. Correct matching of debit/credit pairs: Before invoking any clearing API, the program correctly groups open debit and credit line items per vendor account and company code into balanced clearing groups (net amount = zero), as required by standard FI clearing logic.
+
+3. Clearing via released APIs only: Clearing is performed exclusively through released SAP APIs — such as BAPI_ACC_DOCUMENT_POST or using the behaviour definition I_JournalEntryTP via RAP EML with clearing references — with no direct table writes, no use of obsolete FMs, and no enhancements to standard objects.
+
+4. Idempotency / safe re-run: Items already cleared (present in BSAK with a populated AUGBL clearing document number) are detected and skipped. Re-running the program against the same dataset produces no duplicate postings and no errors.
+
+5. Error resilience per document: A failure to clear one vendor account or document group does not terminate the program. Errors are caught, logged, and processing continues with the next group.
+
+6. Audit log: The program produces a structured application log (using BALI / Business Application Log or equivalent released logging API) capturing for each run: total items selected, items cleared successfully, items skipped (already cleared), and items failed with the corresponding error message.
+
+7. Background execution: The program runs cleanly as a background job (via SM37/SM36) with no dialog dependencies. All output is written to the application log, not to the screen.
+
+8. Clean Core compliance: The program adheres strictly to Clean Core principles:
+
+· No modifications (CMOD/BADI exits) or enhancements to standard SAP objects
+
+· No direct writes to SAP standard tables (BSEG, BKPF, BSIK, BSAK, etc.)
+
+· Only SAP-released BAPIs, function modules, or OData/RAP APIs are used

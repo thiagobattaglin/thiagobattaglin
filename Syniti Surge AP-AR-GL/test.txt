@@ -1,0 +1,16 @@
+
+## Jira Import Instructions
+
+To import this into Jira:
+1. Create an **Epic**: "FI Technical Specification — Historic AP/AR/GL Loading"
+2. Create one **Story** per Section (13 stories)
+3. Create one **Sub-task** per Question (50 sub-tasks)
+4. Assign all to: **FI Consultant Team**
+5. Labels: `fi-specification`, `blocking`, `pre-development`
+6. Link to: RI-871 (Feature), EPIC-001 (Architecture Decisions)
+
+---
+
+## CSV for Jira Bulk Import
+
+See companion file: `JIRA_IMPORT_FI_QUESTIONS.csv`

@@ -1,0 +1,41 @@
+interface IF_FINS_JE_CLEARING_REQ_HDLR
+  public .
+
+
+  types:
+    mty_bapiacwt09_tab TYPE STANDARD TABLE OF bapiacwt09 WITH DEFAULT KEY .
+  types:
+    BEGIN OF mty_bank_account_details,
+      payee        TYPE lifnr,
+      country      TYPE dzbnks,
+      bank_number  TYPE dzbnkl,
+      swift_code   TYPE swift,
+      bank_account TYPE dzbnkn,
+      iban         TYPE dziban,
+      holder_name  TYPE koinh_fi,
+    END OF mty_bank_account_details .
+  types:
+    BEGIN OF mtype_doc_key,
+      bukrs    TYPE bukrs,
+      belnr    TYPE belnr_d,
+      fiscyear TYPE gjahr,
+    END OF mtype_doc_key .
+
+  methods POST
+    importing
+      !IS_DOCHEADER type CL_FDC_CLEARING_DOCUMENT_INF=>TY_CLEARING_HEADER
+      !IT_ACCOUNTGL type CL_FDC_CLEARING_DOCUMENT_INF=>TTY_GL_ITEM_TO_BE_CLRD optional
+      !IT_APARITEM type CL_FDC_CLEARING_DOCUMENT_INF=>TTY_APAR_ITEM_TO_BE_CLRD optional
+      !IV_TEST_RUN type ABAP_BOOL optional
+    exporting
+      !ES_POSTED_DOCUMENT type FDC_S_ACCDOC_HDR_KEY_ODATA
+      !ET_MSG type BAPIRETTAB
+    returning
+      value(RV_SAVE_REJECTED) type ABAP_BOOL .
+  methods COMMIT
+    exporting
+      !ES_MSG type BAPIRET2 .
+  methods ROLLBACK
+    exporting
+      !ES_MSG type BAPIRET2 .
+endinterface.

@@ -1,0 +1,827 @@
+Mathew.Glaeser@Syniti.com13:02:07
+Hey Thiago, how are you today?
+Thiago Battaglin13:02:10
+I'm good. Without…
+some troubles about JI and AR and AP, but no problem.
+Mathew.Glaeser@Syniti.com13:02:19
+Yeah, yeah, so, uh…
+We'll give people a couple more minutes to jump on.
+Thiago Battaglin13:02:26
+Okay.
+I forward this meeting to Rocky, I don't know if he's… is joining with us, okay?
+Mathew.Glaeser@Syniti.com13:02:35
+Yeah, yeah, no, that's fine. He's actually, uh… when I talked to Monkberg, his name came up quite a lot, so he's probably a good one for you to talk to.
+Thiago Battaglin13:02:43
+Yeah, absolutely.
+I sent a message to Ruck, I don't know, it was yesterday or Monday, and…
+Mathew.Glaeser@Syniti.com13:02:53
+Mm-hmm.
+Thiago Battaglin13:02:54
+He say exactly this, we need to connect and have a meeting, and… and…
+And, uh, do they have this conversation, and I forward the meeting.
+to Rocky, but I don't know if you join.
+Mathew.Glaeser@Syniti.com13:03:08
+Yeah, and I invited Jesse, too, just because I have a lot going on on my project, and I wanted to make sure that you would have some support, so Jesse has some.
+has done quite a few FI go-lives as well. Um…
+Thiago Battaglin13:03:21
+Oh, great.
+Mathew.Glaeser@Syniti.com13:03:22
+So that way, uh, if I'm tied up, there's still somebody who can help do some research, at least until he gets tied up.
+You know, as… as a company goes, right?
+Thiago Battaglin13:03:35
+Right, let me copy and paste here, because…
+My team sent to me two questions for you, and we can do this.
+Mathew.Glaeser@Syniti.com13:03:46
+Mm-hmm.
+Thiago Battaglin13:03:48
+Later.
+Mathew.Glaeser@Syniti.com13:03:49
+Yep.
+Uh, alright, so I'll just go ahead and start with what I…
+my conversation with… with John Monkberg.
+So… and what the intent of this is, and it comes from Brian Regan, basically.
+and essentially, I don't know if you've ever heard of, um…
+Selective data transfers, or SDTs.
+But… and remember we were talking before the other day, I brought this up, these are companies that do direct loads into tables.
+Thiago Battaglin13:04:24
+Yeah, yeah, I remember this.
+Mathew.Glaeser@Syniti.com13:04:26
+So, essentially, um, Brian thinks there's a $100 million hole in our go-to-market strategy, where companies aren't hiring us because we're saying we can't bring in the.
+bring in the historical data, and these other companies are. Now, we've partnered with the other companies, some of these other companies before, but we don't have any of these features.
+Um…
+And so, uh, one of the… one of the items they were talking about before was, I believe, purchase orders, and so, actually, Monkberg had talked to Rocky, and Rocky had actually found a way to be able to turn… to load.
+purchase orders without incurring all the follow-on documentation, right? So, basically, um…
+Thiago Battaglin13:05:09
+Mm-hmm.
+Mathew.Glaeser@Syniti.com13:05:18
+they were able to build a load program to load historical purchase documents, and that's what they're looking to do for FI.
+Thiago Battaglin13:05:28
+Yeah. I remember… I have…
+Mathew.Glaeser@Syniti.com13:05:29
+As well. So it's not so much that you have to figure out what to pull, or from what system, or any of the sources.
+They would consider that to still be a normal data migration, so they're really just looking for you to build a loading capability, if that makes sense.
+Thiago Battaglin13:05:49
+Yeah, that makes sense. I remember I did some research to Rocky to, too.
+to create the POs and work orders, because here in Brazil, it's common to do something like that, okay, to migrate POs and other stuff.
+Mathew.Glaeser@Syniti.com13:05:59
+Okay.
+Thiago Battaglin13:06:06
+But, uh, to do that in a fight document, I never saw something like that, okay?
+Mathew.Glaeser@Syniti.com13:06:14
+Yeah, so…
+Thiago Battaglin13:06:14
+Because, yeah, FI documents is…
+Uh, we, we can…
+open and close this document like we can do inside of the POs, for example, or inside of the…
+work your orders, we can, uh, create the POs.
+Okay, and after that, we can close this, okay?
+Mathew.Glaeser@Syniti.com13:06:33
+Hmm.
+Well, and there's… there's nothing ever saying that we can't load.
+And let's just talk about balance forward, right? GL balances. There's…
+Thiago Battaglin13:06:45
+Yeah.
+Mathew.Glaeser@Syniti.com13:06:46
+I don't think I've ever told a client that we can't load history, it's just we've always recommended not to, right?
+Thiago Battaglin13:06:54
+Alright.
+Mathew.Glaeser@Syniti.com13:06:55
+So, on those, we could theoretically, if they can get the config right, and we can get the conversion right, we can… we could…
+Theoretically go back and pull the very first record from.
+you know, BSEG all the way up, and load them.
+Um… but of course, that… it… it would be time consuming, there's a lot of config there that maybe they don't need for their go-forward, right? Stuff like that.
+Um, but I did find this when I was doing a little research, and it looks like there's an object, and I haven't been able to dig into it yet.
+I'll send you this link.
+Thiago Battaglin13:07:33
+Oak. Yep.
+Okay, no, no, let let stop up a little bit, this, okay.
+I did exactly… yeah, there's financial historical balance, okay?
+Uh, this guy moving data to A/C…
+A/C Docker, okay, data. Uh, I created this guy here in our environment, I create a program to.
+Mathew.Glaeser@Syniti.com13:07:53
+Hmm.
+Thiago Battaglin13:08:02
+to get a data, okay, or to create a mock data, and I will testing this guy, but this guy is only for GL.
+Okay.
+Mathew.Glaeser@Syniti.com13:08:11
+Correct, correct.
+Thiago Battaglin13:08:13
+Yeah, and the other that you do do you have for me.
+Uh, we have a way to do well, 100% clean core, and 100% using SAP tools.
+But we need to use in migration cockpit to do that.
+Mathew.Glaeser@Syniti.com13:08:28
+Mm-hmm.
+Mm-hmm.
+Thiago Battaglin13:08:32
+I don't have a… I don't know if this is a problem, but for GL, I believe we can handle.
+Mathew.Glaeser@Syniti.com13:08:40
+Okay, and I just wanted to show you, and I would take each one of these separately, right? I don't know if I'd make one program.
+Thiago Battaglin13:08:41
+But, but…
+Yeah.
+Yeah, I believe it's better for me create something separately. Okay, here, the GW is one program, and other ones is other, but, uh, let me…
+The only thing I need to understand about this FI history balance, about the GL accounts.
+It is, uh…
+Uh, in that documentation about this, told me we need to…
+Do a summarized data, okay?
+But I, uh, I know we have a special period.
+inside of the FI.
+balances. I don't know if it's a balances, but the FI document, because it's not only, uh, the month, okay? We have the 12 month, and after that, we can.
+Have more, uh, special…
+I don't know how, say, special month or something like that.
+And I don't understand this correctly.
+Mathew.Glaeser@Syniti.com13:09:50
+Yeah, so the special posting periods, right? So, on a typical fiscal variant, you have your 12 periods where you do business, 1 through 12.
+Thiago Battaglin13:09:54
+Yeah.
+Mathew.Glaeser@Syniti.com13:10:01
+And then… most companies will at least have one special, um…
+Thiago Battaglin13:10:02
+Yes.
+Mathew.Glaeser@Syniti.com13:10:07
+Period, but sometimes more, and what they use those for is either quarter closes or year-end closes to make adjustments before the final number.
+So they can, they can lock everybody out, no business, no normal business can be done, but the accountants can be making adjustments in those special periods.
+To get that quarter close, or that year-end close balance.
+Thiago Battaglin13:10:34
+And I need to… I need to…
+To have those other columns inside of my…
+Um, inside of our product, because, uh, it's not… it's not only for 12 months, it's, uh, I need to have these, or I can…
+I don't need this for the historical balance.
+Mathew.Glaeser@Syniti.com13:10:57
+Uh, no, I would think that they would… if they're gonna do actual itemized historical balances, they would probably need these as well.
+Thiago Battaglin13:11:05
+Okay.
+Mathew.Glaeser@Syniti.com13:11:06
+And so, yeah, so rather than…
+Uh, yeah, so you would have to specify the period. Normally, when we load.
+GL data, and Jesse, please, if you have different experience, feel free to speak up. But normally what we do is we do it by date, and let SAP figure out what the period is, but.
+For those special periods, you would have to tell it the period, because the date would overlap.
+Um…
+Overlap other periods.
+Jesse Willis13:11:35
+The typical… typical…
+FI loads, is this as you're passing the… the actual, the transaction date.
+Mathew.Glaeser@Syniti.com13:11:47
+Right.
+Jesse Willis13:11:47
+To the load program, and then it's gonna pick up and then go, okay, here's…
+Um, with the document number, and then it will use whatever configuration that they have.
+Did it then determine basically the… potentially the periods and such.
+Um, but I think you can also throw… I mean…
+I mean, I typically send all 3 from a load standpoint, and by all three, I mean the date, but also, uh, fiscal year and then fiscal period for it.
+I'm fairly certain, although it's been about 6 months since I've been in on a finance, but I'm fairly certain.
+Mathew.Glaeser@Syniti.com13:12:30
+Mm-hmm.
+Jesse Willis13:12:35
+all three can, you know, be potentially sent, um, especially, like, from a CFIN standpoint and all that, for the S4 standpoint.
+Uh, for it to pick up.
+Mathew.Glaeser@Syniti.com13:12:48
+Yeah, yeah, normally I don't, just because why… why bother with two columns? I don't have to. But in this case, if it's needed for the special period, yeah, I do think that.
+You would just include the period and year.
+And uh… from my experience, that would be enough to put something into period 13, 14, 15, 16.
+Thiago Battaglin13:13:13
+Yeah, yeah, it's 16, I believe the last number is 16. I believe we can do this, it's not a problem.
+Mathew.Glaeser@Syniti.com13:13:22
+Yeah, but not everybody uses all four special periods.
+Thiago Battaglin13:13:22
+But…
+Yeah, yeah, but it's ah.
+It's a product, and puts one or two, it's the same, puts 4, whatever.
+Mathew.Glaeser@Syniti.com13:13:35
+Right, right.
+Thiago Battaglin13:13:36
+Okay.
+Mathew.Glaeser@Syniti.com13:13:37
+To you, it's just columns, right?
+Thiago Battaglin13:13:39
+Yeah, you can continue with this, the, the, this link.
+And together with this, I'd like to show to you after, okay?
+inside of our SIP, this, this, the same, I believe, was the same.
+Mathew.Glaeser@Syniti.com13:13:50
+Yeah, well, and…
+Yeah, so the other thing is, I also found this article on AP, and I haven't had time to search AR.
+Uh, nope, sorry, not this article, this one.
+Thiago Battaglin13:14:02
+Okay.
+Mathew.Glaeser@Syniti.com13:14:05
+Um…
+And so, what they're saying is that you can use these, these boppies, and you can.
+Thiago Battaglin13:14:15
+Oh, Bobby's good for me.
+Mathew.Glaeser@Syniti.com13:14:17
+Uh, let's see, is this the right one? I thought it was.
+Thiago Battaglin13:14:22
+Yeah, the document post was…
+I forgot the name of the other guy told me to use.
+Mathew.Glaeser@Syniti.com13:14:25
+Oh…
+I'm gonna… I'm gonna have to go back and look. I'm sorry, I'll send you this link, too. This has some boppies that might be usable.
+Um…
+It looks like I closed the article I had open yesterday. Um…
+Thiago Battaglin13:14:43
+No problem.
+Mathew.Glaeser@Syniti.com13:14:45
+I'll look it up, but essentially, it said with AP, what you can do is you can post the AP.
+But then you have to do the invoice and then run manual clearing.
+Um, but you can… you can do historical.
+Thiago Battaglin13:14:57
+Oh, this is good, because…
+Yeah, because if we… we create an AP document.
+We have a clearance for this document, and this is important information for me. I didn't know this information. If we have… because.
+Mathew.Glaeser@Syniti.com13:15:07
+Yep.
+Thiago Battaglin13:15:15
+It looks like the same of PO. We create the PO, and after that, we close the PO, okay? And this… we create the FI document, and after that, we clear the document.
+Mathew.Glaeser@Syniti.com13:15:19
+Mm-hmm.
+Yeah. But…
+Thiago Battaglin13:15:26
+And… and this article, we create by… period, or…
+The full document.
+Mathew.Glaeser@Syniti.com13:15:38
+Well, so that's just it. If you want to bring in historical, it'll probably be completely closed, so you'll have to clear the whole thing, but you might have mixed case where some lines are closed and some are open.
+Thiago Battaglin13:15:45
+Okay.
+Okay, okay.
+Yeah, this is, yeah, my thinking here, now, now my, my head go, go to forwards.
+Mathew.Glaeser@Syniti.com13:15:54
+Right?
+Thiago Battaglin13:16:01
+Yeah, this is totally interesting, because.
+I can use the puppy.
+but not inside of the migration cockpit, but I can use it in LTMC, and LTMC is the older.
+Uh, migration cockpit.
+Mathew.Glaeser@Syniti.com13:16:18
+Well, they won't let you use the… you can't… you can't create custom objects anymore in DMC?
+Thiago Battaglin13:16:19
+We can… we can… we can try to do something.
+Um, DMC, I'm not… I'm not a good guy to… inside of DMC, but…
+Mathew.Glaeser@Syniti.com13:16:32
+Hmm.
+Thiago Battaglin13:16:32
+Uh, probably we can do that.
+Mathew.Glaeser@Syniti.com13:16:34
+Yeah, because like you said, in LT Mom, I know when I did PRs one time, I wrote a…
+Thiago Battaglin13:16:35
+Okay.
+Mathew.Glaeser@Syniti.com13:16:41
+a PR load program using the create.
+Thiago Battaglin13:16:44
+Yeah.
+Mathew.Glaeser@Syniti.com13:16:45
+Create PR Boppy, right? Bobby Create PR, I think it's called.
+Um…
+Thiago Battaglin13:16:51
+Yes, you create… yeah, we have a great PO, we have a great sales order, and other stuff, like that.
+Mathew.Glaeser@Syniti.com13:16:59
+Yeah, because there's no business object.
+Thiago Battaglin13:17:01
+Yeah, exactly, exactly.
+Mathew.Glaeser@Syniti.com13:17:03
+I like… I like it better when there's a business object, makes it faster, easier.
+Thiago Battaglin13:17:07
+Yeah, sometimes, because I'm a boppy and I always use a boppy for everything. Sometimes, for me, it's easier.
+Mathew.Glaeser@Syniti.com13:17:18
+So, but anyway, that's all I found. I have not had a chance to research, uh, historical, uh, AR, or what you would need to do, and I don't know, maybe, Jesse, that's something you could help, uh, Thiago with.
+Um, but the intent here is that they want us to be able to have a solution where we can at least.
+Load Historical Financial documents. ARAP.
+Um, and, and then, uh, you know, GL balance. I'd break out OIM, but it's not broken out in, uh.
+Jesse Willis13:17:48
+Yeah.
+Mathew.Glaeser@Syniti.com13:17:53
+And Thiago's, uh, request.
+Jesse Willis13:17:56
+Okay.
+Thiago Battaglin13:18:00
+And, uh, Matthew, let me share my screen a little bit. I'd like to show to you something, okay? This was what.
+Mathew.Glaeser@Syniti.com13:18:04
+Yeah.
+Thiago Battaglin13:18:09
+I…
+I did, okay.
+Uh, here you see the, the…
+I create the migration cockpit for FI balance document, okay?
+Mathew.Glaeser@Syniti.com13:18:22
+Mm-hmm.
+Thiago Battaglin13:18:22
+And this guy… this guy using the journal entries, okay, the journal entries, it is an API inside of SAP.
+Mathew.Glaeser@Syniti.com13:18:31
+Mm-hmm.
+Thiago Battaglin13:18:31
+And, uh… and using the, the, the table.
+ACDOCA, okay, or A/C DOCA. And…
+Mathew.Glaeser@Syniti.com13:18:41
+Yep.
+Thiago Battaglin13:18:42
+Uh, my question about these…
+is, uh, when we…
+Upload the… the balance for a period, not for… for everyone.
+The table, it is the C in the end. No, sorry, the T in the end, not the A.
+Mathew.Glaeser@Syniti.com13:19:01
+Mm-hmm, mhm.
+Thiago Battaglin13:19:04
+And this guy goes to the A/C docano A CDOC T.
+Uh, I can use the same, or I need to use in…
+Mathew.Glaeser@Syniti.com13:19:11
+Yeah.
+Thiago Battaglin13:19:16
+Other, or it is the correct way to do that. I insert inside of this object, and this object…
+knows where I can put this… can put this information.
+Mathew.Glaeser@Syniti.com13:19:23
+Yeah.
+Yeah, no, no, so ACDoc A is your… your items table, if you will, um, and it works, and the header table for it is BKPF.
+Thiago Battaglin13:19:38
+Yeah.
+Mathew.Glaeser@Syniti.com13:19:38
+Um, so some… so you'll have data in both of those, and then T, what it does is it takes all the entries in doc A and summarizes them.
+Right? So, if you were to load balances, and then… and then somebody else came in and loaded a couple more transactions against the same coding block.
+Thiago Battaglin13:19:49
+Hmm.
+Mathew.Glaeser@Syniti.com13:19:57
+it would take all of those transactions and give you the summary in ACDoc T.
+Thiago Battaglin13:20:04
+Okay. But I can… I can load in ACDoc a…
+Mathew.Glaeser@Syniti.com13:20:09
+Mm-hmm.
+Thiago Battaglin13:20:10
+the summarizing values, I can insert the data here, or I can use this…
+Mathew.Glaeser@Syniti.com13:20:15
+Yep, yep, you can. And that's common practice for us. We… even before S4, we would load into BSEG, essentially.
+Thiago Battaglin13:20:17
+Okay.
+Yeah.
+Mathew.Glaeser@Syniti.com13:20:26
+Mhm.
+Thiago Battaglin13:20:27
+Okay, okay, okay.
+Mathew.Glaeser@Syniti.com13:20:28
+Which would then… which would then feed the FLGL, um, flex tables, right? Or the GLT tables.
+Thiago Battaglin13:20:34
+Yeah, I remember.
+Mathew.Glaeser@Syniti.com13:20:38
+depending on what version you were on. So, just the new version of that.
+Thiago Battaglin13:20:38
+Yeah. Yeah, I…
+Yeah, because I did a program here, and I created…
+Uh, mock data for to to testing this, okay?
+Mathew.Glaeser@Syniti.com13:20:51
+Mm-hmm.
+Thiago Battaglin13:20:51
+And I will do this testing and upload this guy using our environment. I open only.
+Uh, GL account, or Ledger account.
+Because I don't know if I have other…
+Stuff here, okay? And this was, uh, my, my, my.
+first doubt about this object here, okay? Uh, other…
+Other doubt here is, uh, we have…
+I don't know the name of the transaction, uh, I don't know the name of the process, but I remember something. We have a place.
+inside of SAP.
+When we do a migration, or when we do a loading of, uh…
+huge quantity of, uh, documents. We have a place inside of FI.
+Transaction codes, when we can, uh, change a status and.
+All in…
+And after do this loading.
+Uh, we can, uh, unlock the, uh, something like a lock to, to only to, to, to import this document using.
+A migration cockpit, and after that, we unlock this, and the users can.
+can create a document, uh, in your day by day. You know something like that.
+Mathew.Glaeser@Syniti.com13:22:17
+I don't… I don't know the details of that, no.
+Thiago Battaglin13:22:20
+Oh my, because…
+Mathew.Glaeser@Syniti.com13:22:22
+Kathy, have you… have you heard of that?
+Jesse Willis13:22:27
+I mean, I can't say necessarily if so, it was probably done on the functional side. I mean, I know… I know usually…
+I mean, I'm… I mean, it's just, like, regarding, like… this goes beyond, like, opening and closing of posting periods, right?
+Thiago Battaglin13:22:44
+I believe… I believe it is.
+Yeah, no, it is this guy here, I found this, but I don't have, I don't know if this is the, the, the, the correctly one, okay?
+Jesse Willis13:22:57
+Talking about the legacy data transfer stuff?
+Thiago Battaglin13:22:58
+This…
+Jesse Willis13:23:02
+Because that's almost what, I mean, it looks like. Yeah, I mean, at a high-level concept, I'm aware of it. Unfortunately, everybody… all the implementations, it's always been done by the equivalent of the finance.
+Thiago Battaglin13:23:02
+Yeah.
+Jesse Willis13:23:17
+you know, data expert, whether that's their functional side or whatever, so I've not actually…
+You know, done the manipulation for the setting and enabling of the legacy transfer stuff.
+Thiago Battaglin13:23:31
+Yeah, I don't know.
+It is something like this, but I don't know if it is this one here, and this is my question, because.
+I know here, if I put something like completely here, okay, it's ready, I migrate all the data and you can continue, but…
+I remember…
+Mathew.Glaeser@Syniti.com13:23:53
+Yeah, I can give you the name of somebody you can ask a little more about this stuff, because we do have some of this where.
+Thiago Battaglin13:23:54
+Something like that.
+Mathew.Glaeser@Syniti.com13:24:00
+dealing with on XOM, I have not…
+gotten into the details myself, but the newer DMC, they're trying to take a more holistic approach, and so I know within this legacy data transfer, there's, like, takeover date for assets, there's, uh…
+Thiago Battaglin13:24:12
+Oh.
+Mathew.Glaeser@Syniti.com13:24:19
+Um, conversion dates, things of that nature, right, that get set up. Um…
+and we've run into some issues loading, where, like, the AR team will set one date that's…
+in the future of what we wanted to use, and then it wouldn't let us, you know, post some documents, so, um…
+I'll give you the name, you can reach out and talk to Sanjeev a little bit about, about.
+about this legacy data transfer and the settings. He might be able to point you in the right direction.
+Thiago Battaglin13:24:55
+Yeah, no problem, no problem.
+Uh, yeah, what I told you, G UL accounts.
+Uh, was the easier part. And now you told me you have… I stopped your sharing, okay?
+And now you told me you have other, uh, for a…
+Mathew.Glaeser@Syniti.com13:25:10
+Yeah.
+Thiago Battaglin13:25:14
+P or A RI don't remember, A R.
+Mathew.Glaeser@Syniti.com13:25:16
+It was… I had… I had one for AP, I closed the tab, so I'll have to go through my history and find it for you.
+Thiago Battaglin13:25:18
+And no problem. No, no problem.
+Mathew.Glaeser@Syniti.com13:25:22
+But, uh, I'll send it after the meeting.
+Thiago Battaglin13:25:25
+Yeah, no problem. And if you have, oh, if you have a P, okay, it's good for me because we can.
+I can… starting to check this, what I can do in AP, and try to use in AR.
+Because sometimes it is, uh, the same BAPI, or…
+closer one.
+Okay, uh…
+But, okay, I believe was, was a good meeting.
+Better than the other one, Matthew.
+Mathew.Glaeser@Syniti.com13:25:58
+Well, yeah, I mean, now that I know what they're trying to accomplish, right, that they're just looking really for the load method, not to do the entire conversion in an ABOP program.
+Thiago Battaglin13:26:00
+Yeah.
+Yeah.
+Mathew.Glaeser@Syniti.com13:26:08
+That it makes a… makes it much…
+Thiago Battaglin13:26:11
+Yeah, yeah.
+Mathew.Glaeser@Syniti.com13:26:12
+Uh…
+Thiago Battaglin13:26:13
+Yes.
+Mathew.Glaeser@Syniti.com13:26:14
+So…
+Um, but yeah, I'll send you Sanjeeb's name, you can reach out to him and ask him about the legacy data transfer.
+stuff, um…
+If you want to copy all of us, maybe we'll jump in the meeting and learn, too, if you set something up.
+Um…
+Thiago Battaglin13:26:32
+Let let me say, uh…
+After this, you send me the the name of Sanji here on the teams, please.
+Mathew.Glaeser@Syniti.com13:26:41
+Yeah, I'll just, uh, when I send the links, I'll just put it all together in one email.
+Thiago Battaglin13:26:46
+Okay. And I, I will send to you, uh, two questions by my, by the, my, my team.
+Mathew.Glaeser@Syniti.com13:26:51
+Yeah, we… I mean, we still have time. Do we want to go over those questions?
+Thiago Battaglin13:26:55
+Sure, sure. Let me send it here for you, let me get, because…
+Mathew.Glaeser@Syniti.com13:26:58
+Are they in the… in the chat? If we load all closed AR and AP from Legacy.
+Thiago Battaglin13:27:03
+I'll send you intend to, okay.
+Mathew.Glaeser@Syniti.com13:27:04
+As…
+Thiago Battaglin13:27:08
+Matt…
+Yes, sure.
+Mathew.Glaeser@Syniti.com13:27:10
+Well, right, so this is the… the question one is… would be my concern, right?
+Thiago Battaglin13:27:15
+Yeah.
+Mathew.Glaeser@Syniti.com13:27:16
+I do think that if you are opening… so, when you post against a customer or a vendor.
+What happens is there's an account reconciliation, and… and it gets posted against that, and then when you…
+When you close it, right, when you clear it, there's a…
+that money is moved again. Now, when you pull in GL balances, as of today, that's all happened in the past. So if you open that AP, if you…
+book that AEP again, it's gonna show up in there. So, any historical AEP or AR, the conversion team's going to have to figure out what they need to take out of the balances.
+Thiago Battaglin13:28:04
+Okay. Um, right.
+Mathew.Glaeser@Syniti.com13:28:05
+Right? Does that make any… does that make any sense, what I'm saying?
+Thiago Battaglin13:28:10
+Yeah, totally. I'll document inside of SAP, we need to…
+Create, or use, or reverse, okay?
+Mathew.Glaeser@Syniti.com13:28:16
+Yeah.
+Right, because it's a running… when we bring over balances, it's normally as of a point of time.
+And then maybe we have some movements on top of that. So, like, if they want it…
+last year's, you know, they wanted… they wanted movements for the last year. We would start out with.
+you know, January 2025, for instance, what was the balances at the beginning of the year? Actually, typically, we grab the end of the previous year.
+And then we, um… then we load the movements for period 1, period 2, period 3, all the way through.
+You know, 12, and then we would take this year's and do the 5 periods that have already happened, right?
+And it's kind of a running total. Um…
+if something's already closed in those movements, then we'll have… it has to be picked out, right? You almost, like, you almost would need to run an extra transaction.
+for each AP and AR, to pull it out of its…
+Its current balance, so that you could repost it.
+But I think that's really more on the conversion side than on the loading side, but certainly something to take into consideration.
+Thiago Battaglin13:29:32
+And, uh, other question, okay?
+If the loading happens in the middle of the period, okay, like something.
+uh…
+Uh, what happened today, and today we don't have the year closer yet, okay?
+Mathew.Glaeser@Syniti.com13:29:50
+Mm-hmm.
+Thiago Battaglin13:29:51
+Uh, how we we can handle with the historical.
+Data for this ecto period.
+Okay, because, uh…
+Mathew.Glaeser@Syniti.com13:30:02
+Mm-hmm.
+Thiago Battaglin13:30:04
+I don't… you understand, because…
+Mathew.Glaeser@Syniti.com13:30:04
+Well… yeah, yeah, uh…
+Thiago Battaglin13:30:06
+Repairs are closer, but the document's closed.
+Mathew.Glaeser@Syniti.com13:30:09
+So, I think when they're looking for historical, they're looking for the items, right? So, if you're gonna load all of the items, it doesn't really matter. You know, you start from the beginning, you load all the way through.
+Thiago Battaglin13:30:14
+Okay, yeah.
+Mathew.Glaeser@Syniti.com13:30:21
+Um…
+But if you're loading a starting balance.
+in the middle of a year, and that is what we're doing at Exxon, we're just loading one balance.
+Uh, and for our US Go Live, it is going to be in the… in… in…
+April, so it'll be the close of March. Um, you can do that. It's pretty much the same. You're just… you're just loading the total amount. What we do is, on the conversion side, we have to come up with that total, so we add everything together to get that number.
+Thiago Battaglin13:30:43
+Mm-hmm.
+Mathew.Glaeser@Syniti.com13:30:56
+from the totals tables, because again, the totals table starts with a takeover value, and then it gives you movements every period.
+So, again, that's more of the transformation logic, where we take all of that and summarize it.
+Um, the one thing to note, though, is if you're doing it.
+uh, mid-year, that would mean that you're also going to have to, uh, worry about P&L.
+So, on our… at Exom, we're gonna have them close out the P&L at the end of the quarter, so that we're only moving balance sheet.
+Um, but, you know, I don't think the tool will care, really, if it's P&L or balance sheet.
+Um, but during mid-year, you would have those balances in P&L accounts, too, not just…
+Uh, GL accounts, but again, for loading purposes, I don't… I don't know if that matters.
+Thiago Battaglin13:31:52
+Mm-hmm.
+Mathew.Glaeser@Syniti.com13:31:54
+I hope… I hope that answers your question.
+Thiago Battaglin13:31:56
+Yes. Yes.
+Yeah, lots happen and we see what we can do, because it's, uh…
+Mathew.Glaeser@Syniti.com13:32:06
+Yeah.
+Thiago Battaglin13:32:07
+Yeah, but no problem, no problem. No, I'm happy with your answer.
+Mathew.Glaeser@Syniti.com13:32:09
+Because again, I think who we're trying to, like, compete with are people that are bringing over all the details, right?
+Thiago Battaglin13:32:17
+Yeah.
+Mathew.Glaeser@Syniti.com13:32:17
+So, if you're gonna just be bringing over a ton of historical, um, documents.
+uh…
+I don't… I don't think there's really anything that we need to do special. If we are doing summaries.
+That's actually easier.
+Thiago Battaglin13:32:35
+Yeah. And let's say historical is not actual, okay? Historical is…
+Today, this year, minus 1.
+Mathew.Glaeser@Syniti.com13:32:48
+Yeah.
+Thiago Battaglin13:32:49
+Okay, and this…
+The second question, uh, is something like what we discussed, we had a discussion about.
+the, the, the GL, okay? If we do this…
+uh, inside of a CDocky.
+After that, probably we'll summarize year by year in SC doc T.
+Correctly.
+Mathew.Glaeser@Syniti.com13:33:19
+Everything will, yeah, kind of combine in DocT.
+Thiago Battaglin13:33:25
+Yeah. Okay.
+Mathew.Glaeser@Syniti.com13:33:28
+If you only load one takeover balance, right, then I would expect ACDoc A and ACDoc T to match.
+Thiago Battaglin13:33:36
+Hmm.
+Mathew.Glaeser@Syniti.com13:33:36
+Um, but if there's, you know, multiple documents that are smaller in doc A, you'll just have one number in doc T. That's the combination.
+Thiago Battaglin13:33:47
+Yeah. Yeah. Ah, perfect.
+Oh, perfect, mate.
+Jesse, you have something to say?
+Jesse Willis13:33:57
+No, I was just double-checking via various, like, just AI searching things on the AR side, which is pretty much…
+and then looking at articles on the AR side, basically, it's just all basically using the FI historical ballots, summarized.
+And basically them, you know, people just saying, hey, which is available.
+You know, since 1909, but…
+everybody's… doesn't recommend the… I mean, the only other approach would be is…
+migrating your close clear transactional history, and then, basically, then you'd have to close and clear it into the new system again, and that's the approach, you know.
+where SAP doesn't recommend, but uh…
+I mean, but that is all that I have seen, is this is basically summarizing your AR for the various… at the account levels and such, but…
+I don't think then you would necessarily… I guess you could do the history, I think you could still supply. I think one of the things that, um…
+Matt referenced was still being able to supply the customer and vendors, but…
+But I think it's gonna be similar side for the AR, depending on when Matt finds the other link.
+It's just referencing back to that… the document post.
+Uh, for the BAPI, and it just not…
+Being recommended at the level of detail at the document level, which…
+Mathew.Glaeser@Syniti.com13:35:38
+Hmm.
+Jesse Willis13:35:43
+I guess my question is, this is what level, you know, obviously versus this is balances, but is the other approach trying to go all the way down to the document level?
+you know, of the exercise. What are you trying to do? Are you… I mean, first thing's balanced, but are you trying to go all the way down to document level for…
+Historical.
+Mathew.Glaeser@Syniti.com13:36:04
+Yeah, in some cases, Jesse, because I think what we're trying to do is compete with, like, Natuvian and SLO.
+Jesse Willis13:36:07
+Yeah.
+Yeah.
+Mathew.Glaeser@Syniti.com13:36:13
+Which, again, I agree with you, I… I don't think it's recommended, and when I talked to Monkberg, he said, it's not like we're going to recommend this, but it's taking us out of the running on some projects.
+Jesse Willis13:36:24
+Yeah, yeah, I get it, right? Because we always want to be able to say, yes, we can do this for the client, right?
+Mathew.Glaeser@Syniti.com13:36:31
+5.
+Jesse Willis13:36:32
+you know, here's the solution. Yeah, I mean, I think then that it's probably going to be… the solution for the AP… for the AR side will probably be, basically.
+similar to the AP, just, you know, for AR instead of the AP from a BOP standpoint.
+Mathew.Glaeser@Syniti.com13:36:52
+Yeah, I think that the challenge, which is not for you, Thiago.
+But I think the challenge is gonna be, if we ever do sell a project with all this history, is how much effort it's gonna actually take on the…
+On the transformation side, to get everything right.
+Jesse Willis13:37:08
+Oh, absolutely. I think the initial stuff for that, I think that that will be interesting for the first… for the learning curve, but the…
+The greater problem that I don't know if the client will be aware of is this will be the load time, depending upon how much.
+Data for that to get loaded.
+Mathew.Glaeser@Syniti.com13:37:32
+Right, right, and if they have hundreds of millions of records, or even billions of records, which is what I said before.
+Jesse Willis13:37:35
+Yep.
+Uh-huh, aha, uh-huh.
+Yep.
+Mathew.Glaeser@Syniti.com13:37:40
+So…
+Um…
+Jesse Willis13:37:42
+But it is just us for us to say yes, and then, and then, and, and then for the… but, but, but, you know, saying, hey, you know, understand, here's the, the implications.
+Mathew.Glaeser@Syniti.com13:37:56
+Yeah, and with document splitting and everything, once you get into, you know, if it was S4 to S4.
+Um… it goes up even further. You know, hundreds of billions, possibly.
+Jesse Willis13:38:10
+Yeah.
+Mathew.Glaeser@Syniti.com13:38:10
+Which I don't think that we could do with a standard load method. I think you really do have to go to a.
+Uh, NSDT at that point.
+Jesse Willis13:38:18
+Yep.
+Mathew.Glaeser@Syniti.com13:38:20
+Or… do a, uh…
+do a technical upgrade. You know?
+Jesse Willis13:38:27
+I find it very interesting, yeah, I mean, of the previous… the clients, they actually don't… definitely did not want to migrate their historical… I mean, some things…
+that SAP is built for historical? Absolutely, they wanted that… that copied over, but… but the finance stuff? No, they… they… they basically…
+It's from ECC to S4, and the number one reason.
+that they didn't want to was because they knew that when they converted to ECC, there was problematic stuff that they no longer use. And hence, that's why they didn't want any of that baggage of when they went to ECC that wasn't necessarily done right with what they know now.
+Mathew.Glaeser@Syniti.com13:39:09
+Right.
+Mm-hmm.
+Jesse Willis13:39:19
+going on for the S4. So, yeah, that's interesting.
+Mathew.Glaeser@Syniti.com13:39:23
+Yeah, and another point I would bring up to these clients, too, is like, especially now with people going to the cloud, you get charged for every bit that you store, and with financials.
+Jesse Willis13:39:33
+Yep.
+Mathew.Glaeser@Syniti.com13:39:37
+Um, it increases your processing power, which you also get charged for.
+Jesse Willis13:39:42
+Yeah, but…
+Mathew.Glaeser@Syniti.com13:39:42
+So…
+Jesse Willis13:39:44
+But… but I guess, ultimately, for Thiago, it's trying to come up with a solution.
+Mathew.Glaeser@Syniti.com13:39:51
+Right.
+Jesse Willis13:39:51
+It just may not be advisable. I guess what we're saying is that from a scalability, it may not… the solution that is used may not be advisable from a scalability standpoint.
+Mathew.Glaeser@Syniti.com13:40:05
+Right.
+Thiago Battaglin13:40:08
+Yeah, we can, uh, create a summarize data, only one per period or per year.
+And this, but I don't know if this is possible to do.
+Okay, we can solve something like a public cloud guy, don't have a storage large or billions of documents, we can summarize this and do just one.
+Document with the whole.
+Here, inside of this document.
+And if we have a way to create this AP and AR, and after that, clear this document.
+Mathew.Glaeser@Syniti.com13:40:44
+Yeah, I think for you, you just… yeah, you just need to come up with the process of how do I load AP and AR? I think that they could probably use the historical DMC for everything else, right?
+Thiago Battaglin13:40:45
+We can't… we can do that.
+Jesse Willis13:40:47
+Yeah.
+Yep.
+Thiago Battaglin13:40:53
+Yeah.
+Yeah.
+Mathew.Glaeser@Syniti.com13:40:57
+And then it's on the ADMM side to get the data right to load the three together.
+Thiago Battaglin13:41:04
+Yeah.
+Jesse Willis13:41:05
+Yeah, and that's more just a process standpoint from, you know, it's like, do we… do we first, you know, load the open stuff before we load the stuff that, you know, is closed? You know, that's more of a process.
+Mathew.Glaeser@Syniti.com13:41:22
+Well, yeah, and historical, too, maybe they take the case for large volumes, or they do it after go-live, right?
+Jesse Willis13:41:29
+Right, 100%, it's probably gonna be after Go Live, right? Yeah.
+Mathew.Glaeser@Syniti.com13:41:29
+Because…
+Jesse Willis13:41:35
+it'll probably be a… like you said, it'll also probably be a thing of, hey, when is the downtime, like, over weekends or something like that? That would probably be the recommendation.
+You know, when you're not doing, you know, automated proc…
+Processing and such, yeah.
+But I could definitely see it being… I mean, I know…
+uh… the historical stuff for material consumption history, we always loaded it after Go Live, which was.
+Partially frustrating for the client to a certain degree, but they also understood why, because.
+It wasn't, you know, it wasn't as important as everything else, but on the flip side, then, as soon as the materials were created, the system was already building material consumption history for them, so yeah.
+Mathew.Glaeser@Syniti.com13:42:30
+Right.
+Jesse Willis13:42:34
+But I think it's just basically, I mean, as we said, it's probably going to be a combination of.
+The… the historical balances…
+for, like, the GL accounts and all of that, but then the only other thing would be is having a process that basically can load the documents, and then having… and then having that process that basically.
+Uh, closes, post… you know, clears that, you know.
+depending upon whether it's AR or, you know, AP for cleaning from a historical standpoint.
+But that's it for me. Anything else? Questions? Thiago?
+Thiago Battaglin13:43:32
+No questions. Now I need to take my…
+Uh, medicine for headaches.
+And go back to work.
+Go back to work a little bit.
+Mathew.Glaeser@Syniti.com13:43:47
+Yeah, okay. I'll… I'll… I'll…
+Brahma Somanchi13:43:48
+Hey, uh, this is, uh, this is Brahma. Uh, sorry, I've been quietly, you know, listening to the conversation.
+Mathew.Glaeser@Syniti.com13:43:52
+Yeah.
+Brahma Somanchi13:43:55
+Um, I wanted to take a moment to thank, uh, you know, for your time and, you know, going through.
+Um, in explaining, uh, things to Thiago.
+So, again, myself, I am, uh…
+overseeing the execution of this load Historical Data Project.
+The earlier one that you mentioned, you know, loading the purchase order and sales orders.
+It's, uh, done by, uh, you know, a group of members in India, which are, like, you know, Thiago's teammates.
+But now, Thiago is leading this effort, you know, with the help of two others who are in India.
+Mathew.Glaeser@Syniti.com13:44:31
+Mm-hmm.
+Brahma Somanchi13:44:35
+Um, I think your inputs are going to unblock him or clarify.
+on what we need to do and how we need to build. Uh, so definitely your inputs are going to be, you know, very useful.
+Mathew.Glaeser@Syniti.com13:44:48
+Yeah, no worries. Um, I'll send out the information I found, and then Thiago, if you have more questions, send them out, and I think…
+Brahma Somanchi13:44:50
+Um…
+Mathew.Glaeser@Syniti.com13:44:57
+Jesse, if you have time to kind of… kind of dig on… on AR, maybe what… what the steps would be.
+That would be helpful.
+Jesse Willis13:45:06
+Yeah, I'm gonna take some stabbing around, looking into it, uh, yeah.
+Mathew.Glaeser@Syniti.com13:45:11
+Awesome.
+Brahma Somanchi13:45:14
+So, Thiago, you have a, you know, good handle now on… on the direction that we should be taking?
+Thiago Battaglin13:45:21
+Yeah.
+Brahma Somanchi13:45:21
+Based on these, okay, sounds good. Glad that, you know, we have things clarified, okay?
+Thiago Battaglin13:45:24
+Yeah.
+Yeah, now, now I can go one or two steps alone, and after that, go back to the Mathew.
+Brahma Somanchi13:45:28
+Yeah, no, no.
+Well…
+Sounds good, sounds good.
+Thiago Battaglin13:45:38
+Yeah.
+Brahma Somanchi13:45:40
+And we'll try to pull, uh, Rocky as in, you know, required, um, so we'll see.
+I mean, I hear that he's back, uh, working part-time, um, you know, so… so I think we should be able to take his, uh…
+Help and inputs on how, how we build it.
+Thiago Battaglin13:45:58
+Sure. Sure.
+Brahma Somanchi13:46:00
+Thank you.
+Thiago Battaglin13:46:02
+Thank you, guys.
+Mathew.Glaeser@Syniti.com13:46:06
+Yeah. Oh.
+Brahma Somanchi13:46:07
+Thank you.
+Jesse Willis13:46:07
+You're welcome.
+Okay. Thank you.
+Thiago Battaglin13:46:11
+Bye bye.
+Mathew.Glaeser@Syniti.com13:46:12
+Alright, have a great day.
+Jesse Willis13:46:14
+Talk to you guys in the future. Bye.
+Thiago Battaglin13:46:14
+For you too, by me.
+Mathew.Glaeser@Syniti.com13:46:15
+Yeah, bye.
+Thiago Battaglin13:46:16
+Bye bye.
+
