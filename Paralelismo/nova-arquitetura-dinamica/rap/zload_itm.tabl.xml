@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Transparent table ZLOAD_ITM
+  Child persistence of BO ZR_LOAD_REQ. `FIELDS_JSON` is the payload
+  passed verbatim to the adapter (parsed at dispatch time).
+-->
+<mx:abapSource xmlns:mx="http://www.sap.com/abapxml">
+  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+    <asx:values>
+      <TABL>
+        <NAME>ZLOAD_ITM</NAME>
+        <DESCRIPTION>Dynamic Load Item</DESCRIPTION>
+        <DELIVERY_CLASS>A</DELIVERY_CLASS>
+        <TABLE_CATEGORY>TRANSP</TABLE_CATEGORY>
+
+        <FIELDS>
+          <FIELD NAME="CLIENT"       KEY="X" DATATYPE="CLNT" LENGTH="3"  NOTNULL="X" DESCRIPTION="Client"/>
+          <FIELD NAME="REQUEST_UUID" KEY="X" DATATYPE="RAW"  LENGTH="16" NOTNULL="X" DESCRIPTION="Parent request"/>
+          <FIELD NAME="ITEM_UUID"    KEY="X" DATATYPE="RAW"  LENGTH="16" NOTNULL="X" DESCRIPTION="Item UUID"/>
+
+          <FIELD NAME="ITEM_NO"     DATATYPE="INT4" LENGTH="10" DESCRIPTION="Sequence"/>
+          <FIELD NAME="EXT_ID"      DATATYPE="CHAR" LENGTH="20" DESCRIPTION="External key"/>
+          <FIELD NAME="OBJECT_TYPE" DATATYPE="CHAR" LENGTH="20" DESCRIPTION="Target object (adapter key)"/>
+          <FIELD NAME="FIELDS_JSON" DATATYPE="STRG" LENGTH="0"  DESCRIPTION="JSON with field name/value pairs"/>
+
+          <!-- Result -->
+          <FIELD NAME="ENTITY_ID"   DATATYPE="CHAR" LENGTH="30"  DESCRIPTION="Created entity id"/>
+          <FIELD NAME="ITEM_STATUS" DATATYPE="CHAR" LENGTH="1"   DESCRIPTION="P=Pending, S=Success, E=Error"/>
+          <FIELD NAME="MESSAGE"     DATATYPE="CHAR" LENGTH="255" DESCRIPTION="Result message"/>
+
+          <FIELD NAME="LAST_CHANGED_AT" DATATYPE="DEC" LENGTH="21" DECIMALS="7" DESCRIPTION="Optimistic locking"/>
+        </FIELDS>
+      </TABL>
+    </asx:values>
+  </asx:abap>
+</mx:abapSource>

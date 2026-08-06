@@ -1,0 +1,6 @@
+@EndUserText.label: 'Dynamic Load - Web API for Replicate (Syniti Surge)'
+
+define service ZUI_LOAD_O4 {
+  expose ZC_LOAD_REQ as LoadRequest;
+  expose ZC_LOAD_ITM as LoadItem;
+}

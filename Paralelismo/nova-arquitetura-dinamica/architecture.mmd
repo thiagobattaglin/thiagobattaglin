@@ -1,0 +1,52 @@
+%%{init: {'theme':'base'}}%%
+flowchart LR
+    subgraph EXT["External"]
+        SS["Syniti Surge<br/>Replicate"]
+    end
+
+    subgraph API["HTTP API"]
+        HA["ZCL_LOAD_HTTP_API<br/>{mode, worker_rows, items[]}<br/>items[i].object_type"]
+    end
+
+    subgraph ORCH["Orchestrator"]
+        OR["ZCL_LOAD_ORCHESTRATOR<br/>chunk = worker_rows or 4"]
+    end
+
+    subgraph PP["Parallel Processing (bgPF)"]
+        direction LR
+        subgraph W1["Worker · N items · ZCL_LOAD_WORKER"]
+            L1["LOOP items"] --> F1["factory.get(item.object_type)"] --> A1["adapter.create(item)"] --> C1["BAPI + OWN COMMIT<br/>inside adapter"]
+            C1 --> L1
+        end
+        subgraph WN["Worker N · N items"]
+            LN["LOOP items"] --> FN["factory.get(...)"] --> AN["adapter.create(...)"] --> CN["BAPI + OWN COMMIT"]
+            CN --> LN
+        end
+    end
+
+    subgraph ADAPTERS["Adapters (allowlist via factory)"]
+        AD1["ZCL_ADAPTER_EQUI_CREATE<br/>BAPI_EQUI_CREATE"]
+        AD2["ZCL_ADAPTER_FLOC_CREATE<br/>BAPI_FUNCLOC_CREATE"]
+        ADX["...ZCL_ADAPTER_&lt;NEW&gt;"]
+    end
+
+    FACT["ZCL_LOAD_ADAPTER_FACTORY<br/>object_type → adapter"]
+
+    SAP1[("Equipment<br/>Master")]
+    SAP2[("Functional<br/>Location")]
+    LOG[/"Application Log<br/>ZLOAD_DYN"/]
+
+    SS --> HA --> OR --> W1
+    OR --> WN
+
+    F1 -.-> FACT
+    FN -.-> FACT
+    FACT -.-> AD1
+    FACT -.-> AD2
+    FACT -.-> ADX
+
+    C1 --> SAP1
+    C1 --> SAP2
+    CN --> SAP1
+    C1 -.-> LOG
+    CN -.-> LOG

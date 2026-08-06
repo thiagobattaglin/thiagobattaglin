@@ -1,0 +1,19 @@
+projection;
+strict ( 2 );
+
+define behavior for ZC_LOAD_REQ alias LoadReq
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _Items { create; }
+}
+
+define behavior for ZC_LOAD_ITM alias LoadItem
+{
+  use update;
+  use delete;
+
+  use association _Request;
+}
