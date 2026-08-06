@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Tabela transparente ZMIG_RUN
+  Persistência do BO ZR_MIG_RUN (LTMOM Orchestration).
+  Delivery Class: A   |   Data Browser Maint.: X   |   MC Category: APPL0
+-->
+<mx:abapSource xmlns:mx="http://www.sap.com/abapxml">
+  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+    <asx:values>
+      <TABL>
+        <NAME>ZMIG_RUN</NAME>
+        <DESCRIPTION>LTMOM - Registro de Execucao</DESCRIPTION>
+        <DELIVERY_CLASS>A</DELIVERY_CLASS>
+        <TABLE_CATEGORY>TRANSP</TABLE_CATEGORY>
+
+        <FIELDS>
+          <!-- Key -->
+          <FIELD NAME="CLIENT"        KEY="X" DATATYPE="CLNT" LENGTH="3"  NOTNULL="X" DESCRIPTION="Cliente"/>
+          <FIELD NAME="RUN_UUID"      KEY="X" DATATYPE="RAW"  LENGTH="16" NOTNULL="X" DESCRIPTION="UUID da execucao"/>
+
+          <!-- Business fields -->
+          <FIELD NAME="PROJECT_ID"    DATATYPE="CHAR" LENGTH="30"  DESCRIPTION="LTMOM Project ID"/>
+          <FIELD NAME="SUBPROJECT_ID" DATATYPE="CHAR" LENGTH="30"  DESCRIPTION="LTMOM Subproject"/>
+          <FIELD NAME="OBJECT_ID"     DATATYPE="CHAR" LENGTH="30"  DESCRIPTION="Migration Object"/>
+          <FIELD NAME="PHASE"         DATATYPE="CHAR" LENGTH="10"  DESCRIPTION="STAGING/CONVERT/SIMUL/IMPORT"/>
+          <FIELD NAME="STATUS"        DATATYPE="CHAR" LENGTH="1"   DESCRIPTION="N/R/S/E/C (New/Running/Success/Error/Canceled)"/>
+          <FIELD NAME="TOTAL_RECS"    DATATYPE="INT4" LENGTH="10"  DESCRIPTION="Total de registros"/>
+          <FIELD NAME="SUCCESS_RECS"  DATATYPE="INT4" LENGTH="10"  DESCRIPTION="Registros com sucesso"/>
+          <FIELD NAME="ERROR_RECS"    DATATYPE="INT4" LENGTH="10"  DESCRIPTION="Registros com erro"/>
+          <FIELD NAME="LAST_MSG"      DATATYPE="CHAR" LENGTH="220" DESCRIPTION="Ultima mensagem"/>
+
+          <!-- Administrative -->
+          <FIELD NAME="CREATED_BY"    DATATYPE="CHAR" LENGTH="12"  DESCRIPTION="Criado por"/>
+          <FIELD NAME="CREATED_AT"    DATATYPE="DEC"  LENGTH="21" DECIMALS="7" DESCRIPTION="Criado em (UTCLONG)"/>
+          <FIELD NAME="STARTED_AT"    DATATYPE="DEC"  LENGTH="21" DECIMALS="7" DESCRIPTION="Iniciado em (UTCLONG)"/>
+          <FIELD NAME="FINISHED_AT"   DATATYPE="DEC"  LENGTH="21" DECIMALS="7" DESCRIPTION="Finalizado em (UTCLONG)"/>
+          <FIELD NAME="LAST_CHANGED_BY" DATATYPE="CHAR" LENGTH="12" DESCRIPTION="Alterado por"/>
+          <FIELD NAME="LAST_CHANGED_AT" DATATYPE="DEC"  LENGTH="21" DECIMALS="7" DESCRIPTION="Alterado em (UTCLONG)"/>
+          <FIELD NAME="LOCAL_LAST_CHANGED_AT" DATATYPE="DEC" LENGTH="21" DECIMALS="7" DESCRIPTION="Optimistic locking"/>
+        </FIELDS>
+      </TABL>
+    </asx:values>
+  </asx:abap>
+</mx:abapSource>

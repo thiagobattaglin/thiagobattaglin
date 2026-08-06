@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Message class ZMIG_MSG – LTMOM Orchestration (Tracker mode)
+-->
+<mx:abapSource xmlns:mx="http://www.sap.com/abapxml">
+  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+    <asx:values>
+      <MSAG>
+        <NAME>ZMIG_MSG</NAME>
+        <DESCRIPTION>LTMOM Tracker Messages</DESCRIPTION>
+        <MESSAGES>
+          <MSG NO="010" TXT="Project ID e obrigatorio"/>
+          <MSG NO="011" TXT="Migration Object e obrigatorio"/>
+          <MSG NO="012" TXT="Fase invalida: &amp;1 (use STAGING/CONVERT/SIMUL/IMPORT)"/>
+          <MSG NO="020" TXT="Registro criado para &amp;1/&amp;2"/>
+          <MSG NO="021" TXT="Status sincronizado a partir do LTMOM: &amp;1"/>
+          <MSG NO="022" TXT="Projeto &amp;1 / objeto &amp;2 nao encontrado em LTMOM"/>
+          <MSG NO="023" TXT="Registro marcado como concluido"/>
+        </MESSAGES>
+      </MSAG>
+    </asx:values>
+  </asx:abap>
+</mx:abapSource>

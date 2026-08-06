@@ -1,0 +1,84 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo: { typeName:        'Migration Run',
+                  typeNamePlural:  'Migration Runs',
+                  title:           { type: #STANDARD, value: 'ProjectId' },
+                  description:     { type: #STANDARD, value: 'ObjectId'  } }
+
+annotate entity ZC_MIG_RUN with
+{
+  @UI.facet: [
+    { id:       'General',
+      purpose:  #STANDARD,
+      type:     #IDENTIFICATION_REFERENCE,
+      label:    'General Information',
+      position: 10 },
+    { id:       'Stats',
+      purpose:  #STANDARD,
+      type:     #FIELDGROUP_REFERENCE,
+      label:    'LTMOM Snapshot',
+      position: 20,
+      targetQualifier: 'Stats' },
+    { id:       'Admin',
+      purpose:  #STANDARD,
+      type:     #FIELDGROUP_REFERENCE,
+      label:    'Administrative',
+      position: 30,
+      targetQualifier: 'Admin' }
+  ]
+
+  @UI.hidden: true
+  RunUuid;
+
+  @UI: { lineItem:       [ { position: 10, importance: #HIGH },
+                           { type: #FOR_ACTION, dataAction: 'Refresh',       label: 'Refresh from LTMOM' },
+                           { type: #FOR_ACTION, dataAction: 'MarkCompleted', label: 'Mark as Completed' } ],
+         identification: [ { position: 10 } ],
+         selectionField: [ { position: 10 } ] }
+  ProjectId;
+
+  @UI: { lineItem:       [ { position: 20, importance: #HIGH } ],
+         identification: [ { position: 20 } ],
+         selectionField: [ { position: 20 } ] }
+  SubprojectId;
+
+  @UI: { lineItem:       [ { position: 30, importance: #HIGH } ],
+         identification: [ { position: 30 } ],
+         selectionField: [ { position: 30 } ] }
+  ObjectId;
+
+  @UI: { lineItem:       [ { position: 40, importance: #HIGH } ],
+         identification: [ { position: 40 } ],
+         selectionField: [ { position: 40 } ] }
+  Phase;
+
+  @UI: { lineItem:       [ { position: 50, importance: #HIGH,
+                             criticality: 'StatusCriticality' } ],
+         identification: [ { position: 50 } ],
+         selectionField: [ { position: 50 } ] }
+  Status;
+
+  @UI.fieldGroup: [ { qualifier: 'Stats', position: 10 } ]
+  TotalRecs;
+  @UI.fieldGroup: [ { qualifier: 'Stats', position: 20 } ]
+  SuccessRecs;
+  @UI.fieldGroup: [ { qualifier: 'Stats', position: 30 } ]
+  ErrorRecs;
+  @UI.fieldGroup: [ { qualifier: 'Stats', position: 40 } ]
+  StartedAt;
+  @UI.fieldGroup: [ { qualifier: 'Stats', position: 50 } ]
+  FinishedAt;
+
+  @UI.multiLineText: true
+  @UI.fieldGroup: [ { qualifier: 'Stats', position: 60 } ]
+  LastMsg;
+
+  @UI.fieldGroup: [ { qualifier: 'Admin', position: 10 } ]
+  CreatedBy;
+  @UI.fieldGroup: [ { qualifier: 'Admin', position: 20 } ]
+  CreatedAt;
+  @UI.fieldGroup: [ { qualifier: 'Admin', position: 30 } ]
+  LastChangedBy;
+  @UI.fieldGroup: [ { qualifier: 'Admin', position: 40 } ]
+  LastChangedAt;
+}

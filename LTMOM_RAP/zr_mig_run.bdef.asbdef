@@ -1,0 +1,68 @@
+managed implementation in class zbp_r_mig_run unique;
+strict ( 2 );
+with draft;
+
+/*
+ *  BO tracker/monitor de execucoes LTMOM.
+ *  - Nao dispara o Cockpit (Clean Core).
+ *  - Le status via CDS ZR_LTMOM_PROJECT (read-only) na acao Refresh.
+ */
+define behavior for ZR_MIG_RUN alias MigRun
+persistent table zmig_run
+draft table zmig_run_d
+lock master
+total etag LastChangedAt
+authorization master ( instance )
+etag master LocalLastChangedAt
+{
+  field ( readonly, numbering : managed ) RunUuid;
+
+  field ( readonly ) CreatedBy, CreatedAt,
+                     LastChangedBy, LastChangedAt, LocalLastChangedAt,
+                     StartedAt, FinishedAt,
+                     TotalRecs, SuccessRecs, ErrorRecs, LastMsg;
+
+  field ( mandatory ) ProjectId, ObjectId, Phase;
+
+  create;
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  // -------- Actions (100% Clean Core) ----------------------------
+  // Sincroniza o registro com o snapshot atual do LTMOM (read-only).
+  action ( features : instance ) Refresh result [1] $self;
+
+  // Marca a execucao como concluida com base no snapshot.
+  action ( features : instance ) MarkCompleted result [1] $self;
+
+  // -------- Determinations & Validations -------------------------
+  determination setInitialStatus on modify { create; }
+  validation    checkProject     on save   { create; field ProjectId, ObjectId, Phase; }
+
+  mapping for zmig_run
+  {
+    RunUuid              = run_uuid;
+    ProjectId            = project_id;
+    SubprojectId         = subproject_id;
+    ObjectId             = object_id;
+    Phase                = phase;
+    Status               = status;
+    TotalRecs            = total_recs;
+    SuccessRecs          = success_recs;
+    ErrorRecs            = error_recs;
+    LastMsg              = last_msg;
+    CreatedBy            = created_by;
+    CreatedAt            = created_at;
+    StartedAt            = started_at;
+    FinishedAt           = finished_at;
+    LastChangedBy        = last_changed_by;
+    LastChangedAt        = last_changed_at;
+    LocalLastChangedAt   = local_last_changed_at;
+  }
+}

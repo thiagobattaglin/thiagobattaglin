@@ -1,0 +1,5 @@
+@EndUserText.label: 'LTMOM Orchestration UI Service'
+
+define service ZUI_MIG_RUN_O4 {
+  expose ZC_MIG_RUN as MigRun;
+}
