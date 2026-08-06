@@ -1,0 +1,4 @@
+@EndUserText.label: 'CR Rejection Reasons Service'
+define service ZUI_CR_REJECTION_O4 {
+  expose ZC_CR_REJECTION_REASON as RejectionReasons;
+}

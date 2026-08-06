@@ -1,0 +1,55 @@
+INTERFACE zif_mdg_usmd212c PUBLIC.
+
+  TYPES:
+    BEGIN OF ty_rejection_reason,
+      creq_type        TYPE char4,
+      reason_rejection TYPE char4,
+    END OF ty_rejection_reason,
+    
+    ty_rejection_reason_tt TYPE STANDARD TABLE OF ty_rejection_reason 
+                           WITH KEY creq_type reason_rejection,
+    
+    BEGIN OF ty_operation_result,
+      creq_type        TYPE char4,
+      reason_rejection TYPE char4,
+      success          TYPE abap_boolean,
+      message          TYPE string,
+      method_used      TYPE char10,
+    END OF ty_operation_result,
+    
+    ty_operation_result_tt TYPE STANDARD TABLE OF ty_operation_result 
+                           WITH KEY creq_type reason_rejection.
+
+  METHODS create
+    IMPORTING is_reason TYPE ty_rejection_reason
+    RETURNING VALUE(rs_result) TYPE ty_operation_result
+    RAISING zcx_mdg_usmd212c.
+
+  METHODS update
+    IMPORTING is_reason TYPE ty_rejection_reason
+    RETURNING VALUE(rs_result) TYPE ty_operation_result
+    RAISING zcx_mdg_usmd212c.
+
+  METHODS delete
+    IMPORTING is_key TYPE ty_rejection_reason
+    RETURNING VALUE(rs_result) TYPE ty_operation_result
+    RAISING zcx_mdg_usmd212c.
+
+  METHODS upsert
+    IMPORTING is_reason TYPE ty_rejection_reason
+    RETURNING VALUE(rs_result) TYPE ty_operation_result
+    RAISING zcx_mdg_usmd212c.
+
+  METHODS validate_structure
+    RETURNING VALUE(rv_valid) TYPE abap_boolean.
+
+  METHODS get_structure_hash
+    RETURNING VALUE(rv_hash) TYPE char32.
+
+  METHODS is_api_based
+    RETURNING VALUE(rv_api) TYPE abap_boolean.
+
+  METHODS get_method_name
+    RETURNING VALUE(rv_method) TYPE char10.
+
+ENDINTERFACE.

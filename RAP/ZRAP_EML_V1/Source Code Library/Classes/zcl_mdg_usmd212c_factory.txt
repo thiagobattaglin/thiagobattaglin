@@ -1,0 +1,50 @@
+CLASS zcl_mdg_usmd212c_factory DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
+
+  PUBLIC SECTION.
+    CLASS-METHODS: get_instance RETURNING VALUE(ro_persistence) TYPE REF TO zif_mdg_usmd212c RAISING zcx_mdg_usmd212c,
+                   set_test_mode IMPORTING io_mock TYPE REF TO zif_mdg_usmd212c,
+                   reset_test_mode.
+  PRIVATE SECTION.
+    CLASS-DATA: go_instance TYPE REF TO zif_mdg_usmd212c, go_test_instance TYPE REF TO zif_mdg_usmd212c, gv_test_mode TYPE abap_boolean.
+    CLASS-METHODS: _create_instance RETURNING VALUE(ro_persistence) TYPE REF TO zif_mdg_usmd212c RAISING zcx_mdg_usmd212c.
+ENDCLASS.
+
+CLASS zcl_mdg_usmd212c_factory IMPLEMENTATION.
+  METHOD get_instance.
+    IF gv_test_mode = abap_true AND go_test_instance IS BOUND.
+      ro_persistence = go_test_instance.
+      RETURN.
+    ENDIF.
+    IF go_instance IS NOT BOUND.
+      go_instance = _create_instance( ).
+    ENDIF.
+    ro_persistence = go_instance.
+  ENDMETHOD.
+
+  METHOD _create_instance.
+    TRY.
+        ro_persistence = NEW zcl_mdg_usmd212c_api( ).
+        RETURN.
+      CATCH zcx_mdg_usmd212c.
+    ENDTRY.
+    TRY.
+        ro_persistence = NEW zcl_mdg_usmd212c_direct( ).
+      CATCH zcx_mdg_usmd212c.
+        RAISE EXCEPTION TYPE zcx_mdg_usmd212c MESSAGE e005(zmdg212) WITH 'USMD212C'.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD set_test_mode.
+    gv_test_mode = abap_true.
+    go_test_instance = io_mock.
+    CLEAR go_instance.
+  ENDMETHOD.
+
+  METHOD reset_test_mode.
+    gv_test_mode = abap_false.
+    CLEAR: go_test_instance, go_instance.
+  ENDMETHOD.
+ENDCLASS.

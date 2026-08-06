@@ -1,0 +1,57 @@
+@AccessControl.authorizationCheck: #CHECK
+@EndUserText.label: 'CR Rejection Reasons - Interface'
+@Metadata.allowExtensions: true
+
+define root view entity ZI_CR_REJECTION_REASON
+  as select from zusmd212c_stage
+{
+  key creq_type        as CreqType,
+  key reason_rejection as ReasonRejection,
+      
+      // Synchronization Status
+      @ObjectModel.text.element: ['SyncStatusText']
+      sync_status      as SyncStatus,
+      
+      @Semantics.text: true
+      case sync_status
+        when ' ' then 'Pending'
+        when 'S' then 'Synced'
+        when 'E' then 'Error'
+        when 'A' then 'API'
+        else 'Unknown'
+      end              as SyncStatusText,
+      
+      @Semantics.text: true
+      sync_message     as SyncMessage,
+      
+      @Semantics.systemDateTime.lastChangedAt: true
+      sync_timestamp   as SyncTimestamp,
+      
+      sync_attempts    as SyncAttempts,
+      sync_method      as SyncMethod,
+      
+      // Clean Core Tracking
+      structure_validated as StructureValidated,
+      structure_hash      as StructureHash,
+      
+      // Audit
+      @Semantics.user.createdBy: true
+      created_by              as CreatedBy,
+      @Semantics.systemDateTime.createdAt: true
+      created_at              as CreatedAt,
+      @Semantics.user.lastChangedBy: true
+      last_changed_by         as LastChangedBy,
+      @Semantics.systemDateTime.lastChangedAt: true
+      last_changed_at         as LastChangedAt,
+      @Semantics.systemDateTime.localInstanceLastChangedAt: true
+      local_last_changed_at   as LocalLastChangedAt,
+      
+      // Criticality
+      case sync_status
+        when ' ' then 2  // Yellow
+        when 'S' then 3  // Green
+        when 'E' then 1  // Red
+        when 'A' then 3  // Green
+        else 0
+      end                     as SyncStatusCriticality
+}

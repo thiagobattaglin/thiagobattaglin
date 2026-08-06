@@ -1,0 +1,38 @@
+*&---------------------------------------------------------------------*
+*& Report ZTEST_USMD212C
+*& Description: Test EML operations for USMD212C RAP project
+*&---------------------------------------------------------------------*
+REPORT ztest_usmd212c.
+
+DATA: lt_messages TYPE if_abap_behv_message=>t_message_list,
+      lv_success  TYPE abap_boolean.
+
+WRITE: / '=' INTENSIFIED ON, 'USMD212C RAP PROJECT TEST', '=' INTENSIFIED OFF.
+SKIP.
+
+" Test 1: Create entry
+WRITE: / 'Test 1: CREATE entry'.
+zcl_mdg_usmd212c_helper=>create_entry(
+  EXPORTING iv_creq_type = 'ZMDC' iv_reason_rej = 'Z001'
+  IMPORTING ev_success = lv_success et_messages = lt_messages ).
+IF lv_success = abap_true.
+  WRITE: / '  ✓ Success' COLOR COL_POSITIVE.
+ELSE.
+  WRITE: / '  ✗ Failed' COLOR COL_NEGATIVE.
+ENDIF.
+
+SKIP.
+
+" Test 2: Delete entry
+WRITE: / 'Test 2: DELETE entry'.
+zcl_mdg_usmd212c_helper=>delete_entry(
+  EXPORTING iv_creq_type = 'ZMDC' iv_reason_rej = 'Z001'
+  IMPORTING ev_success = lv_success ).
+IF lv_success = abap_true.
+  WRITE: / '  ✓ Success' COLOR COL_POSITIVE.
+ELSE.
+  WRITE: / '  ✗ Failed' COLOR COL_NEGATIVE.
+ENDIF.
+
+SKIP.
+WRITE: / '=' INTENSIFIED ON, 'TEST COMPLETED', '=' INTENSIFIED OFF.

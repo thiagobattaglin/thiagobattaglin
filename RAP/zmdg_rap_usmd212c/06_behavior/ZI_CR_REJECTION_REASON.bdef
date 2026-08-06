@@ -1,0 +1,48 @@
+managed implementation in class zbp_i_cr_rejection_reason unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZI_CR_REJECTION_REASON alias RejectionReason
+persistent table zusmd212c_stage
+draft table zusmd212c_stage_d
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master ( instance )
+with additional save
+{
+  create;
+  update;
+  delete;
+  
+  field ( readonly ) SyncStatus, SyncMessage, SyncTimestamp, SyncAttempts, SyncMethod,
+                     StructureValidated, StructureHash, CreatedBy, CreatedAt,
+                     LastChangedBy, LastChangedAt, LocalLastChangedAt, SyncStatusCriticality;
+  
+  field ( mandatory : create ) CreqType, ReasonRejection;
+  
+  action resyncToStandard result [1] $self;
+  action resetSyncStatus result [1] $self;
+  
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+  
+  mapping for zusmd212c_stage {
+    CreqType = creq_type;
+    ReasonRejection = reason_rejection;
+    SyncStatus = sync_status;
+    SyncMessage = sync_message;
+    SyncTimestamp = sync_timestamp;
+    SyncAttempts = sync_attempts;
+    SyncMethod = sync_method;
+    StructureValidated = structure_validated;
+    StructureHash = structure_hash;
+    CreatedBy = created_by;
+    CreatedAt = created_at;
+    LastChangedBy = last_changed_by;
+    LastChangedAt = last_changed_at;
+    LocalLastChangedAt = local_last_changed_at;
+  }
+}

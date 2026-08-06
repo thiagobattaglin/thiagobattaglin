@@ -1,0 +1,38 @@
+{
+  "name": "cap-kyma-service",
+  "version": "1.0.0",
+  "description": "CAP microservice simples para Kyma/SAP BTP",
+  "scripts": {
+    "start": "cds-serve",
+    "dev": "cds watch",
+
+    "docker:build": "docker build -t %REGISTRY%/cap-processamento:latest .",
+    "docker:push": "docker push %REGISTRY%/cap-processamento:latest",
+    "docker:build-push": "npm run docker:build && npm run docker:push",
+
+    "k8s:config": "kubectl config set-cluster kyma --kubeconfig=../kubeconfig.yaml",
+    "k8s:namespace": "kubectl apply -f k8s/namespace.yaml",
+    "k8s:deployment": "kubectl apply -f k8s/deployment.yaml",
+    "k8s:service": "kubectl apply -f k8s/service.yaml",
+    "k8s:apirule": "kubectl apply -f k8s/api-rule.yaml",
+    "k8s:apply": "npm run k8s:namespace && npm run k8s:deployment && npm run k8s:service && npm run k8s:apirule",
+    "k8s:status": "kubectl get pods -n cap-service && kubectl get apirule -n cap-service",
+    "k8s:logs": "kubectl logs -n cap-service -l app=cap-processamento --tail=100",
+    "k8s:restart": "kubectl rollout restart deployment/cap-processamento -n cap-service",
+
+    "deploy": "npm run docker:build-push && npm run k8s:apply && npm run k8s:status"
+  },
+  "dependencies": {
+    "@sap/cds": "^9.8.0",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@sap/cds-dk": "^9.7.2"
+  },
+  "cds": {
+    "requires": {
+      "auth": "dummy"
+    }
+  },
+  "license": "ISC"
+}

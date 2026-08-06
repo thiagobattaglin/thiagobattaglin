@@ -1,0 +1,62 @@
+*&---------------------------------------------------------------------*
+*& Table: ZUSMD212C_STAGE
+*& Description: Staging Table for USMD212C (CR Rejection Reasons)
+*& Clean Core: Custom table - 100% compliant
+*&---------------------------------------------------------------------*
+
+@EndUserText.label : 'CR Rejection Reasons - Staging'
+@AbapCatalog.enhancement.category : #NOT_EXTENSIBLE
+@AbapCatalog.tableCategory : #TRANSPARENT
+@AbapCatalog.deliveryClass : #A
+@AbapCatalog.dataMaintenance : #RESTRICTED
+define table zusmd212c_stage {
+  key client           : abap.clnt not null;
+  key creq_type        : char4 not null;
+  key reason_rejection : char4 not null;
+  
+  // Synchronization Control
+  @EndUserText.label : 'Sync Status'
+  sync_status   : char1;  // ' '=Pending, 'S'=Success, 'E'=Error, 'A'=API
+  
+  @EndUserText.label : 'Sync Message'
+  sync_message  : char255;
+  
+  @EndUserText.label : 'Sync Timestamp'
+  sync_timestamp : abp_locinst_lastchange_tstmpl;
+  
+  @EndUserText.label : 'Sync Attempts'
+  sync_attempts : int1;
+  
+  @EndUserText.label : 'Sync Method'
+  sync_method   : char10; // 'DIRECT_SQL', 'SAP_API', 'BAPI'
+  
+  // Clean Core Compliance Tracking
+  @EndUserText.label : 'Structure Validated'
+  structure_validated : abap_boolean;
+  
+  @EndUserText.label : 'Structure Hash'
+  structure_hash : char32;
+  
+  // RAP Audit Fields
+  @EndUserText.label : 'Created By'
+  created_by      : abp_creation_user;
+  
+  @EndUserText.label : 'Created At'
+  created_at      : abp_creation_tstmpl;
+  
+  @EndUserText.label : 'Last Changed By'
+  last_changed_by : abp_locinst_lastchange_user;
+  
+  @EndUserText.label : 'Last Changed At'
+  last_changed_at : abp_locinst_lastchange_tstmpl;
+  
+  @EndUserText.label : 'Local Last Changed At'
+  local_last_changed_at : abp_locinst_lastchange_tstmpl;
+}
+
+*&---------------------------------------------------------------------*
+*& Technical Settings (Configure in SE11):
+*& - Data Class: APPL0
+*& - Size Category: 0 (< 1,000 records expected)
+*& - Buffering: Single record buffering allowed
+*&---------------------------------------------------------------------*

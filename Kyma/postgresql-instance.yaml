@@ -1,0 +1,17 @@
+apiVersion: services.cloud.sap.com/v1
+kind: ServiceInstance
+metadata:
+  name: postgresql-instance
+  namespace: default
+spec:
+  serviceOfferingName: postgresql
+  servicePlanName: standard
+---
+apiVersion: services.cloud.sap.com/v1
+kind: ServiceBinding
+metadata:
+  name: postgresql-binding
+  namespace: default
+spec:
+  serviceInstanceName: postgresql-instance
+  secretName: postgresql-credentials

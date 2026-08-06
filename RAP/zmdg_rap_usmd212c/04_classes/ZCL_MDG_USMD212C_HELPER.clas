@@ -1,0 +1,54 @@
+CLASS zcl_mdg_usmd212c_helper DEFINITION PUBLIC FINAL CREATE PUBLIC.
+  PUBLIC SECTION.
+    CLASS-METHODS:
+      create_entry IMPORTING iv_creq_type TYPE char4 iv_reason_rej TYPE char4
+                   EXPORTING et_messages TYPE if_abap_behv_message=>t_message_list ev_success TYPE abap_boolean,
+      update_entry IMPORTING iv_creq_type TYPE char4 iv_reason_rej TYPE char4
+                   EXPORTING et_messages TYPE if_abap_behv_message=>t_message_list ev_success TYPE abap_boolean,
+      delete_entry IMPORTING iv_creq_type TYPE char4 iv_reason_rej TYPE char4
+                   EXPORTING et_messages TYPE if_abap_behv_message=>t_message_list ev_success TYPE abap_boolean,
+      sync_all_pending EXPORTING et_messages TYPE if_abap_behv_message=>t_message_list ev_count TYPE i.
+ENDCLASS.
+CLASS zcl_mdg_usmd212c_helper IMPLEMENTATION.
+  METHOD create_entry.
+    MODIFY ENTITIES OF zi_cr_rejection_reason ENTITY RejectionReason
+      CREATE FIELDS ( CreqType ReasonRejection )
+      WITH VALUE #( ( %cid = 'CID1' CreqType = iv_creq_type ReasonRejection = iv_reason_rej ) )
+      MAPPED DATA(ls_mapped) FAILED DATA(ls_failed) REPORTED DATA(ls_reported).
+    IF ls_failed IS INITIAL.
+      COMMIT ENTITIES RESPONSE OF zi_cr_rejection_reason FAILED DATA(ls_cf) REPORTED DATA(ls_cr).
+      ev_success = COND #( WHEN ls_cf IS INITIAL THEN abap_true ELSE abap_false ).
+    ELSE.
+      ev_success = abap_false.
+      et_messages = CORRESPONDING #( ls_reported-rejectionreason MAPPING FROM %msg ).
+    ENDIF.
+  ENDMETHOD.
+  METHOD update_entry.
+    READ ENTITIES OF zi_cr_rejection_reason ENTITY RejectionReason
+      FIELDS ( CreqType ) WITH VALUE #( ( CreqType = iv_creq_type ReasonRejection = iv_reason_rej ) )
+      RESULT DATA(lt_entries).
+    CHECK lt_entries IS NOT INITIAL.
+    ev_success = abap_true. " Update not needed - only keys
+  ENDMETHOD.
+  METHOD delete_entry.
+    READ ENTITIES OF zi_cr_rejection_reason ENTITY RejectionReason ALL FIELDS
+      WITH VALUE #( ( CreqType = iv_creq_type ReasonRejection = iv_reason_rej ) )
+      RESULT DATA(lt_entries).
+    CHECK lt_entries IS NOT INITIAL.
+    MODIFY ENTITIES OF zi_cr_rejection_reason ENTITY RejectionReason
+      DELETE FROM VALUE #( ( %tky = lt_entries[ 1 ]-%tky ) )
+      FAILED DATA(ls_failed) REPORTED DATA(ls_reported).
+    IF ls_failed IS INITIAL.
+      COMMIT ENTITIES.
+      ev_success = abap_true.
+    ELSE.
+      ev_success = abap_false.
+    ENDIF.
+  ENDMETHOD.
+  METHOD sync_all_pending.
+    SELECT creq_type, reason_rejection FROM zusmd212c_stage
+      WHERE sync_status = ' ' OR sync_status = 'E' INTO TABLE @DATA(lt_pending).
+    ev_count = lines( lt_pending ).
+    " Sync logic here
+  ENDMETHOD.
+ENDCLASS.

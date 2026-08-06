@@ -1,0 +1,76 @@
+CLASS zcl_mdg_usmd212c_direct DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
+
+  PUBLIC SECTION.
+    INTERFACES zif_mdg_usmd212c.
+    CONSTANTS gc_target_table TYPE tabname VALUE 'USMD212C'.
+    METHODS constructor RAISING zcx_mdg_usmd212c.
+  PRIVATE SECTION.
+    DATA: mv_structure_valid TYPE abap_boolean, mv_structure_hash TYPE char32.
+    METHODS _validate_initialization RAISING zcx_mdg_usmd212c.
+ENDCLASS.
+
+CLASS zcl_mdg_usmd212c_direct IMPLEMENTATION.
+  METHOD constructor.
+    _validate_initialization( ).
+  ENDMETHOD.
+
+  METHOD _validate_initialization.
+    mv_structure_valid = zcl_mdg_usmd212c_validator=>validate_table( gc_target_table ).
+    IF mv_structure_valid = abap_false.
+      RAISE EXCEPTION TYPE zcx_mdg_usmd212c EXPORTING textid = zcx_mdg_usmd212c=>gc_structure_mismatch table_name = gc_target_table.
+    ENDIF.
+    mv_structure_hash = zcl_mdg_usmd212c_validator=>get_table_hash( gc_target_table ).
+  ENDMETHOD.
+
+  METHOD zif_mdg_usmd212c~create.
+    DATA: ls_target TYPE usmd212c.
+    ls_target-usmd_creq_type = is_reason-creq_type.
+    ls_target-usmd_reason_rej = is_reason-reason_rejection.
+    INSERT usmd212c FROM @ls_target.
+    IF sy-subrc = 0.
+      rs_result = VALUE #( creq_type = is_reason-creq_type reason_rejection = is_reason-reason_rejection
+                          success = abap_true message = |Created via SQL| method_used = 'DIRECT_SQL' ).
+    ELSE.
+      RAISE EXCEPTION TYPE zcx_mdg_usmd212c EXPORTING textid = zcx_mdg_usmd212c=>gc_insert_failed.
+    ENDIF.
+  ENDMETHOD.
+
+  METHOD zif_mdg_usmd212c~update.
+    rs_result = zif_mdg_usmd212c~create( is_reason ).
+    rs_result-message = |Updated via SQL|.
+  ENDMETHOD.
+
+  METHOD zif_mdg_usmd212c~delete.
+    DELETE FROM usmd212c WHERE usmd_creq_type = @is_key-creq_type AND usmd_reason_rej = @is_key-reason_rejection.
+    IF sy-subrc = 0.
+      rs_result = VALUE #( creq_type = is_key-creq_type reason_rejection = is_key-reason_rejection
+                          success = abap_true message = |Deleted via SQL| method_used = 'DIRECT_SQL' ).
+    ELSE.
+      RAISE EXCEPTION TYPE zcx_mdg_usmd212c EXPORTING textid = zcx_mdg_usmd212c=>gc_delete_failed.
+    ENDIF.
+  ENDMETHOD.
+
+  METHOD zif_mdg_usmd212c~upsert.
+    SELECT SINGLE @abap_true FROM usmd212c WHERE usmd_creq_type = @is_reason-creq_type AND usmd_reason_rej = @is_reason-reason_rejection INTO @DATA(lv_exists).
+    rs_result = COND #( WHEN sy-subrc = 0 THEN zif_mdg_usmd212c~update( is_reason ) ELSE zif_mdg_usmd212c~create( is_reason ) ).
+  ENDMETHOD.
+
+  METHOD zif_mdg_usmd212c~validate_structure.
+    rv_valid = mv_structure_valid.
+  ENDMETHOD.
+
+  METHOD zif_mdg_usmd212c~get_structure_hash.
+    rv_hash = mv_structure_hash.
+  ENDMETHOD.
+
+  METHOD zif_mdg_usmd212c~is_api_based.
+    rv_api = abap_false.
+  ENDMETHOD.
+
+  METHOD zif_mdg_usmd212c~get_method_name.
+    rv_method = 'DIRECT_SQL'.
+  ENDMETHOD.
+ENDCLASS.

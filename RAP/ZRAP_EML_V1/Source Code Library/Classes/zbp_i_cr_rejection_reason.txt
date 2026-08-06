@@ -1,0 +1,95 @@
+CLASS zbp_i_cr_rejection_reason DEFINITION 
+  PUBLIC ABSTRACT FINAL 
+  FOR BEHAVIOR OF zi_cr_rejection_reason.
+ENDCLASS.
+
+CLASS zbp_i_cr_rejection_reason IMPLEMENTATION.
+ENDCLASS.
+
+======================================Local Types
+
+*"* use this source file for the definition and implementation of
+*"* local helper classes, interface definitions and type
+*"* declarations
+*"* use this source file for the definition and implementation of
+*"* local helper classes, interface definitions and type declarations
+CLASS lhc_rejectionreason DEFINITION INHERITING FROM cl_abap_behavior_handler.
+  PRIVATE SECTION.
+    METHODS get_instance_authorizations FOR INSTANCE AUTHORIZATION
+      IMPORTING keys REQUEST requested_authorizations FOR RejectionReason RESULT result.
+ENDCLASS.
+
+CLASS lhc_rejectionreason IMPLEMENTATION.
+  METHOD get_instance_authorizations.
+    LOOP AT keys ASSIGNING FIELD-SYMBOL(<key>).
+      APPEND VALUE #(
+        %tky = <key>-%tky
+        %op-%update = if_abap_behv=>auth-allowed
+        %op-%delete = if_abap_behv=>auth-allowed
+      ) TO result.
+    ENDLOOP.
+  ENDMETHOD.
+ENDCLASS.
+
+
+CLASS lsc_zi_cr_rejection_reason DEFINITION
+  INHERITING FROM cl_abap_behavior_saver.
+
+  PROTECTED SECTION.
+    METHODS save_modified REDEFINITION.
+
+ENDCLASS.
+
+CLASS lsc_zi_cr_rejection_reason IMPLEMENTATION.
+
+  METHOD save_modified.
+
+    DATA: lo_persistence TYPE REF TO zif_mdg_usmd212c,
+          lv_timestamp   TYPE timestampl.
+
+    GET TIME STAMP FIELD lv_timestamp.
+
+    TRY.
+        lo_persistence = zcl_mdg_usmd212c_factory=>get_instance( ).
+      CATCH zcx_mdg_usmd212c.
+        RETURN.
+    ENDTRY.
+
+    LOOP AT create-rejectionreason INTO DATA(ls_create).
+      TRY.
+          lo_persistence->create( VALUE #(
+            creq_type        = ls_create-CreqType
+            reason_rejection = ls_create-ReasonRejection ) ).
+
+          UPDATE zusmd212c_stage
+            SET sync_status    = 'S',
+                sync_message   = 'Synced successfully',
+                sync_timestamp = @lv_timestamp,
+                sync_method    = 'DIRECT_SQL'
+            WHERE creq_type        = @ls_create-CreqType
+              AND reason_rejection = @ls_create-ReasonRejection.
+
+        CATCH zcx_mdg_usmd212c INTO DATA(lx_create).
+          DATA(lv_error_msg) = lx_create->get_text( ).
+          UPDATE zusmd212c_stage
+            SET sync_status    = 'E',
+                sync_message   = @lv_error_msg,
+                sync_timestamp = @lv_timestamp
+            WHERE creq_type        = @ls_create-CreqType
+              AND reason_rejection = @ls_create-ReasonRejection.
+      ENDTRY.
+    ENDLOOP.
+
+    LOOP AT delete-rejectionreason INTO DATA(ls_delete).
+      TRY.
+          lo_persistence->delete( VALUE #(
+            creq_type        = ls_delete-CreqType
+            reason_rejection = ls_delete-ReasonRejection ) ).
+        CATCH zcx_mdg_usmd212c.
+
+      ENDTRY.
+    ENDLOOP.
+
+  ENDMETHOD.
+
+ENDCLASS.

@@ -1,0 +1,17 @@
+apiVersion: services.cloud.sap.com/v1
+kind: ServiceInstance
+metadata:
+  name: redis-instance
+  namespace: default
+spec:
+  serviceOfferingName: redis-cache
+  servicePlanName: standard
+---
+apiVersion: services.cloud.sap.com/v1
+kind: ServiceBinding
+metadata:
+  name: redis-binding
+  namespace: default
+spec:
+  serviceInstanceName: redis-instance
+  secretName: redis-credentials

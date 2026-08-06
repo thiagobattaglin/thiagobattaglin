@@ -1,0 +1,40 @@
+@EndUserText.label: 'CR Rejection Reasons - Consumption'
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@Metadata.allowExtensions: true
+@UI: {
+  headerInfo: {
+    typeName: 'Rejection Reason',
+    typeNamePlural: 'Rejection Reasons',
+    title: { type: #STANDARD, value: 'CreqType' }
+  }
+}
+define root view entity ZC_CR_REJECTION_REASON
+  provider contract transactional_query
+  as projection on ZI_CR_REJECTION_REASON
+{
+  @UI.facet: [
+    { id: 'General', purpose: #STANDARD, type: #IDENTIFICATION_REFERENCE, label: 'General', position: 10 },
+    { id: 'Sync', purpose: #STANDARD, type: #FIELDGROUP_REFERENCE, targetQualifier: 'Sync', label: 'Sync Status', position: 20 }
+  ]
+  @UI: { lineItem: [{ position: 10 }], identification: [{ position: 10 }] }
+  key CreqType,
+  @UI: { lineItem: [{ position: 20 }], identification: [{ position: 20 }] }
+  key ReasonRejection,
+  @UI: { lineItem: [{ position: 30, criticality: 'SyncStatusCriticality' }], fieldGroup: [{ qualifier: 'Sync', position: 10 }] }
+  SyncStatus,
+  SyncStatusText,
+  @UI.fieldGroup: [{ qualifier: 'Sync', position: 20 }]
+  SyncMessage,
+  @UI: { lineItem: [{ position: 40 }], fieldGroup: [{ qualifier: 'Sync', position: 30 }] }
+  LastChangedAt,
+  SyncTimestamp,
+  SyncAttempts,
+  SyncMethod,
+  StructureValidated,
+  StructureHash,
+  CreatedBy,
+  CreatedAt,
+  LastChangedBy,
+  LocalLastChangedAt,
+  SyncStatusCriticality
+}

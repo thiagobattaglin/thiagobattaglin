@@ -1,0 +1,21 @@
+apiVersion: cloud-resources.kyma-project.io/v1beta1
+kind: IpRange
+metadata:
+  name: redis-ip-range
+spec:
+  cidr: 10.250.0.0/22
+---
+apiVersion: cloud-resources.kyma-project.io/v1beta1
+kind: AwsRedisInstance
+metadata:
+  name: redis-cache
+  namespace: default
+spec:
+  redisTier: S1
+  engineVersion: "7.1"
+  autoMinorVersionUpgrade: true
+  authEnabled: true
+  ipRange:
+    name: redis-ip-range
+  authSecret:
+    name: redis-credentials

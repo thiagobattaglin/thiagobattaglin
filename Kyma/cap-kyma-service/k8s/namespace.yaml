@@ -1,0 +1,12 @@
+apiVersion: v1apiVersion: v1
+
+
+
+
+
+
+    istio-injection: enabled  labels:  name: cap-servicemetadata:kind: Namespacekind: Namespace
+metadata:
+  name: cap-kyma-service
+  labels:
+    istio-injection: enabled

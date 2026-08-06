@@ -1,0 +1,48 @@
+CLASS zcl_mdg_usmd212c_validator DEFINITION PUBLIC FINAL CREATE PUBLIC.
+  PUBLIC SECTION.
+    CLASS-METHODS:
+      validate_table IMPORTING iv_tabname TYPE tabname RETURNING VALUE(rv_valid) TYPE abap_boolean,
+      get_table_hash IMPORTING iv_tabname TYPE tabname RETURNING VALUE(rv_hash) TYPE char32,
+      get_expected_hash IMPORTING iv_tabname TYPE tabname RETURNING VALUE(rv_hash) TYPE char32,
+      check_compatibility IMPORTING iv_tabname TYPE tabname RETURNING VALUE(rv_compatible) TYPE abap_boolean.
+ENDCLASS.
+
+CLASS zcl_mdg_usmd212c_validator IMPLEMENTATION.
+  METHOD validate_table.
+    DATA: lt_dfies TYPE ddfields.
+    rv_valid = abap_false.
+    CALL FUNCTION 'DDIF_FIELDINFO_GET' EXPORTING tabname = iv_tabname TABLES dfies_tab = lt_dfies EXCEPTIONS OTHERS = 1.
+    IF sy-subrc <> 0. RETURN. ENDIF.
+    DATA(lt_expected) = VALUE string_table( ( 'USMD_CREQ_TYPE' ) ( 'USMD_REASON_REJ' ) ).
+    LOOP AT lt_expected INTO DATA(lv_field).
+      READ TABLE lt_dfies WITH KEY fieldname = lv_field TRANSPORTING NO FIELDS.
+      IF sy-subrc <> 0. RETURN. ENDIF.
+    ENDLOOP.
+    rv_valid = abap_true.
+  ENDMETHOD.
+  
+  METHOD get_table_hash.
+    DATA: lt_dfies TYPE ddfields, lv_string TYPE string.
+    CALL FUNCTION 'DDIF_FIELDINFO_GET' EXPORTING tabname = iv_tabname TABLES dfies_tab = lt_dfies EXCEPTIONS OTHERS = 1.
+    IF sy-subrc <> 0. RETURN. ENDIF.
+    LOOP AT lt_dfies INTO DATA(ls_dfies).
+      lv_string = |{ lv_string }{ ls_dfies-fieldname }{ ls_dfies-datatype }{ ls_dfies-leng }|.
+    ENDLOOP.
+    TRY.
+        rv_hash = cl_abap_hmac=>calculate_hash_for_char( if_algorithm = 'MD5' if_key = 'ZMDG212' if_data = lv_string ).
+      CATCH cx_abap_message_digest.
+        rv_hash = lv_string+0(32).
+    ENDTRY.
+  ENDMETHOD.
+  
+  METHOD get_expected_hash.
+    CASE iv_tabname.
+      WHEN 'USMD212C'. rv_hash = 'UPDATE_ME_WITH_REAL_HASH'.
+      WHEN OTHERS. rv_hash = get_table_hash( iv_tabname ).
+    ENDCASE.
+  ENDMETHOD.
+  
+  METHOD check_compatibility.
+    rv_compatible = COND #( WHEN validate_table( iv_tabname ) = abap_false THEN abap_false ELSE abap_true ).
+  ENDMETHOD.
+ENDCLASS.

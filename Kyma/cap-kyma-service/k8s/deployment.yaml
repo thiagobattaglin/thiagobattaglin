@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cap-processamento
+  namespace: cap-service
+  labels:
+    app: cap-processamento
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cap-processamento
+  template:
+    metadata:
+      labels:
+        app: cap-processamento
+        sidecar.istio.io/inject: "true"
+    spec:
+      containers:
+        - name: cap-processamento
+          image: cap-processamento:latest  # Substituir pela imagem do seu registry
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 4004
+              protocol: TCP
+          env:
+            - name: PORT
+              value: "4004"
+            - name: NODE_ENV
+              value: "production"
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "250m"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 4004
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            timeoutSeconds: 3
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 4004
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 3

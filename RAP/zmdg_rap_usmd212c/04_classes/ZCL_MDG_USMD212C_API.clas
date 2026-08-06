@@ -1,0 +1,36 @@
+CLASS zcl_mdg_usmd212c_api DEFINITION PUBLIC FINAL CREATE PUBLIC.
+  PUBLIC SECTION.
+    INTERFACES zif_mdg_usmd212c.
+    METHODS constructor RAISING zcx_mdg_usmd212c.
+ENDCLASS.
+
+CLASS zcl_mdg_usmd212c_api IMPLEMENTATION.
+  METHOD constructor.
+    RAISE EXCEPTION TYPE zcx_mdg_usmd212c EXPORTING textid = zcx_mdg_usmd212c=>gc_api_not_available table_name = 'USMD212C'.
+  ENDMETHOD.
+  
+  METHOD zif_mdg_usmd212c~create.
+    RAISE EXCEPTION TYPE zcx_mdg_usmd212c EXPORTING textid = zcx_mdg_usmd212c=>gc_api_not_available.
+  ENDMETHOD.
+  METHOD zif_mdg_usmd212c~update.
+    RAISE EXCEPTION TYPE zcx_mdg_usmd212c EXPORTING textid = zcx_mdg_usmd212c=>gc_api_not_available.
+  ENDMETHOD.
+  METHOD zif_mdg_usmd212c~delete.
+    RAISE EXCEPTION TYPE zcx_mdg_usmd212c EXPORTING textid = zcx_mdg_usmd212c=>gc_api_not_available.
+  ENDMETHOD.
+  METHOD zif_mdg_usmd212c~upsert.
+    RAISE EXCEPTION TYPE zcx_mdg_usmd212c EXPORTING textid = zcx_mdg_usmd212c=>gc_api_not_available.
+  ENDMETHOD.
+  METHOD zif_mdg_usmd212c~validate_structure.
+    rv_valid = abap_true.
+  ENDMETHOD.
+  METHOD zif_mdg_usmd212c~get_structure_hash.
+    rv_hash = 'API_MANAGED'.
+  ENDMETHOD.
+  METHOD zif_mdg_usmd212c~is_api_based.
+    rv_api = abap_true.
+  ENDMETHOD.
+  METHOD zif_mdg_usmd212c~get_method_name.
+    rv_method = 'SAP_API'.
+  ENDMETHOD.
+ENDCLASS.

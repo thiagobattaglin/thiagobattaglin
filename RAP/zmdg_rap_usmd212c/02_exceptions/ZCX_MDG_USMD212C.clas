@@ -1,0 +1,96 @@
+CLASS zcx_mdg_usmd212c DEFINITION
+  PUBLIC INHERITING FROM cx_static_check FINAL CREATE PUBLIC.
+
+  PUBLIC SECTION.
+    INTERFACES if_t100_message.
+    INTERFACES if_t100_dyn_msg.
+
+    CONSTANTS:
+      BEGIN OF gc_insert_failed,
+        msgid TYPE symsgid VALUE 'ZMDG212',
+        msgno TYPE symsgno VALUE '001',
+        attr1 TYPE scx_attrname VALUE 'CREQ_TYPE',
+        attr2 TYPE scx_attrname VALUE 'REASON_REJ',
+        attr3 TYPE scx_attrname VALUE '',
+        attr4 TYPE scx_attrname VALUE '',
+      END OF gc_insert_failed,
+      
+      BEGIN OF gc_update_failed,
+        msgid TYPE symsgid VALUE 'ZMDG212',
+        msgno TYPE symsgno VALUE '002',
+        attr1 TYPE scx_attrname VALUE 'CREQ_TYPE',
+        attr2 TYPE scx_attrname VALUE 'REASON_REJ',
+        attr3 TYPE scx_attrname VALUE '',
+        attr4 TYPE scx_attrname VALUE '',
+      END OF gc_update_failed,
+      
+      BEGIN OF gc_delete_failed,
+        msgid TYPE symsgid VALUE 'ZMDG212',
+        msgno TYPE symsgno VALUE '003',
+        attr1 TYPE scx_attrname VALUE 'CREQ_TYPE',
+        attr2 TYPE scx_attrname VALUE 'REASON_REJ',
+        attr3 TYPE scx_attrname VALUE '',
+        attr4 TYPE scx_attrname VALUE '',
+      END OF gc_delete_failed,
+      
+      BEGIN OF gc_structure_mismatch,
+        msgid TYPE symsgid VALUE 'ZMDG212',
+        msgno TYPE symsgno VALUE '004',
+        attr1 TYPE scx_attrname VALUE 'TABLE_NAME',
+        attr2 TYPE scx_attrname VALUE 'EXPECTED_HASH',
+        attr3 TYPE scx_attrname VALUE 'ACTUAL_HASH',
+        attr4 TYPE scx_attrname VALUE '',
+      END OF gc_structure_mismatch,
+      
+      BEGIN OF gc_api_not_available,
+        msgid TYPE symsgid VALUE 'ZMDG212',
+        msgno TYPE symsgno VALUE '005',
+        attr1 TYPE scx_attrname VALUE 'TABLE_NAME',
+        attr2 TYPE scx_attrname VALUE '',
+        attr3 TYPE scx_attrname VALUE '',
+        attr4 TYPE scx_attrname VALUE '',
+      END OF gc_api_not_available.
+
+    DATA:
+      creq_type   TYPE char4 READ-ONLY,
+      reason_rej  TYPE char4 READ-ONLY,
+      table_name  TYPE tabname READ-ONLY,
+      expected_hash TYPE char32 READ-ONLY,
+      actual_hash TYPE char32 READ-ONLY.
+
+    METHODS constructor
+      IMPORTING
+        textid        LIKE if_t100_message=>t100key OPTIONAL
+        previous      LIKE previous OPTIONAL
+        creq_type     TYPE char4 OPTIONAL
+        reason_rej    TYPE char4 OPTIONAL
+        table_name    TYPE tabname OPTIONAL
+        expected_hash TYPE char32 OPTIONAL
+        actual_hash   TYPE char32 OPTIONAL.
+ENDCLASS.
+
+CLASS zcx_mdg_usmd212c IMPLEMENTATION.
+  METHOD constructor ##ADT_SUPPRESS_GENERATION.
+    CALL METHOD super->constructor EXPORTING previous = previous.
+    me->creq_type = creq_type.
+    me->reason_rej = reason_rej.
+    me->table_name = table_name.
+    me->expected_hash = expected_hash.
+    me->actual_hash = actual_hash.
+    CLEAR me->textid.
+    IF textid IS INITIAL.
+      if_t100_message~t100key = if_t100_message=>default_textid.
+    ELSE.
+      if_t100_message~t100key = textid.
+    ENDIF.
+  ENDMETHOD.
+ENDCLASS.
+
+*&---------------------------------------------------------------------*
+*& Create Message Class ZMDG212 in SE91:
+*& 001 E Error inserting: CR Type &1 Reason &2
+*& 002 E Error updating: CR Type &1 Reason &2
+*& 003 E Error deleting: CR Type &1 Reason &2
+*& 004 E Table &1 structure incompatible. Expected: &2 Actual: &3
+*& 005 E API not available for table &1
+*&---------------------------------------------------------------------*
