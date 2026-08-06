@@ -1,0 +1,33 @@
+flowchart LR
+    SRC@{ shape: cyl, label: "Migration\nData" }
+
+    subgraph PAR["Parallel Processing"]
+        direction TB
+        W1["Worker 1"]
+        W2["Worker 2"]
+        W3["Worker 3"]
+        WN["Worker N"]
+    end
+
+    COMMIT["Batch Commit\nper Worker"]
+
+    DB@{ shape: cyl, label: "SAP" }
+    LOG@{ shape: doc, label: "Error Log" }
+    DISABLE["Business Rules\nDisabled" ]
+
+    SRC --> W1 & W2 & W3 & WN
+    W1 & W2 & W3 & WN --> COMMIT
+    COMMIT --> DB
+    COMMIT --> LOG
+    DISABLE -.->|"no overhead\nduring load"| PAR
+
+    style PAR     fill:#1a3a2a,stroke:#38a169,stroke-width:2px,color:#a8f0c6
+    style W1      color:#a8f0c6
+    style W2      color:#a8f0c6
+    style W3      color:#a8f0c6
+    style WN      color:#a8f0c6
+    style DISABLE fill:#3a1a1a,stroke:#e94560,stroke-width:2px,color:#f0a0a0
+    style SRC     fill:#1a2a3a,stroke:#3182ce,color:#90c8f0
+    style DB      fill:#1a2a3a,stroke:#3182ce,color:#90c8f0
+    style COMMIT  fill:#2a2010,stroke:#f0a500,stroke-width:2px,color:#f0d080
+    style LOG     fill:#222222,stroke:#888888,color:#cccccc

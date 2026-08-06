@@ -1,0 +1,6 @@
+@EndUserText.label: 'Equipment Load - Web API for Replicate (Syniti Surge)'
+
+define service ZUI_EQUI_LOAD_O4 {
+  expose ZC_EQUI_LOAD_REQ as LoadRequest;
+  expose ZC_EQUI_LOAD_ITM as LoadItem;
+}

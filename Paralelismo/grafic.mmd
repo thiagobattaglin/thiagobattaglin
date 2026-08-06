@@ -1,0 +1,30 @@
+gantt
+    title Acompanhamento de Desenvolvimento
+    dateFormat  YYYY-MM-DD
+    axisFormat  %d/%m
+    excludes    weekends
+
+    section Material Equipment
+    DEV - Hector H.              :me_dev, 2026-08-10, 5d
+    Test                         :me_test, after me_dev, 1d
+    Document                     :me_doc, after me_test, 1d
+
+    section Open Purchase Orders and Open PO Conversion
+    DEV - Hector H.              :opo_dev, after me_doc, 3d
+    Test                         :opo_test, after opo_dev, 1d
+    Document                     :opo_doc, after opo_test, 1d
+
+    section Maintenance Work Order
+    DEV - Hector H.              :mwo_dev, after opo_doc, 2d
+    Test                         :mwo_test, after mwo_dev, 1d
+    Document                     :mwo_doc, after mwo_test, 1d
+
+    section Open Production Order
+    DEV - Anusha                 :oprod_dev, 2026-08-10, 5d
+    Test                         :oprod_test, after oprod_dev, 1d
+    Document                     :oprod_doc, after oprod_test, 1d
+
+    section Vendor Open Items
+    DEV - Anusha                 :voi_dev, after oprod_doc, 2d
+    Test                         :voi_test, after voi_dev, 1d
+    Document                     :voi_doc, after voi_test, 1d

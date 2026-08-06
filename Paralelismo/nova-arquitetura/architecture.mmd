@@ -1,0 +1,57 @@
+%%{init: {'theme':'base'}}%%
+flowchart LR
+    subgraph EXT["External"]
+        DB[("Migrate<br/>Working DB")]
+        SC["Scanner"]
+        CAT["SKP Catalog"]
+    end
+
+    subgraph REPL["Replicate Chain"]
+        RSRC["Replicate –<br/>Source Connector"]
+        CR["Cloud Replicate"]
+        RTGT["Replicate –<br/>SAP Target Connector"]
+    end
+
+    subgraph ADDON["Clean Core Compliant Add-on"]
+        API["HTTP API<br/>ZCL_EQUI_LOAD_HTTP_API<br/>{mode, worker_rows, items}"]
+        ORCH["Orchestrator<br/>ZCL_EQUI_LOAD_ORCHESTRATOR<br/>chunk = worker_rows<br/>or split into 4"]
+        subgraph PP["Parallel Processing (bgPF)"]
+            direction LR
+            subgraph W1["Worker 1 · ZCL_EQUI_WORKER · N items"]
+                L1["LOOP items"] --> B1["BAPI_EQUI_CREATE"] --> C1["OWN COMMIT<br/>per item"]
+                C1 --> L1
+            end
+            subgraph W2["Worker 2 · ZCL_EQUI_WORKER · N items"]
+                L2["LOOP items"] --> B2["BAPI_EQUI_CREATE"] --> C2["OWN COMMIT<br/>per item"]
+                C2 --> L2
+            end
+            subgraph W3["Worker 3 · ZCL_EQUI_WORKER · N items"]
+                L3["LOOP items"] --> B3["BAPI_EQUI_CREATE"] --> C3["OWN COMMIT<br/>per item"]
+                C3 --> L3
+            end
+            subgraph WN["Worker N · ZCL_EQUI_WORKER · N items"]
+                LN["LOOP items"] --> BN["BAPI_EQUI_CREATE"] --> CN["OWN COMMIT<br/>per item"]
+                CN --> LN
+            end
+        end
+    end
+
+    SAP[("SAP<br/>Equipment Master")]
+    LOG[/"Application Log<br/>ZEQUI_LOAD"/]
+
+    DB --> RSRC --> CR --> RTGT --> API
+    SC --> CAT
+    SC --> API
+    API --> ORCH
+    ORCH --> W1
+    ORCH --> W2
+    ORCH --> W3
+    ORCH --> WN
+    C1 --> SAP
+    C2 --> SAP
+    C3 --> SAP
+    CN --> SAP
+    C1 -.-> LOG
+    C2 -.-> LOG
+    C3 -.-> LOG
+    CN -.-> LOG

@@ -1,0 +1,77 @@
+managed with additional save implementation in class zbp_r_equi_load_req unique;
+strict ( 2 );
+
+define behavior for ZR_EQUI_LOAD_REQ alias LoadReq
+persistent table zequi_load_req
+lock master
+total etag LastChangedAt
+authorization master ( instance )
+etag master LocalLastChangedAt
+{
+  field ( readonly, numbering : managed ) RequestUuid;
+
+  field ( readonly ) Status, TotalItems, Workers,
+                     CreatedBy, CreatedAt,
+                     LastChangedBy, LastChangedAt, LocalLastChangedAt;
+
+  create;
+  update;
+  delete;
+
+  association _Items { create; }
+
+  determination set_initial_values on modify { create; }
+
+  mapping for zequi_load_req
+  {
+    RequestUuid          = request_uuid;
+    Mode                 = mode;
+    WorkerRows           = worker_rows;
+    Status               = status;
+    TotalItems           = total_items;
+    Workers              = workers;
+    CreatedBy            = created_by;
+    CreatedAt            = created_at;
+    LastChangedBy        = last_changed_by;
+    LastChangedAt        = last_changed_at;
+    LocalLastChangedAt   = local_last_changed_at;
+  }
+}
+
+define behavior for ZR_EQUI_LOAD_ITM alias LoadItem
+persistent table zequi_load_itm
+lock dependent by _Request
+authorization dependent by _Request
+etag master LastChangedAt
+{
+  field ( readonly, numbering : managed ) ItemUuid;
+  field ( readonly ) RequestUuid, Equipment, ItemStatus, Message, LastChangedAt;
+
+  update;
+  delete;
+
+  association _Request;
+
+  mapping for zequi_load_itm
+  {
+    RequestUuid   = request_uuid;
+    ItemUuid      = item_uuid;
+    ItemNo        = item_no;
+    ExtId         = ext_id;
+    EquiCategory  = equi_category;
+    Descript      = descript;
+    Eqtype        = eqtype;
+    Maintplant    = maintplant;
+    Planplant     = planplant;
+    Location      = location;
+    CostCenter    = cost_center;
+    CompanyCode   = company_code;
+    StartUpDate   = start_up_date;
+    Manufacturer  = manufacturer;
+    ModelNumber   = model_number;
+    Equipment     = equipment;
+    ItemStatus    = item_status;
+    Message       = message;
+    LastChangedAt = last_changed_at;
+  }
+}

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Transparent table ZEQUI_LOAD_REQ
+  Root persistence of BO ZR_EQUI_LOAD_REQ (Equipment Load Request).
+-->
+<mx:abapSource xmlns:mx="http://www.sap.com/abapxml">
+  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+    <asx:values>
+      <TABL>
+        <NAME>ZEQUI_LOAD_REQ</NAME>
+        <DESCRIPTION>Equipment Load Request</DESCRIPTION>
+        <DELIVERY_CLASS>A</DELIVERY_CLASS>
+        <TABLE_CATEGORY>TRANSP</TABLE_CATEGORY>
+
+        <FIELDS>
+          <FIELD NAME="CLIENT"             KEY="X" DATATYPE="CLNT" LENGTH="3"  NOTNULL="X" DESCRIPTION="Client"/>
+          <FIELD NAME="REQUEST_UUID"       KEY="X" DATATYPE="RAW"  LENGTH="16" NOTNULL="X" DESCRIPTION="Request UUID"/>
+
+          <FIELD NAME="MODE"               DATATYPE="CHAR" LENGTH="1"  DESCRIPTION="A=Async, S=Sync"/>
+          <FIELD NAME="WORKER_ROWS"        DATATYPE="INT4" LENGTH="10" DESCRIPTION="Items per worker (0 = default 4 workers)"/>
+          <FIELD NAME="STATUS"             DATATYPE="CHAR" LENGTH="1"  DESCRIPTION="N=New, R=Running, C=Completed, E=Error"/>
+          <FIELD NAME="TOTAL_ITEMS"        DATATYPE="INT4" LENGTH="10" DESCRIPTION="Total input items"/>
+          <FIELD NAME="WORKERS"            DATATYPE="INT4" LENGTH="10" DESCRIPTION="Workers submitted to bgPF"/>
+
+          <FIELD NAME="CREATED_BY"           DATATYPE="CHAR" LENGTH="12" DESCRIPTION="Created by"/>
+          <FIELD NAME="CREATED_AT"           DATATYPE="DEC"  LENGTH="21" DECIMALS="7" DESCRIPTION="Created at (UTCLONG)"/>
+          <FIELD NAME="LAST_CHANGED_BY"      DATATYPE="CHAR" LENGTH="12" DESCRIPTION="Changed by"/>
+          <FIELD NAME="LAST_CHANGED_AT"      DATATYPE="DEC"  LENGTH="21" DECIMALS="7" DESCRIPTION="Changed at (UTCLONG)"/>
+          <FIELD NAME="LOCAL_LAST_CHANGED_AT" DATATYPE="DEC" LENGTH="21" DECIMALS="7" DESCRIPTION="Optimistic locking"/>
+        </FIELDS>
+      </TABL>
+    </asx:values>
+  </asx:abap>
+</mx:abapSource>

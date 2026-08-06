@@ -1,0 +1,47 @@
+Project,Track,WRICEF,Object Name,Load Method,Target Table,Record Count,Load (hrs)
+EM,SC,ZCON1091, Inventory (EWM),T-Code /SCWM/ISU,SCWM/ACQUA,28687,24
+,S2P,ZCON275,Open Purchase Orders,LSMW/IDOC,EKKO,6025,
+,,,,,EKPO,18983,12
+,,,,,EKKN,4472,
+,,,,,EKET,12381,
+,,,,,EKPA,25941,
+,,,,,STXH,27111,
+,,,,,STXL,302286,
+,,,,,ESLH,155662,
+,,,,,ESLL,181042,
+,S2P,ZCON033, Vendor Open Items,LSMW/IDOC,BKPF,216912,10
+,,,,,BSEG,234390,
+,,,,,WITH_ITEM,13684,
+,R&M,ZCON186, Maintenance Work Order,Migration Cockpit,AUFK,50942,10
+,,,,,AFVC,171203,
+,,,,,RESB,36602,
+LM,PTS,PTS-20028-C - Open Production Work Order Conversion (T3),Open Production Order,"Multipart Load:
+Parent Order - LSMW ~5 hours
+Child Order - LSMW ~40 hours
+Confirmation - Integrate(BDC) ~5 hours
+Long Text - LSMW ~5 hours
+Custom LSMW developed by Lockheed (Changes implement for current release but currently untested)",OBJK,105860,60
+,,,,,TEXT_SAP_AFVC,2589586,
+,,,,,AFPO,443874,
+,,,,,AFVV,1030977,
+,,,,,AFRU,350387,
+,,,,,AUFK,443874,
+,,,,,PEG_TASS,51678,
+,,,,,AFFL,60003,
+,,,,,SER05,38028,
+,,,,,AFKO,443874,
+,,,,,AFVC,1030977,
+,,,,,TEXT_SAP_AUFK,89714,
+,,,,,RESB,1747487,
+,PTS,PTS-20041-C Material Equipment Records + As-Built (T2),Material Equipment Conversion from MFC ECC,LSMW/IDOC,EQUZ,38457154,40
+,,,,,EQUI,20767496,
+,PTP,PTP-00035-C - Open Purchase Orders - NO Prod and PM orders (T3),Open PO Conversion,LSMW/IDOC,EKKN_PO,50093,30
+,,,,,ZLPO_WBS_BRKDWN,125581,
+,,,,,EKPO_PO,49666,
+,,,,,ZSC_PO_TEXT_KEY,612025,
+,,,,,EKKO_PO,28788,
+,,,,,RESB_PO,4696,
+,,,,,PRCD_ELEMENTS_PO,19096,
+,,,,,EKET_PO,80390,
+,,,,,ESLL_PO,78,
+,,,,,STXL_PO,3024168,

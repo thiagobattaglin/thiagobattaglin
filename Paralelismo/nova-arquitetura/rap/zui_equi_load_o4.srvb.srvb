@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Service Binding OData V4 Web API - ZUI_EQUI_LOAD_O4
+  BINDING_TYPE = ODATA_V4_API (external consumption by Syniti Surge Replicate).
+  Publish via ADT: open ZUI_EQUI_LOAD_O4 -> Activate -> Publish.
+-->
+<mx:abapSource xmlns:mx="http://www.sap.com/abapxml">
+  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+    <asx:values>
+      <SRVB>
+        <NAME>ZUI_EQUI_LOAD_O4</NAME>
+        <DESCRIPTION>Equipment Load Web API (OData V4)</DESCRIPTION>
+        <SERVICE_DEFINITION>ZUI_EQUI_LOAD_O4</SERVICE_DEFINITION>
+        <BINDING_TYPE>ODATA_V4_API</BINDING_TYPE>
+        <CATEGORY>WEB_API_OR_UI</CATEGORY>
+        <SERVICE_VERSION>0001</SERVICE_VERSION>
+      </SRVB>
+    </asx:values>
+  </asx:abap>
+</mx:abapSource>

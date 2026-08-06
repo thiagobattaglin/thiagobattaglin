@@ -1,0 +1,58 @@
+%%{init: {'theme':'base'}}%%
+flowchart LR
+    subgraph EXT["External"]
+        SS["Syniti Surge<br/>Replicate"]
+    end
+
+    subgraph RAP["RAP Business Object"]
+        SB["Service Binding<br/>ZUI_EQUI_LOAD_O4<br/>ODATA_V4_API"]
+        SD["Service Definition<br/>ZUI_EQUI_LOAD_O4"]
+        subgraph CDS["CDS Layer"]
+            CREQ["ZC_EQUI_LOAD_REQ<br/>projection"]
+            CITM["ZC_EQUI_LOAD_ITM<br/>projection"]
+            RREQ["ZR_EQUI_LOAD_REQ<br/>root"]
+            RITM["ZR_EQUI_LOAD_ITM<br/>child"]
+        end
+        subgraph BDEF["Behavior"]
+            HND["lhc_load_req<br/>defaults"]
+            SAV["lsc_saver<br/>additional save"]
+        end
+        subgraph DDIC["Persistence"]
+            TREQ[("ZEQUI_LOAD_REQ")]
+            TITM[("ZEQUI_LOAD_ITM")]
+        end
+    end
+
+    subgraph SHARED["Shared parallel processing (reused)"]
+        ORCH["ZCL_EQUI_LOAD_ORCHESTRATOR"]
+        subgraph PP["bgPF workers"]
+            W1["Worker · N items<br/>BAPI + own COMMIT per item"]
+            W2["Worker · N items"]
+            WN["Worker · N items"]
+        end
+    end
+
+    SAP[("SAP<br/>Equipment Master")]
+    LOG[/"Application Log<br/>ZEQUI_LOAD"/]
+
+    SS -->|POST LoadRequest<br/>deep create| SB
+    SB --> SD
+    SD --> CREQ
+    SD --> CITM
+    CREQ --> RREQ
+    CITM --> RITM
+    RREQ --> HND
+    RREQ --> SAV
+    SAV -->|persists| TREQ
+    SAV -->|persists| TITM
+    SAV -->|dispatch| ORCH
+    ORCH --> W1
+    ORCH --> W2
+    ORCH --> WN
+    W1 --> SAP
+    W2 --> SAP
+    WN --> SAP
+    W1 -.-> LOG
+    W2 -.-> LOG
+    WN -.-> LOG
+    SS -.->|GET status| SB

@@ -1,0 +1,837 @@
+Database Tables
+
+	Table Name	Access Type	Accesses	Gross [microsec]	B	BuffType	Table Category	P/C	Short Description	Package
+
+	ABAP SQL Setup	Open SQL	  1,210	          83,791					Internal ABAP SQL Events; See SAP Note 03290913
+	FINSC_LD_CMP	Open SQL	     12	          21,137	On	Complete	TRANSP		CompCode-Dependent Settings for Univ. Journal Entry Ledger	FINS_ACDOC_CUST
+	INOB	Open SQL	      5	          17,767			TRANSP		Link between Internal Number and Object	CL
+	ZI_WRAP_SETLEAF	Open SQL	      8	          17,381			?	?	?
+	FINSC_001A	Open SQL	      2	          17,124	On	Complete	TRANSP		Currency conversion settings for company code	FINS_ACDOC_CUST
+	FINSC_CMP_VERSNC	Open SQL	      7	          15,683	On	Complete	TRANSP		Det. G/L Ledger and Fields for CO-Version (for CompatViews)	FINS_ACDOC_CUST
+	ZI_CONSTANTPARAMETERSF	Open SQL	      7	          14,919			?	?	?
+	/SAPAPO/MARM	Open SQL	      2	          14,407			TRANSP		Units of Measure	/SAPAPO/MAT
+	MARA	Open SQL	      6	          14,050			TRANSP		General Material Data	MG
+	I_PRODUCT	Open SQL	      5	          13,599			?	?	?
+	V_MBEW_MD	Open SQL	      5	          13,181			VIEW		Generated Table for View	MBV_DB
+	NRIVSHADOW	Open SQL	      5	          10,269	(Cust)		TRANSP		Local NRIV for multiprocessor machines	SZN
+	T001	Open SQL	     40	           9,766	On	Generic	TRANSP		Company Codes	FBZCORE
+	MCH1	Open SQL	      3	           9,279			TRANSP		Batches (if Batch Management Cross-Plant)	LO_BM_BATCH_DB
+	NRIV	Open SQL	      4	           9,215	(Cust)		TRANSP		Number Range Intervals	SZN
+	I_PRODUCTPLANTBASIC	Open SQL	      2	           8,831			?	?	?
+	/SAPAPO/MATKEY	Open SQL	      2	           8,736			TRANSP		Product	/SAPAPO/MAT
+	CKMLCR	Open SQL	      3	           8,624			TRANSP		Material Ledger: Period Totals Records Values	CKML
+	/SCWM/HUHDR	Open SQL	      3	           8,253			TRANSP		Handling unit header	/SCWM/CORE
+	ZI_WRAP_T030H	Open SQL	      4	           8,076			?	?	?
+	ZI_JNTVNTRSUBSTITUTECOSTOBJECT	Open SQL	      3	           7,315			?	?	?
+	CKMLPP	Open SQL	      3	           7,294			TRANSP		Material Ledger Period Totals Records Quantity	CKML
+	MCHA	Open SQL	      3	           7,149			TRANSP		Batches	LO_BM_BATCH_DB
+	V_MARC_MD	Open SQL	      3	           7,135			VIEW		Generated Table for View	MGA_NSDM
+	MARDHO1	Open SQL	      1	           7,121			TRANSP		MARDH: Aditional quantities appendix	OIB
+	I_GLACCOUNT	Open SQL	      1	           7,008			?	?	?
+	ACDOCA_M_EXTRACT	Open SQL	      3	           6,908			TRANSP		ACDOCA Extract Table for Material Ledger	FINS_ML_EXTRACT
+	MCHBHO1	Open SQL	      1	           6,266			TRANSP		MCHBH: Additional quantities appendix	OIB
+	/MERP/EWM_HU_EX	Open SQL	      2	           6,167			TRANSP		Exchange Table - Handling Units	/MERP/EXCH_WM
+	TCVPROF	Open SQL	      1	           6,108	(Cust)		TRANSP		Currency and Valuation Profiles	KE1C
+	CKMLKEV	Open SQL	      2	           5,693			TRANSP		Material Ledger: Cost Component Split (Control Record)	CKMLCCS
+	TRNSPACEL	Open SQL	      1	           5,625	(Off)	Complete	TRANSP		SL: Namespaces (Non-Transportable Section)	SCTS_NSP
+	CABN	Open SQL	      2	           5,593			TRANSP		Characteristic	CT
+	TCVPROFT	Open SQL	      1	           5,427	(Cust)		TRANSP		Currency and Valuation Profiles - Texts	KE1C
+	NSDM_E_MCHB_DIFF	Open SQL	      2	           5,281			?	?	?
+	V_ML_ACDOC_EX_UL_DDL	Open SQL	      2	           5,177			?	?	?
+	SABP_BEHV_HDLR	Open SQL	      1	           5,082			?	?	?
+	FINS_CO_DOCT_CC	Open SQL	      1	           4,996	On	Complete	TRANSP		Default Values for Postings in Controlling	FINS_ACDOC_CUST
+	TKA02	Open SQL	      3	           4,829	On	Generic	TRANSP		Controlling area assignment	KBASCORE
+	VBHDR	Open SQL	      1	           4,770			TRANSP		Update header	STSK
+	DD02L	Open SQL	      2	           4,604			TRANSP		SAP Tables	SDIC
+	V_MCHB_MD_PER	Open SQL	      2	           4,549			VIEW		Generated Table for View	MGA_NSDM
+	CABNZ	Open SQL	      2	           4,536			TRANSP		Assignment of Table Fields to Characteristics	CT
+	DD02T	Open SQL	      2	           4,475			TRANSP		SAP DD: SAP Table Texts	SDIC
+	DD01L	Open SQL	      2	           4,389			TRANSP		Domains	SDIC
+	CABNT	Open SQL	      2	           4,147			TRANSP		Characteristic Descriptions	CT_TRANS
+	PROGDIR	Open SQL	      2	           4,093			VIEW	REPOSRC	Generated Table for View	SABP_TYPES
+	FCLMGLACCOUNTBAMACCOUNT	Open SQL	      1	           4,089			?	?	?
+	ISEGO1	Open SQL	      1	           3,892			TRANSP		Appendix for Physical Inventory Conversion Parameters	OIB
+	OIB_DEF_INDEX_GM	Open SQL	      1	           3,812			TRANSP		Default index for Goods Movement	OIB_QCI
+	/SAPAPO/MATGROUP	Open SQL	      1	           3,567			TRANSP		Product Grouping	/SAPAPO/MAT
+	MARCO1	Open SQL	      1	           3,534			TRANSP		Appendix for Additional Quantities at Plant Level	OIB
+	RFCCBWHITELIST	Open SQL	      1	           3,471	On	Single Record	TRANSP		Allowlist for RFC Callbacks	SRCX
+	MBEW	Open SQL	      1	           3,430			TRANSP		Material Valuation	MG
+	MARDO1	Open SQL	      1	           3,366			TRANSP		Appendix for Storage Location Additional Quantities	OIB
+	USR02	Open SQL	      2	           3,332	(Off)	Single Record	TRANSP		Logon Data (Kernel-Side Use)	SUSR_KRN
+	/SCWM/THARSERPRO	Open SQL	      1	           3,292			TRANSP		Contains flag that indicates whether harmonized SN is active	/SCWM/ADAPTER_S4_ERP_1
+	MCHBO1	Open SQL	      1	           3,159			TRANSP		Appendix for Additional Quantities at Batch Level	OIB
+	CKMLPRKEPH	Open SQL	      1	           3,145			TRANSP		Material Ledger: Cost Component Split (Elements) for Prices	CKMLCCS
+	INDX	Open SQL	      1	           3,080			TRANSP		System Table INDX	SABP
+	MARM	Open SQL	      1	           3,061			TRANSP		Units of Measure for Material	MG
+	YI_ZERO_PRICE_MAINT	Open SQL	      1	           3,044			?	?	?
+	YI_PLANT_NODETYPE_RESTRICTION	Open SQL	      1	           3,031			?	?	?
+	MEAN	Open SQL	      1	           3,002			TRANSP		International Article Numbers (EANs) for Material	MG
+	I_PRODUCTSUPPLYPLANNING	Open SQL	      1	           2,996			?	?	?
+	DD01T	Open SQL	      1	           2,971			TRANSP		R/3 DD: domain texts	SDIC
+	/SMFND/C_DFA01	Open SQL	      1	           2,960	On	Complete	TRANSP		Dynamic Form Agent General Settings	/SMFND/SDF_CUSTOMIZING
+	I_UNITOFMEASURE	Open SQL	      1	           2,946			?	?	?
+	MSTB	Open SQL	      1	           2,912			TRANSP		Stock in Transit	MB
+	/SCDL/DB_PROCH_I	Open SQL	      1	           2,861			TRANSP		Inbound Delivery: Header	/SCDL/DATA_MODEL
+	/SYCLO/CA002F	Open SQL	      1	           2,858	(Cust)		TRANSP		Exchange Object Change Pointer Field Catalog	/SYCLO/CORE
+	I_PRODUCTVALUATIONBASIC	Open SQL	      1	           2,849			?	?	?
+	FQMC_ACTIVATION	Open SQL	      3	           2,837	On	Complete	TRANSP		Activation of Financial Quantity Management	FQM
+	I_JNTVNTRVALDINVMTGRP	Open SQL	      1	           2,790			?	?	?
+	/SAPAPO/MATLWH	Open SQL	      1	           2,672			TRANSP		Location Product for Location Warehouse	/SAPAPO/MAT
+	ZI_PROCRULES	Open SQL	      1	           2,660			?	?	?
+	MARV	Open SQL	      4	           2,635	On	Generic	TRANSP		Material Control Record	MG
+	/SYCLO/CA002L	Open SQL	      1	           2,629	(Cust)		TRANSP		Exchange Object Associations	/SYCLO/CORE
+	SWOR	Open SQL	      1	           2,628			TRANSP		Classification System: Keywords	CL
+	/SYCLO/MDW00	Open SQL	      1	           2,601			TRANSP		Syclo Middleware User Registry	/SYCLO/CORE
+	/SYCLO/CA003	Open SQL	      1	           2,552	(Cust)		TRANSP		Data filter rule table	/SYCLO/CORE
+	ZI_USR05	Open SQL	      1	           2,551			?	?	?
+	/SYCLO/YCA002F	Open SQL	      1	           2,550	(Cust)		TRANSP		Exchange Object Change Pointer Field Catalog - Custom Config	/SYCLO/CORE
+	/SMFND/YC_DFA01	Open SQL	      1	           2,530	On	Complete	TRANSP		Dynamic Form Agent General Settings - Custom Config	/SMFND/SDF_CUSTOMIZING
+	RFCCHECK	Open SQL	      1	           2,529	On	Single Record	TRANSP		Table for asynchronous RFC administration	SRCX
+	T8J156X	Open SQL	      1	           2,524	(Cust)		TRANSP		JV Appendix for T156X	GJV2
+	EVTB_PRODUCER	Open SQL	      1	           2,483			TRANSP		RAP EEE: Event Binding Event Producer	SBOI_RAP_SERVICES_EEE_EVTB_IMP
+	ISEGO2	Open SQL	      1	           2,476			TRANSP		Appendix for Physical Inventory Additional Quantities	OIB
+	MAKT	Open SQL	      1	           2,472			TRANSP		Material Descriptions	MG
+	TADIR	Open SQL	      8	           2,455	On	Single Record	TRANSP		Directory of Repository Objects	SCTS_CAT
+	FTG_HEADER	Open SQL	      1	           2,452			TRANSP		Switch-based Feature Toggle	S_FEATURE_TOGGLES_CORE
+	CAWN	Open SQL	      1	           2,448			TRANSP		Characteristic values	CT
+	I_PURCHASEORDERITEMAPI01	Open SQL	      1	           2,426			?	?	?
+	RFCDES	Open SQL	      8	           2,425	On	Single Record	TRANSP		Destination table for Remote Function Call	SRCX
+	OIB_DEFAULTS	Open SQL	      1	           2,421			TRANSP		Table for Oil Defaults	OIB_QCI
+	/SCWM/SERH2	Open SQL	      1	           2,416			TRANSP		Serial Number Header	/SCWM/SERIAL
+	KLAH	Open SQL	      1	           2,398			TRANSP		Class Header Data	CL
+	/SAPAPO/MATTXT	Open SQL	      1	           2,344	(Off)	Complete	TRANSP		Material Descriptions	/SAPAPO/MAT
+	FQMC_ACT_FI	Open SQL	      1	           2,332	On	Single Record	TRANSP		Sourece Application Accounting	FCLM_CONFIG_FLOWBUILDER
+	KSML	Open SQL	      1	           2,332			TRANSP		Characteristics of a Class	CL
+	I_MAINTPLANNINGBUCKET	Open SQL	      1	           2,331			?	?	?
+	CKMLPRKEKO	Open SQL	      1	           2,329			TRANSP		Material Ledger: Cost Component Split (Header) for Prices	CKMLCCS
+	CKMLPR	Open SQL	      1	           2,324			TRANSP		Material Ledger: Prices	CKML
+	MLRUNLIST	Open SQL	      1	           2,323			TRANSP		Object List for Costing Run	FCML4H_RUN
+	SUSAGEMANAGEMENT	Open SQL	      1	           2,319	(Cust)		TRANSP		Usage in ABAP Management	SUSAGE_LOGGING
+	NSDM_E_MARD_AGG	Open SQL	      1	           2,313			?	?	?
+	/SYCLO/CA003M	Open SQL	      1	           2,312	(Cust)		TRANSP		MDO DOF Table Rule - Value	/SYCLO/CORE
+	/SYCLO/CA003D	Open SQL	      1	           2,308	(Cust)		TRANSP		MDO DOF Table Rule - Meta Data	/SYCLO/CORE
+	ARFCSSTATE	Open SQL	      1	           2,307			TRANSP		Description of ARFC Call Status (Send)	SRFC
+	CAWNT	Open SQL	      1	           2,295			TRANSP		Value Texts	CT_TRANS
+	MARC	Open SQL	      1	           2,282			TRANSP		Plant Data for Material	MG
+	/SYCLO/YCA002L	Open SQL	      1	           2,278	(Cust)		TRANSP		Exchange Object Associations - Custom Config	/SYCLO/CORE
+	NSDM_E_MARC_DIFF	Open SQL	      1	           2,270			?	?	?
+	/SYCLO/YCA003	Open SQL	      1	           2,270	(Cust)		TRANSP		Data filter rule table - Custom Config	/SYCLO/CORE
+	ARFCSDATA	Open SQL	      1	           2,264			TRANSP		ARFC Call Data (Callers)	SRFC
+	/LIME/NSERIAL	Open SQL	      1	           2,255			TRANSP		LIME - Serial Numbers	/LIME/PLT_CORE
+	V_MBEWH_MD	Open SQL	      1	           2,253			VIEW		Generated Table for View	MBV_DB
+	BUT000	Open SQL	      1	           2,249			TRANSP		BP: General data I	S_BUPA_GENERAL
+	CKMLMV001	Open SQL	      1	           2,229			TRANSP		Procurement alternatives	CKMLMV
+	/SYCLO/YCA003M	Open SQL	      1	           2,229	(Cust)		TRANSP		MDO DOF Table Rule - Value - Custom Config	/SYCLO/CORE
+	/SAPAPO/MATPACK	Open SQL	      1	           2,228			TRANSP		Product: Packing/Packaging Data	/SAPAPO/MAT
+	DDFTX	Open SQL	      1	           2,227	On	Generic	TRANSP		Run-time object with Screen Painter texts	SDDD
+	CKMLMV007A	Open SQL	      1	           2,219	On	Complete	TRANSP		Name formation (algorithms)	CKMC
+	/SYCLO/YCA003D	Open SQL	      1	           2,199	(Cust)		TRANSP		MDO DOF Table Rule - Meta Data - Custom Config	/SYCLO/CORE
+	KSSK	Open SQL	      1	           2,188			TRANSP		Allocation Table: Object to Class	CL
+	FLQACC_INFO_APP	Open SQL	      1	           2,184	On	Generic	TRANSP		Liquidity Calculation - Accounts with Assignment Information	FCLM_INFO_ACCOUNT
+	SWFDEVTYP	Open SQL	      2	           2,182	On	Complete	TRANSP		Event Linkages Without Instance Reference	SWF_EVT
+	AGR_USERS	Open SQL	      1	           2,181	(Off)	Generic	TRANSP		Assignment of roles to users	S_PROFGEN
+	SKB1	Open SQL	      8	           2,169	On	Single Record	TRANSP		G/L account master (company code)	FBS
+	/SCWM/STOCK_IW02	Open SQL	      1	           2,150			TRANSP		WME - Stock Key Material, Batch	/SCWM/LIME_INTEGRATION
+	/SYCLO/YCA002	Open SQL	      2	           2,149	On	Complete	TRANSP		Generic exchange handler table settings - Custom	/SYCLO/CORE
+	/SAPAPO/MATEXEC	Open SQL	      1	           2,147			TRANSP		Product: Execution Data	/SAPAPO/MAT
+	DD04T	Open SQL	      1	           2,144			TRANSP		R/3 DD: Data element texts	SDDD
+	/SCWM/LAGP	Open SQL	      1	           2,134			TRANSP		Storage Bins	/SCWM/CORE
+	FLOG_SUPLRITEM	Open SQL	      1	           2,133			TRANSP		Field Logistics: Supplier Item Repository	FLOG_SERVICES
+	/SAPSLL/MARITC	Open SQL	      1	           2,124			TRANSP		Material Trade Classification	/SAPSLL/CORE_PRODUCT
+	V_MARD_MD	Open SQL	      1	           2,118			VIEW		Generated Table for View	MGA_NSDM
+	TRFC_I_UNIT_LOCK	Open SQL	      1	           2,107			TRANSP		Inbound tRFC: Unit Locks	SQRFC2
+	TRFC_I_SDATA	Open SQL	      1	           2,084			TRANSP		Inbound tRFC: Unit Payload	SQRFC2
+	/SCMB/TOENTITY	Open SQL	      1	           2,070			TRANSP		Supply Chain Unit: Header Table	/SCMB/SCE_ORG_MANAGEMENT
+	BUBAS_EVT_STORE	Open SQL	      1	           2,059	(Cust)		TRANSP		Activate Storage of Event Log	FMBAS_E
+	KLAT	Open SQL	      1	           2,035			TRANSP		Classes: Long Texts	CL
+	CFIN_MIG_LOG	Open SQL	      1	           2,029			TRANSP		Log of Migration Status	FIN_CFIN_INTEGRATION
+	RFCATTRIB	Open SQL	      1	           2,025	On	Single Record	TRANSP		Administration table for RFC destinations	SRCX
+	SEOCLASSTX	Open SQL	      2	           1,987	On	Generic	TRANSP		Short description class/interface	SEO
+	CKMLHD	Open SQL	      1	           1,985			TRANSP		Material Ledger: Header Record	CKML
+	TFIN_FLAGS	Open SQL	      3	           1,974	On	Single Record	TRANSP		Control Table for Parameters	WUSL
+	BGRFC_UTASK_KEY	Open SQL	      1	           1,962			TRANSP		Assignment of Update Keys to RFC Unit Locks	SQRFC2
+	ARBCIG_TVARV	Open SQL	      1	           1,959			TRANSP		TVARV generalized for fields	ARBCIG_COMMON
+	SUSAGE	Open SQL	      1	           1,942	(Cust)		TRANSP		Usage in ABAP	SUSAGE_LOGGING
+	T811FLAGS	Open SQL	      1	           1,913			TRANSP		Allocations: Global Control Flags	KALC
+	BALHDR	Open SQL	      1	           1,909			TRANSP		Application log: log header	SZAL_COMMON
+	FCLM_BSEG_DELTA	Open SQL	      1	           1,903			TRANSP		Obseleted, do NOT USE!	FCLM_REUSE
+	OIH30H	Open SQL	      1	           1,902			TRANSP		Tracking header	OIH
+	I_CONTROLLINGAREA	Open SQL	      1	           1,900			?	?	?
+	ZDB_PSA_CCODE	Open SQL	      1	           1,894			TRANSP		PSA Company Code Level Activation Table	Z1_R2R_UPA002
+	I_GRIRPROCESSTRANSTYPEDETN	Open SQL	      1	           1,886			?	?	?
+	MATDOC	Open SQL	      1	           1,885			TRANSP		Material Documents	MBND_RESTRICTED
+	T006A	Open SQL	      2	           1,882	On	Generic	TRANSP		Assign Internal to Language-Dependent Unit	SZME
+	RFCDOC	Open SQL	      1	           1,879	On	Single Record	TRANSP		Description of Possible RFC Connections (->RFCDES)	SRCX
+	/SYCLO/CA002T	Open SQL	      1	           1,870	(Cust)		TRANSP		Exchange Object Text	/SYCLO/CORE
+	YI_PLANT_DETAIL	Open SQL	      1	           1,865			?	?	?
+	YI_INVENTORYMOVEMENT	Open SQL	      1	           1,863			?	?	?
+	/UTGFR/RS_FLAG	Open SQL	      1	           1,843			TRANSP		Table to Determine the Active Ruleset	/UTGFR/CONFIG
+	RFCDESSECU	Open SQL	      1	           1,836	On	Single Record	TRANSP		SNC extensions for RFC destinations	SECN
+	BALDAT	Open SQL	      2	           1,830			TRANSP		Application Log: Log data	SZAL_COMMON
+	V_MARC_MD_PER	Open SQL	      1	           1,830			VIEW		Generated Table for View	MGA_NSDM
+	NSDM_V_MKPF	Open SQL	      1	           1,825			VIEW		Generated Table for View	MBND_PUBLIC
+	TRFC_I_DEST	Open SQL	      1	           1,811			TRANSP		Client and Destination name for Inbound tRFC	SQRFC2
+	/UTGFR/T_EXTLDCO	Open SQL	      1	           1,792			TRANSP		Regulatory Accouting Derivation For Ledgers	/UTGFR/CONFIG
+	BKPF	Open SQL	      1	           1,785			TRANSP		Accounting Document Header	FBAS
+	I_COMPANYCODE	Open SQL	      1	           1,781			?	?	?
+	FLQACC_INFO_RT2	Open SQL	      1	           1,779	(Off)	Complete	TRANSP		Information Account: Status of runtime data	FCLM_INFO_ACCOUNT
+	TRFC_I_UNIT	Open SQL	      1	           1,764			TRANSP		Inbound tRFC: Unit Header	SQRFC2
+	I_JVAGLOBALCOMPANYPARAMETER	Open SQL	      1	           1,762			?	?	?
+	FIN_CFIN_HIS_BCA	Open SQL	      1	           1,753	(Cust)		TRANSP		Bank Clearing Account for Historical Open Items	FIN_CFIN_INTEGRATION
+	/OPT/CP_DEBUG	Open SQL	      1	           1,744	(Cust)		TRANSP		VIM Debugging	/OPT/CP
+	ALE_BATCHES_RECP	Open SQL	      1	           1,744			TRANSP		Received Batches	VBW
+	/UTGFR/T_EXTCONF	Open SQL	      1	           1,736			TRANSP		Extension Ledger Configuration	/UTGFR/CONFIG
+	FCLM_MM_DELTA	Open SQL	      1	           1,726			TRANSP		Obsoleted, do NOT use!	FCLM_REUSE
+	DD04L	Open SQL	      1	           1,683			TRANSP		Data elements	SDKR
+	CKMLO	Open SQL	      1	           1,656	(Off)		TRANSP		Material Ledger: Organizational Jobs	CKML
+	BGRFC_UNIT_INFO	Open SQL	      1	           1,643			TRANSP		bgRFC unit additional information	SQRFC2
+	ALE_BATCHES_SENT	Open SQL	      1	           1,634			TRANSP		Sent Batches	VBW
+	DD12L	Open SQL	      1	           1,463			TRANSP		R/3 S_SECINDEX: secondary indexes, header;	SDIC
+	APOC_I_OBJECT_TYPE_CONFIG	Open SQL	      1	           1,461			?	?	?
+	T001W	Open SQL	     23	           1,397	On	Generic	TRANSP		Plants/Branches	WFILCORE
+	DDANNOENTITY	Open SQL	      1	           1,387			TRANSP		CDS entities for which annotations are read	SDUT_ANNOTATION
+	USR21	Open SQL	      1	           1,305			TRANSP		User Name/Address Key Assignment	SUSR
+	TOLE	Open SQL	      2	           1,271	On	Complete	TRANSP		OLE Applications	SOLE
+	EKKO	Open SQL	      1	           1,255			TRANSP		Purchasing Document Header	ME
+	USATTRIDDEF_DEFAULT	Open SQL	      1	           1,245			?	?	?
+	TACE_ITEMTYPEC	Open SQL	      1	           1,165	On	Generic	TRANSP		Currency Type Settings for Accrual Item Types	ACE_S4
+	USR01	Open SQL	      2	           1,128	On	Single Record	TRANSP		User master record (runtime data)	SUSR_KRN
+	/SYCLO/YCA000ST	Open SQL	      1	           1,114	(Cust)		TRANSP		Mobile application - mobile status alias - Custom Config	/SYCLO/CORE
+	USR_ATTR_ID	Open SQL	      1	           1,092			TRANSP		Assignment of Users to User Attributes	SUSR_IDENTITY
+	DRAD	Open SQL	      1	           1,090			TRANSP		Document-Object Link	CV
+	/SYCLO/CA000ST	Open SQL	      1	           1,082	(Cust)		TRANSP		Mobile application - mobile status alias	/SYCLO/CORE
+	FTG_ATTRIBUTE	Open SQL	      1	           1,013			TRANSP		Switch-based Feature Toggle attributes	S_FEATURE_TOGGLES_CORE
+	/SCDL/TLFIELDV	Open SQL	      1	             962	On	Complete	VIEW		Generated Table for View	/SCDL/DBAL_CORE
+	T685A	Open SQL	      2	             845	On	Generic	TRANSP		Conditions: Types: Additional Price Element Data	VKON
+	V_EXT_ACT	Open SQL	      3	             674	On	Complete	VIEW		Generated Table for View V_EXT_ACT	SECE
+	CEPC_BUKRS	Open SQL	      2	             654	On	Generic	TRANSP		Assignment of Profit Centers to a Company Code	KE1
+	V_EXT_IMP	Open SQL	      1	             541	On	Complete	VIEW		Generated Table for View	SECE
+	SXS_ATTR	Open SQL	      3	             527	On	Single Record	TRANSP		Exit: Definition side: Attributes for an enhancement	SECE
+	CKMLV	Open SQL	      7	             485	On	Complete	TRANSP		Material Ledger Control Records	CKML
+	T001K	Open SQL	     21	             477	On	Generic	TRANSP		Valuation area	WFILCORE
+	/SCDL/TLOGFIELD	Open SQL	      1	             399	On	Complete	TRANSP		Logical Field Names for Delivery	/SCDL/DBAL_CORE
+	T006	Open SQL	      5	             384	On	Generic	TRANSP		Units of Measurement	SZME
+	TACE_ITEMTYPEL	Open SQL	      1	             384	On	Generic	TRANSP		Ledgergroup Settings for Accrual Item Types	ACE_S4
+	CRMC_IT_ASSIGN	Open SQL	      1	             336	On	Generic	TRANSP		Transaction Item Type - Determination	CRM_ORDER
+	/SYCLO/CA000G	Open SQL	      2	             333	On	Complete	TRANSP		Mobile app - persona/feature assignments	/SYCLO/CORE
+	TFDIR	Open SQL	      5	             330	On	Single Record	TRANSP		Function Module	SABP_TYPES
+	/SCDL/TSERV_CTX	Open SQL	      1	             306	On	Complete	TRANSP		Services and Implementations Depending on Deployment Option	/SCDL/ADAPTER_CORE
+	OIB04	Open SQL	      2	             284	On	Complete	TRANSP		Function module definition (API/AGA/Customer functions)	OIB_QCI
+	OIB01	Open SQL	      3	             283	On	Complete	TRANSP		Definition of Conversion Groups	OIL
+	SXC_IMPSWH	Open SQL	      1	             270	On	Complete	TRANSP		Business Add-In Implementations: Type of Implementation	SECE
+	DD07L	Open SQL	      2	             265	On	Generic	TRANSP		R/3 DD: values for the domains	SDIC
+	T006D	Open SQL	      3	             255	On	Complete	TRANSP		Dimensions	SZME
+	TACE_ITEMTYPES	Open SQL	      1	             230	On	Generic	TRANSP		Assignment of Accrual Item Types to Posting Schemas	ACE_S4
+	FINSC_LEDGER	Open SQL	     13	             227	On	Complete	TRANSP		Universal Journal Entry Ledger	FINS_ACDOC_CUST
+	T030	Open SQL	      2	             225	On	Generic	TRANSP		Standard Accounts Table	FBAS
+	FMLC_ERD	Open SQL	      1	             219	On	Complete	TRANSP		Treatment of Exchange Rate Differences for Invoices	FINS_ML_ERD
+	SKA1	Open SQL	      5	             213	On	Single Record	TRANSP		G/L Account Master (Chart of Accounts)	FBASCORE
+	T156F	Open SQL	      4	             195	On	Complete	TRANSP		Fields in Quantity String	MB
+	CRMC_SALES_ITEM	Open SQL	      5	             194	On	Generic	TRANSP		Transaction Item Type - Sales Control Parameter	CRM_ORDER
+	TJ07	Open SQL	      1	             193	On	Complete	TRANSP		Influence of system status on transactions	BSV
+	DD07T	Open SQL	      2	             191	On	Generic	TRANSP		DD: Texts for Domain Fixed Values (Language-Dependent)	SDIC
+	CKMLMVADMIN	Open SQL	     12	             187	On	Complete	TRANSP		General Control Parameters for Actual Costing	CKMLMV
+	FINSC_CURTYPE	Open SQL	      5	             181	On	Complete	TRANSP		Currency type	FINS_ACDOC_CUST
+	FAGL_CARRY_FORW	Open SQL	      3	             170	On	Generic	TRANSP		Last Balance Carryforward per Company Code/Ledger	FAGL_LEDGER_CUST
+	TCURM	Open SQL	     20	             169	On	Complete	TRANSP		Customizing: MM Configuration	MB0C
+	TBD05	Open SQL	      1	             165	On	Complete	TRANSP		Distribution model for message types	SALE
+	TCVPROFD	Open SQL	      3	             163	On	Complete	TRANSP		Currency and Valuation Profiles - Detail	KE1C
+	T006_OIB	Open SQL	      2	             158	On	Generic	TRANSP		Units of Measurement, Additional Definitions	SZME
+	T156M	Open SQL	      8	             149	On	Complete	TRANSP		Posting String: Quantity	MB
+	T000	Open SQL	     20	             148	On	Complete	TRANSP		Clients	STRM_T000
+	T002	Open SQL	      3	             145	On	Complete	TRANSP		Language Keys (Component BC-I18)	STRO
+	SXS_INTER	Open SQL	      1	             138	On	Complete	TRANSP		Exit: Definition side: Interfaces	SECE
+	TBE11	Open SQL	      6	             128	On	Complete	TRANSP		BTE Application Indicator (Activation)	BBTE
+	TDEVC	Open SQL	      7	             122	On	Single Record	TRANSP		Packages	SCTS_CAT
+	T156	Open SQL	     11	             121	On	Generic	TRANSP		Movement Type	MB
+	TACE001	Open SQL	      1	             120	On	Generic	TRANSP		Company Code Settings	ACE
+	T881	Open SQL	      3	             119	On	Generic	TRANSP		Ledger Master	GBAS
+	M	Open SQL	      4	             118			?	?	?
+	/SYCLO/CA000P	Open SQL	      1	             117	On	Complete	TRANSP		Mobile application - parameters	/SYCLO/CORE
+	TRWPR	Open SQL	      1	             116	On	Complete	TRANSP		RWIN: Processes	KIST
+	/QTYW/API_RDW	Open SQL	      1	             116	On	Complete	TRANSP		Define UoM for API gravity and relative densities	/QTYW/BCC
+	CRMC_ITEM_TYPE	Open SQL	      3	             112	On	Generic	TRANSP		Business Transaction Item Type	CRM_ORDER
+	FMLV_LOGISTIC_CURRENCY	Open SQL	      3	             109			?	?	?
+	SALV_CSQ_PARAMS	Open SQL	      2	             109	On	Generic	TRANSP		Parameters for ALV runtime	SALV_CSQ
+	ZDB_CONST	Open SQL	      2	             108	On	Generic	TRANSP		Constant Parameters Repository	Z1_SDE_ZDB_CONST
+	/SYCLO/CA000	Open SQL	      5	             106	On	Complete	TRANSP		Syclo Mobile Application Release Info	/SYCLO/CORE
+	T005	Open SQL	     11	             102	On	Complete	TRANSP		Countries	SZAD
+	T156SY	Open SQL	      2	             100	On	Complete	TRANSP		Mvt Type: Qty/Value Update: System Table; Rel. 4.6A	MB
+	FINS_SIF_PROJ	Open SQL	      4	              93			?	?	?
+	TVAP	Open SQL	      3	              92	On	Generic	TRANSP		Sales Document: Item Categories	VA0C
+	TTZ5Z	Open SQL	      1	              92	On	Complete	TRANSP		Assign time zones to postal codes in gener. length	SZTZ
+	CSKA	Open SQL	      1	              90	On	Single Record	TRANSP		Cost Elements (Data Dependent on Chart of Accounts)	KBASCORE
+	OIB_CONV_RDGRP	Open SQL	      1	              88	On	Complete	TRANSP		Table for classification Conversiongrp - Readinggrp	OIB_QCI
+	TTZCU	Open SQL	      5	              87	On	Complete	TRANSP		Customizing time zones	SZTZ
+	/SYCLO/CA002	Open SQL	      2	              87	On	Complete	TRANSP		Generic exchange handler table settings	/SYCLO/CORE
+	TCKM2	Open SQL	      2	              85	On	Complete	TRANSP		Valuation Area Control Table	CKMC
+	FAGL_TLDGRP_MAP	Open SQL	      3	              82	On	Complete	TRANSP		Assignment of Ledgers to Ledger Groups	FAGL_LEDGER_CUST
+	T042Y	Open SQL	      1	              81	On	Generic	TRANSP		Account Determination for Bank to Bank Payments	FMZA
+	TNRO	Open SQL	      5	              80	On	Complete	TRANSP		Definition of number range objects	SZN
+	T009	Open SQL	      8	              79	On	Complete	TRANSP		Fiscal Year Variants	SFBX
+	TKA09	Open SQL	      3	              79	On	Generic	TRANSP		Basic Settings for Versions	KBAS
+	TKA01	Open SQL	      8	              77	On	Generic	TRANSP		Controlling Areas	KBASCORE
+	CVERS	Open SQL	      4	              77	On	Complete	TRANSP		Release Status of Software Components in System	SAUD
+	T022	Open SQL	      5	              73	On	Complete	TRANSP		FI-SL Activity: Fixed Data	GBAS
+	T156N	Open SQL	      1	              72	On	Complete	TRANSP		Next Movement Type	MB
+	/SAPSLL/TUNOS	Open SQL	      2	              71	On	Single Record	TRANSP		Numbering Scheme Usage	/SAPSLL/CORE
+	DD30L	Open SQL	      1	              70	On	Single Record	TRANSP		Search helps	SDSH
+	T001D	Open SQL	      2	              69	On	Complete	TRANSP		Validation of Accounting Documents	FBAS
+	T001Q	Open SQL	      2	              69	On	Complete	TRANSP		Substitution in Accounting Documents	FBAS
+	FMLV_EXTERNAL_CURTYPE_ML	Open SQL	      1	              69			?	?	?
+	ENLFDIR	Open SQL	      2	              68	On	Single Record	TRANSP		Additional Attributes for Function Modules	SFUNC
+	CRMC_IT_COPY_IF	Open SQL	      1	              68	On	Generic	TRANSP		Copy Item Categories - Item Category Determination	CRM_COPY
+	/SYCLO/AP001	Open SQL	      2	              67	On	Complete	TRANSP		Syclo Integration Framework Runtime Settings	/SYCLO/CORE
+	SOTR_TEXT	Open SQL	      1	              65	On	Generic	TRANSP		Text Table in the OTR	SOTR
+	T160M	Open SQL	      2	              62	On	Generic	TRANSP		Message Control: Purchasing (System Messages)	ME
+	/SCWM/T300	Open SQL	      2	              61	On	Generic	TRANSP		Definition: Warehouse Numbers	/SCWM/WMEBASICS
+	T001B	Open SQL	      2	              61	On	Generic	TRANSP		Permitted Posting Periods	FBAS
+	FAGL_SPLIT_FIELD	Open SQL	      5	              60	On	Complete	TRANSP		Characteristics for Split	FAGL_LEDGER_CUST
+	CKMLMV009	Open SQL	      6	              59	On	Complete	TRANSP		Process Catagory	CKMC
+	T002X	Open SQL	      3	              59	On	Complete	TRANSP		Language Key in Hexadecimal Format	SI18N
+	TMODU	Open SQL	      1	              59	On	Generic	TRANSP		Cross Reference Field Name - MODIF1	FBAS
+	TACESYSTEVENTS	Open SQL	      1	              59	On	Complete	TRANSP		Events in the Accrual Engine	ACE
+	DSHCONFIG	Open SQL	      1	              59	On	Complete	TRANSP		Search Help Configuration Parameter	SDSH
+	SBR_FTR_STATE	Open SQL	      1	              57	On	Complete	TRANSP		Activation for Business Feature	SBO_BUSINESS_FEATURE
+	FINS_T001A	Open SQL	      3	              56			?	?	?
+	/SCWM/TGLOBAL_C	Open SQL	      2	              56	On	Complete	TRANSP		EWM: Global Customizing per Client	/SCWM/CORE
+	SOTR_HEAD	Open SQL	      1	              55	On	Single Record	TRANSP		Header Table for OTR Texts	SOTR
+	TPS34	Open SQL	      1	              55	On	Complete	TRANSP		Process BTE: Customer Enhancements	BBTE
+	TPS31	Open SQL	      1	              55	On	Complete	TRANSP		Process BTE: Alternative Function Modules from SAP	BBTE
+	TCLU	Open SQL	      1	              55	On	Generic	TRANSP		Class Status	CL
+	FINSTS_ACDOC_FCT	Open SQL	      1	              55	On	Complete	TRANSP		Fieldcatalog for table ACDOCA in unified journal entry	FINS_ACDOC_CUST
+	T100C	Open SQL	      2	              54	On	Generic	TRANSP		Message Control by User	BF_CUSTOMIZING
+	T009B	Open SQL	      4	              53	On	Complete	TRANSP		Fiscal year variant periods	SFBX
+	TCONT	Open SQL	      4	              53	On	Complete	TRANSP		Timestamp for context buffer	SFRM
+	SWFDEVENA	Open SQL	      2	              52	On	Complete	TRANSP		Activations for Event Linkages	SWF_EVT
+	MDLV	Open SQL	      2	              51	On	Complete	TRANSP		Customizing MRP Area	MD03
+	TRWCA	Open SQL	      4	              50	On	Complete	TRANSP		FI/CO Interface: Active Components	KIST
+	T156X	Open SQL	      2	              50	On	Generic	TRANSP		Trans./Event Key Modification	MB
+	FINSC_CUSTBTTYPE	Open SQL	      2	              48	On	Complete	TRANSP		Business Transaction Type	FINS_BTTYPE_CONFIGURATION
+	TCUWIPB	Open SQL	      1	              48	On	Complete	TRANSP		Customizing WIP Batch	COWIPB
+	CFIN_CTRL	Open SQL	      1	              48	On	Complete	TRANSP		central finance generic settings	FIN_CFIN_INTEGRATION
+	T150	Open SQL	      1	              48	On	Generic	TRANSP		Physical Inventory Stock Types and Allocated Movement Types	MB
+	BADIISIMPLED	Open SQL	      1	              48	On	Single Record	TRANSP		Runtime table BAdI is implemented.	SEEF_REDEFINITION_BADI
+	T156SC	Open SQL	      3	              46	On	Generic	TRANSP		Mvt Type: Qty/Value Posting: Customer Table; as of Rel. 4.6A	MB
+	V_LTDX	Open SQL	      1	              46	On	Generic	VIEW		Generated Table for View	SLIS
+	TPS32	Open SQL	      1	              46	On	Complete	TRANSP		Process BTE: Partner Enhancements	BBTE
+	TPS01	Open SQL	      1	              46	On	Complete	TRANSP		Library of the Process Business Transaction Events	BBTE
+	TCURF	Open SQL	      4	              45	On	Generic	TRANSP		Conversion Factors	SFIB
+	TAX_APPLI	Open SQL	      2	              45	On	Complete	TRANSP		Applications for Tax Services	FBAS
+	FINRE_EVENT_RULE	Open SQL	      1	              44	On	Generic	TRANSP		Substitution Scenerio Events - Assigned Rules	FINS_GEN_RE_REP
+	BALSUB	Open SQL	      1	              43	On	Generic	TRANSP		Application log: Subobjects	SZAL_COMMON
+	SEOCLASS	Open SQL	      3	              42	On	Single Record	TRANSP		Class/Interface	SEO
+	FAGL_SPLIT_ACTC	Open SQL	      3	              41	On	Generic	TRANSP		Deactivation of Document Splitting per Company Code	FAGL_LEDGER_CUST
+	FINSC_CURTYPET	Open SQL	      2	              41	On	Complete	TRANSP		Currency type	FINS_ACDOC_CUST
+	FAGL_SETTINGS	Open SQL	      1	              41	On	Complete	TRANSP		New General Ledger: Internal Control Parameters	FAGL_LEDGER_CUST
+	FAGL_ACTIVEC	Open SQL	      4	              40	On	Complete	TRANSP		Activation of New General Ledger	FAGL_LEDGER_CUST
+	OIH01A	Open SQL	      3	              40	On	Complete	TRANSP		Excise Duty Rates Table	OIH
+	FMLV_CURTP_ML	Open SQL	      3	              40			?	?	?
+	OIB07	Open SQL	      2	              40	On	Complete	TRANSP		Parameter of the Quantity Conversion Interface	OIB_QCI
+	RFCCBWHITELIST_A	Open SQL	      1	              40	On	Single Record	TRANSP		Positive List for RFC Callbacks	SRCX
+	T000K	Open SQL	      4	              39	On	Complete	TRANSP		Group	FKUC
+	FAGL_SPLIT_FLD_S	Open SQL	      3	              39	On	Complete	TRANSP		Characteristics Permitted for Split	FAGL_LEDGER_CUST
+	ADCNTRYQU	Open SQL	      1	              39	On	Complete	TRANSP		Countries with active quarterly adjustment	SZAD
+	T158B	Open SQL	      1	              38	On	Generic	TRANSP		Check Table: Movement Type for Transaction Code	MB
+	CRMC_PROC_TYPE	Open SQL	      3	              37	On	Generic	TRANSP		Business Transaction Type	CRM_ORDER
+	FINSC_LEDGER_REP	Open SQL	      2	              37	On	Complete	TRANSP		Unified Journal Entry Ledger (Auxiliary table for Reporting)	FINS_ACDOC_CUST
+	CFIN_CPCTL	Open SQL	      1	              37	On	Complete	TRANSP		Central Payment Customizing Table	FIN_CFIN_INTEGRATION
+	/SYCLO/CA002D	Open SQL	      1	              37	On	Complete	TRANSP		xChange Object Data Segment Settings	/SYCLO/CORE
+	T001L	Open SQL	      4	              36	On	Generic	TRANSP		Storage Locations	MG
+	TTYPVA	Open SQL	      1	              36	On	Complete	TRANSP		G/L Line Item Table ACDOCA Summarization	FBAS
+	T007B	Open SQL	      1	              36	On	Generic	TRANSP		Tax Processing in Accounting	BF
+	BALOBJ	Open SQL	      1	              36	On	Complete	TRANSP		Application log: objects	SZAL_COMMON
+	OIB05	Open SQL	      2	              35	On	Complete	TRANSP		Oil unit of measure groups	OIB
+	/SYCLO/EFI01	Open SQL	      2	              35	On	Complete	TRANSP		Syclo Exchange enhancement framework assignment	/SYCLO/CORE
+	FINSC_LD_CMP_AP	Open SQL	      2	              34	On	Complete	TRANSP		Allowed Combinations Ledger + CompanyCode + AccPrinciple	FINS_ACDOC_CUST
+	TF001	Open SQL	      2	              34	On	Generic	TRANSP		SAP Cons.: Global Specifications	FC00_UC
+	FINRE_S_EVT_RULE	Open SQL	      1	              34	On	Complete	TRANSP		Substitution Scenerio Events - Assigned Rules	FINS_GEN_RE_REP
+	/QTYW/SORTQUAN	Open SQL	      1	              33	On	Complete	TRANSP		Define sorting sequence of quantity table	/QTYW/BCC
+	FAGL_TLDGRP	Open SQL	      1	              33	On	Complete	TRANSP		Ledger Group	FAGL_LEDGER_CUST
+	TCLAO	Open SQL	      2	              32	On	Complete	TRANSP		Several Objects in one Class Type	CL
+	CKMLMV007RT	Open SQL	      1	              32	On	Complete	TRANSP		Name formation: Text for naming rule	CKMC
+	FINSC_LEDGER_T	Open SQL	      1	              32	On	Complete	TRANSP		Unified Journal Entry Ledger	FINS_ACDOC_CUST
+	BGRFC_CUST_O_SRV	Open SQL	      1	              32	On	Complete	TRANSP		Outbound Scheduler/Destination Customizing	SQRFC2
+	TCLA	Open SQL	      4	              31	On	Complete	TRANSP		Class Types	CL0C
+	/AIF/RFC_CONF	Open SQL	      2	              31	On	Complete	TRANSP		Configuration for RFC	/AIF/RFC
+	TTYP	Open SQL	      2	              31	On	Complete	TRANSP		Object Types for Accounting	FBAS
+	TBSL	Open SQL	      2	              31	On	Complete	TRANSP		Posting Key	FBZ
+	I_GOODSMOVEMENTTYPE	Open SQL	      1	              31			?	?	?
+	TKA00	Open SQL	      2	              30	On	Generic	TRANSP		Control parameters for controlling areas	KISTCORE
+	TBE31	Open SQL	      1	              30	On	Complete	TRANSP		Publish&Subscribe BTE: SAP Enhancement	BBTE
+	FINSC_VERSN_LD	Open SQL	      1	              30	On	Complete	TRANSP		Determine G/L Ledger for CO-Version (TP only, no COGM!)	FINS_ACDOC_CUST
+	T882G	Open SQL	      2	              29	On	Generic	TRANSP		Company code - ledger assignment	GLT0
+	EDOCOMPANYACTIV	Open SQL	      2	              29	On	Generic	TRANSP		eDocument: Activation of Source Types per Company Code	GLO-EDO
+	T800A	Open SQL	      1	              29	On	Complete	TRANSP		FI-SL tables	GBAS
+	CRMC_OBJECTS	Open SQL	      1	              29	On	Complete	TRANSP		Business Transaction - Component Type	CRM_ORDER
+	FINS_ACDOC_ACT	Open SQL	      4	              28	On	Complete	TRANSP		Activation of Universal Journal Entry	FINS_ACDOC_CUST
+	/SYCLO/CA000F	Open SQL	      2	              28	On	Complete	TRANSP		Mobile application - features	/SYCLO/CORE
+	T030A	Open SQL	      1	              28	On	Complete	TRANSP		Transaction Keys and Assignment to Groups	FBAS
+	/IDT/D_FI_CONTRL	Open SQL	      1	              28	On	Complete	TRANSP		FI process control configuration	/IDT/GENERAL
+	CFIN_SOURCE_SET	Open SQL	      1	              28	On	Generic	TRANSP		Settings for Central Finance in the Source System	FIN_CFIN_INTEGRATION
+	SHMM_TRC_GLOBAL	Open SQL	      1	              28	On	Single Record	TRANSP		Shared Memory Monitor Trace: Global Control	SHARED_OBJECTS_TOOLS
+	FQMTS_ORAP_T	Open SQL	      1	              28	On	Complete	TRANSP		Description origin application	FQM_CORE
+	FINS_REV_REC_ACC_PRI_VIEW	Open SQL	      1	              28			?	?	?
+	JVAONACDOCAUSERS	Open SQL	      1	              27	On	Complete	TRANSP		Users for which JVA on ACDOCA is active (even if BF is off!)	GJVA_MIG
+	MFLE_XPRA_MAPPER	Open SQL	      1	              27	On	Complete	TRANSP		Mapping table for FLE XPRA	MFLE_XPRA
+	FAGL_MIG_002	Open SQL	      1	              27	On	Complete	TRANSP		Assignment of a Migration Plan to Company Code and Ledger	FAGL_MIG_CUST
+	SIPT_CCODE_FI	Open SQL	      1	              27	On	Complete	TRANSP		Signature PT: Relevant Foreign Company Code for FI	ID-SIGN-PT
+	T003	Open SQL	      3	              26	On	Generic	TRANSP		Document Types	FBASCORE
+	FLE_TOPIC_SWITCH	Open SQL	      2	              26	On	Complete	TRANSP		Field Length Extension	FLE_TOOLS
+	/SYCLO/YEFI01	Open SQL	      2	              26	On	Complete	TRANSP		Syclo Exchange enhancement framework assignment - Custom	/SYCLO/CORE
+	USREFUS	Open SQL	      2	              26	On	Single Record	TRANSP		Reference user for internet applications	SUSR
+	FINS_MPROJECT	Open SQL	      1	              26	On	Complete	TRANSP		Mass Data Project: Projects	FINS_FI_MASS_DATA
+	FAAI_SLALIT1M	Open SQL	      1	              26	On	Complete	TRANSP		Allowed Slalittype Movcat Combinations	FINS_FAA_CFG_DB_SYST
+	FMLV_CKMLCT	Open SQL	      1	              26			?	?	?
+	T6B2F_WCB	Open SQL	      2	              25	On	Generic	TRANSP		Condition Contract: Allowed Condition Types/Tables per Group	WCB_CC_PERS
+	DOKIL	Open SQL	      2	              25	On	Single Record	TRANSP		Index for Documentation Table DOKH	SDOC
+	TCKMIT	Open SQL	      2	              25	On	Complete	TRANSP		Currency Types and Valuation Categories for Mat. Ledger Type	CKMC
+	T134	Open SQL	      2	              25	On	Generic	TRANSP		Material Types	MG
+	T8J156W	Open SQL	      1	              25	On	Complete	TRANSP		JV additions to T156W	GJV2
+	TSADVC	Open SQL	      1	              25	On	Complete	TRANSP		Customizing international address versions	SZAD
+	T030R	Open SQL	      1	              25	On	Generic	TRANSP		Rules for Determination of Standard Accounts	FBAS
+	T042I	Open SQL	      1	              25	On	Generic	TRANSP		Account determination for payment program	FBZ
+	OVS_CHKRSLT_T	Open SQL	      1	              25	On	Complete	TRANSP		Text Table for OVF_T_CHKRSLT	ID-FI-OVF-ABA
+	FIN_RE_LOG_EVT_C	Open SQL	      1	              25	On	Complete	TRANSP		Financial Rule Execution: Level of messages persistence	FINS_GEN_RE_REP
+	/SCWM/TCAT	Open SQL	      3	              24	On	Generic	TRANSP		Stock Type Definition	/SCWM/CORE
+	FMLC_TOGGLE	Open SQL	      3	              24	On	Complete	TRANSP		Activation state of ML relevant toggles	FINS_ML_FEATURES
+	/SYCLO/CA001	Open SQL	      3	              24	On	Complete	TRANSP		Cross application system settings	/SYCLO/CORE
+	RSADMIN	Open SQL	      3	              24	On	Complete	TRANSP		Data import administration settings	SBIW
+	TBE32	Open SQL	      2	              24	On	Complete	TRANSP		Publish&Subscribe BTE: Customer Enhancements	BBTE
+	FINSC_DEFSUM	Open SQL	      2	              24	On	Complete	TRANSP		Deferred Summarization: Activation and Residence Periods	FINS_ACDOC_DEF_SUMMARIZATION
+	TCURN	Open SQL	      1	              24	On	Complete	TRANSP		Quotations	SFIB
+	T156T	Open SQL	      1	              24	On	Generic	TRANSP		Movement Type Text	MB
+	FCML_MLCO	Open SQL	      1	              24	On	Complete	TRANSP		Control Table Transfer of ML Postings to CO	FCML_COGM
+	T063F	Open SQL	      1	              24	On	Complete	TRANSP		Function Codes: Inventory Management	MB
+	FLOG_PLANT	Open SQL	      1	              24	On	Generic	TRANSP		Field Logistics relevant Plants	FLOG_CONTENT
+	/QTYW/ISO91	Open SQL	      2	              23	On	Complete	TRANSP		ISO 91-1:1992 - Petroleum measurement tables - Part 1	/QTYW/BCC
+	T134H	Open SQL	      2	              23	On	Generic	TRANSP		Organiz. Unit: Business Area Determ. - MM View	MB
+	TMCEXACT	Open SQL	      2	              23	On	Complete	TRANSP		LO Data Extraction: Activate Data Sources/Update	MCEX
+	GPD_TUSE	Open SQL	      2	              23	On	Complete	TRANSP		GPD functionality usage flag	GPD
+	OIB_READINGGROUP	Open SQL	      1	              23	On	Complete	TRANSP		Reading group : Define parameters for a conversion group	OIB_QCI
+	SVERS	Open SQL	      1	              23	On	Complete	TRANSP		SAP Release	SBAT
+	/NFM/TBASIC	Open SQL	      1	              23	On	Complete	TRANSP		NF Metals: Basic Settings	/NFM/DDIC
+	OIH6	Open SQL	      1	              23	On	Complete	TRANSP		ED postings per ED rate	OIH
+	TTXD	Open SQL	      2	              22	On	Single Record	TRANSP		Description of Tax Jurisdiction Code Structure	VTAX_DET
+	TBE34	Open SQL	      2	              22	On	Complete	TRANSP		Publish&Subscribe BTE: Customer Enhancements	BBTE
+	TF005	Open SQL	      1	              22	On	Single Record	TRANSP		SAP Consolidation: Analysis Help	FC00_UC
+	CSKB	Open SQL	      1	              22	On	Generic	TRANSP		Cost Elements (Data Dependent on Controlling Area)	KBASCORE
+	J_3RNKS_TBSL	Open SQL	      1	              22	On	Complete	TRANSP		Credit memo posting keys for AuC	J3RF
+	USR05	Open SQL	      1	              22	On	Generic	TRANSP		User Master Parameter ID	SUSR_KRN
+	TOJTB	Open SQL	      3	              21	On	Single Record	TRANSP		Business object repository: Basic data	SWO
+	T886	Open SQL	      3	              21	On	Generic	TRANSP		FI-SL Activities	GBAS
+	/SCWM/TMAPSTLOC	Open SQL	      2	              21	On	Complete	TRANSP		Mapping Table for ERP Plant Storage Location	/SCWM/WMEBASICS
+	UST12	Open SQL	      1	              21	On	Generic	TRANSP		User master: Authorizations	SUSR
+	TBD06	Open SQL	      1	              21	On	Complete	TRANSP		Distribution model for methods	SALE
+	OIH03	Open SQL	      1	              21	On	Complete	TRANSP		Excise duty posting control	OIH
+	/SCDL/BO_BOPF2	Open SQL	      1	              21	On	Complete	TRANSP		Mapping Node Keys to Types	/SCDL/BUSINESS_OBJECTS
+	FCML_ACCMAP_ACP	Open SQL	      1	              21	On	Complete	TRANSP		Alternative Accounts for Each Accounting Principle	FCML_COGM
+	TKA00PCA	Open SQL	      1	              21	On	Complete	TRANSP		EC-PCA: Control of actual data transfer	KE1C
+	TBE01	Open SQL	      1	              21	On	Complete	TRANSP		Library of the Publish&Subscribe Business Transaction Events	BBTE
+	TACC_TRGT_LDGR	Open SQL	      1	              21	On	Complete	TRANSP		Assgmt of Accounting Principle to Target Ledger or Ledger Gp	FBAS
+	/SYCLO/CA000S	Open SQL	      1	              21	On	Complete	TRANSP		Mobile application - mobile status settings	/SYCLO/CORE
+	/SYCLO/YCA002D	Open SQL	      1	              21	On	Complete	TRANSP		xChange Object Data Segment Settings - Custom Config	/SYCLO/CORE
+	CLPROF	Open SQL	      2	              20	On	Complete	TRANSP		Classification: Parameters for Settings	CL
+	/SCWM/TPMTYP	Open SQL	      2	              20	On	Complete	TRANSP		Packaging Material Types	/SCWM/HUBASICS
+	T156B	Open SQL	      1	              20	On	Generic	TRANSP		Movement Types: Screen Selection	MB
+	FINSC_BTTYPE	Open SQL	      1	              20	On	Complete	TRANSP		Business Transaction Category	FINS_BTTYPE_CONFIGURATION
+	FAGL_LEDGER_SCEN	Open SQL	      1	              20	On	Generic	TRANSP		Active Scenarios of a Ledger	FAGL_LEDGER_CUST
+	T004F	Open SQL	      2	              19	On	Generic	TRANSP		Field status definition groups	FBZ
+	TMCNV	Open SQL	      2	              19	On	Complete	TRANSP		Data on Material Numbers Conversion	BMG
+	TCURC	Open SQL	      2	              19	On	Generic	TRANSP		Currency Codes	SFIB
+	TCURR	Open SQL	      1	              19	On	Generic	TRANSP		Exchange Rates	SFIB
+	FINSC_PRED_FKREL	Open SQL	      1	              19	On	Complete	TRANSP		Assignment order-related billing relevance for Pred. Acc.	FINS_ACDOC_PREDICTIVE
+	TTZZ	Open SQL	      1	              19	On	Complete	TRANSP		Time zones	SZTZ
+	ATPRA	Open SQL	      1	              19	On	Single Record	TRANSP		Treasury: Clearing Account for Payment Requests	FTA_CORE
+	T8A00	Open SQL	      4	              18	On	Complete	TRANSP		Account Determination for Profit Center Accounting	KE1
+	TJ02	Open SQL	      2	              18	On	Complete	TRANSP		System status	BSV
+	/IBPP/R3_BARVS	Open SQL	      2	              18	On	Complete	TRANSP		Relevant Movement Types	/IBPP/PLUG_IN_R3
+	T156Q	Open SQL	      2	              18	On	Generic	TRANSP		Movement Type: Material-Independent Control	QL
+	FINSC_CT_DELTA	Open SQL	      2	              18	On	Complete	TRANSP		Delta Currency and Valuation Types	FINS_ACDOC_CUST
+	/SYCLO/YCA000F	Open SQL	      2	              18	On	Complete	TRANSP		Mobile application - features - Custom Config	/SYCLO/CORE
+	TMC2S	Open SQL	      1	              18	On	Generic	TRANSP		Info Structures to be Updated per Business Event	MCS
+	/SYCLO/CA000FT	Open SQL	      1	              18	On	Complete	TRANSP		Mobile application - feature description	/SYCLO/CORE
+	/SCDL/BO_BOPF4	Open SQL	      1	              18	On	Complete	TRANSP		Mapping Doccat/Itemcat - Node Key/Nodecat Key	/SCDL/BUSINESS_OBJECTS
+	FOT_ISO_CTRY_SCP	Open SQL	      1	              18	On	Complete	TRANSP		Scope for ISO Countries	FOT_COMMON
+	FINS_AVC_ACTGRP	Open SQL	      1	              18	On	Complete	TRANSP		Availability Control Activity Groups	FINS_CO_AVC_GEN
+	/SCMB/TSERV_CTX	Open SQL	      1	              18	On	Complete	TRANSP		Services and Implementation	/SCMB/TOOLS
+	OIB_CONV_UOM	Open SQL	      1	              18	On	Complete	TRANSP		Assignment of Units between Conv. Group and T006	OIB_QCI
+	/SYCLO/CA000R	Open SQL	      2	              17	On	Complete	TRANSP		Mobile application - user persona	/SYCLO/CORE
+	TJ01	Open SQL	      2	              17	On	Complete	TRANSP		Business Transactions	BSV
+	T8G20	Open SQL	      2	              17	On	Generic	TRANSP		Splitting Rule: Header Data	GLT0
+	VSCAN_PROF	Open SQL	      2	              17	On	Complete	TRANSP		Virus Scan Profiles	SVSCAN
+	/SYCLO/YCA000R	Open SQL	      2	              17	On	Complete	TRANSP		Mobile application - user persona - Custom Config	/SYCLO/CORE
+	T158G	Open SQL	      1	              17	On	Complete	TRANSP		MMIM: Possible Codes for BAPI Goods Movement	MB
+	SALV_GZT_ADMIN	Open SQL	      1	              17	On	Complete	TRANSP		SALV GUI Administration Settings	SALV_GUI_ZT
+	FAAI_SLALIT0	Open SQL	      1	              17	On	Complete	TRANSP		Slalittype Metadata	FINS_FAA_CFG_DB_SYST
+	FINSC_CMP_VERSND	Open SQL	      1	              17	On	Complete	TRANSP		CO-CompatViews - from G/L Ledger to Fields for CO-Version	FINS_ACDOC_CUST
+	/SCWM/T331	Open SQL	      1	              17	On	Generic	TRANSP		Storage Type Control	/SCWM/CORE
+	FCOT_COGS_LOG	Open SQL	      1	              17	On	Complete	TRANSP		control table: write log for cogs split	FINS_COPA_COGS_SPLIT
+	FCLM_CONFIG2	Open SQL	      4	              16	On	Complete	TRANSP		Define Basic Settings	FCLM_REUSE
+	T134M	Open SQL	      3	              16	On	Generic	TRANSP		Control of Qty/Value Update	MB
+	T093_BSN_FUNC	Open SQL	      3	              16	On	Complete	TRANSP		ERP Business Function for FI-AA	AC
+	ASEXDOM	Open SQL	      2	              16	On	Complete	TRANSP		Domains with external representation	SLIS
+	T004	Open SQL	      2	              16	On	Generic	TRANSP		Directory of Charts of Accounts	FBASCORE
+	CEPC	Open SQL	      2	              16	On	Generic	TRANSP		Profit Center Master Data Table	KE1
+	JVAONACDOCAACTIV	Open SQL	      2	              16	On	Complete	TRANSP		Activity information for JVA on ACDOCA	GJVA_MIG
+	OI001	Open SQL	      2	              16	On	Complete	TRANSP		Company Code Parameters	OI0_COMMON
+	/SCDL/BOPFACT	Open SQL	      1	              16	On	Complete	TRANSP		Mapping of BOPF Actions	/SCDL/BUSINESS_OBJECTS
+	T8G21A	Open SQL	      1	              16	On	Generic	TRANSP		Splitting rule: Base item categories	GLT0
+	TMCEXEVE	Open SQL	      1	              16	On	Complete	TRANSP		LO Data Extraction: Events/Extract Structures	MCEX
+	T007A	Open SQL	      1	              16	On	Generic	TRANSP		Tax Keys	FBASCORE
+	TRWCI	Open SQL	      3	              15	On	Complete	TRANSP		FI/CO Interface: Components installed	KIST
+	FINS_TRR_ASS	Open SQL	      2	              15	On	Complete	TRANSP		Event Based Rev. Rec.: Assignment Rule	FINS_REV_REC_CUST
+	TDWOD	Open SQL	      2	              15	On	Complete	TRANSP		Screen for DMS Object Link	CV
+	TBSLT	Open SQL	      1	              15	On	Generic	TRANSP		Posting Key Names	FBAS
+	FINS_SIS_PROJ	Open SQL	      1	              15			?	?	?
+	OIH10	Open SQL	      1	              15	On	Complete	TRANSP		License Requirements Tab	OIH
+	TTZR	Open SQL	      1	              15	On	Complete	TRANSP		Time zone rules	SZTZ
+	T880	Open SQL	      1	              15	On	Generic	TRANSP		Global Company Data (for KONS Ledger)	GBASCORE
+	OIB_RDGGROUPT	Open SQL	      1	              15	On	Generic	TRANSP		Description of reading group parameter	OIB_QCI
+	CEPCT	Open SQL	      1	              15	On	Generic	TRANSP		Texts for Profit Center Master Data	KE1
+	FINS_TRR_FTR	Open SQL	      1	              15	On	Complete	TRANSP		EBRR Switches	FINS_REV_REC_CUST
+	SXS_MLCO	Open SQL	      1	              15	On	Single Record	TRANSP		Conflicts of Multiple Active Implementations of Single BAdIs	SECE
+	/SCDL/TSTRUCTURE	Open SQL	      1	              15	On	Complete	TRANSP		Relevant Structures for Delivery	/SCDL/DBAL_CORE
+	T156W	Open SQL	      1	              15	On	Complete	TRANSP		Posting string values	MB
+	/SYCLO/YCA000G	Open SQL	      2	              14	On	Complete	TRANSP		Mobile app - persona/feature assignments - Custom Config	/SYCLO/CORE
+	FINSC_CURR_CHNGE	Open SQL	      2	              14	On	Complete	TRANSP		Task: Add or Remove Currency Types in ACDOCA Table Entries	FINS_ACDOC_CUST
+	TCKMHD	Open SQL	      2	              14	On	Complete	TRANSP		Description of Material Ledger Type	CKMC
+	FCLM_FB2_CONFIG	Open SQL	      2	              14	On	Single Record	TRANSP		Default Liquidity Items for Liquidity Analysis	FCLM_QUERY_SEQUENCE
+	A	Open SQL	      1	              14			?	?	?
+	/QTYW/READINGCCK	Open SQL	      1	              14	On	Complete	TRANSP		Range group data - Input parameters of reading group	/QTYW/BCC
+	GB31C	Open SQL	      1	              14	On	Complete	TRANSP		Boolean Rules: Form Pool Naming Range	GVAL
+	FINSC_PRED_RLDNR	Open SQL	      1	              14	On	Complete	TRANSP		SFIN: Ledgers for Predictive Accounting	FINS_ACDOC_PREDICTIVE
+	TOBJ	Open SQL	      1	              14	On	Complete	TRANSP		Authorization Objects	SUSR
+	T001N	Open SQL	      1	              14	On	Complete	TRANSP		Company Code - EC Tax Numbers / Notifications	FBAS
+	TACE_ACCMETHODS	Open SQL	      1	              14	On	Complete	TRANSP		Methods for Calculation of Periodic Accrual Amount	ACE-DS
+	T8A20	Open SQL	      1	              14	On	Complete	TRANSP		Special handling for goods movements between profit centers	KE1
+	TKEEXITS	Open SQL	      1	              14	On	Complete	TRANSP		CO-PA Internal Exits	KE
+	TBE23	Open SQL	      1	              14	On	Complete	TRANSP		Business Framework: Partner's Active Products	BBTE
+	TMODP	Open SQL	      1	              14	On	Generic	TRANSP		Name of Items in Field Selection Definitions	FBAS
+	TTYPVX	Open SQL	      1	              14	On	Complete	TRANSP		Enhanced Document Summarization in FI	FBAS
+	DDCDS_RAP_TRANSACT_INTERFACES	Open SQL	      1	              14			?	?	?
+	DAC_D_TECHUSER	Open SQL	      1	              14	On	Complete	TRANSP		Digital Access : Technical User for unattended iRPA	DIGITAL_ACCESS
+	/SCWM/LOG_ACT	Open SQL	      1	              14	On	Generic	TRANSP		Application Log	/SCWM/CORE
+	T156V	Open SQL	      1	              14	On	Complete	TRANSP		Availability Table	MB
+	/SCWM/TRACE_ACT	Open SQL	      1	              14	On	Generic	TRANSP		Activate Transaction Trace in EWM	/SCWM/TM
+	FCOC_COGS_CC	Open SQL	      2	              13	On	Complete	TRANSP		COGS Splitting Scheme: Assignment to Company Code	FINS_COPA_COGS_SPLIT
+	IDBUPLA_ACTIVE	Open SQL	      2	              13	On	Complete	TRANSP		Activate Business Place per country	ID-FI
+	/SCWM/TQIOTT	Open SQL	      2	              13	On	Complete	TRANSP		Description Inspection Object Type	/SCWM/QINSP
+	TMC4	Open SQL	      1	              13	On	Complete	TRANSP		Global Control Elements: LIS Info Structure	MCS
+	/UTGFR/TFERCRA_N	Open SQL	      1	              13	On	Complete	TRANSP		Rule Set Company Assignment - Upload	/UTGFR/MD
+	FIN_RE_EVENT	Open SQL	      1	              13	On	Single Record	TRANSP		Substitution Scenerio Events	FINS_GEN_RE_REP
+	SXT_ACT	Open SQL	      1	              13	On	Complete	TRANSP		Activation	SXT_CORE
+	TBE24	Open SQL	      1	              13	On	Complete	TRANSP		Customer Products	BBTE
+	TQ32	Open SQL	      1	              13	On	Complete	TRANSP		Assignment of inspection type to origin	QL
+	DESTLOG	Open SQL	      1	              13	On	Complete	TRANSP		Logging Destinations	SRFC
+	FINSC_CURTYPE_C	Open SQL	      1	              13	On	Complete	TRANSP		Currency type	FINS_ACDOC_CUST
+	FCLM_FB2_MAP	Open SQL	      1	              13	On	Complete	TRANSP		Field mapping from BSEG to FQM_FLOW for Flow Builder 2.0	FCLM_REUSE
+	CRMC_SUBOB_CAT	Open SQL	      1	              13	On	Complete	TRANSP		Business Transaction - Object Type	CRM_ORDER
+	FINSTS_SLALITTY	Open SQL	      1	              13	On	Complete	TRANSP		Subledger-Specific Line Item Types	FINS_ACDOC_DB
+	T8G29	Open SQL	      1	              13	On	Complete	TRANSP		Item categories permitted for each business transaction	GLT0
+	T8JXCP	Open SQL	      1	              13	On	Complete	TRANSP		Cross company account determination	GJV2
+	TUID	Open SQL	      1	              13	On	Complete	TRANSP		UID Handling	UID
+	ASTAT_TYP1	Open SQL	      1	              13	On	Generic	TRANSP		Types of I/Okeys	SAPWL_OLD_FRONTEND
+	I_CITCLASSFCTNCONFIGURATION	Open SQL	      1	              13			?	?	?
+	TACE_COMP_SPEC	Open SQL	      1	              13	On	Generic	TRANSP		Component-Specific Program Components	ACE
+	T030B	Open SQL	      1	              13	On	Generic	TRANSP		Standard Posting Keys	FBAS
+	FINCS_MAP_RLDNR	Open SQL	      1	              13	On	Generic	TRANSP		Mapping of Source Ledger to Consolidation Chart of Accounts	FIN_CS_ACCTG_INTEG
+	CFIN_COGS_RELEV	Open SQL	      1	              13	On	Complete	TRANSP		Central Finance: Account-based COGS split relevance	FIN_CFIN_INTEGRATION
+	CUSD	Open SQL	      1	              13	On	Generic	TRANSP		Customizing: Class/Config: Screendesigner	CT
+	/SCA/DOCFLOW_ACT	Open SQL	      1	              13	On	Complete	TRANSP		Activate Document Flow	/SCA/DM
+	WPBHELP_URL	Open SQL	      1	              13	On	Complete	TRANSP		URL Maintenance for context.html	SWPB_CONTEXT_HELP
+	TBD00	Open SQL	      1	              13	On	Complete	TRANSP		Views of customer model	SALE
+	CFIN_CLR_SET	Open SQL	      1	              13	On	Complete	TRANSP		Central Finance: Settings for Clearing	FIN_CFIN_INTEGRATION
+	/SCMB/BPMAPGEN	Open SQL	      1	              13	On	Complete	TRANSP		General Settings for the Business Partner ID Mapping	/SCMB/BP_NUMBER
+	DRFC_SERV_IMPL	Open SQL	      1	              13	On	Complete	TRANSP		Available Outbound Implementations	DRF_DDIC
+	T8G16	Open SQL	      1	              13	On	Complete	TRANSP		Allocation: internal key - item category (SAP)	GLT0
+	/SYCLO/YCA000	Open SQL	      3	              12	On	Complete	TRANSP		Syclo Mobile Application Release Info - Custom Config	/SYCLO/CORE
+	FCOC_COGS_HD	Open SQL	      2	              12	On	Complete	TRANSP		COGS Splitting Profile: Header	FINS_COPA_COGS_SPLIT
+	CKMLAB02	Open SQL	      2	              12	On	Complete	TRANSP		Material Update Structure (Assignment to Valuation Area)	CKMC
+	T169P	Open SQL	      2	              12	On	Generic	TRANSP		Parameters, Invoice Verification	MRM
+	TCUCH	Open SQL	      2	              12	On	Complete	TRANSP		Customizing: Batch Configuration for Rel.3.0	VB0C
+	APOC_C_APP_OBJ_TYPE_ACTIVATION	Open SQL	      1	              12			?	?	?
+	FINS_TECH_LEDGER	Open SQL	      1	              12	On	Complete	TRANSP		Assignment Ledger -> Technical Ledger	FINS_ACDOC_DB
+	J_3RM_TRACEGOODS	Open SQL	      1	              12	On	Generic	TRANSP		List of Traceable Goods	J3RM
+	TPMMO_CUSTSUBCL	Open SQL	      1	              12	On	Single Record	TRANSP		Customer Classes That Enhance PMMO Classes	PMMO_BASIS
+	TIVCACCSET	Open SQL	      1	              12	On	Complete	TRANSP		Basic Settings per Company Code	RE_CA_AP
+	/AIF/BGP_CONF	Open SQL	      1	              12	On	Complete	TRANSP		Configuration for bgPF	/AIF/BGP_INTEGRATION
+	T009Y	Open SQL	      1	              12	On	Generic	TRANSP		Shortened fiscal years in Asset Accounting	SFBX
+	/SYCLO/CA000A	Open SQL	      1	              12	On	Complete	TRANSP		Mobile application - Satellite Systems	/SYCLO/CORE
+	TTYPV	Open SQL	      1	              12	On	Complete	TRANSP		FI Summarization Dependent on the Object Type	FBAS
+	TBE22	Open SQL	      1	              12	On	Complete	TRANSP		Complementary Software Partner Product	BBTE
+	OVS_CHECKID	Open SQL	      1	              12	On	Complete	TRANSP		Enumeration of Existing Check IDs	ID-FI-OVF-ABA
+	PPS_T_SCEN_CONF	Open SQL	      1	              12	On	Complete	TRANSP		PPS: Scenario Configuration	IS_S4PPS_GENREAL_DB
+	USRBF3	Open SQL	      1	              12	On	Single Record	TRANSP		User Buffer Content for Fast RFC Logon - New	S_PROFGEN
+	SRAL_RECORD	Open SQL	      1	              12	On	Complete	TRANSP		Read Access Logging: Recorder	SREAD_ACCESS_LOG_CORE
+	TUID_EID	Open SQL	      1	              12	On	Complete	TRANSP		Item Unique Identification Enterprise Identifier	UID
+	FIRUD_OFFS_BUKRV	Open SQL	      1	              12	On	Complete	TRANSP		Rule versions for offsetting account determination	GLO_FIN_CIS_OFFSET_ACC
+	OIH07	Open SQL	      1	              12	On	Complete	TRANSP		TDP allowed combinations of ED Group and Handling Type	OIH
+	FINSC_ACDOC_FCT	Open SQL	      1	              12	On	Complete	TRANSP		Fieldcatalog for table ACDOCA in unified journal entry	FINS_ACDOC_CUST
+	/SCWM/THUNR	Open SQL	      1	              12	On	Generic	TRANSP		Interval for Handling Unit Number Range Interval	/SCWM/CORE
+	TKE_BUS_TRANS	Open SQL	      1	              12	On	Complete	TRANSP		CO-PA Update of Business Transactions	KE
+	FINS_REV_REC_EVAL_AREA	Open SQL	      1	              12			?	?	?
+	MDLG	Open SQL	      1	              12	On	Complete	TRANSP		Customizing: MRP Area Storage Location	MD03
+	/SAPAPO/SYSDIR	Open SQL	      1	              12	On	Complete	TRANSP		Assignment of System/Client to RFC Destination	/SAPAPO/OO_MASTER_DATA
+	TKEBB	Open SQL	      2	              11	On	Complete	TRANSP		Management for Operating Concerns (Cross-Client)	KE
+	T8G21	Open SQL	      1	              11	On	Generic	TRANSP		Splitting rule: Item categories to be processed	GLT0
+	/SAPSLL/NOSCA	Open SQL	      1	              11	On	Complete	TRANSP		Activation of Numbering Scheme Content	/SAPSLL/CORE
+	TKASC_RT	Open SQL	      1	              11	On	Complete	TRANSP		Activate Realtime Overhead for Business Transactions	KASC_RTOHC
+	/SAPSLL/TLER3B	Open SQL	      1	              11	On	Complete	TRANSP		SLL: R/3 BS: Control: Call Customs Server: Doc. Types	/SAPSLL/PLUG_IN_R3
+	BEH_C_SUBSCRIPTN	Open SQL	      1	              11	On	Complete	TRANSP		List of subscriptions	BEH_SUBSCRIPTION
+	TKT09	Open SQL	      1	              11	On	Single Record	TRANSP		Texts for versions in master table	KBAS
+	SWELCFG	Open SQL	      1	              11	On	Complete	TRANSP		(Switch On/Off) Administration Data Event Log	SWE
+	TJ04	Open SQL	      1	              11	On	Generic	TRANSP		Status control for object type	BSV
+	T8G17	Open SQL	      1	              11	On	Complete	TRANSP		Allocation: acct number - item type	GLT0
+	FDM_COLL_COMPCOD	Open SQL	      1	              11	On	Generic	TRANSP		FSCM-COL: Active Company Codes of Collections Management	FDM_AR_CUSTOMIZING
+	TSTC	Open SQL	      1	              11	On	Single Record	TRANSP		SAP Transaction Codes	SEUA_TRAN
+	TSADCORR	Open SQL	      1	              11	On	Complete	TRANSP		BC-SRV-ADR: Activate/Deactivate Specific Corrections	SZAD
+	/SCDL/AF_ACTNMAP	Open SQL	      1	              11	On	Complete	TRANSP		Assignment of Action (BO) to Activity (STM)	/SCDL/ADAPTER_STM
+	/SCWM/T333	Open SQL	      1	              11	On	Generic	TRANSP		Warehouse Process Type	/SCWM/CORE
+	TDRVEV	Open SQL	      1	              11	On	Complete	TRANSP		Assignment of Search Procedures to Derivation Events	VBDRV
+	EVTB_EE_REG_INVD	Open SQL	      2	              10	On	Complete	TRANSP		RAP EEE: Event Binding Entity Event Reg. Invalidation	SBOI_RAP_SERVICES_EEE_EVTB_IMP
+	FMISPS	Open SQL	      2	              10	On	Complete	TRANSP		General Parameters for Funds Management	FMBSCORE
+	TCURX	Open SQL	      2	              10	On	Complete	TRANSP		Decimal Places in Currencies	SFIB
+	GLO_BUPLA_WLIST	Open SQL	      2	              10	On	Complete	TRANSP		Globalization Service: Allowed List	ID-FI-BUPLA-DATA
+	EVTB_EE_REG	Open SQL	      1	              10	On	Complete	TRANSP		RAP EEE: Event Binding Entity Event Registration	SBOI_RAP_SERVICES_EEE_EVTB_IMP
+	/SCWM/QIOT	Open SQL	      1	              10	On	Complete	TRANSP		Version-Dependent Inspection Object Type	/SCWM/QINSP
+	TMLCCSHD	Open SQL	      1	              10	On	Complete	TRANSP		Act.Cost Comp. Split: Data Range in Valuation Area (General)	CKMC
+	TAX_RFD_CODES	Open SQL	      1	              10	On	Generic	TRANSP		Define Tax Code as Refund-Related	FBAS
+	T006B	Open SQL	      1	              10	On	Generic	TRANSP		Assignment of commercial to internal unit of measurement	SZME
+	TCKH3	Open SQL	      1	              10	On	Generic	TRANSP		Cost Components	CKJ1
+	TCKH1	Open SQL	      1	              10	On	Generic	TRANSP		Cost Components - Texts	CKJ1
+	T158	Open SQL	      1	              10	On	Generic	TRANSP		Transaction Control: Inventory Management	MB
+	TJ06	Open SQL	      1	              10	On	Generic	TRANSP		System statuses set/deleted by process	BSV
+	TACECOMP	Open SQL	      1	              10	On	Complete	TRANSP		Accrual Engine Application Component	ACE
+	TSECLOG_SETTINGS	Open SQL	      1	              10	On	Complete	TRANSP		Settings for Application Monitor	SABP_SECLOG
+	/SCWM/TMAPPLANT	Open SQL	      1	              10	On	Complete	TRANSP		Mapping Table Plant -  Business Partners	/SCWM/ERP_INTEGRATION
+	FINSC_POSTSCHEMA	Open SQL	      1	              10	On	Complete	TRANSP		Posting Scheme	FINS_ACDOC_POST
+	FINSC_POSTSCHEMI	Open SQL	      1	              10	On	Complete	TRANSP		Posting Schema Item	FINS_ACDOC_POST
+	FAGL_FIELD_MOVEC	Open SQL	      1	              10	On	Complete	TRANSP		Conversion Table for Customer Fields of General Ledger	FAGL_LEDGER_CUST
+	OIH24	Open SQL	      1	              10	On	Complete	TRANSP		ED GROUPING CODE	OIH
+	TIUID_TYPE_T	Open SQL	      1	              10	On	Complete	TRANSP		Item Unique Identifier Type Description	IUID
+	TACC_TRGT_LG_CMP	Open SQL	      1	              10	On	Complete	TRANSP		Assignment of Accounting Principle / CoCode to Ledger Group	FINS_ACDOC_CUST
+	T003T	Open SQL	      1	              10	On	Generic	TRANSP		Document Type Texts	FBASCORE
+	FINSV_UNIQUE_CVTYPS	Open SQL	      1	              10			?	?	?
+	FAGL_SAP_GENLEVL	Open SQL	      1	              10	On	Complete	TRANSP		New General Ledger Accounting: Generation Status (SAP)	FAGL_LEDGER_CUST
+	SDSLS_DOC_VCM	Open SQL	      1	              10	On	Generic	TRANSP		Assign Sales Doc Type and Item Cat. to Value Chain	SDSLS_INTERCOMPANY
+	TBE12	Open SQL	      1	              10	On	Complete	TRANSP		Complementary Software Partner	BBTE
+	/QTYW/ISO91H	Open SQL	      1	              10	On	Complete	TRANSP		ISO 91-1:1992 - Petroleum measurement tables - Part 1	/QTYW/QAPI
+	/SCMB/TSLDPROD	Open SQL	      1	               9	On	Complete	TRANSP		Buffer for SLD Data (Software Products per Business System)	/SCMB/BUSSYS
+	/SAPAPO/APO01	Open SQL	      1	               9	On	Complete	TRANSP		APO Planning Version	/SAPAPO/OO_VERSION
+	T159L	Open SQL	      1	               9	On	Single Record	TRANSP		Default values for inventory management and physical invent.	MB
+	FINOC_ORGLCHG_DATE_STATUS_BUF	Open SQL	      1	               9			?	?	?
+	TWCBCONTRTYPE	Open SQL	      1	               9	On	Generic	TRANSP		Condition Contract Type	WCB_CC_PERS
+	T003M	Open SQL	      1	               9	On	Generic	TRANSP		Transaction/Event Types for SAPMM07M/SAPMM07I	MB
+	SWOTLV	Open SQL	      1	               9	On	Complete	TRANSP		Runtime Table Verbs	SWO
+	TSL1D	Open SQL	      1	               9	On	Complete	TRANSP		System Log Message (Formerly 100S or TSL01)	SLOG
+	FINS_TRR_VAL	Open SQL	      1	               9	On	Complete	TRANSP		Event Based Revenue Recognition: Valuation	FINS_REV_REC_CUST
+	OIJX	Open SQL	      1	               9	On	Complete	TRANSP		TSW control record	OIJ
+	SWP_ADMIN	Open SQL	      1	               9	On	Complete	TRANSP		Customizing Workflow Runtime System	SWP
+	TACEDS_ATHRVR	Open SQL	      1	               9	On	Complete	TRANSP		Threshold Variants for Approval of Periodic Accrual Amounts	ACE_S4
+	/SYCLO/CA000X	Open SQL	      1	               9	On	Complete	TRANSP		Cross application system setting - CONVEXIT Exclusion List	/SYCLO/CORE
+	FTGL_ID	Open SQL	      1	               9	On	Complete	TRANSP		Feature Toggle IDs	SRLFW_FTGL
+	T007BE	Open SQL	      1	               9	On	Complete	TRANSP		Bill of exchange customizing for deferred tax(RFUMSV50)	FB_DEFTAX
+	T074U	Open SQL	      1	               9	On	Generic	TRANSP		Special G/L Indicator Properties	FBAS
+	FQM_BSEG_FT	Open SQL	      1	               9	On	Complete	TRANSP		Assign Flow Types to G/L Accounts	FQM
+	TTZ5S	Open SQL	      1	               9	On	Complete	TRANSP		Assign time zones to regions	SZTZ
+	/SAPPSPRO/C_GPF	Open SQL	      1	               9	On	Complete	TRANSP		Customizing Activation of Government Procurement Functions	/SAPPSPRO/BASIS/
+	FINS_CO_DOCT_VAR	Open SQL	      1	               9	On	Complete	TRANSP		Variant for Mapping CO Bus. Transact. to Document Types	FINS_ACDOC_CUST
+	/SYCLO/YCA000S	Open SQL	      1	               9	On	Complete	TRANSP		Mobile application - mobile status settings - Custom Config	/SYCLO/CORE
+	TSADVC_CLIDEP	Open SQL	      1	               9	On	Complete	TRANSP		International Address Version Customizing (Client-Specific)	SZAD
+	V_TKEB	Open SQL	      1	               9	On	Complete	VIEW		Generated Table for View	KE
+	/SAPPCE/TDPC02	Open SQL	      1	               9	On	Generic	TRANSP		Down Payment Chain Types	/SAPPCE/DPC
+	TCKH9	Open SQL	      1	               9	On	Generic	TRANSP		Texts for Cost Component Views in Display	CKJ1
+	/SCWM/TIMCBWA	Open SQL	      2	               8	On	Generic	TRANSP		Determine ERP MM-IM Movement Type: Customer Movement Types	/SCWM/ERP_INTEGRATION
+	T014	Open SQL	      2	               8	On	Complete	TRANSP		Credit control areas	FBD
+	SEOCLASSDF	Open SQL	      2	               8	On	Single Record	TRANSP		Definition of class/interface	SEO
+	TCURV	Open SQL	      2	               8	On	Generic	TRANSP		Exchange rate types for currency translation	SFIB
+	T320	Open SQL	      1	               8	On	Generic	TRANSP		Assignment IM Storage Location to WM Warehouse Number	LVS
+	T161	Open SQL	      1	               8	On	Generic	TRANSP		Purchasing Document Types	ME
+	FAGL_VAL_COCODE	Open SQL	      1	               8	On	Single Record	TRANSP		Allocation to company code	FAGL_POSTING_SERV_EHP3
+	TACEDS_ADJREASNT	Open SQL	      1	               8	On	Complete	TRANSP		Text for Reason of Adjusting the Accrual Amount in CurPerd	ACE_S4
+	POC_C_PARAM_VAL	Open SQL	      1	               8	On	Complete	TRANSP		Parameter and Values	BS_POC_MAIN
+	FINS_TRR_FTRCLD	Open SQL	      1	               8	On	Complete	TRANSP		EBRR Switches	FINS_REV_REC_CUST
+	TACE_ITEMTYPE	Open SQL	      1	               8	On	Generic	TRANSP		Accrual Item Types	ACE_S4
+	OIH4	Open SQL	      1	               8	On	Complete	TRANSP		Excise duty tax status (IS-Oil TDP standard/core object)	OIH
+	BGRFC_CUST_I_SRV	Open SQL	      1	               8	On	Complete	TRANSP		Inbound Scheduler/Destinations Customizing	SQRFC2
+	FINS_XRR_CNTRL	Open SQL	      1	               8	On	Complete	TRANSP		Event Based Revenue Recognition: Expert control	FINS_REV_REC_CUST
+	/SAPMP/CMTSBV	Open SQL	      1	               8	On	Complete	TRANSP		Batch valuation of configurable materials in MTS	/SAPMP/PP_CMTSBVAL
+	SRAL_PARAMS	Open SQL	      1	               8	On	Complete	TRANSP		Read access logging: paramters	SREAD_ACCESS_LOG_CORE
+	FCLM_LQF_DERPARA	Open SQL	      1	               8	On	Complete	TRANSP		Liquidity Item Derivation Parameters	FCLM_QUERY_SEQUENCE
+	FLQCOMPANY	Open SQL	      1	               8	On	Complete	TRANSP		Liquidity Calculation - Company Codes	FFLQ_D
+	FINS_ACDOC_ACT_H	Open SQL	      1	               8	On	Complete	TRANSP		Activation of Unified Journal Entry (History)	FINS_ACDOC_CUST
+	LOHUM_CLNT_CONF	Open SQL	      1	               8	On	Complete	TRANSP		Client dependent settings for Handling Unit Management	VV0C
+	/SCWM/T300T	Open SQL	      1	               8	On	Generic	TRANSP		Warehouse Number Descriptions	/SCWM/WMEBASICS
+	TCKH2	Open SQL	      1	               8	On	Complete	TRANSP		Assignment: Cost Element Interval - Cost Component Structure	CKJ1
+	TCKHA	Open SQL	      1	               8	On	Complete	TRANSP		Cost Element/Origin Assignment with Additive Costs	CKJ1
+	TCKH8	Open SQL	      1	               8	On	Generic	TRANSP		Cost Component Views in Display	CKJ1
+	/SYCLO/YCA000X	Open SQL	      1	               8	On	Complete	TRANSP		Cross application sys setting - CONVEXIT Exclusion - Custom	/SYCLO/CORE
+	/SCWM/T307	Open SQL	      1	               8	On	Generic	TRANSP		Handling Unit Types per Warehouse Number	/SCWM/CORE
+	V_TKEBL	Open SQL	      1	               8	On	Complete	VIEW		Generated Table for View	KE0C
+	T156C	Open SQL	      2	               7	On	Complete	TRANSP		Stock Types and Their Values	MB
+	TACEDS_ADJREASN	Open SQL	      1	               7	On	Complete	TRANSP		Reason for Adjusting the Amount in a Period	ACE_S4
+	BATCH_LOC_CHAR	Open SQL	      1	               7	On	Complete	TRANSP		Distribution of Batch Data - Local Characteristics	VBW
+	FINSV_T001A	Open SQL	      1	               7	On	Complete	VIEW		Generated Table for View	FBAS
+	NKPARMS	Open SQL	      1	               7	On	Complete	TRANSP		Control Table for Number Ranges	SZN
+	TVSHP	Open SQL	      1	               7	On	Complete	TRANSP		Shipping Parameters at Client-level	VS0C
+	TNROT	Open SQL	      1	               7	On	Complete	TRANSP		Text for number range object	SZN
+	TCKH7	Open SQL	      1	               7	On	Generic	TRANSP		Cost Component Groups	CKJ1
+	TPMMO_TOGGLE	Open SQL	      1	               7	On	Single Record	TRANSP		Master Switch for Activating PMMO	PMMO_BASIS
+	/UTGFR/RA_FIELD	Open SQL	      1	               7	On	Complete	TRANSP		Regulatory Account Field Name in the Universal Journal	/UTGFR/CONFIG
+	TACE_TTYPE	Open SQL	      1	               7	On	Complete	TRANSP		Transaction type	ACE_S4
+	TACE_SLALITTYPE	Open SQL	      1	               7	On	Complete	TRANSP		Accrual specific configuration for Slalittype	ACE_S4
+	TOJTD	Open SQL	      1	               7	On	Complete	TRANSP		Customizing Object Types	SWO
+	TCLAT	Open SQL	      1	               7	On	Generic	TRANSP		Class Type Texts	CL
+	TOBCT	Open SQL	      1	               7	On	Complete	TRANSP		Texts for Authorization Object Classes	SUSR
+	DRFC_APPL_SERV	Open SQL	      1	               7	On	Complete	TRANSP		Assignment of Outbound Implementation to Replication Model	DRF_DDIC
+	FINS_IC_PROJ	Open SQL	      1	               7			?	?	?
+	TCKMLBNKSZ	Open SQL	      1	               7	On	Complete	TRANSP		Assignment of Delivery Costs Structure	CKMC
+	T000C	Open SQL	      1	               7	On	Complete	TRANSP		Table for Installing FI-SL Customizing	GBAS
+	TFDM_DEFCC	Open SQL	      1	               7	On	Single Record	TRANSP		FSCM-DM: Default Values for Company Code	FDM_AR_CUSTOMIZING
+	/SYCLO/CA000PT	Open SQL	      1	               7	On	Complete	TRANSP		Mobile application - parameter values (language specific)	/SYCLO/CORE
+	OVS_CHKRSLT	Open SQL	      1	               7	On	Complete	TRANSP		Mapping of Result Codes to Message Types	ID-FI-OVF-ABA
+	QRFC_CUST_I_DEST	Open SQL	      1	               7	On	Complete	TRANSP		Inbound Scheduler / New/Old API Customizing	SQRFC2
+	OVS_SPOTACTIV	Open SQL	      1	               7	On	Complete	TRANSP		Enable Selective Online Validation	ID-FI-OVF-ABA
+	JVA_OPTIONS	Open SQL	      1	               7	On	Complete	TRANSP		JVA processing options (company code level)	GJVA
+	/IDT/D_CG_ASSIGN	Open SQL	      1	               7	On	Complete	TRANSP		Country Group Assignment	/IDT/GENERAL
+	T8G22	Open SQL	      1	               7	On	Generic	TRANSP		Splitting rule: Additional items	GLT0
+	FMBLFILTER_USER	Open SQL	      1	               7	On	Complete	TRANSP		Excludes a user going through BL core (only for testing)	FMFG_BLCORE_E
+	CRMC_BUS_SUBOB_C	Open SQL	      1	               7	On	Complete	TRANSP		Business Transaction - Object Type Combination	CRM_ORDER
+	FISK_BAR_BPROLE	Open SQL	      1	               7	On	Complete	TRANSP		Business Partner Role for Master Data Validation	ID-FI-SK
+	CMM_MTM_CLIENT	Open SQL	      1	               7	On	Complete	TRANSP		MtM Settings at Client Level	LOG_CMM_ANALYTICS
+	FINS_GLO_IT_FL_T	Open SQL	      1	               7	On	Complete	TRANSP		Country specific document field fields definition	FINS_FI_DECO
+	T80D	Open SQL	      1	               7	On	Complete	TRANSP		FI-SL: Control table for client-specific user exits	GBASCORE
+	TPSL_C04	Open SQL	      1	               7	On	Generic	TRANSP		Currency Types	KEPSL
+	T006T	Open SQL	      1	               7	On	Generic	TRANSP		Dimension Texts	SZME
+	FINS_TRR_EVA	Open SQL	      1	               7	On	Complete	TRANSP		Evaluation scope of Event Based Revenue Recognition	FINS_REV_REC_CUST
+	T8G10	Open SQL	      1	               7	On	Complete	TRANSP		Assignment: Transaction code- accounting transaction variant	GLT0
+	TFDM_P2PCC	Open SQL	      1	               6	On	Generic	TRANSP		Settings for Promise to Pay per Company Code	FDM_AR_CUSTOMIZING
+	T158W	Open SQL	      1	               6	On	Generic	TRANSP		Long Text for Transaction/Event Type	MB
+	FINSC_ACTVE_APPL	Open SQL	      1	               6	On	Complete	TRANSP		Active Application and Subapplication in Client	FINS_ACDOC_CUST
+	/SCWM/QIOTPRP	Open SQL	      1	               6	On	Complete	TRANSP		Properties: Version-Dependent Inspection Object Type	/SCWM/QINSP
+	OVS_CHECKACTIV	Open SQL	      1	               6	On	Complete	TRANSP		Active Checks	ID-FI-OVF-ABA
+	/IBPP/R3_GTSVER	Open SQL	      1	               6	On	Complete	TRANSP		Version of connected GTS System	/IBPP/PLUG_IN_R3
+	T003L	Open SQL	      1	               6	On	Generic	TRANSP		Transaction Type for Material Ledger	CKMC
+	T001Z	Open SQL	      1	               6	On	Generic	TRANSP		Additional Specifications for Company Code	FBASCORE
+	TWPA	Open SQL	      1	               6	On	Complete	TRANSP		General Parameters for Retail Control	WSOR
+	TCKH4	Open SQL	      1	               6	On	Generic	TRANSP		Cost Component Structure for Cost of Goods Manufactured	CKJ1
+	BGRFC_REG_I_DEST	Open SQL	      1	               6	On	Complete	TRANSP		Unit History Interface: Inbound bgRFC	SQRFC2
+	TCLS	Open SQL	      1	               6	On	Complete	TRANSP		Classes: Organizational areas	CL
+	/SAPMP/MILLCA_ST	Open SQL	      1	               6	On	Single Record	TRANSP		Status of SAP_MILLCA characteristics in CABN	/SAPMP/LO-MD
+	TMCA	Open SQL	      1	               6	On	Complete	TRANSP		Evaluating movement types for LIS update	MCB
+	/SCWM/TCHM_SDEST	Open SQL	      1	               6	On	Complete	TRANSP		Check Monitor: RFC Destination of Logical System	/SCWM/ERP_INTEGRATION
+	TMCW	Open SQL	      1	               6	On	Complete	TRANSP		RIS Enhancement	MCW
+	ASTAT_TYP2	Open SQL	      1	               6	On	Complete	TRANSP		Customer specific activation of application  statistics	SAPWL_OLD_FRONTEND
+	TISSR_MAACRE	Open SQL	      1	               6	On	Complete	TRANSP		FSSR: Additional Data - Company Code/SR Variant	VVSRFISL
+	/SCWM/T300_MD	Open SQL	      1	               6	On	Generic	TRANSP		Assignments: Warehouse Number/Business Partner	/SCWM/WMEBASICS
+	T377X	Open SQL	      1	               6	On	Complete	TRANSP		Documents Allowed for Serial Number Management	LO_SN_DB
+	FINOCC_ACTIV	Open SQL	      1	               6	On	Complete	TRANSP		Organizational Change Feature Activation	FINS_ORGL_CHANGE_CUSTOMIZING
+	TCUDRV	Open SQL	      1	               6	On	Complete	TRANSP		Customizing: Batch Derivation	VBDRV
+	/SAPAPO/TCLSYSBU	Open SQL	      1	               6	On	Complete	TRANSP		Definition of Characteristic and Class System	/SAPAPO/CONFR
+	TJ02T	Open SQL	      1	               6	On	Single Record	TRANSP		System status texts	BSV
+	BGRFC_CUST_O_SYS	Open SQL	      1	               6	On	Complete	TRANSP		Customizing for Outbound Scheduler/System-Wide Settings	SQRFC2
+	FCOC_COGS_BA	Open SQL	      1	               6	On	Complete	TRANSP		Basis for Split	FINS_COPA_COGS_SPLIT
+	TCC08	Open SQL	      1	               6	On	Complete	TRANSP		Engineering Change Management: Control Data	CC
+	TACE_ITEMTYPED	Open SQL	      1	               6	On	Generic	TRANSP		Calculation Rules for Derived Accrual Types	ACE_S4
+	FCOPAC_UMS_SWTCH	Open SQL	      1	               6	On	Complete	TRANSP		Derivation of Market Segment Characteristics	FINS_COPA_PROF_SEGMENT
+	TKSVD	Open SQL	      1	               6	On	Complete	TRANSP		Special Valuation Date Settings	KSVD
+	FCO_ICO_TE_BLART	Open SQL	      1	               6	On	Complete	TRANSP		Document type for travel expense reposting	FINS_CO_ICO
+	FINS_MIG_STATUS	Open SQL	      1	               6	On	Complete	TRANSP		Overall sFIN migration status	FINS_FI_MIG
+	CSPC_PROC_TYPE	Open SQL	      1	               6	On	Complete	TRANSP		Cross-System Process Control: Process Type Definition	FIN_CSPC_FRW
+	/SCWM/TIMBWAXTRA	Open SQL	      1	               6	On	Complete	TRANSP		Determine ERP MM-IM Movement Type: Special Conditions	/SCWM/ERP_INTEGRATION
+	CFSWITCH	Open SQL	      1	               6	On	Complete	TRANSP		Cloud Financials: Switch table	FINC_GEN_IMG
+	TRWCD	Open SQL	      1	               6	On	Complete	TRANSP		AC Interface: Component Characteristics	KIST
+	/SCWM/TPMTYPT	Open SQL	      1	               6	On	Generic	TRANSP		Packaging Material Types: Descriptions	/SCWM/HUBASICS
+	TCKH6	Open SQL	      1	               6	On	Generic	TRANSP		Cost Component Groups - Texts	CKJ1
+	T159OM	Open SQL	      1	               6	On	Complete	TRANSP		Control table for activation of new Output Management	MB
+	OIB_DEF	Open SQL	      1	               5	On	Complete	TRANSP		Set default table/transaction switch	OIB_QCI
+	T399J	Open SQL	      1	               5	On	Complete	TRANSP		Maintenance parameters (client)	IWO1
+	NROPTIONS	Open SQL	      1	               5	On	Complete	TRANSP		Number Range Options	SZN
+	/SCMB/TOWNBS	Open SQL	      1	               5	On	Complete	TRANSP		Name of Own Business System	/SCMB/BUSSYS
+	BEL_C_SOT_ACTIVE	Open SQL	      1	               5	On	Complete	TRANSP		Activate Logging by SOT	BEL_CONF
+	POC_C_BOR_EVT	Open SQL	      1	               5	On	Complete	TRANSP		BOR Events Relevant for Process Observer	BS_POC_INSTR
+	T8G12	Open SQL	      1	               5	On	Complete	TRANSP		Classify FI Document Type for Document Splitting	GLT0
+	/SYCLO/YCA000P	Open SQL	      1	               5	On	Complete	TRANSP		Mobile application - parameters - Custom Config	/SYCLO/CORE
+	/SYCLO/YCA000FT	Open SQL	      1	               5	On	Complete	TRANSP		Mobile application - feature description - Custom Config	/SYCLO/CORE
+	T007DT	Open SQL	      1	               5	On	Complete	TRANSP		Deferred Tax Rules	FB_DEFTAX
+	TCOKO	Open SQL	      1	               5	On	Generic	TRANSP		Constants for PP orders	CO
+	T001B_PS	Open SQL	      1	               5	On	Generic	TRANSP		Account Assignment Objects in General Ledger	FMGL_TOOLS
+	FARRIC_ACTIVE	Open SQL	      1	               5	On	Complete	TRANSP		Activation Parameter for Integration Component	FARRIC_SD_MAIN
+	/CPD/PWSC_MPTYP	Open SQL	      1	               5	On	Complete	TRANSP		CPD: Master Project Type Table	/CPD/PWS_WS_CUST
+	TFAAD_BSN_FUNC	Open SQL	      1	               5	On	Complete	TRANSP		Validation of Business Function Switches for FI-AA	AA_BAS_CUS_SFWS
+	FINS_TRR_DRK_SFS	Open SQL	      1	               5	On	Complete	TRANSP		Derive Recognition Key for Sell from Stock	FINS_REV_REC_CUST
+	T149	Open SQL	      1	               5	On	Generic	TRANSP		Valuation type/valuation class	MG
+	TCUWS	Open SQL	      1	               5	On	Complete	TRANSP		Customizing: Batch Configuration for Rel.3.0	VBWS
+	TCUBN	Open SQL	      1	               5	On	Complete	TRANSP		Customizing: Automatic Batch Number Assignment	VB
+	USRBF2	Open SQL	      1	               5	On	Generic	TRANSP		User buffer content for fast RFC logon - new	SUSR
+	TJ05	Open SQL	      1	               5	On	Generic	TRANSP		Permitted transactions per object type	BSV
+	TKSVD_VRGNG	Open SQL	      1	               5	On	Complete	TRANSP		Assign Valuation Date Profile to Business Transactions	KSVD
+	/SCWM/T340D	Open SQL	      1	               5	On	Generic	TRANSP		Define Values for Warehouse Number	/SCWM/CORE
+	TWGTA	Open SQL	      1	               5	On	Complete	TRANSP		Global Trade Management: Control Table	WB2B
+	TJ03	Open SQL	      1	               5	On	Complete	TRANSP		Object types	BSV
+	TACEDS_LEGACYM	Open SQL	      1	               5	On	Generic	TRANSP		Legacy Data Transfer Control	ACE-DS
+	BGRFC_MAIN_I_DST	Open SQL	      1	               4	On	Complete	TRANSP		bgRFC Inbound Destination	SQRFC2
+	TCKH5	Open SQL	      1	               4	On	Generic	TRANSP		Cost Component Structure - Texts	CKJ1
+	FAGL_CUS_GENLEVL	Open SQL	      1	               4	On	Complete	TRANSP		New General Ledger Accounting: Generation Status (Customer)	FAGL_LEDGER_CUST
+	OVS_VIES	Open SQL	      1	               4	On	Complete	TRANSP		Partner Function for Check IDs	ID-FI-OVF-ABA
+	/SYCLO/YCA000A	Open SQL	      1	               4	On	Complete	TRANSP		Mobile application - Satellite Systems - Custom Config	/SYCLO/CORE
+	FAGL_SPLIT_DEVSY	Open SQL	      1	               4	On	Complete	TRANSP		Change Deactivation -> Activation of Split per Company Code	FAGL_LEDGER_CUST
+	FAGL_SEG_METHOD	Open SQL	      1	               4	On	Complete	TRANSP		Derivation Method for Segment	FAGL_ORG_UNITS
+	T043T	Open SQL	      1	               4	On	Generic	TRANSP		FI tolerance groups for employees	FBAS
+	TACE_OP_PERC	Open SQL	      1	               4	On	Generic	TRANSP		Time-Dep. Percentage for Derived Item Types (Operator "P")	ACE_S4
+	TMLCCSSCOPE	Open SQL	      1	               4	On	Complete	TRANSP		Actual Cost Component Split: Structure of Data Range	CKMC
+	TXS_OP_CONN_CONF	Open SQL	      1	               4	On	Complete	TRANSP		External Tax Calc. Engines OnPremise Destination Settings	GLO_GEN_TXS_BASE
+	T8G28	Open SQL	      1	               4	On	Complete	TRANSP		Item Categories Permitted per Business Transaction Variant	GLT0
+	/SCMB/TBUSSYS	Open SQL	      1	               4	On	Complete	TRANSP		Buffer for SLD Data of Business Systems	/SCMB/BUSSYS
+	/SCWM/TQIOT	Open SQL	      1	               4	On	Complete	TRANSP		Inspection Object Type	/SCWM/QINSP
+	/SCWM/TIMCGRBEW	Open SQL	      1	               4	On	Complete	TRANSP		Map EWM Reason Code to ECC Reason for Movement	/SCWM/ERP_INTEGRATION
+	TMY04	Open SQL	      1	               4	On	Complete	TRANSP		Company Code Parameters for LIFO/FIFO Valuation	MRY
+	T340D	Open SQL	      1	               4	On	Generic	TRANSP		WM Default Values	LVS
+	/SAPSLL/TLER3	Open SQL	      1	               4	On	Complete	TRANSP		SLL: R/3 Backend System: Control: Call Customs Server	/SAPSLL/PLUG_IN_R3
+	/SCWM/TIMBWA	Open SQL	      1	               4	On	Complete	TRANSP		Determine ERP MM-IM Movement Type	/SCWM/ERP_INTEGRATION
+	TBSPECDEST	Open SQL	      1	               4	On	Complete	TRANSP		Special RFC destinations for synchronous calls	SALE
+	CKMLAB01Z	Open SQL	      1	               4	On	Complete	TRANSP		Material Update Structure (Line Assignment)	CKMC
+	/SCWM/TIMBWACAT	Open SQL	      1	               4	On	Complete	TRANSP		Determine ERP MM-IM Movement Type: Stock Type	/SCWM/ERP_INTEGRATION
+	J_1AINFMET	Open SQL	      1	               4	On	Complete	TRANSP		Inflation Methods	J1AI
+	/SCDL/BO_BOPF3	Open SQL	      1	               3	On	Complete	TRANSP		Mapping DOCCAT - BO_KEY	/SCDL/BUSINESS_OBJECTS
+	TACEDS_RAIVLV	Open SQL	      1	               3	On	Complete	TRANSP		Variants for Time Intervals for Review and/or Approval	ACE_S4
+	TACECOMPC	Open SQL	      1	               3	On	Generic	TRANSP		Customer Settings for Components	ACE
+	T370T	Open SQL	      1	               3	On	Complete	TRANSP		Equipment categories	IEQM
+	T043	Open SQL	      1	               3	On	Generic	TRANSP		Assign Accounting Clerks --> Tolerance Group	FBAS
+	FQMC_TRANSFER	Open SQL	      1	               3	On	Complete	TRANSP		Customizing for Intial Transfer of Liquidity Planner Items	FQM_CORE
+	TBLSYSDEST	Open SQL	      1	               3	On	Complete	TRANSP		RFC Destination of Logical System	SALE
+	/SCWM/TIMBUSTR	Open SQL	      1	               3	On	Complete	TRANSP		Determine ERP MM-IM Movement Type: Posting String Reference	/SCWM/ERP_INTEGRATION
+	TCK30	Open SQL	      1	               3	On	Complete	TRANSP		Cost Component Transfer	CKJ1
+	CSPC_LSYS_PTY	Open SQL	      1	               3	On	Complete	TRANSP		Cross-System Process Control: Process Type (Configuration)	FIN_CSPC_FRW
+	FINS_TRR_CNTRL	Open SQL	      1	               3	On	Complete	TRANSP		Event Based Revenue Recognition: Expert control	FINS_REV_REC_CUST
+	/SAPAPO/TCLSYS	Open SQL	      1	               3	On	Complete	TRANSP		Definition of Characteristic and Class System	/SAPAPO/DDIC_STABLE_CORE
+	FINS_MIG_CUST	Open SQL	      1	               3	On	Complete	TRANSP		Define Offsetting Account Determination	FINS_FI_MIG
+	/SYCLO/YCA000PT	Open SQL	      1	               3	On	Complete	TRANSP		Mobile application - param values (lang specific)  - Custom	/SYCLO/CORE
+	TCUDB	Open SQL	      1	               2	On	Complete	TRANSP		Customizing Documentary Batch	VBDOCUBATCH
+	T8G11	Open SQL	      1	               2	On	Complete	TRANSP		Assignment: MM movement type- accounting transaction variant	GLT0
+	FMBLBASIC	Open SQL	      1	               2	On	Complete	TRANSP		Budgetary Ledger Basic Settings	FMFG_BLCORE_E
+	FCOC_COGS_SA	Open SQL	      1	               2	On	Complete	TRANSP		Source Accounts and Valuation Views for Split	FINS_COPA_COGS_SPLIT
+	BGRFC_CUST_I_SYS	Open SQL	      1	               2	On	Complete	TRANSP		Customizing for Outbound Scheduler/System-Wide Settings	SQRFC2
+	QRFC_O_REF_UNIT	Open SQL	      1	               1			TRANSP		Outbound qRFC: Unit Reference	SQRFC2
+	QRFC_O_QIN	Open SQL	      1	               1			TRANSP		Inbound qRFC: Queue Order	SQRFC2
+	QRFC_O_SDATA	Open SQL	      1	               1			TRANSP		Outbound qRFC: Unit Payload	SQRFC2
+	QRFC_I_SDATA	Open SQL	      1	               1			TRANSP		Inbound qRFC: Unit Payload	SQRFC2
+	TACEDS_RAIVLVR	Open SQL	      1	               1	On	Complete	TRANSP		Variants for Time Intervals for Review and/or Approval	ACE_S4
+	BGRFC_O_RUNNABLE	Open SQL	      1	               1			TRANSP		Outbound tRFC/qRFC: Executable Units	SQRFC2
+	TRFC_O_DEST	Open SQL	      1	               1			TRANSP		Client and Destination Name for Outbound tRFC	SQRFC2
+	QRFC_O_QOUT_LOCK	Open SQL	      1				TRANSP		Lock Table for Parallel Entries in QRFC_O_QOUT	SQRFC2
+	QRFC_I_QIN_LOCK	Open SQL	      1				TRANSP		Lock Table for Parallel Entries in QRFC_I_QIN	SQRFC2
+	BGRFC_O_DESTLOCK	Open SQL	      1				TRANSP		Outbound tRFC/qRFC: Destination Locks	SQRFC2
+	BGRFC_I_RUNNABLE	Open SQL	      1				TRANSP		bgRFC Inbound Executable Units	SQRFC2
+	BGRFC_I_DESTLOCK	Open SQL	      1				TRANSP		Inbound tRFC/qRFC Destination Locks	SQRFC2
+	QRFC_O_UNIT	Open SQL	      1				TRANSP		Outbound qRFC: Unit Header	SQRFC2
+	BGRFC_LOCK_TIME	Open SQL	      1				TRANSP		Timestamp when bgRFC Locks Removed	SQRFC2
+	QRFC_I_UNIT	Open SQL	      1				TRANSP		Inbound qRFC: Unit Header	SQRFC2
+	TRFC_O_UNIT_LOCK	Open SQL	      1				TRANSP		Outbound tRFC: Unit Locks	SQRFC2
+	QRFC_I_UNIT_LOCK	Open SQL	      1				TRANSP		Inbound qRFC: Unit Locks	SQRFC2
+	QRFC_O_UNIT_LOCK	Open SQL	      1				TRANSP		Outbound qRFC: Unit Locks	SQRFC2
+	TRFC_O_SDATA	Open SQL	      1				TRANSP		tRFC: Unit Payload	SQRFC2
+	QRFC_I_QIN_TOP	Open SQL	      1				TRANSP		Inbound qRFC Queue (Top Unit)	SQRFC2
+	QRFC_O_QOUT_TOP	Open SQL	      1				TRANSP		Outbound qRFC Queue (Top Unit)	SQRFC2
+	TRFC_O_UNIT	Open SQL	      1				TRANSP		Outbound tRFC: Unit Header	SQRFC2

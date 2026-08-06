@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Transparent table ZEQUI_LOAD_ITM
+  Child persistence of BO ZR_EQUI_LOAD_REQ (item line + BAPI result).
+-->
+<mx:abapSource xmlns:mx="http://www.sap.com/abapxml">
+  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+    <asx:values>
+      <TABL>
+        <NAME>ZEQUI_LOAD_ITM</NAME>
+        <DESCRIPTION>Equipment Load Item</DESCRIPTION>
+        <DELIVERY_CLASS>A</DELIVERY_CLASS>
+        <TABLE_CATEGORY>TRANSP</TABLE_CATEGORY>
+
+        <FIELDS>
+          <FIELD NAME="CLIENT"       KEY="X" DATATYPE="CLNT" LENGTH="3"  NOTNULL="X" DESCRIPTION="Client"/>
+          <FIELD NAME="REQUEST_UUID" KEY="X" DATATYPE="RAW"  LENGTH="16" NOTNULL="X" DESCRIPTION="Parent request UUID"/>
+          <FIELD NAME="ITEM_UUID"    KEY="X" DATATYPE="RAW"  LENGTH="16" NOTNULL="X" DESCRIPTION="Item UUID"/>
+
+          <FIELD NAME="ITEM_NO"       DATATYPE="INT4"  LENGTH="10" DESCRIPTION="Sequence"/>
+          <FIELD NAME="EXT_ID"        DATATYPE="CHAR" LENGTH="20"  DESCRIPTION="External key"/>
+          <FIELD NAME="EQUI_CATEGORY" DATATYPE="CHAR" LENGTH="1"   DESCRIPTION="Equipment category"/>
+          <FIELD NAME="DESCRIPT"      DATATYPE="CHAR" LENGTH="40"  DESCRIPTION="Description"/>
+          <FIELD NAME="EQTYPE"        DATATYPE="CHAR" LENGTH="10"  DESCRIPTION="Equipment type"/>
+          <FIELD NAME="MAINTPLANT"    DATATYPE="CHAR" LENGTH="4"   DESCRIPTION="Maintenance plant"/>
+          <FIELD NAME="PLANPLANT"     DATATYPE="CHAR" LENGTH="4"   DESCRIPTION="Planning plant"/>
+          <FIELD NAME="LOCATION"      DATATYPE="CHAR" LENGTH="10"  DESCRIPTION="Location"/>
+          <FIELD NAME="COST_CENTER"   DATATYPE="CHAR" LENGTH="10"  DESCRIPTION="Cost center"/>
+          <FIELD NAME="COMPANY_CODE"  DATATYPE="CHAR" LENGTH="4"   DESCRIPTION="Company code"/>
+          <FIELD NAME="START_UP_DATE" DATATYPE="DATS" LENGTH="8"   DESCRIPTION="Start-up date"/>
+          <FIELD NAME="MANUFACTURER"  DATATYPE="CHAR" LENGTH="30"  DESCRIPTION="Manufacturer"/>
+          <FIELD NAME="MODEL_NUMBER"  DATATYPE="CHAR" LENGTH="20"  DESCRIPTION="Model number"/>
+
+          <!-- BAPI result -->
+          <FIELD NAME="EQUIPMENT"     DATATYPE="CHAR" LENGTH="18"  DESCRIPTION="Created equipment number"/>
+          <FIELD NAME="ITEM_STATUS"   DATATYPE="CHAR" LENGTH="1"   DESCRIPTION="P=Pending, S=Success, E=Error"/>
+          <FIELD NAME="MESSAGE"       DATATYPE="CHAR" LENGTH="255" DESCRIPTION="Result message"/>
+
+          <FIELD NAME="LAST_CHANGED_AT" DATATYPE="DEC" LENGTH="21" DECIMALS="7" DESCRIPTION="Optimistic locking"/>
+        </FIELDS>
+      </TABL>
+    </asx:values>
+  </asx:abap>
+</mx:abapSource>
