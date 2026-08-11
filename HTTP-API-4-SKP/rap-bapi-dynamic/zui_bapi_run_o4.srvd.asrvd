@@ -1,0 +1,5 @@
+@EndUserText.label: 'Dyn BAPI Runner - Service'
+
+define service ZUI_BAPI_RUN_O4 {
+  expose ZC_BAPI_RUN as BapiRun;
+}

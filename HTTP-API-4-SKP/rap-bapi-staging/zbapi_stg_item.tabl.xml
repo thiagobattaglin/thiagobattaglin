@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Transparent table ZBAPI_STG_ITEM - staging (flat name/value store).
+  section = 'H' (heders_values) or 'I' (items_values).
+  Primary key prefix (RUN_UUID, DOC_SEQ) makes worker range reads
+  index-friendly (single SELECT ... BETWEEN).
+-->
+<mx:abapSource xmlns:mx="http://www.sap.com/abapxml">
+  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+    <asx:values>
+      <TABL>
+        <NAME>ZBAPI_STG_ITEM</NAME>
+        <DESCRIPTION>Dyn BAPI Staging - Fields</DESCRIPTION>
+        <DELIVERY_CLASS>A</DELIVERY_CLASS>
+        <TABLE_CATEGORY>TRANSP</TABLE_CATEGORY>
+
+        <FIELDS>
+          <FIELD NAME="CLIENT"      KEY="X" DATATYPE="CLNT" LENGTH="3"   NOTNULL="X" DESCRIPTION="Client"/>
+          <FIELD NAME="RUN_UUID"    KEY="X" DATATYPE="RAW"  LENGTH="16"  NOTNULL="X" DESCRIPTION="Execution UUID"/>
+          <FIELD NAME="DOC_SEQ"     KEY="X" DATATYPE="INT4" LENGTH="10"  NOTNULL="X" DESCRIPTION="Document sequence"/>
+          <FIELD NAME="SECTION"     KEY="X" DATATYPE="CHAR" LENGTH="1"   NOTNULL="X" DESCRIPTION="H = heders / I = items"/>
+          <FIELD NAME="PARAM_SEQ"   KEY="X" DATATYPE="INT4" LENGTH="10"  NOTNULL="X" DESCRIPTION="Parameter/row sequence"/>
+          <FIELD NAME="FIELD_SEQ"   KEY="X" DATATYPE="INT4" LENGTH="10"  NOTNULL="X" DESCRIPTION="Field sequence"/>
+
+          <FIELD NAME="PARAM_NAME"  DATATYPE="CHAR" LENGTH="30"  DESCRIPTION="BAPI parameter name"/>
+          <FIELD NAME="FIELD_NAME"  DATATYPE="CHAR" LENGTH="30"  DESCRIPTION="Field/component name"/>
+          <FIELD NAME="FIELD_VALUE" DATATYPE="CHAR" LENGTH="255" DESCRIPTION="Field value (as string)"/>
+        </FIELDS>
+      </TABL>
+    </asx:values>
+  </asx:abap>
+</mx:abapSource>

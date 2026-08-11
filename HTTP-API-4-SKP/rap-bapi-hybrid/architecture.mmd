@@ -1,0 +1,36 @@
+%%{ init: { "flowchart": { "htmlLabels": true } } }%%
+flowchart LR
+    Client([OData V4 Client]) -- "POST BapiRun/...Submit<br/>{ Payload: '&lt;JSON&gt;' }" --> Gateway["SAP Gateway<br/>OData V4"]
+    Gateway --> Handler["lhc_bapi_hyb_run"]
+
+    Handler -- "parse_header (CTF id on<br/>header-only substring)" --> Dispatcher["zcl_bapi_hyb_dispatcher"]
+    Handler -- "MODIFY ENTITY CREATE<br/>audit row + COMMIT ENTITIES" --> Audit[("zbapi_hyb_run")]
+
+    Dispatcher -- "kind = chunk<br/>forward as 1 chunk" --> Chunk1[chunk 1]
+    Dispatcher -- "kind = bulk<br/>lexical split O(strlen)" --> Splitter["zcl_bapi_hyb_lex_splitter"]
+    Splitter --> ChunkN[chunk N]
+
+    Dispatcher -- "202 Accepted<br/>{ RunUuid / BapiName / Accepted / Workers / ExecMode / Kind }" --> Client
+
+    Chunk1 --> Schedule["bgPF<br/>cl_bgmc_process_factory<br/>save_for_execution + COMMIT WORK"]
+    ChunkN --> Schedule
+    Schedule --> Op["zcl_bapi_hyb_worker_op<br/>if_bgmc_op_single_tx_uncontrolled"]
+
+    Op --> Caller["zcl_bapi_hyb_caller<br/>process_chunk_json"]
+    Caller -- "CTF id + cl_sxml_string_reader<br/>(kernel, released)" --> Docs["ty_documents"]
+
+    subgraph PerDoc["Per document"]
+        direction TB
+        Introspect["FUNCTION_IMPORT_INTERFACE + RTTI"]
+        Map["Dynamic ASSIGN COMPONENT"]
+        Call["CALL FUNCTION bapi"]
+        CommitDecision{"RETURN has<br/>E / A / X?"}
+        Commit["BAPI_TRANSACTION_COMMIT"]
+        Rollback["BAPI_TRANSACTION_ROLLBACK"]
+
+        Introspect --> Map --> Call --> CommitDecision
+        CommitDecision -- "no"  --> Commit
+        CommitDecision -- "yes" --> Rollback
+    end
+
+    Docs --> PerDoc

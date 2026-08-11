@@ -1,0 +1,65 @@
+{ "mode": "async",
+  "bapi_name": "BAPI_PO_CREATE1",
+  "worker_threads": 10,
+  "worker_rows": 5000,
+  "heders_values": [
+    {
+      "value": "poheader",
+      "fields": [ 
+        { "name": "po_number", "value": "4500000001" },
+        { "name": "doc_type", "value": "NB" },
+        { "name": "vendor", "value": "100000" },
+        { "name": "purch_org", "value": "1010" },
+        { "name": "purch_group", "value": "001" },
+        { "name": "company_code", "value": "1000" }
+      ]
+    },
+    {
+      "value": "poheaderx",
+      "fields": [ 
+        { "name": "po_number", "value": "X" },
+        { "name": "doc_type", "value": "X" },
+        { "name": "vendor", "value": "X" },
+        { "name": "purch_org", "value": "X" },
+        { "name": "purch_group", "value": "X" },
+        { "name": "company_code", "value": "X" }
+      ]
+    },
+    {
+      "value": "poaddrvendor",
+      "fields": [
+        { "name": "name", "value": "Vendor Name" },
+        { "name": "street", "value": "Vendor Street" },
+        { "name": "city", "value": "Vendor City" },
+        { "name": "postal_code", "value": "12345" },
+        { "name": "country", "value": "US" }
+      ]
+    }
+  ],
+  "items_values": [
+    {      
+      "value": "bapimepoitem",
+      "fields": [ 
+        { "name": "po_number", "value": "4500000001" },
+        { "name": "po_item", "value": "00010" },
+        { "name": "material", "value": "MAT001" },
+        { "name": "plant", "value": "1000" },
+        { "name": "quantity", "value": "10" },
+        { "name": "net_price", "value": "100.00" },
+        { "name": "currency", "value": "USD" }
+      ]
+    },
+    {      
+      "value": "bapimepoitemx",
+      "fields": [ 
+        { "name": "po_number", "value": "4500000001" },
+        { "name": "po_item", "value": "00010" },
+        { "name": "material", "value": "X" },
+        { "name": "plant", "value": "X" },
+        { "name": "quantity", "value": "X" },
+        { "name": "net_price", "value": "X" },
+        { "name": "currency", "value": "X" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+@EndUserText.label: 'Hybrid BAPI Runner - Service'
+
+define service ZUI_BAPI_HYB_RUN_O4 {
+  expose ZC_BAPI_HYB_RUN as BapiRun;
+}

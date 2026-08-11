@@ -1,0 +1,41 @@
+%%{ init: { "flowchart": { "htmlLabels": true } } }%%
+flowchart LR
+    Client([OData V4 Client]) -- "POST BapiRun/...Submit<br/>{ Payload: '&lt;JSON&gt;' }" --> Gateway["SAP Gateway<br/>OData V4"]
+    Gateway --> Handler["lhc_bapi_stg_run"]
+    Handler --> Dispatcher["zcl_bapi_stg_dispatcher"]
+
+    Dispatcher -- "INSERT ... FROM TABLE (bulk)" --> StgDoc[("zbapi_stg_doc")]
+    Dispatcher -- "INSERT ... FROM TABLE (bulk)" --> StgItem[("zbapi_stg_item")]
+    Handler    -- "MODIFY ENTITY CREATE<br/>(audit row)" --> Audit[("zbapi_stg_run")]
+
+    Dispatcher -- "202 Accepted<br/>{ RunUuid / BapiName / Accepted / Workers }" --> Client
+
+    Dispatcher -- "CALL FUNCTION STARTING NEW TASK<br/>iv_run_uuid + iv_doc_from + iv_doc_to" --> W1["Z_BAPI_STG_WORKER<br/>range 1"]
+    Dispatcher --> W2["Z_BAPI_STG_WORKER<br/>range 2"]
+    Dispatcher --> Wn["Z_BAPI_STG_WORKER<br/>range N"]
+
+    W1 --> Caller1["zcl_bapi_stg_caller<br/>process_range (SELECT + rehydrate)"]
+    W2 --> Caller2["zcl_bapi_stg_caller<br/>process_range"]
+    Wn --> CallerN["zcl_bapi_stg_caller<br/>process_range"]
+
+    Caller1 -- "SELECT ... WHERE run_uuid = ? AND doc_seq BETWEEN ?" --> StgItem
+    Caller2 --> StgItem
+    CallerN --> StgItem
+
+    subgraph PerDoc["Per document"]
+        direction TB
+        Introspect["FUNCTION_IMPORT_INTERFACE + RTTI"]
+        Map["Dynamic ASSIGN COMPONENT"]
+        Call["CALL FUNCTION bapi"]
+        CommitDecision{"RETURN has<br/>E / A / X?"}
+        Commit["BAPI_TRANSACTION_COMMIT"]
+        Rollback["BAPI_TRANSACTION_ROLLBACK"]
+
+        Introspect --> Map --> Call --> CommitDecision
+        CommitDecision -- "no"  --> Commit
+        CommitDecision -- "yes" --> Rollback
+    end
+
+    Caller1 --> PerDoc
+    Caller2 --> PerDoc
+    CallerN --> PerDoc

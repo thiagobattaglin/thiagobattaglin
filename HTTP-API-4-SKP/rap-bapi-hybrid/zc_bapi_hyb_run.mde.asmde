@@ -1,0 +1,27 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo: { typeName:        'BAPI Hybrid Run',
+                  typeNamePlural:  'BAPI Hybrid Runs',
+                  title:           { type: #STANDARD, value: 'BapiName' },
+                  description:     { type: #STANDARD, value: 'Status'   } }
+
+annotate entity ZC_BAPI_HYB_RUN with
+{
+  @UI.hidden: true
+  RunUuid;
+
+  @UI: { lineItem:       [ { position: 10, importance: #HIGH },
+                           { type: #FOR_ACTION, dataAction: 'Submit', label: 'Submit BAPI Run' } ],
+         identification: [ { position: 10 } ],
+         selectionField: [ { position: 10 } ] }
+  BapiName;
+
+  @UI: { lineItem: [ { position: 20 } ], identification: [ { position: 20 } ] }
+  ExecMode;
+
+  @UI: { lineItem: [ { position: 25 } ], identification: [ { position: 25 } ] }
+  Kind;
+
+  @UI: { lineItem: [ { position: 30 } ], identification: [ { position: 30 } ] }
+  Status;
+}

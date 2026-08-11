@@ -1,0 +1,31 @@
+{
+  "mode": "async",
+  "kind": "bulk",
+  "bapi_name": "BAPI_PO_CREATE1",
+  "worker_threads": 4,
+  "worker_rows": 100,
+  "documents": [
+    {
+      "heders_values": [
+        {
+          "value": "POHEADER",
+          "fields": [
+            { "name": "DOC_TYPE",  "value": "NB" },
+            { "name": "VENDOR",    "value": "0000100000" },
+            { "name": "PURCH_ORG", "value": "1000" }
+          ]
+        }
+      ],
+      "items_values": [
+        {
+          "value": "POITEM",
+          "fields": [
+            { "name": "PO_ITEM",  "value": "00010" },
+            { "name": "MATERIAL", "value": "MAT-001" },
+            { "name": "QUANTITY", "value": "10" }
+          ]
+        }
+      ]
+    }
+  ]
+}

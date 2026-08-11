@@ -1,0 +1,54 @@
+managed implementation in class zbp_r_bapi_run unique;
+strict ( 2 );
+
+/*
+ *  BO ZR_BAPI_RUN - Dyn BAPI Runner
+ *  Audit/monitoring for dynamic BAPI executions.
+ *  Contains static action Submit exposed in ODATA V4.
+ */
+define behavior for ZR_BAPI_RUN alias BapiRun
+persistent table zbapi_run
+lock master
+authorization master ( global )
+etag master LocalLastChangedAt
+{
+  field ( readonly, numbering : managed ) RunUuid;
+
+  field ( readonly ) BapiName, ExecMode,
+                     WorkerThreads, WorkerRows,
+                     Accepted, Workers,
+                     Status, ErrorText,
+                     CreatedBy, CreatedAt,
+                     LastChangedBy, LastChangedAt, LocalLastChangedAt;
+
+  create;
+  update;
+  delete;
+
+  // --------------------------------------------------------------------
+  //  Static action - public service entrypoint.
+  //  POST /BapiRun/com.sap...Submit  {"Payload": "<escaped JSON>"}
+  //  Response: { RunUuid, BapiName, Accepted, Workers, ExecMode }
+  // --------------------------------------------------------------------
+  static action Submit
+    parameter ZD_BAPI_SUBMIT_IN
+    result    [1] ZD_BAPI_SUBMIT_OUT;
+
+  mapping for zbapi_run
+  {
+    RunUuid            = run_uuid;
+    BapiName           = bapi_name;
+    ExecMode           = exec_mode;
+    WorkerThreads      = worker_threads;
+    WorkerRows         = worker_rows;
+    Accepted           = accepted;
+    Workers            = workers;
+    Status             = status;
+    ErrorText          = error_text;
+    CreatedBy          = created_by;
+    CreatedAt          = created_at;
+    LastChangedBy      = last_changed_by;
+    LastChangedAt      = last_changed_at;
+    LocalLastChangedAt = local_last_changed_at;
+  }
+}

@@ -1,0 +1,5 @@
+@EndUserText.label: 'Streaming BAPI Runner - Service'
+
+define service ZUI_BAPI_STREAM_RUN_O4 {
+  expose ZC_BAPI_STREAM_RUN as BapiRun;
+}

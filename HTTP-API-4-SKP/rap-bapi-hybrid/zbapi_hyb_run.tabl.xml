@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Transparent table ZBAPI_HYB_RUN - audit for hybrid dispatcher.
+  Timestamps use UTCLONG (released for cloud) instead of DEC 21,7.
+-->
+<mx:abapSource xmlns:mx="http://www.sap.com/abapxml">
+  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+    <asx:values>
+      <TABL>
+        <NAME>ZBAPI_HYB_RUN</NAME>
+        <DESCRIPTION>Dyn BAPI Hybrid Runner - Log</DESCRIPTION>
+        <DELIVERY_CLASS>A</DELIVERY_CLASS>
+        <TABLE_CATEGORY>TRANSP</TABLE_CATEGORY>
+
+        <FIELDS>
+          <FIELD NAME="CLIENT"   KEY="X" DATATYPE="CLNT" LENGTH="3"  NOTNULL="X" DESCRIPTION="Client"/>
+          <FIELD NAME="RUN_UUID" KEY="X" DATATYPE="RAW"  LENGTH="16" NOTNULL="X" DESCRIPTION="Execution UUID"/>
+
+          <FIELD NAME="BAPI_NAME"      DATATYPE="CHAR" LENGTH="30"  DESCRIPTION="BAPI/FM name"/>
+          <FIELD NAME="EXEC_MODE"      DATATYPE="CHAR" LENGTH="10"  DESCRIPTION="async / sync"/>
+          <FIELD NAME="KIND"           DATATYPE="CHAR" LENGTH="10"  DESCRIPTION="chunk / bulk"/>
+          <FIELD NAME="WORKER_THREADS" DATATYPE="INT4" LENGTH="10"  DESCRIPTION="Requested worker threads"/>
+          <FIELD NAME="WORKER_ROWS"    DATATYPE="INT4" LENGTH="10"  DESCRIPTION="Documents per worker"/>
+          <FIELD NAME="ACCEPTED"       DATATYPE="INT4" LENGTH="10"  DESCRIPTION="Accepted documents"/>
+          <FIELD NAME="WORKERS"        DATATYPE="INT4" LENGTH="10"  DESCRIPTION="Effective workers"/>
+          <FIELD NAME="STATUS"         DATATYPE="CHAR" LENGTH="10"  DESCRIPTION="QUEUED/DISPATCHED/FAILED"/>
+          <FIELD NAME="ERROR_TEXT"     DATATYPE="CHAR" LENGTH="220" DESCRIPTION="Error message"/>
+
+          <FIELD NAME="CREATED_BY"      DATATYPE="CHAR"    LENGTH="12" DESCRIPTION="Created by"/>
+          <FIELD NAME="CREATED_AT"      DATATYPE="UTCLONG" LENGTH="11" DESCRIPTION="Created at"/>
+          <FIELD NAME="LAST_CHANGED_BY" DATATYPE="CHAR"    LENGTH="12" DESCRIPTION="Changed by"/>
+          <FIELD NAME="LAST_CHANGED_AT" DATATYPE="UTCLONG" LENGTH="11" DESCRIPTION="Changed at"/>
+          <FIELD NAME="LOCAL_LAST_CHANGED_AT" DATATYPE="UTCLONG" LENGTH="11" DESCRIPTION="Optimistic locking"/>
+        </FIELDS>
+      </TABL>
+    </asx:values>
+  </asx:abap>
+</mx:abapSource>

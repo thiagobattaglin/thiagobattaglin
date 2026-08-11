@@ -1,0 +1,5 @@
+@EndUserText.label: 'CTF BAPI Runner - Service'
+
+define service ZUI_BAPI_CTF_RUN_O4 {
+  expose ZC_BAPI_CTF_RUN as BapiRun;
+}

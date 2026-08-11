@@ -1,0 +1,74 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo: { typeName:        'BAPI Run',
+                  typeNamePlural:  'BAPI Runs',
+                  title:           { type: #STANDARD, value: 'BapiName' },
+                  description:     { type: #STANDARD, value: 'Status'   } }
+
+annotate entity ZC_BAPI_RUN with
+{
+  @UI.facet: [
+    { id:       'General',
+      purpose:  #STANDARD,
+      type:     #IDENTIFICATION_REFERENCE,
+      label:    'General Information',
+      position: 10 },
+    { id:       'Stats',
+      purpose:  #STANDARD,
+      type:     #FIELDGROUP_REFERENCE,
+      label:    'Execution Stats',
+      position: 20,
+      targetQualifier: 'Stats' },
+    { id:       'Admin',
+      purpose:  #STANDARD,
+      type:     #FIELDGROUP_REFERENCE,
+      label:    'Administrative',
+      position: 30,
+      targetQualifier: 'Admin' }
+  ]
+
+  @UI.hidden: true
+  RunUuid;
+
+  @UI: { lineItem:       [ { position: 10, importance: #HIGH },
+                           { type: #FOR_ACTION, dataAction: 'Submit', label: 'Submit BAPI Run' } ],
+         identification: [ { position: 10 } ],
+         selectionField: [ { position: 10 } ] }
+  BapiName;
+
+  @UI: { lineItem:       [ { position: 20, importance: #HIGH } ],
+         identification: [ { position: 20 } ],
+         selectionField: [ { position: 20 } ] }
+  ExecMode;
+
+  @UI: { lineItem:       [ { position: 30 } ],
+         identification: [ { position: 30 } ] }
+  Status;
+
+  @UI: { fieldGroup: [ { qualifier: 'Stats', position: 10 } ] }
+  WorkerThreads;
+
+  @UI: { fieldGroup: [ { qualifier: 'Stats', position: 20 } ] }
+  WorkerRows;
+
+  @UI: { fieldGroup: [ { qualifier: 'Stats', position: 30 } ] }
+  Accepted;
+
+  @UI: { fieldGroup: [ { qualifier: 'Stats', position: 40 } ] }
+  Workers;
+
+  @UI: { fieldGroup: [ { qualifier: 'Stats', position: 50 } ] }
+  ErrorText;
+
+  @UI: { fieldGroup: [ { qualifier: 'Admin', position: 10 } ] }
+  CreatedBy;
+
+  @UI: { fieldGroup: [ { qualifier: 'Admin', position: 20 } ] }
+  CreatedAt;
+
+  @UI: { fieldGroup: [ { qualifier: 'Admin', position: 30 } ] }
+  LastChangedBy;
+
+  @UI: { fieldGroup: [ { qualifier: 'Admin', position: 40 } ] }
+  LastChangedAt;
+}

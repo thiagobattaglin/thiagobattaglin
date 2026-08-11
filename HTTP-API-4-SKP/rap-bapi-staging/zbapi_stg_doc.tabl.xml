@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Transparent table ZBAPI_STG_DOC - staging (1 row per document).
+  Written in bulk by dispatcher, read by workers via RunUuid + doc_seq range.
+-->
+<mx:abapSource xmlns:mx="http://www.sap.com/abapxml">
+  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+    <asx:values>
+      <TABL>
+        <NAME>ZBAPI_STG_DOC</NAME>
+        <DESCRIPTION>Dyn BAPI Staging - Documents</DESCRIPTION>
+        <DELIVERY_CLASS>A</DELIVERY_CLASS>
+        <TABLE_CATEGORY>TRANSP</TABLE_CATEGORY>
+
+        <FIELDS>
+          <FIELD NAME="CLIENT"   KEY="X" DATATYPE="CLNT" LENGTH="3"  NOTNULL="X" DESCRIPTION="Client"/>
+          <FIELD NAME="RUN_UUID" KEY="X" DATATYPE="RAW"  LENGTH="16" NOTNULL="X" DESCRIPTION="Execution UUID"/>
+          <FIELD NAME="DOC_SEQ"  KEY="X" DATATYPE="INT4" LENGTH="10" NOTNULL="X" DESCRIPTION="Document sequence"/>
+        </FIELDS>
+      </TABL>
+    </asx:values>
+  </asx:abap>
+</mx:abapSource>

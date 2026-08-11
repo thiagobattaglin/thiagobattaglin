@@ -1,0 +1,31 @@
+%%{ init: { "flowchart": { "htmlLabels": true } } }%%
+flowchart LR
+    Client([HTTP Client]) -- "POST JSON" --> Handler["zcl_http_bapi_dyn<br/>if_http_service_extension"]
+    Handler --> Dispatcher["zcl_bapi_dyn_dispatcher<br/>parse - defaults - split"]
+    Dispatcher -- "202 Accepted<br/>bapi_name / accepted / workers / mode" --> Client
+
+    Dispatcher -- "CALL FUNCTION STARTING NEW TASK<br/>DESTINATION IN GROUP DEFAULT" --> W1["Z_BAPI_DYN_WORKER<br/>chunk 1"]
+    Dispatcher --> W2["Z_BAPI_DYN_WORKER<br/>chunk 2"]
+    Dispatcher --> Wn["Z_BAPI_DYN_WORKER<br/>chunk N"]
+
+    W1 --> Caller1["zcl_bapi_dyn_caller<br/>process_chunk"]
+    W2 --> Caller2["zcl_bapi_dyn_caller<br/>process_chunk"]
+    Wn --> CallerN["zcl_bapi_dyn_caller<br/>process_chunk"]
+
+    subgraph PerDoc["Per document"]
+        direction TB
+        Introspect["FUNCTION_IMPORT_INTERFACE<br/>+ RTTI describe_by_name"]
+        Map["Dynamic mapping<br/>ASSIGN COMPONENT"]
+        Call["CALL FUNCTION bapi<br/>PARAMETER-TABLES / TABLES-TABLES"]
+        CommitDecision{"RETURN has<br/>E / A / X?"}
+        Commit["BAPI_TRANSACTION_COMMIT"]
+        Rollback["BAPI_TRANSACTION_ROLLBACK"]
+
+        Introspect --> Map --> Call --> CommitDecision
+        CommitDecision -- "no" --> Commit
+        CommitDecision -- "yes" --> Rollback
+    end
+
+    Caller1 --> PerDoc
+    Caller2 --> PerDoc
+    CallerN --> PerDoc
