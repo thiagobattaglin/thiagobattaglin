@@ -1,0 +1,40 @@
+%%{ init: { "flowchart": { "htmlLabels": true } } }%%
+flowchart LR
+    Client([HTTP Client]) -- "POST JSON" --> Handler["zcl_http_bapi_hyb<br/>if_http_service_extension"]
+
+    Handler -- "delegate" --> Dispatcher["zcl_http_bapi_hyb_dispatcher"]
+
+    Dispatcher -- "parse_header<br/>(CTF id on header-only substring)" --> Header[/"ty_header<br/>bapi_name / mode / kind / threads / rows"/]
+
+    Dispatcher -- "kind = chunk<br/>forward as 1 chunk" --> Chunk1[chunk 1]
+    Dispatcher -- "kind = bulk<br/>lexical split O(strlen)" --> Splitter["zcl_http_bapi_hyb_lex_splitter"]
+    Splitter --> ChunkN[chunk N]
+
+    Dispatcher -- "200 OK (sync)<br/>202 Accepted (async)<br/>bapi_name / accepted / workers / mode / kind" --> Client
+
+    Chunk1 --> Route{"mode?"}
+    ChunkN --> Route
+
+    Route -- "async" --> Task["CALL FUNCTION Z_HTTP_BAPI_HYB_WORKER<br/>STARTING NEW TASK<br/>DESTINATION IN GROUP DEFAULT"]
+    Route -- "sync"  --> Inline["inline call"]
+
+    Task   --> Caller["zcl_http_bapi_hyb_caller<br/>process_chunk_json"]
+    Inline --> Caller
+
+    Caller -- "CTF id + cl_sxml_string_reader<br/>(kernel, released)" --> Docs["ty_documents"]
+
+    subgraph PerDoc["Per document"]
+        direction TB
+        Introspect["FUNCTION_IMPORT_INTERFACE + RTTI"]
+        Map["Dynamic ASSIGN COMPONENT"]
+        Call["CALL FUNCTION bapi_name<br/>PARAMETER-TABLE / EXCEPTION-TABLE"]
+        CommitDecision{"RETURN has<br/>E / A / X?"}
+        Commit["BAPI_TRANSACTION_COMMIT"]
+        Rollback["BAPI_TRANSACTION_ROLLBACK"]
+
+        Introspect --> Map --> Call --> CommitDecision
+        CommitDecision -- "no"  --> Commit
+        CommitDecision -- "yes" --> Rollback
+    end
+
+    Docs --> PerDoc
