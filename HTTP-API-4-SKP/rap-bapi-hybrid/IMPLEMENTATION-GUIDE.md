@@ -54,7 +54,7 @@ por **bgPF** e usa exclusivamente o **parser kernel CTF** — não usa
 | Split de `documents[]` | loop completo via RTTI | **lexical O(strlen)** (`zcl_bapi_hyb_lex_splitter`) |
 | Timestamps | `DEC 21,7` | **`UTCLONG`** |
 | Worker FM | Function Group + `STARTING NEW TASK` | **`zcl_bapi_hyb_worker_op`** (`if_bgmc_op_single_tx_uncontrolled`) |
-| GET metadata | ausente | **`static function GetMetadata`** |
+| GET metadata | ausente | **`static function GetMetadata parameter ZD_BAPI_HYB_META_IN`** (introspecção dinâmica via `FUNCTION_IMPORT_INTERFACE` + `DDIF_FIELDINFO_GET`) |
 
 Não há Function Group nem Function Module no projeto hybrid.
 
@@ -64,18 +64,20 @@ Não há Function Group nem Function Module no projeto hybrid.
 
 ```
 ZBAPI_HYB_RUN (tabela)
-  └─► ZD_BAPI_HYB_IN / ZD_BAPI_HYB_OUT / ZD_BAPI_HYB_META  (abstract entities)
+  └─► ZD_BAPI_HYB_IN / ZD_BAPI_HYB_OUT /
+      ZD_BAPI_HYB_META_IN / ZD_BAPI_HYB_META            (abstract entities)
         └─► ZR_BAPI_HYB_RUN (CDS root)
               └─► ZC_BAPI_HYB_RUN (CDS projection)
                     └─► ZC_BAPI_HYB_RUN (metadata extension)
                           └─► ZR_BAPI_HYB_RUN.bdef + ZC_BAPI_HYB_RUN.bdef (behavior definitions)
-                                └─► ZCL_BAPI_HYB_JSON_PARSER   (parser kernel CTF)
+                                └─► ZCL_BAPI_HYB_JSON_PARSER    (parser kernel CTF)
                                       └─► ZCL_BAPI_HYB_LEX_SPLITTER  (split lexical)
                                             └─► ZCL_BAPI_HYB_DISPATCHER (dispatcher + bgPF)
-                                                  └─► ZCL_BAPI_HYB_CALLER   (caller BAPI)
-                                                        └─► ZCL_BAPI_HYB_WORKER_OP (bgPF operation)
-                                                              └─► ZBP_R_BAPI_HYB_RUN (behavior pool)
-                                                                    └─► ZUI_BAPI_HYB_RUN_O4 (srvd + srvb)
+                                                  └─► ZCL_BAPI_HYB_CALLER      (caller BAPI)
+                                                        └─► ZCL_BAPI_HYB_WORKER_OP    (bgPF operation)
+                                                              └─► ZCL_BAPI_HYB_META_BUILDER (introspecção BAPI → JSON)
+                                                                    └─► ZBP_R_BAPI_HYB_RUN (behavior pool)
+                                                                          └─► ZUI_BAPI_HYB_RUN_O4 (srvd + srvb)
 ```
 
 Ativar sempre de baixo para cima.
@@ -128,16 +130,23 @@ Delivery class `A`, Enhancement Category *Can Be Enhanced (Deep)*. Ativar.
 
 ADT → New Data Definition → selecionar template *Abstract Entity*.
 
-| Objeto | Arquivo fonte |
-|---|---|
-| `ZD_BAPI_HYB_IN` | [`zd_bapi_hyb_in.ddls.asddls`](./zd_bapi_hyb_in.ddls.asddls) |
-| `ZD_BAPI_HYB_OUT` | [`zd_bapi_hyb_out.ddls.asddls`](./zd_bapi_hyb_out.ddls.asddls) |
-| `ZD_BAPI_HYB_META` | [`zd_bapi_hyb_meta.ddls.asddls`](./zd_bapi_hyb_meta.ddls.asddls) |
+| Objeto | Papel | Arquivo fonte |
+|---|---|---|
+| `ZD_BAPI_HYB_IN` | Parâmetro da action `Submit` (Payload JSON) | [`zd_bapi_hyb_in.ddls.asddls`](./zd_bapi_hyb_in.ddls.asddls) |
+| `ZD_BAPI_HYB_OUT` | Resultado da action `Submit` | [`zd_bapi_hyb_out.ddls.asddls`](./zd_bapi_hyb_out.ddls.asddls) |
+| `ZD_BAPI_HYB_META_IN` | Parâmetro da function `GetMetadata` (`BapiName`) | [`zd_bapi_hyb_meta_in.ddls.asddls`](./zd_bapi_hyb_meta_in.ddls.asddls) |
+| `ZD_BAPI_HYB_META` | Linha do resultado `[0..*]` de `GetMetadata` — 1 registro por campo DDIC (`BapiName`, `Section`, `ParamName`, `FieldName`, `DocumentIdx`, `ParamOrder`, `FieldOrder`, `FieldType`) | [`zd_bapi_hyb_meta.ddls.asddls`](./zd_bapi_hyb_meta.ddls.asddls) |
 
-Ativar as três antes de continuar.
+Ativar todas antes de continuar.
 
-> `ZD_BAPI_HYB_META` é o tipo de retorno da **static function `GetMetadata`**
-> (GET-callable). Sem ela o behavior definition não ativa.
+> `ZD_BAPI_HYB_META_IN` é declarada como `define root abstract entity` para
+> ser aceita como `parameter` de function no BDEF. Sem ela, o BDEF acusa
+> `parameter type not found` e o behavior pool não compila.
+>
+> `ZD_BAPI_HYB_META` é a linha da coleção OData retornada por
+> `GetMetadata`. `Section = 'H'` mapeia para `heders_values` (IMPORT com
+> estrutura DDIC); `Section = 'I'` mapeia para `items_values` (TABLES).
+> Nenhum campo do tipo `string` com JSON escapado é usado.
 
 ---
 
@@ -163,10 +172,18 @@ Ativar as três antes de continuar.
    Colar [`zc_bapi_hyb_run.bdef.asbdef`](./zc_bapi_hyb_run.bdef.asbdef). Ativar.
 
 O bdef raiz declara:
-- `static action Submit` → POST (modificação) → parâmetro `ZD_BAPI_HYB_IN`, resultado `ZD_BAPI_HYB_OUT`
-- `static function GetMetadata` → GET (leitura) → resultado `ZD_BAPI_HYB_META`
+- `static action Submit` → POST (modificação) → parâmetro `ZD_BAPI_HYB_IN`, resultado `[1] ZD_BAPI_HYB_OUT`
+- `static function GetMetadata` → GET (leitura, com input) → parâmetro `ZD_BAPI_HYB_META_IN` (`BapiName`), resultado `[0..*] ZD_BAPI_HYB_META`
 
 A projeção usa `use action Submit` e `use function GetMetadata`.
+
+> **Ordem de ativação obrigatória** (evita o erro *`<KEY> does not have a
+> component called %PARAM-BAPINAME`* no behavior pool):
+> 1. Ativar `ZD_BAPI_HYB_META_IN` primeiro;
+> 2. Ativar `ZR_BAPI_HYB_RUN.bdef` — regenera o tipo derivado de `keys`
+>    com `%param-BapiName`;
+> 3. Ativar `ZC_BAPI_HYB_RUN.bdef`;
+> 4. Só então ativar o behavior pool `ZBP_R_BAPI_HYB_RUN`.
 
 A raiz vai reclamar que `zbp_r_bapi_hyb_run` ainda não existe — **normal**, será criada no próximo passo.
 
@@ -182,9 +199,10 @@ A raiz vai reclamar que `zbp_r_bapi_hyb_run` ainda não existe — **normal**, s
 
 O handler `lhc_bapi_hyb_run` implementa:
 - `submit FOR MODIFY ... FOR ACTION BapiRun~Submit` — POST
-- `get_metadata FOR READ ... FOR FUNCTION BapiRun~GetMetadata` — GET
+- `get_metadata FOR READ ... FOR FUNCTION BapiRun~GetMetadata` — GET (com `BapiName` no `%param`), itera sobre `zcl_bapi_hyb_meta_builder->build( )` e faz `APPEND` de uma linha por campo em `result`
 
-**Ainda não ativar** — depende das classes auxiliares abaixo.
+**Ainda não ativar** — depende das classes auxiliares abaixo, incluindo
+`ZCL_BAPI_HYB_META_BUILDER`.
 
 ---
 
@@ -244,6 +262,55 @@ instancia `zcl_bapi_hyb_caller` e processa o chunk.
 
 Atualmente o dispatcher chama `execute()` diretamente (síncrono) para
 evitar a dependência do release.
+
+### 10.6 `ZCL_BAPI_HYB_META_BUILDER`
+
+[`zcl_bapi_hyb_meta_builder.clas.abap`](./zcl_bapi_hyb_meta_builder.clas.abap)
+
+Retorna a metadata da BAPI como **tabela ABAP tipada** (não serializa
+JSON). Cada linha representa um campo DDIC pronto para ser exposto como
+linha da coleção OData `[0..*] ZD_BAPI_HYB_META`.
+
+Assinatura pública:
+
+```abap
+TYPES:
+  BEGIN OF ty_row,
+    bapi_name    TYPE c LENGTH 30,
+    section      TYPE c LENGTH 1,     " 'H' | 'I'
+    param_name   TYPE c LENGTH 30,
+    field_name   TYPE c LENGTH 30,
+    document_idx TYPE i,
+    param_order  TYPE i,
+    field_order  TYPE i,
+    field_type   TYPE c LENGTH 30,
+  END OF ty_row,
+  tt_rows TYPE STANDARD TABLE OF ty_row WITH EMPTY KEY.
+
+METHODS build
+  IMPORTING iv_bapi_name   TYPE csequence
+  RETURNING VALUE(rt_rows) TYPE tt_rows
+  RAISING   cx_static_check.
+```
+
+Fluxo interno do método `build( iv_bapi_name )`:
+
+1. `FUNCTION_EXISTS` valida se a BAPI existe.
+2. `FUNCTION_IMPORT_INTERFACE` retorna a assinatura (IMPORT, TABLES, ...).
+3. Cada parâmetro IMPORT tipado em estrutura DDIC vira linhas com
+   `section = 'H'` e `param_name = <nome do parâmetro>`.
+4. Cada parâmetro TABLES vira linhas com `section = 'I'` — o line type
+   da tabela é a estrutura DDIC introspectada.
+5. `DDIF_FIELDINFO_GET` retorna os campos de cada estrutura; o método
+   `map_type` converte DDIC datatype/length/decimals em `char2`,
+   `numc10`, `dec13.2`, `string`, etc.
+
+Não há mais montagem manual de JSON nem escape com `e_json_string`.
+A serialização OData é feita pelo framework RAP.
+
+> **Clean Core:** `FUNCTION_IMPORT_INTERFACE` e `DDIF_FIELDINFO_GET` não
+> são released para ABAP Cloud. Este helper é para on-premise / embedded
+> Steampunk / private cloud — mesma restrição do `zcl_bapi_hyb_caller`.
 
 Após ativar todas as classes, **ativar** `ZBP_R_BAPI_HYB_RUN`.
 
@@ -338,31 +405,37 @@ cobrem:
 Botão *Preview* no editor do Service Binding → Fiori Launchpad com
 List Report da entidade `BapiRun`.
 
-### 14.3 GET metadata
+### 14.3 GET metadata (com parâmetro BAPI)
+
+`GetMetadata` é uma `static function` com `result [0..*] ZD_BAPI_HYB_META`.
+O parâmetro `BapiName` vai **na URL**, entre parênteses, e a chamada é
+`GET` — sem body, sem `Content-Type`, sem CSRF token.
 
 ```http
-GET /sap/opu/odata4/sap/zui_bapi_hyb_run_o4/srvd_a2x/sap/zui_bapi_hyb_run_o4/0001/BapiRun/com.sap.gateway.srvd_a2x.zui_bapi_hyb_run_o4.v0001.GetMetadata()
+GET /sap/opu/odata4/sap/zui_bapi_hyb_run_o4/srvd_a2x/sap/zui_bapi_hyb_run_o4/0001/BapiRun/com.sap.gateway.srvd_a2x.zui_bapi_hyb_run_o4.v0001.GetMetadata(BapiName='BAPI_PO_CREATE1')
+Accept: application/json
+Authorization: Basic <credenciais>
 ```
 
-Resposta esperada:
+Resposta esperada — coleção OData estruturada, uma linha por campo
+DDIC (nada mais é `Edm.String` com JSON escapado):
 
 ```json
 {
-  "value": [{
-    "ServiceName":    "ZUI_BAPI_HYB_RUN_O4",
-    "ServiceVersion": "0001",
-    "OdataVersion":   "V4",
-    "Endpoint":       "/sap/opu/odata4/sap/zui_bapi_hyb_run_o4/...",
-    "DispatchEngine": "bgPF",
-    "DefaultWorkers": 4,
-    "DefaultRows":    100,
-    "SupportedKinds": "chunk|bulk",
-    "SupportedModes": "async|sync",
-    "PayloadFormat":  "JSON: { bapi_name, mode, kind, worker_threads, worker_rows, documents:[...] }",
-    "Description":    "Hybrid BAPI Runner - streaming header parse, lexical split, bgPF dispatch, kernel CTF worker deserialize."
-  }]
+  "value": [
+    { "BapiName": "BAPI_PO_CREATE1", "Section": "H", "ParamName": "POHEADER", "FieldName": "DOC_TYPE", "FieldType": "char4",  "DocumentIdx": 1, "ParamOrder": 1, "FieldOrder": 1 },
+    { "BapiName": "BAPI_PO_CREATE1", "Section": "H", "ParamName": "POHEADER", "FieldName": "VENDOR",   "FieldType": "char10", "DocumentIdx": 1, "ParamOrder": 1, "FieldOrder": 2 },
+    { "BapiName": "BAPI_PO_CREATE1", "Section": "I", "ParamName": "POITEM",   "FieldName": "PO_ITEM",  "FieldType": "numc5",  "DocumentIdx": 1, "ParamOrder": 1, "FieldOrder": 1 }
+  ]
 }
 ```
+
+`Section = 'H'` → `heders_values` (IMPORT). `Section = 'I'` → `items_values`
+(TABLES). Para reconstruir o formato aninhado do [`input.json`](./input.json),
+agrupe as linhas por `Section` + `ParamName` no cliente.
+
+Se a BAPI não existir, a resposta traz `"value": []` (o handler engole
+`cx_root` e devolve coleção vazia).
 
 ### 14.4 POST submit (Postman / curl)
 
@@ -428,8 +501,12 @@ jq -c '.' input.json | jq -Rs '{ "Payload": . }'
 |---|---|---|
 | `Action Submit not found` | Binding não republicado após alterar bdef | Reativar/Publish o Service Binding |
 | `Function GetMetadata not found` | `use function GetMetadata` ausente no bdef de projeção | Verificar `zc_bapi_hyb_run.bdef.asbdef` |
+| `<KEY> does not have a component called %PARAM-BAPINAME` | Behavior pool compilado antes de `ZD_BAPI_HYB_META_IN` / novo BDEF | Ativar na ordem: entidade → BDEF raiz → BDEF projeção → behavior pool. Se persistir, *Project → Clean* no Eclipse |
+| `parameter type ZD_BAPI_HYB_META_IN not found` | Entidade de parâmetro não ativa ou não é `root abstract entity` | Ativar `ZD_BAPI_HYB_META_IN` como `define root abstract entity` |
 | `Payload is empty` | Client enviou objeto, não string | Serializar `Payload` como string escapada |
 | `bapi_name is mandatory` | JSON interno não contém `bapi_name` | Validar payload antes de chamar |
+| `GetMetadata` devolve `"value": []` | BAPI não existe, não é RFC-enabled ou introspecção falhou | Verificar `SE37` / `SM59` — `FUNCTION_EXISTS` / `FUNCTION_IMPORT_INTERFACE` falharam |
+| `GetMetadata` devolve poucas linhas (só `Section='I'` ou só `'H'`) | BAPI só tem parâmetros escalares para o outro lado | Comportamento esperado — a introspecção só inclui IMPORT/TABLES tipados em estrutura DDIC |
 | `cx_transformation_error` no parser | JSON malformado ou encoding errado | Validar com `jq .` antes de enviar |
 | Processo bgPF não executa | `save_for_execution` sem `COMMIT WORK` | O commit é feito pelo framework RAP ao final do save; não adicionar `COMMIT WORK` manual |
 | Worker falha silenciosamente | Exceção `cx_root` capturada no `execute()` | Adicionar log via `cl_bali_log` dentro do `catch` do worker |

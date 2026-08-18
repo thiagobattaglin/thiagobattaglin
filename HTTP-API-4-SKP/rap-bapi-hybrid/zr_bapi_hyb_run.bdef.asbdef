@@ -25,7 +25,8 @@ etag master LocalLastChangedAt
     result    [1] ZD_BAPI_HYB_OUT;
 
   static function GetMetadata
-    result [1] ZD_BAPI_HYB_META;
+    parameter ZD_BAPI_HYB_META_IN
+    result    [0..*] ZD_BAPI_HYB_META;
 
   mapping for zbapi_hyb_run
   {

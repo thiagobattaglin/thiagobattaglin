@@ -1,0 +1,43 @@
+{
+  "bapi_name": "BAPI_PO_CREATE1",
+  "documents": [
+    {
+      "headers_values": [
+        {
+          "value": "POHEADER",
+          "fields": [
+            { "name": "DOC_TYPE",  "type": "char2" },
+            { "name": "VENDOR",    "type": "char10" },
+            { "name": "PURCH_ORG", "type": "char4" }
+          ]
+        },
+        {
+          "value": "Structures",
+          "fields": [
+            { "name": "fildename1",  "type": "char2" },
+            { "name": "fildename2",  "type": "int4" },
+            { "name": "fildename3",  "type": "char4" }
+          ]
+        }
+      ],
+      "items_values": [
+        {
+          "value": "POITEM",
+          "fields": [
+            { "name": "PO_ITEM",  "type": "char5" },
+            { "name": "MATERIAL", "type": "char10" },
+            { "name": "QUANTITY", "type": "num10" }
+          ]
+        },
+        {
+          "value": "Tables",
+          "fields": [
+            { "name": "fildename1",  "type": "char2" },
+            { "name": "fildename2",  "type": "int4" },
+            { "name": "fildename3",  "type": "char4" }
+          ]
+        }
+      ]
+    }
+  ]
+}

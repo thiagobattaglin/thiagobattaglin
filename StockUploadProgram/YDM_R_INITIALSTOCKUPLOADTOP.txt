@@ -1,0 +1,98 @@
+*&---------------------------------------------------------------------*
+*& Include /SCWM/R_INITIALSTOCKUPLOADTOP
+*&
+*&---------------------------------------------------------------------*
+
+REPORT   /scwm/r_initialstockupload MESSAGE-ID /scwm/stock_upload.
+
+TYPE-POOLS: wmegc.
+TYPES:
+  BEGIN OF ty_matnr,
+    matnr TYPE char40,
+    matid TYPE /scwm/de_matid,
+    hutyp TYPE /scwm/de_hutyp,
+  END OF ty_matnr,
+
+  tty_matnr TYPE TABLE OF ty_matnr,
+
+  BEGIN OF ty_unit,
+    matid TYPE /scwm/de_matid,
+    unit  TYPE char3,
+    meins TYPE /scwm/de_base_uom,
+  END OF ty_unit,
+
+  tty_unit TYPE TABLE OF ty_unit,
+
+  BEGIN OF ty_cwrel,
+    matid TYPE /scwm/de_matid,
+    cwrel TYPE /scwm/de_cwrel,
+  END OF ty_cwrel,
+
+  tty_cwrel TYPE TABLE OF ty_cwrel,
+
+  BEGIN OF ty_packedhu,
+    huident  TYPE /scwm/de_huident,
+    guid_hu  TYPE guid,
+    huidreal TYPE /scwm/de_huident,
+    top      TYPE xfeld,
+  END OF ty_packedhu,
+
+  tty_packedhu TYPE SORTED TABLE OF ty_packedhu
+               WITH UNIQUE KEY huident guid_hu,
+
+  BEGIN OF ty_hu2pack,
+    parhuident TYPE /scwm/de_huident,
+    huident    TYPE /scwm/de_huident,
+    tophuident TYPE /scwm/de_huident,
+  END OF ty_hu2pack,
+
+  tty_hu2pack TYPE TABLE OF ty_hu2pack,
+
+  BEGIN OF ty_serids,
+    serid TYPE /scwm/de_serid,
+    uii   TYPE /scwm/de_uii,
+  END OF ty_serids,
+  tty_serids TYPE STANDARD TABLE OF ty_serids
+                  WITH DEFAULT KEY.
+TYPES: BEGIN OF ty_output_data,
+         icon    TYPE char4,
+         msgty   TYPE symsgty,
+         message TYPE string,
+       END OF ty_output_data,
+       tty_output TYPE TABLE OF ty_output_data.
+DATA: r_alv       TYPE REF TO cl_gui_alv_grid.
+DATA: r_container TYPE REF TO cl_gui_custom_container.
+
+* Dynpro 100 fields
+DATA: g_show_data TYPE xfeld VALUE 'X',
+      g_file(255),
+      g_sep(1),
+      g_log_file  TYPE xfeld,
+      g_pc_file   TYPE xfeld VALUE 'X',
+      g_no_erp    TYPE /scwm/de_no_erp_post,
+      g_postno    TYPE char4 VALUE '50',
+      g_l_file    TYPE fileintern.
+TABLES: /scwm/s_t300t,
+        /scwm/ordim_c.
+
+DATA: gt_stock_out    TYPE /scwm/tt_stock_upload_out,
+      go_cl_mig_stock TYPE REF TO /scwm/cl_mig_stock,
+      gt_stock        TYPE /scwm/tt_stock_upload_ext.
+
+
+DATA: ok_code  LIKE sy-ucomm.
+DATA:
+  gv_error TYPE xfeld,
+  gv_run   TYPE xfeld. "X=upload already posted with this file
+
+DATA: gt_output TYPE TABLE OF ty_output_data,
+      gs_output TYPE  ty_output_data.
+
+CONSTANTS:
+  gc_no_erp            TYPE char10 VALUE 'NO_ERP'. "don't book in ERP
+CONSTANTS gc_logfile   TYPE fileintern VALUE 'EWM_STOCK_UPLOAD'.
+
+* Constants Declaration
+CONSTANTS: lc_icon_01 TYPE char4 VALUE '@01@',
+           lc_icon_02 TYPE char4 VALUE '@02@',
+           lc_icon_35 TYPE char4 VALUE '@35@'.

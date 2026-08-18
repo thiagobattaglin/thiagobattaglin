@@ -1,0 +1,11 @@
+flowchart LR
+    Client["HTTP Client<br/>(Insomnia / SAPUI5 / curl)"] -->|"GET ?bapi_name=BAPI_PO_CREATE1"| Node["SAP Gateway<br/>HTTP Service Node<br/>/sap/bc/http/sap/zbapi_meta"]
+    Node --> Handler["zcl_http_bapi_meta<br/>if_http_service_extension"]
+    Handler -->|"iv_bapi_name"| Builder["zcl_http_bapi_meta_builder<br/>build_json( )"]
+
+    Builder --> FII["FUNCTION_IMPORT_INTERFACE<br/>(imports + tables)"]
+    FII --> DFI["DDIF_FIELDINFO_GET<br/>(fields por estrutura)"]
+    DFI --> Assembler["Monta JSON aninhado<br/>documents / headers_values / items_values / fields"]
+
+    Assembler -->|"string JSON"| Handler
+    Handler -->|"200 OK<br/>Content-Type: application/json"| Client

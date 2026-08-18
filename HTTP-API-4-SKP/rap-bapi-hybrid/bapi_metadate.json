@@ -1,0 +1,11 @@
+{
+  "@odata.context": "$metadata#BapiRun/com.sap.gateway.srvd_a2x.zui_bapi_hyb_run_o4.v0001.GetMetadata()",
+  "value": [
+    { "BapiName": "BAPI_PO_CREATE1", "Section": "H", "ParamName": "POHEADER", "FieldName": "DOC_TYPE",  "FieldType": "char4",  "DocumentIdx": 1, "ParamOrder": 1, "FieldOrder": 1 },
+    { "BapiName": "BAPI_PO_CREATE1", "Section": "H", "ParamName": "POHEADER", "FieldName": "VENDOR",    "FieldType": "char10", "DocumentIdx": 1, "ParamOrder": 1, "FieldOrder": 2 },
+    { "BapiName": "BAPI_PO_CREATE1", "Section": "H", "ParamName": "POHEADER", "FieldName": "PURCH_ORG", "FieldType": "char4",  "DocumentIdx": 1, "ParamOrder": 1, "FieldOrder": 3 },
+    { "BapiName": "BAPI_PO_CREATE1", "Section": "I", "ParamName": "POITEM",   "FieldName": "PO_ITEM",   "FieldType": "numc5",  "DocumentIdx": 1, "ParamOrder": 1, "FieldOrder": 1 },
+    { "BapiName": "BAPI_PO_CREATE1", "Section": "I", "ParamName": "POITEM",   "FieldName": "MATERIAL",  "FieldType": "char18", "DocumentIdx": 1, "ParamOrder": 1, "FieldOrder": 2 },
+    { "BapiName": "BAPI_PO_CREATE1", "Section": "I", "ParamName": "POITEM",   "FieldName": "QUANTITY",  "FieldType": "quan13.3","DocumentIdx": 1, "ParamOrder": 1, "FieldOrder": 3 }
+  ]
+}

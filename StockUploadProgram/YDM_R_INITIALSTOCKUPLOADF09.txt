@@ -1,0 +1,83 @@
+*&---------------------------------------------------------------------*
+*&  Include           /SCWM/R_INITIALSTOCKUPLOADF09
+*&---------------------------------------------------------------------*
+**&---------------------------------------------------------------------*
+**&      Form  write_log
+**&---------------------------------------------------------------------*
+FORM write_log.
+
+  DATA: lv_severity   TYPE bapi_mtype.
+  DATA: lv_create_log TYPE xfeld.
+  DATA: lv_loghandle  TYPE balloghndl.
+
+  DATA: ls_log_act    TYPE /scwm/log_act.
+  DATA: ls_log        TYPE bal_s_log.
+
+  DATA: lt_bapiret    TYPE bapirettab.
+
+  CALL METHOD go_cl_mig_stock->mo_log->get_loghandle
+    IMPORTING
+      ev_loghandle = lv_loghandle.
+  IF lv_loghandle IS NOT INITIAL.
+    go_cl_mig_stock->mo_log->read_applog( lv_loghandle ).
+    lt_bapiret  = go_cl_mig_stock->mo_log->get_prot( ).
+    lv_severity = go_cl_mig_stock->mo_log->get_severity( ).
+  ENDIF.
+* Write log to Application Log
+  IF lt_bapiret IS NOT INITIAL.
+    CALL FUNCTION '/SCWM/LOG_ACT_READ_SINGLE'
+      EXPORTING
+        iv_lgnum     = /scwm/s_t300t-lgnum
+        iv_subobject = wmegc_apl_subob_gen
+      IMPORTING
+        es_log_act   = ls_log_act
+      EXCEPTIONS
+        OTHERS       = 0.
+    CASE ls_log_act-actglob.
+      WHEN wmegc_log_vip.
+        IF lv_severity CA 'A'.
+          lv_create_log = 'X'.
+        ENDIF.
+      WHEN wmegc_log_imp.
+        IF lv_severity CA 'AE'.
+          lv_create_log = 'X'.
+        ENDIF.
+      WHEN wmegc_log_med.
+        IF lv_severity CA 'AEW'.
+          lv_create_log = 'X'.
+        ENDIF.
+      WHEN wmegc_log_add.
+        IF lv_severity CA 'AEWIS'.
+          lv_create_log = 'X'.
+        ENDIF.
+      WHEN OTHERS.
+    ENDCASE.
+
+    IF lv_create_log IS NOT INITIAL.
+      CONCATENATE '/SCWM/ISU' sy-datum sy-uzeit sy-uname
+        INTO ls_log-extnumber
+        SEPARATED BY space.
+      ls_log-object    = wmegc_apl_object_wme.
+      ls_log-subobject = wmegc_apl_subob_gen.
+      ls_log-aldate    = go_cl_mig_stock->mo_log_hu->mv_created_date.
+      ls_log-altime    = go_cl_mig_stock->mo_log_hu->mv_created_time.
+      ls_log-altcode   = CAST /scwm/if_tm_global_info( /scwm/cl_tm_factory=>get_service(
+          /scwm/if_tm_global_info=>sc_my_tm_factory_name ) )->get_transaction_info( ).
+      ls_log-alprog    = sy-repid.
+
+*     fill expiration date for log
+      CALL FUNCTION '/SCWM/APP_LOG_EXPIRY_DATE_DET'
+        EXPORTING
+          is_log_act = ls_log_act
+        CHANGING
+          cs_log     = ls_log.
+
+*     write log in update task with low priority
+      CALL FUNCTION '/SCWM/APP_LOG_WRITE_V2' IN UPDATE TASK
+        EXPORTING
+          is_log     = ls_log
+          it_bapiret = lt_bapiret.
+      COMMIT WORK.
+    ENDIF.
+  ENDIF.
+ENDFORM.                    " write_log

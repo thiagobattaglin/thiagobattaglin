@@ -1,0 +1,27 @@
+{
+  "bapi_name": "BAPI_PO_CREATE1",
+  "documents": [
+    {
+      "headers_values": [
+        {
+          "value": "POHEADER",
+          "fields": [
+            { "name": "DOC_TYPE",  "type": "char2" },
+            { "name": "VENDOR",    "type": "char10" },
+            { "name": "PURCH_ORG", "type": "char4" }
+          ]
+        }
+      ],
+      "items_values": [
+        {
+          "value": "POITEM",
+          "fields": [
+            { "name": "PO_ITEM",  "type": "numc5" },
+            { "name": "MATERIAL", "type": "char18" },
+            { "name": "QUANTITY", "type": "quan13.3" }
+          ]
+        }
+      ]
+    }
+  ]
+}

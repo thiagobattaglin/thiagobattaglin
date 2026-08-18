@@ -1,0 +1,45 @@
+sequenceDiagram
+    autonumber
+    participant DB as Migrate Working DB
+    participant Source as Replicate Source Connector
+    participant Cloud as Cloud Replicate
+    participant Target as Replicate SAP Target Connector
+    participant Catalog as SKP Catalog
+    participant Scanner as Scanner
+    participant API as HTTP API
+    participant Worker1 as Worker 1
+    participant Worker2 as Worker 2
+    participant Worker3 as Worker 3
+    participant WorkerN as Worker N
+    participant Commit as Batch Commit per Worker
+
+    DB->>Source: Replicate migration data
+    Source->>Cloud: Send replicated data
+    Cloud->>Target: Deliver replicated data
+    Target->>API: Submit processing request
+
+    Scanner->>Catalog: Request SKP catalog data
+    Catalog-->>Scanner: Return SKP catalog data
+    Scanner->>API: Submit scan result
+    API-->>Scanner: Return processing response
+
+    rect rgb(49, 134, 46)
+        Note over Worker1,WorkerN: Parallel Processing
+        par Worker 1
+            API->>Worker1: Dispatch request
+            Worker1->>Worker1: Process batch
+            Worker1->>Commit: Commit batch
+        and Worker 2
+            API->>Worker2: Dispatch request
+            Worker2->>Worker2: Process batch
+            Worker2->>Commit: Commit batch
+        and Worker 3
+            API->>Worker3: Dispatch request
+            Worker3->>Worker3: Process batch
+            Worker3->>Commit: Commit batch
+        and Worker N
+            API->>WorkerN: Dispatch request
+            WorkerN->>WorkerN: Process batch
+            WorkerN->>Commit: Commit batch
+        end
+    end

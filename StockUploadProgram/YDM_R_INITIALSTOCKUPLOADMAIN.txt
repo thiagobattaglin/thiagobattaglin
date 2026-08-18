@@ -1,0 +1,14 @@
+*&---------------------------------------------------------------------*
+*&  Include           /SCWM/R_INITIALSTOCKUPLOADMAIN
+*&---------------------------------------------------------------------*
+
+PARAMETERS: p_l_file TYPE fileintern no-display.
+
+LOAD-OF-PROGRAM.
+  /scwm/s_t300t-spras = sy-langu.
+
+START-OF-SELECTION.
+
+  g_l_file = p_l_file.
+
+  SET SCREEN 100.

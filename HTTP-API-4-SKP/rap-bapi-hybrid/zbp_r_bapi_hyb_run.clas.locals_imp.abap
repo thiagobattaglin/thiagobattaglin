@@ -38,27 +38,91 @@ CLASS lhc_bapi_hyb_run IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD get_metadata.
-    APPEND VALUE #(
-      %tky   = VALUE #( )
-      %param = VALUE #(
-        ServiceName    = 'ZUI_BAPI_HYB_RUN_O4'
-        ServiceVersion = '0001'
-        OdataVersion   = 'V4'
-        Endpoint       = '/sap/opu/odata4/sap/zui_bapi_hyb_run_o4/srvd_a2x/sap/zui_bapi_hyb_run_o4/0001/'
-        DispatchEngine = 'bgPF'
-        DefaultWorkers = zcl_bapi_hyb_dispatcher=>c_default_workers
-        DefaultRows    = zcl_bapi_hyb_dispatcher=>c_default_rows
-        SupportedKinds = |{ zcl_bapi_hyb_dispatcher=>c_kind_chunk }\|{ zcl_bapi_hyb_dispatcher=>c_kind_bulk }|
-        SupportedModes = |{ zcl_bapi_hyb_dispatcher=>c_mode_async }\|{ zcl_bapi_hyb_dispatcher=>c_mode_sync }|
-        PayloadFormat  = '{ bapi_name:string, mode:async|sync, kind:chunk|bulk, ' &&
-                         'worker_threads:int, worker_rows:int, ' &&
-                         'documents:[ { ' &&
-                         'heders_values:[ { value:HEADER_TABLE, ' &&
-                         'fields:[ { name:FIELD, value:VALUE } ] } ], ' &&
-                         'items_values:[ { value:ITEM_TABLE, ' &&
-                         'fields:[ { name:FIELD, value:VALUE } ] } ] } ] }'
-        Description    = 'Hybrid BAPI Runner - streaming header parse, lexical split, bgPF dispatch, kernel CTF worker deserialize.' )
-    ) TO result.
+    LOOP AT keys ASSIGNING FIELD-SYMBOL(<key>).
+      DATA(lv_bapi) = CONV string( <key>-%param-BapiName ).
+
+      TRY.
+          DATA(lt_rows) = NEW zcl_bapi_hyb_meta_builder( )->build( lv_bapi ).
+
+          DATA lt_headers TYPE STANDARD TABLE OF zcl_bapi_hyb_meta_builder=>ty_row WITH EMPTY KEY.
+          DATA lt_items   TYPE STANDARD TABLE OF zcl_bapi_hyb_meta_builder=>ty_row WITH EMPTY KEY.
+
+          LOOP AT lt_rows ASSIGNING FIELD-SYMBOL(<row>).
+            CASE <row>-section.
+              WHEN 'H'.
+                APPEND <row> TO lt_headers.
+              WHEN 'I'.
+                APPEND <row> TO lt_items.
+            ENDCASE.
+          ENDLOOP.
+
+          DATA lt_header_params TYPE STANDARD TABLE OF string WITH EMPTY KEY.
+          DATA lt_item_params   TYPE STANDARD TABLE OF string WITH EMPTY KEY.
+
+          LOOP AT lt_headers ASSIGNING FIELD-SYMBOL(<h>).
+            IF NOT line_exists( lt_header_params[ table_line = CONV string( <h>-param_name ) ] ).
+              APPEND CONV string( <h>-param_name ) TO lt_header_params.
+            ENDIF.
+          ENDLOOP.
+
+          LOOP AT lt_items ASSIGNING FIELD-SYMBOL(<i>).
+            IF NOT line_exists( lt_item_params[ table_line = CONV string( <i>-param_name ) ] ).
+              APPEND CONV string( <i>-param_name ) TO lt_item_params.
+            ENDIF.
+          ENDLOOP.
+
+          DATA(lv_json) = |\{"bapi_name":"{ lv_bapi }","documents":[\{|.
+
+          lv_json = lv_json && |"headers_values":[|.
+          DATA(lv_first_struct) = abap_true.
+          LOOP AT lt_header_params ASSIGNING FIELD-SYMBOL(<hp>).
+            IF lv_first_struct = abap_false.
+              lv_json = lv_json && `,`.
+            ENDIF.
+            lv_first_struct = abap_false.
+            lv_json = lv_json && |\{"value":"{ <hp> }","fields":[|.
+            DATA(lv_first_field) = abap_true.
+            LOOP AT lt_headers ASSIGNING FIELD-SYMBOL(<hf>) WHERE param_name = <hp>.
+              IF lv_first_field = abap_false.
+                lv_json = lv_json && `,`.
+              ENDIF.
+              lv_first_field = abap_false.
+              lv_json = lv_json && |\{"name":"{ <hf>-field_name }","type":"{ <hf>-field_type }"\}|.
+            ENDLOOP.
+            lv_json = lv_json && `]}`.
+          ENDLOOP.
+          lv_json = lv_json && `],`.
+
+          lv_json = lv_json && |"items_values":[|.
+          lv_first_struct = abap_true.
+          LOOP AT lt_item_params ASSIGNING FIELD-SYMBOL(<ip>).
+            IF lv_first_struct = abap_false.
+              lv_json = lv_json && `,`.
+            ENDIF.
+            lv_first_struct = abap_false.
+            lv_json = lv_json && |\{"value":"{ <ip> }","fields":[|.
+            lv_first_field = abap_true.
+            LOOP AT lt_items ASSIGNING FIELD-SYMBOL(<if>) WHERE param_name = <ip>.
+              IF lv_first_field = abap_false.
+                lv_json = lv_json && `,`.
+              ENDIF.
+              lv_first_field = abap_false.
+              lv_json = lv_json && |\{"name":"{ <if>-field_name }","type":"{ <if>-field_type }"\}|.
+            ENDLOOP.
+            lv_json = lv_json && `]}`.
+          ENDLOOP.
+          lv_json = lv_json && `]}]}`.
+
+          APPEND VALUE #(
+            %cid   = <key>-%cid
+            %param = VALUE #(
+              BapiName = lv_bapi
+              Metadata = lv_json ) ) TO result.
+
+        CATCH cx_root.
+          " BAPI not found or introspection error: return empty collection.
+      ENDTRY.
+    ENDLOOP.
   ENDMETHOD.
 
   METHOD submit.
@@ -78,6 +142,7 @@ CLASS lhc_bapi_hyb_run IMPLEMENTATION.
 
       TRY.
           DATA(lo_dispatcher) = NEW zcl_bapi_hyb_dispatcher( ).
+          DATA(lv_trimmed)    = lo_dispatcher->get_trimmed_header( lv_payload ).
           DATA(ls_hdr)        = lo_dispatcher->parse_header( lv_payload ).
 
           IF ls_hdr-bapi_name IS INITIAL.
@@ -109,18 +174,23 @@ CLASS lhc_bapi_hyb_run IMPLEMENTATION.
 
         CATCH cx_root INTO DATA(lx_err).
           DATA(lv_text) = lx_err->get_text( ).
+          DATA(lv_payload_err) = COND string( WHEN strlen( lv_payload ) > 200
+                                               THEN lv_payload(200)
+                                               ELSE lv_payload ).
+          DATA(lv_msg_full) = |Error: { lv_text }. Payload (first 200): { lv_payload_err }|.
+          
           persist_run(
             is_outcome    = VALUE #( bapi_name = ls_hdr-bapi_name
                                      mode      = ls_hdr-mode )
             iv_wt         = ls_hdr-worker_threads
             iv_wr         = ls_hdr-worker_rows
             iv_status     = c_status_failed
-            iv_error_text = lv_text ).
+            iv_error_text = lv_msg_full ).
 
           APPEND VALUE #( %cid = <key>-%cid
                           %msg = new_message_with_text(
                                    severity = if_abap_behv_message=>severity-error
-                                   text     = lv_text ) ) TO reported-bapirun.
+                                   text     = lv_msg_full ) ) TO reported-bapirun.
           APPEND VALUE #( %cid = <key>-%cid ) TO failed-bapirun.
       ENDTRY.
 

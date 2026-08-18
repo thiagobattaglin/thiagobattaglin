@@ -1,0 +1,301 @@
+*&---------------------------------------------------------------------*
+*&  Include           /SCWM/R_INITIALSTOCKUPLOADF01
+*&---------------------------------------------------------------------*
+*&---------------------------------------------------------------------*
+*&      Form  okcode
+*&---------------------------------------------------------------------*
+*       OK code handling
+*----------------------------------------------------------------------*
+*      -->IV_SY_UCOMM  OK-Code
+*----------------------------------------------------------------------*
+FORM okcode  USING    iv_sy_ucomm.
+  CASE iv_sy_ucomm.
+    WHEN 'FILE_UP'.
+      PERFORM get_data.
+    WHEN 'OPEN'.
+      PERFORM open_file_dialog.
+    WHEN 'START'.
+      PERFORM initial_load.
+    WHEN 'LOG'.
+      PERFORM display_log.
+  ENDCASE.
+ENDFORM.                    " okcode
+*&---------------------------------------------------------------------*
+*&      Form  initial_load
+*&---------------------------------------------------------------------*
+*       Start initial data load
+*----------------------------------------------------------------------*
+FORM initial_load .
+  DATA: lv_answer(1).
+
+  CONSTANTS: lc_postno_allowed TYPE string VALUE ' 0123456789'.
+
+* if gv_run is set the current file has already been
+* uploaded => perform checks once again
+  IF gv_run IS NOT INITIAL.
+*   Form GET_DATA inherits the checks
+    PERFORM get_data.
+  ENDIF.
+
+  IF go_cl_mig_stock IS BOUND.
+    IF go_cl_mig_stock->mt_stock IS INITIAL.
+      MESSAGE w023. "upload data first
+      RETURN.
+    ENDIF.
+  ELSE.
+    MESSAGE w023. "upload data first
+    RETURN.
+  ENDIF.
+
+* g_postno might contain non-allowed value
+  IF NOT ( g_postno CO lc_postno_allowed ).
+    g_postno = 1.
+  ELSEIF g_postno < 1.
+    g_postno = 1.
+  ENDIF.
+
+* error message if an error occured during data check
+  IF gv_error IS NOT INITIAL.
+    MESSAGE i031 INTO DATA(lv_text).
+
+**** Add error message.
+    gs_output-message    = lv_text.
+    gs_output-msgty =  sy-msgty.
+    IF sy-msgty = 'I'.
+      gs_output-icon = lc_icon_35.
+    ELSEIF  sy-msgty = 'E'.
+      gs_output-icon = lc_icon_02.
+    ELSEIF  sy-msgty = 'S'.
+      gs_output-icon = lc_icon_01.
+    ENDIF.
+    APPEND gs_output TO gt_output.
+*    RETURN.
+  ELSE.
+*    DATA: lv_mmim_budat TYPE /scwm/de_ui_wdatu.
+*
+*    DATA:       lv_cl_mig_stock TYPE char30.
+**    ***** Exporting the data to SAP Memory.
+**    EXPORT go_cl_mig_stock TO DATABASE demo_indx_blob(sc) ID lv_cl_mig_stock.
+*    go_cl_mig_stock->upload_data(
+*        iv_lgnum       = /scwm/s_t300t-lgnum
+*        iv_no_erp_post = g_no_erp
+*        iv_post_no     = g_postno
+*        iv_mmim_budat  = /scwm/ordim_c-mmim_budat_migration ).
+*
+*    gv_run = 'X'.
+*
+** Write log to database
+*    PERFORM write_log.
+*
+** always display log
+*    PERFORM display_log.
+*
+*    gv_run = 'X'.
+
+**** Submit job with exporting the Stock Details to global memory.
+    PERFORM submit_job.
+
+  ENDIF.
+
+**** Display the output in ALV.
+  PERFORM display_alv.
+ENDFORM.                    " initial_load
+*&---------------------------------------------------------------------*
+*& Form display_alv
+*&---------------------------------------------------------------------*
+*& text
+*&---------------------------------------------------------------------*
+*& -->  p1        text
+*& <--  p2        text
+*&---------------------------------------------------------------------*
+FORM display_alv .
+
+  DATA: lr_det_columns TYPE REF TO cl_salv_columns_table,
+        gc_success     TYPE c VALUE 'S',
+        lr_det_table   TYPE REF TO cl_salv_table,
+        lr_functions   TYPE REF TO cl_salv_functions_list,
+        lr_column      TYPE REF TO cl_salv_column_table,
+        lr_columns     TYPE REF TO cl_salv_columns_table,
+        lr_events      TYPE REF TO cl_salv_events_table,
+        lo_header      TYPE REF TO cl_salv_form_layout_grid,
+        lo_h_label     TYPE REF TO cl_salv_form_label,
+        lo_h_flow      TYPE REF TO cl_salv_form_layout_flow,
+        lv_row_count   TYPE i.
+
+*************************
+* D I S P L A Y   A L V *
+*************************
+  TRY.
+      cl_salv_table=>factory(
+        IMPORTING
+          r_salv_table = lr_det_table
+        CHANGING
+          t_table      =  gt_output ).
+    CATCH cx_salv_msg.                                  "#EC NO_HANDLER
+      MESSAGE 'Error displaying details'(004) TYPE gc_success.
+  ENDTRY.
+
+* Functions
+  lr_functions = lr_det_table->get_functions( ).
+
+* activate ALV generic Functions
+  lr_functions->set_all( abap_true ).
+
+* Set Columns Optimized
+  lr_columns = lr_det_table->get_columns( ).
+  lr_columns->set_optimize( abap_true ).
+
+  "  sap_table    TYPE string,
+  "  key_value    TYPE string,
+  "  line_messag
+
+
+  TRY.
+      lr_column ?= lr_columns->get_column( 'ICON' ).
+*      lr_column->set_icon( if_salv_c_bool_sap=>true ).
+      lr_column->set_long_text( 'Icon' ).
+      lr_column->set_short_text( 'Icon' ).
+      lr_column->set_medium_text( 'Icon' ).
+      lr_column->set_output_length( '35' ).
+    CATCH cx_salv_not_found.                            "#EC NO_HANDLER
+  ENDTRY.
+
+  TRY.
+      lr_column ?= lr_columns->get_column( 'MESSAGE' ).
+*      lr_column->set_icon( if_salv_c_bool_sap=>true ).
+      lr_column->set_long_text( 'MESSAGE' ).
+      lr_column->set_short_text( 'MESS' ).
+      lr_column->set_medium_text( 'MESSAGE' ).
+      lr_column->set_output_length( '35' ).
+    CATCH cx_salv_not_found.                            "#EC NO_HANDLER
+  ENDTRY.
+
+*   header object
+  CREATE OBJECT lo_header.
+
+*   information in Bold
+  DATA lv_count_str    TYPE string.
+  DATA lv_display_str  TYPE string.
+  DESCRIBE TABLE gt_output LINES lv_row_count.
+  lv_count_str = lv_row_count.
+  CONCATENATE 'Records Displayed:' lv_count_str INTO lv_display_str.
+  lo_h_label = lo_header->create_label( row = 1 column = 1 ).
+  lo_h_label->set_text( lv_display_str ).
+
+*   information in tabular format
+  lo_h_flow = lo_header->create_flow( row = 1  column = 2 ).
+  lo_h_flow->create_text( text = '' ).
+
+**   information in Bold
+*  lo_h_label = lo_header->create_label( row = 2 column = 1 ).
+*  lo_h_label->set_text( '' ).
+*
+**   information in tabular format
+*  lo_h_flow = lo_header->create_flow( row = 2  column = 2 ).
+*  lo_h_flow->create_text( text = '' ).
+
+*   set the top of list using the header for Online.
+  lr_det_table->set_top_of_list( lo_header ).
+*
+*   set the top of list using the header for Print.
+  lr_det_table->set_top_of_list_print( lo_header ).
+
+* Show report
+  lr_det_table->display( ).
+
+
+
+ENDFORM.
+*&---------------------------------------------------------------------*
+*& Form submit_job
+*&---------------------------------------------------------------------*
+*& text
+*&---------------------------------------------------------------------*
+*& -->  p1        text
+*& <--  p2        text
+*&---------------------------------------------------------------------*
+FORM submit_job .
+
+
+*** constants declarations..
+  CONSTANTS: lc_jobname TYPE char19 VALUE 'YDM_UPL_VAL_STOCK',
+             lc_u       TYPE char1 VALUE '_'.
+**** Data Declarations.
+  DATA: lv_jobcnt  TYPE btcjobcnt,
+        lv_jobname TYPE tbtcjob-jobname,
+        lv_date    TYPE sy-datum,
+        lv_memid   TYPE char40.
+
+  WRITE sy-datum TO lv_date.
+
+*  lv_jobname = |{ lc_jobname }{ lc_u } { lv_date } { lc_u } { sy-uzeit }|.
+  CONCATENATE lc_jobname lc_u lv_date   lc_u  sy-uzeit INTO lv_jobname.
+  CONDENSE lv_jobname.
+**** job open
+  CALL FUNCTION 'JOB_OPEN'
+    EXPORTING
+      jobname          = lv_jobname
+    IMPORTING
+      jobcount         = lv_jobcnt
+    EXCEPTIONS
+      cant_create_job  = 1
+      invalid_job_data = 2
+      jobname_missing  = 3
+      OTHERS           = 4.
+  IF sy-subrc <> 0.
+    MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
+     WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+  ELSE.
+
+**** build the SAP Memory id.
+    CONCATENATE lv_memid 'ISU' '_' sy-uzeit INTO lv_memid.
+***** Exporting the data to SAP Memory.
+    EXPORT gt_stock[] TO DATABASE demo_indx_blob(sc) ID lv_memid.
+***** Submit the job with Parameter details.
+    SUBMIT ydm_upload_valid_stock_isu
+            WITH p_budat = /scwm/ordim_c-mmim_budat_migration
+            WITH p_lgnum = /scwm/s_t300t-lgnum
+            WITH p_memid = lv_memid
+            WITH p_no_erp = g_no_erp
+            WITH p_postno = g_postno
+            VIA JOB lv_jobname NUMBER lv_jobcnt
+                AND RETURN.
+
+****** Job close
+    CALL FUNCTION 'JOB_CLOSE'
+      EXPORTING
+        jobcount             = lv_jobcnt
+        jobname              = lv_jobname
+        strtimmed            = abap_true
+      EXCEPTIONS
+        cant_start_immediate = 1
+        invalid_startdate    = 2
+        jobname_missing      = 3
+        job_close_failed     = 4
+        job_nosteps          = 5
+        job_notex            = 6
+        lock_failed          = 7
+        OTHERS               = 8.
+    IF sy-subrc = 0.
+**** Add Successful message.
+      CONCATENATE 'Job' lv_jobname 'Scheduled Successfully' INTO  gs_output-message SEPARATED BY space.
+      gs_output-icon = lc_icon_01.
+      APPEND gs_output TO gt_output.
+    ELSE.
+**** Add Error message.
+      MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno "to raise exception
+             WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4 INTO DATA(lv_text).
+      gs_output-message    = lv_text.
+      gs_output-msgty =  sy-msgty.
+      IF sy-msgty = 'I'.
+        gs_output-icon = lc_icon_35.
+      ELSEIF  sy-msgty = 'E'.
+        gs_output-icon = lc_icon_02.
+      ENDIF.
+      APPEND gs_output TO gt_output.
+
+    ENDIF.
+  ENDIF.
+
+
+ENDFORM.

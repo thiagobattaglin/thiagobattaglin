@@ -1,0 +1,104 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2026-08-12T00:00:00.000Z",
+  "__export_source": "github.copilot:rap-bapi-hybrid",
+  "resources": [
+    {
+      "_id": "wrk_rap_bapi_hybrid",
+      "parentId": null,
+      "modified": 1754956800000,
+      "created": 1754956800000,
+      "name": "RAP Hybrid BAPI Runner",
+      "description": "CSRF token and Submit requests for the RAP OData V4 Hybrid BAPI Runner.",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "env_rap_bapi_hybrid_base",
+      "parentId": "wrk_rap_bapi_hybrid",
+      "modified": 1754956800000,
+      "created": 1754956800000,
+      "name": "Base Environment",
+      "data": {
+        "base_url": "https://sap.example.com",
+        "service_root": "/sap/opu/odata4/sap/zui_bapi_hyb_run_o4/srvd_a2x/sap/zui_bapi_hyb_run_o4/0001",
+        "username": "",
+        "password": "",
+        "bapi_name": "BAPI_PO_CREATE1"
+      },
+      "dataPropertyOrder": null,
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 0,
+      "_type": "environment"
+    },
+    {
+      "_id": "req_rap_bapi_hybrid_csrf",
+      "parentId": "wrk_rap_bapi_hybrid",
+      "modified": 1754956800000,
+      "created": 1754956800000,
+      "name": "01 - Fetch CSRF Token",
+      "description": "Fetches X-CSRF-Token. Run this request first; Insomnia stores the response cookie in the cookie jar.",
+      "method": "HEAD",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "X-CSRF-Token",
+          "value": "Fetch"
+        },
+        {
+          "name": "Accept",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {
+        "type": "basic",
+        "username": "{{ _.username }}",
+        "password": "{{ _.password }}"
+      },
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "url": "{{ _.base_url }}{{ _.service_root }}/",
+      "_type": "request"
+    },
+    {
+      "_id": "req_rap_bapi_hybrid_submit",
+      "parentId": "wrk_rap_bapi_hybrid",
+      "modified": 1754956800000,
+      "created": 1754956800000,
+      "name": "02 - Submit BAPI Run",
+      "description": "Posts input.json as the escaped Payload field. Run Fetch CSRF Token first.",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"Payload\": \"{\\\"mode\\\":\\\"async\\\",\\\"kind\\\":\\\"bulk\\\",\\\"bapi_name\\\":\\\"{{ _.bapi_name }}\\\",\\\"worker_threads\\\":4,\\\"worker_rows\\\":100,\\\"documents\\\":[{\\\"heders_values\\\":[{\\\"value\\\":\\\"POHEADER\\\",\\\"fields\\\":[{\\\"name\\\":\\\"DOC_TYPE\\\",\\\"value\\\":\\\"NB\\\"},{\\\"name\\\":\\\"VENDOR\\\",\\\"value\\\":\\\"0000100000\\\"},{\\\"name\\\":\\\"PURCH_ORG\\\",\\\"value\\\":\\\"1000\\\"}]}],\\\"items_values\\\":[{\\\"value\\\":\\\"POITEM\\\",\\\"fields\\\":[{\\\"name\\\":\\\"PO_ITEM\\\",\\\"value\\\":\\\"00010\\\"},{\\\"name\\\":\\\"MATERIAL\\\",\\\"value\\\":\\\"MAT-001\\\"},{\\\"name\\\":\\\"QUANTITY\\\",\\\"value\\\":\\\"10\\\"}]}]}]}\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Accept",
+          "value": "application/json"
+        },
+        {
+          "name": "X-CSRF-Token",
+          "value": "{% response 'header', 'req_rap_bapi_hybrid_csrf', 'X-CSRF-Token' %}"
+        }
+      ],
+      "authentication": {
+        "type": "basic",
+        "username": "{{ _.username }}",
+        "password": "{{ _.password }}"
+      },
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "url": "{{ _.base_url }}{{ _.service_root }}/BapiRun/com.sap.gateway.srvd_a2x.zui_bapi_hyb_run_o4.v0001.Submit",
+      "_type": "request"
+    }
+  ]
+}

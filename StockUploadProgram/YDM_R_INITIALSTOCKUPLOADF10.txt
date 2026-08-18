@@ -1,0 +1,146 @@
+*&---------------------------------------------------------------------*
+*&  Include           /SCWM/R_INITIALSTOCKUPLOADF10
+*&---------------------------------------------------------------------*
+*&---------------------------------------------------------------------*
+*&      Form  display_file
+*&---------------------------------------------------------------------*
+*       Display data uploaded using ALV Grid
+*----------------------------------------------------------------------*
+FORM display_file USING it_stock_int TYPE /scwm/tt_stock_upload
+                        it_pmat      TYPE tty_matnr.
+  STATICS: ss_layout   TYPE lvc_s_layo,
+           ss_variant  TYPE disvariant,
+           st_fieldcat TYPE lvc_t_fcat.
+
+* convert data for output
+  PERFORM output_table_fill USING it_stock_int it_pmat.
+
+* create objects if necessary
+  IF r_alv IS INITIAL.
+    CLEAR: ss_layout, st_fieldcat.
+    PERFORM initialize_alv_0100.
+*   create and modify fieldcat
+    PERFORM alv_fieldcat_to USING st_fieldcat.
+*   optimize column width and use zebra pattern
+    MOVE: 'X'      TO ss_layout-cwidth_opt,
+          'X'      TO ss_layout-zebra,
+          text-002 TO ss_layout-grid_title,
+          'X'      TO ss_layout-smalltitle.
+*   fill report for layout saving
+    MOVE: sy-repid TO ss_variant-report.
+  ENDIF.
+
+* display alv
+  CALL METHOD r_alv->set_table_for_first_display
+    EXPORTING
+      i_structure_name = '/SCWM/S_STOCK_UPLOAD_OUT'
+      i_save           = 'A'
+      is_variant       = ss_variant
+      is_layout        = ss_layout
+    CHANGING
+      it_fieldcatalog  = st_fieldcat
+      it_outtab        = gt_stock_out.
+
+ENDFORM.                    " display_file
+*&---------------------------------------------------------------------*
+*&      Form  output_table_fill
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      -->P_IT_STOCK_INT  text
+*----------------------------------------------------------------------*
+FORM output_table_fill  USING  it_stock_int TYPE /scwm/tt_stock_upload
+                               it_pmat      TYPE tty_matnr.
+  DATA: ls_stock     TYPE /scwm/s_stock_upload_out,
+        ls_date_time TYPE /scwm/s_tstmp_date_time.
+  DATA: lt_timestamp TYPE /scwm/tt_timestamp,
+        lt_date_time TYPE /scwm/tt_tstmp_date_time,
+        lt_pmat      TYPE tty_matnr.
+  DATA: lo_ui_fields TYPE REF TO /scwm/cl_ui_stock_fields.
+  FIELD-SYMBOLS: <fs_stock> TYPE /scwm/s_stock_upload,
+                 <fs_pmat>  TYPE ty_matnr.
+  CREATE OBJECT lo_ui_fields.
+
+  lt_pmat = it_pmat.
+  SORT lt_pmat BY matid.
+
+  LOOP AT it_stock_int ASSIGNING <fs_stock>.
+*   do not display data with invalid position type
+    IF <fs_stock>-postype CO '12346'.
+      MOVE-CORRESPONDING <fs_stock> TO ls_stock.
+    ELSE.
+      MOVE: <fs_stock>-postype to ls_stock-postype,
+            <fs_stock>-icon    to ls_stock-icon.
+    ENDIF.
+
+*   convert MATID to MATNR
+    IF <fs_stock>-matid IS NOT INITIAL.
+      CALL METHOD lo_ui_fields->get_matkey_by_id
+        EXPORTING
+          iv_matid = <fs_stock>-matid
+        IMPORTING
+          ev_matnr = ls_stock-matnr.
+    ENDIF.
+*   convert BATCHID to BATCHNO
+    IF <fs_stock>-batchid IS NOT INITIAL.
+      CALL METHOD lo_ui_fields->get_batchno_by_id
+        EXPORTING
+          iv_batchid = <fs_stock>-batchid
+        RECEIVING
+          ev_charg   = ls_stock-batch.
+    ENDIF.
+*   convert pmat
+    IF <fs_stock>-pmat IS NOT INITIAL.
+      CALL METHOD lo_ui_fields->get_matkey_by_id
+        EXPORTING
+          iv_matid = <fs_stock>-pmat
+        IMPORTING
+          ev_matnr = ls_stock-pmat.
+      IF ls_stock-hutyp IS INITIAL.
+*       fill HU type for output table
+        READ TABLE lt_pmat ASSIGNING <fs_pmat>
+             WITH KEY matid = <fs_stock>-pmat
+             BINARY SEARCH.
+        IF sy-subrc IS INITIAL.
+          ls_stock-hutyp = <fs_pmat>-hutyp.
+        ENDIF.
+      ENDIF.
+    ELSE.
+      CLEAR: ls_stock-pmat.
+    ENDIF.
+*   convert timestamp
+    IF <fs_stock>-grdat IS NOT INITIAL.
+      APPEND <fs_stock>-grdat TO lt_timestamp.
+      CALL FUNCTION '/SCWM/CONVERT_TIMESTAMP'
+        EXPORTING
+          iv_lgnum       = /scwm/s_t300t-lgnum
+          it_timestamp   = lt_timestamp
+        IMPORTING
+          et_date_time   = lt_date_time
+        EXCEPTIONS
+          input_error    = 1
+          data_not_found = 2
+          OTHERS         = 3.
+      READ TABLE lt_date_time INTO ls_date_time INDEX 1.
+      IF sy-subrc IS INITIAL.
+        MOVE: ls_date_time-date TO ls_stock-gr_date,
+              ls_date_time-time TO ls_stock-gr_time.
+      ENDIF.
+      CLEAR: lt_timestamp, lt_date_time.
+    ENDIF.
+*   show stock_docno in external format (without leading zeros)
+*   for sales order stock (SOS)
+    IF <fs_stock>-stock_doccat = wmegc_stock_doccat_sos AND
+       <fs_stock>-stock_docno IS NOT INITIAL.
+      CALL METHOD lo_ui_fields->get_stock_docno_ext
+        EXPORTING
+          iv_stock_doccat   = <fs_stock>-stock_doccat
+          iv_stock_docno    = <fs_stock>-stock_docno
+        RECEIVING
+          ev_ui_stock_docno = ls_stock-stock_docno.
+    ENDIF.
+
+    APPEND ls_stock TO gt_stock_out.
+    CLEAR: ls_stock.
+  ENDLOOP. "it_stock_int
+ENDFORM.                    " output_table_fill

@@ -86,13 +86,49 @@ Content-Type: application/json
 
 ### GET metadata
 
-`GetMetadata` é uma **static function** RAP (GET-callable) que devolve
-o descritor do serviço (endpoint, engine de dispatch, defaults,
-`kind`/`mode` suportados, formato do payload).
+`GetMetadata` é uma **static function** RAP (GET-callable) com resultado
+`[0..*]` — devolve uma **coleção OData estruturada**, uma linha por
+campo DDIC da BAPI, sem JSON escapado em string.
 
 ```
-GET /sap/opu/odata4/sap/zui_bapi_hyb_run_o4/srvd_a2x/sap/zui_bapi_hyb_run_o4/0001/BapiRun/com.sap.gateway.srvd_a2x.zui_bapi_hyb_run_o4.v0001.GetMetadata()
+GET /sap/opu/odata4/sap/zui_bapi_hyb_run_o4/srvd_a2x/sap/zui_bapi_hyb_run_o4/0001/BapiRun/com.sap.gateway.srvd_a2x.zui_bapi_hyb_run_o4.v0001.GetMetadata(BapiName='BAPI_PO_CREATE1')
 ```
+
+Resposta (formato):
+
+```json
+{
+  "documents": [
+    {
+      "headers_values": [
+        {
+          "value": "POHEADER",
+          "fields": [
+            { "name": "DOC_TYPE", "type": "char4" },
+            { "name": "VENDOR", "type": "char10" },
+            { "name": "PURCH_ORG", "type": "char4" }
+          ]
+        }
+      ],
+      "items_values": [
+        {
+          "value": "POITEM",
+          "fields": [
+            { "name": "PO_ITEM", "type": "numc5" },
+            { "name": "MATERIAL", "type": "char18" },
+            { "name": "QUANTITY", "type": "quantum13.3" }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+`headers_values` representa os parâmetros de IMPORT/estrutura (ex.: `POHEADER`).
+`items_values` representa as tabelas/linhas (ex.: `POITEM`).
+
+Esse é o formato solicitado no contrato original, e não a coleção plana do `ZD_BAPI_HYB_META`.
 
 O documento OData `$metadata` (EDMX) continua disponível em
 

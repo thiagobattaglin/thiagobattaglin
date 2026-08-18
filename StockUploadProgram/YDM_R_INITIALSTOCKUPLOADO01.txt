@@ -1,0 +1,49 @@
+*&---------------------------------------------------------------------*
+*&  Include           /SCWM/R_INITIALSTOCKUPLOADO01
+*&---------------------------------------------------------------------*
+*&---------------------------------------------------------------------*
+*&      Module  STATUS_0100  OUTPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*MODULE status_0100 OUTPUT.
+*
+*ENDMODULE.                 " STATUS_0100  OUTPUT
+*&---------------------------------------------------------------------*
+*&      Module  CHECK_LSMW_0100  OUTPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*MODULE check_lsmw_0100 OUTPUT.
+*
+*
+*ENDMODULE.                 " CHECK_LSMW_0100  OUTPUT
+*&---------------------------------------------------------------------*
+*& Module STATUS_0100 OUTPUT
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+MODULE status_0100 OUTPUT.
+  SET PF-STATUS 'STATUS0100'.
+  SET TITLEBAR 'TITLE0100'.
+ENDMODULE.
+*&---------------------------------------------------------------------*
+*& Module CHECK_LSMW_0100 OUTPUT
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+MODULE check_lsmw_0100 OUTPUT.
+* g_l_file will be filled based on the hidden parameter p_l_file.
+* This one could be filled by LSMW.
+* If it is filled, the system will switch to logical file on app server
+* (G_LOG_FILE) and fill G_FILE with the logical file name.
+
+  IF g_l_file IS NOT INITIAL.
+    g_pc_file  = abap_false.
+    g_log_file = abap_true.
+    g_file     = g_l_file.
+  ENDIF.
+  if /scwm/ordim_c-mmim_budat_migration is initial.
+    /scwm/ordim_c-mmim_budat_migration = sy-datum.
+  endif.
+ENDMODULE.

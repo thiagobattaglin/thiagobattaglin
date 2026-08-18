@@ -1,0 +1,46 @@
+*&---------------------------------------------------------------------*
+*& Report  /SCWM/R_INITIALSTOCKUPLOAD
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+INCLUDE ydm_r_initialstockuploadtop.
+
+INCLUDE ydm_r_initialstockuploado01.
+
+INCLUDE ydm_r_initialstockuploadi01.
+*INCLUDE /SCWM/R_INITIALSTOCKUPLOADI01.
+
+INCLUDE YDM_R_INITIALSTOCKUPLOADMAIN.
+
+INCLUDE ydm_r_initialstockuploadf01.
+*INCLUDE /SCWM/R_INITIALSTOCKUPLOADF01.
+
+INCLUDE ydm_r_initialstockuploadf02.
+*INCLUDE /SCWM/R_INITIALSTOCKUPLOADF02.
+
+INCLUDE ydm_r_initialstockuploadf03.
+*INCLUDE /SCWM/R_INITIALSTOCKUPLOADF03.
+
+INCLUDE ydm_r_initialstockuploadf04.
+*INCLUDE /SCWM/R_INITIALSTOCKUPLOADF04.
+
+INCLUDE ydm_r_initialstockuploadf05.
+*INCLUDE /SCWM/R_INITIALSTOCKUPLOADF05.
+
+INCLUDE ydm_r_initialstockuploadf06.
+*INCLUDE /SCWM/R_INITIALSTOCKUPLOADF06.
+
+INCLUDE ydm_r_initialstockuploadf07.
+*INCLUDE /SCWM/R_INITIALSTOCKUPLOADF07.
+
+INCLUDE ydm_r_initialstockuploadf08.
+*INCLUDE /SCWM/R_INITIALSTOCKUPLOADF08.
+
+INCLUDE ydm_r_initialstockuploadf09.
+*INCLUDE /SCWM/R_INITIALSTOCKUPLOADF09.
+
+INCLUDE ydm_r_initialstockuploadf10.
+*INCLUDE /SCWM/R_INITIALSTOCKUPLOADF10.

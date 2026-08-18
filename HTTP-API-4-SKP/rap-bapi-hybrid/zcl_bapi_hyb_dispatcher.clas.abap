@@ -3,8 +3,9 @@ CLASS zcl_bapi_hyb_dispatcher DEFINITION
   CREATE PUBLIC.
 
 * Hybrid dispatcher. Combines:
-*  - streaming: header parsed by trimming to a scalar-only JSON substring
-*    and deserializing via CALL TRANSFORMATION id + sXML;
+*  - streaming: header parsed by walking the sXML JSON token stream
+*    and picking only top-level scalar fields (nested arrays/objects
+*    are skipped implicitly by depth tracking);
 *  - lexical split: documents[] is cut textually (zcl_bapi_hyb_lex_splitter);
 *  - synchronous dispatch: chunks processed sequentially by zcl_bapi_hyb_worker_op.
 *    Upgrade path: when IF_BGMC_OP_SINGLE_TX_UNCONTROLLED is available, re-enable
@@ -43,12 +44,17 @@ CLASS zcl_bapi_hyb_dispatcher DEFINITION
       RAISING   cx_static_check.
 
     "! Extracts the header ({mode/bapi_name/worker_threads/worker_rows/kind})
-    "! by trimming iv_json to a header-shaped substring and running CTF id.
-    "! This deserializes O(header) bytes, not the whole payload.
+    "! by walking the sXML JSON token stream and picking top-level scalars.
+    "! Nested containers (documents[], objects) are skipped implicitly.
     METHODS parse_header
       IMPORTING iv_json          TYPE string
       RETURNING VALUE(rs_header) TYPE ty_header
       RAISING   cx_static_check.
+
+    "! Debug: return the trimmed header JSON
+    METHODS get_trimmed_header
+      IMPORTING iv_json          TYPE string
+      RETURNING VALUE(rv_header) TYPE string.
 
     METHODS calculate_workers
       IMPORTING iv_docs_total    TYPE i
@@ -72,12 +78,12 @@ CLASS zcl_bapi_hyb_dispatcher DEFINITION
 
   PRIVATE SECTION.
 
-    "! Returns a JSON substring containing only the top-level scalar
-    "! keys of the payload (no arrays/objects). Result is a small
-    "! well-formed JSON object that CTF id can deserialize cheaply.
-    METHODS trim_to_header_only
-      IMPORTING iv_json          TYPE string
-      RETURNING VALUE(rv_header) TYPE string.
+    "! Assigns a top-level scalar (string/number/bool) to the header
+    "! structure by key name. Unknown keys are silently ignored.
+    METHODS assign_scalar
+      IMPORTING iv_key    TYPE string
+                iv_value  TYPE string
+      CHANGING  cs_header TYPE ty_header.
 
 ENDCLASS.
 
@@ -141,16 +147,54 @@ CLASS zcl_bapi_hyb_dispatcher IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD parse_header.
-    DATA(lv_header_json) = trim_to_header_only( iv_json ).
-    IF lv_header_json IS INITIAL.
-      RETURN.
-    ENDIF.
+* Reads only top-level scalar fields via sXML JSON reader.
+* Anything nested (documents[], objects) is skipped implicitly
+* because we only capture value nodes while depth = 2.
+
+    DATA lv_depth     TYPE i.
+    DATA lv_key       TYPE string.
+    DATA lv_is_scalar TYPE abap_bool.
 
     TRY.
-        zcl_bapi_hyb_json_parser=>deserialize(
-          EXPORTING iv_json = lv_header_json
-          CHANGING  cs_data = rs_header ).
-      CATCH cx_transformation_error INTO DATA(lx_err).
+        DATA(lo_reader) = cl_sxml_string_reader=>create(
+                            cl_abap_codepage=>convert_to( iv_json ) ).
+
+        DO.
+          DATA(lo_node) = lo_reader->read_next_node( ).
+          IF lo_node IS NOT BOUND.
+            EXIT.
+          ENDIF.
+
+          CASE lo_node->type.
+            WHEN if_sxml_node=>co_nt_element_open.
+              DATA(lo_open) = CAST if_sxml_open_element( lo_node ).
+              lv_depth = lv_depth + 1.
+              IF lv_depth = 2.
+                CLEAR lv_key.
+                DATA(lv_elem) = to_lower( lo_open->qname-name ).
+                lv_is_scalar = xsdbool( lv_elem = 'str' OR lv_elem = 'num' OR lv_elem = 'int' OR lv_elem = 'bool' ).
+                LOOP AT lo_open->get_attributes( ) INTO DATA(lo_attr).
+                  IF to_lower( lo_attr->qname-name ) = 'name'.
+                    lv_key = lo_attr->get_value( ).
+                    EXIT.
+                  ENDIF.
+                ENDLOOP.
+              ENDIF.
+
+            WHEN if_sxml_node=>co_nt_value.
+              IF lv_depth = 2 AND lv_is_scalar = abap_true AND lv_key IS NOT INITIAL.
+                assign_scalar(
+                  EXPORTING iv_key   = lv_key
+                            iv_value = CAST if_sxml_value_node( lo_node )->get_value( )
+                  CHANGING  cs_header = rs_header ).
+              ENDIF.
+
+            WHEN if_sxml_node=>co_nt_element_close.
+              lv_depth = lv_depth - 1.
+          ENDCASE.
+        ENDDO.
+
+      CATCH cx_root INTO DATA(lx_err).
         RAISE EXCEPTION TYPE cx_parameter_invalid_range
           EXPORTING previous  = lx_err
                     parameter = `payload_header`
@@ -158,115 +202,22 @@ CLASS zcl_bapi_hyb_dispatcher IMPLEMENTATION.
     ENDTRY.
   ENDMETHOD.
 
-  METHOD trim_to_header_only.
-* Walks the top-level object once and keeps only scalar members
-* (string / number / boolean). Skips array/object members entirely by
-* tracking depth + string state. Output is a well-formed JSON object
-* whose only members are the payload header scalars.
+  METHOD assign_scalar.
+    CASE to_lower( iv_key ).
+      WHEN 'mode'.           cs_header-mode           = iv_value.
+      WHEN 'bapi_name'.      cs_header-bapi_name      = iv_value.
+      WHEN 'kind'.           cs_header-kind           = iv_value.
+      WHEN 'worker_threads'. cs_header-worker_threads = iv_value.
+      WHEN 'worker_rows'.    cs_header-worker_rows    = iv_value.
+    ENDCASE.
+  ENDMETHOD.
 
-    DATA lv_len     TYPE i.
-    DATA lv_open    TYPE i.
-    DATA lv_off     TYPE i.
-    DATA lt_kept    TYPE string_table.
-    DATA lv_state   TYPE i.
-    DATA lv_in_str  TYPE abap_bool.
-    DATA lv_escape  TYPE abap_bool.
-    DATA lv_current TYPE string.
-    DATA lv_key     TYPE string.
-    DATA lv_value   TYPE string.
-    DATA lv_ch      TYPE c LENGTH 1.
-    DATA lv_depth   TYPE i.
-    DATA lv_sc      TYPE c LENGTH 1.
-    DATA lv_val_trim TYPE string.
-
-    lv_len = strlen( iv_json ).
-    IF lv_len = 0.
-      RETURN.
-    ENDIF.
-
-    lv_open = find( val = iv_json sub = `{` ).
-    IF lv_open < 0.
-      RETURN.
-    ENDIF.
-    lv_off = lv_open + 1.
-
-    WHILE lv_off < lv_len.
-      lv_ch = iv_json+lv_off(1).
-
-      IF lv_ch = '{' OR lv_ch = '['.
-* Nested container; skip until matching close at same depth.
-        lv_depth = 1.
-        lv_off = lv_off + 1.
-        WHILE lv_off < lv_len AND lv_depth > 0.
-          lv_sc = iv_json+lv_off(1).
-          IF lv_in_str = abap_true.
-            IF lv_escape = abap_true.
-              lv_escape = abap_false.
-            ELSEIF lv_sc = '\'.
-              lv_escape = abap_true.
-            ELSEIF lv_sc = '"'.
-              lv_in_str = abap_false.
-            ENDIF.
-          ELSE.
-            IF lv_sc = '"'.
-              lv_in_str = abap_true.
-            ELSEIF lv_sc = '{' OR lv_sc = '['.
-              lv_depth = lv_depth + 1.
-            ELSEIF lv_sc = '}' OR lv_sc = ']'.
-              lv_depth = lv_depth - 1.
-            ENDIF.
-          ENDIF.
-          lv_off = lv_off + 1.
-        ENDWHILE.
-        CLEAR: lv_current, lv_key, lv_value, lv_state.
-        CONTINUE.
-      ENDIF.
-
-      IF lv_ch = '}' AND lv_state <> 1.
-        EXIT.
-      ENDIF.
-
-      IF lv_state = 0 AND lv_ch = '"'.
-        lv_state   = 1.
-        CLEAR lv_key.
-        lv_off = lv_off + 1.
-        CONTINUE.
-      ENDIF.
-      IF lv_state = 1.
-        IF lv_ch = '"'.
-          lv_state = 2.
-        ELSE.
-          lv_key = lv_key && lv_ch.
-        ENDIF.
-        lv_off = lv_off + 1.
-        CONTINUE.
-      ENDIF.
-      IF lv_state = 2 AND lv_ch = ':'.
-        lv_state = 3.
-        CLEAR lv_value.
-        lv_off = lv_off + 1.
-        CONTINUE.
-      ENDIF.
-      IF lv_state = 3.
-        IF lv_ch = ',' OR lv_ch = '}'.
-          lv_val_trim = condense( val = lv_value del = ` ` ).
-          IF lv_val_trim IS NOT INITIAL AND lv_key IS NOT INITIAL.
-            APPEND |"{ lv_key }":{ lv_val_trim }| TO lt_kept.
-          ENDIF.
-          CLEAR: lv_key, lv_value.
-          lv_state = 0.
-          IF lv_ch = '}'.
-            EXIT.
-          ENDIF.
-        ELSE.
-          lv_value = lv_value && lv_ch.
-        ENDIF.
-      ENDIF.
-
-      lv_off = lv_off + 1.
-    ENDWHILE.
-
-    rv_header = |\{{ concat_lines_of( table = lt_kept sep = `,` ) }\}|.
+  METHOD get_trimmed_header.
+* Debug helper: returns the reconstructed header JSON.
+    TRY.
+        rv_header = zcl_bapi_hyb_json_parser=>serialize( parse_header( iv_json ) ).
+      CATCH cx_root ##NO_HANDLER.
+    ENDTRY.
   ENDMETHOD.
 
   METHOD normalize_positive.

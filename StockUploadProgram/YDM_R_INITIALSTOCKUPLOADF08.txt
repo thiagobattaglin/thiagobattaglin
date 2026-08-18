@@ -1,0 +1,107 @@
+*&---------------------------------------------------------------------*
+*&  Include           /SCWM/R_INITIALSTOCKUPLOADF08
+*&---------------------------------------------------------------------*
+*&---------------------------------------------------------------------*
+*&      Form  display_log
+*&---------------------------------------------------------------------*
+*       Display application log, which contains errors encountered
+*       during data check
+*----------------------------------------------------------------------*
+FORM display_log .
+  DATA: lt_msg_handle   TYPE bal_t_msgh,
+        lt_msg          TYPE STANDARD TABLE OF bal_s_msg,
+        lt_msg_new      TYPE STANDARD TABLE OF bal_s_msg,
+        ls_disp_profile TYPE bal_s_prof,
+        ls_msg          TYPE bal_s_msg,
+        lv_row          TYPE balmsgvsrc,
+        lv_row_old      TYPE balmsgvsrc.
+
+  IF go_cl_mig_stock IS INITIAL.
+    RETURN.
+  ENDIF.
+
+  CHECK go_cl_mig_stock->mo_log IS BOUND.
+
+  IF go_cl_mig_stock->mv_text IS NOT INITIAL.
+    go_cl_mig_stock->mo_log->get_loghandle(
+      IMPORTING
+        ev_loghandle = DATA(lv_loghandle) ).
+    IF lv_loghandle IS NOT INITIAL.
+      "get the message handles for log
+      DATA(lt_log_handle) = VALUE bal_t_logh( ( lv_loghandle ) ).
+      CALL FUNCTION 'BAL_GLB_SEARCH_MSG'
+        EXPORTING
+          i_t_log_handle = lt_log_handle
+        IMPORTING
+          e_t_msg_handle = lt_msg_handle
+        EXCEPTIONS
+          msg_not_found  = 1.
+
+      "get the message using the handles
+      LOOP AT lt_msg_handle ASSIGNING FIELD-SYMBOL(<ls_msg_handle>).
+        CALL FUNCTION 'BAL_LOG_MSG_READ'
+          EXPORTING
+            i_s_msg_handle = <ls_msg_handle>
+            i_langu        = sy-langu
+          IMPORTING
+            e_s_msg        = ls_msg
+          EXCEPTIONS
+            log_not_found  = 1
+            msg_not_found  = 2
+            OTHERS         = 3.
+        IF sy-subrc = 0 AND
+          NOT ( ls_msg-msgid = '/SCWM/STOCK_UPLOAD' AND ls_msg-msgno = '061' ).
+          APPEND ls_msg TO lt_msg.
+        ENDIF.
+      ENDLOOP.
+
+      SORT lt_msg BY msgv4_src.    "Note 3083239
+
+      "insert divider messages if not yet done
+      "delete old log entries
+      LOOP AT lt_msg_handle ASSIGNING <ls_msg_handle>.
+        CALL FUNCTION 'BAL_LOG_MSG_DELETE'
+          EXPORTING
+            i_s_msg_handle = <ls_msg_handle>.
+      ENDLOOP.
+
+      LOOP AT lt_msg ASSIGNING FIELD-SYMBOL(<ls_msg>).
+        CLEAR <ls_msg>-time_stmp. "timestamp mischanges displayed order of messages
+        lv_row = <ls_msg>-msgv4_src.      "Note 3083239
+        DATA(lv_row_condensed) = lv_row.
+        CONDENSE lv_row_condensed.
+        IF lv_row_condensed = '0'.
+          CONTINUE.
+        ENDIF.
+        IF lv_row_condensed <> lv_row_old.
+          lv_row_old = lv_row_condensed.
+          READ TABLE lt_msg WITH KEY msgid = '/SCWM/STOCK_UPLOAD' msgno = '061' msgty = 'I' msgv1 = lv_row_condensed TRANSPORTING NO FIELDS.
+          IF sy-subrc <> 0.
+            APPEND VALUE bal_s_msg( msgid = '/SCWM/STOCK_UPLOAD' msgno = '061' msgty = 'I' msgv1 = lv_row_condensed msgv4_src = lv_row ) TO lt_msg_new.
+          ENDIF.
+        ENDIF.
+        APPEND <ls_msg> TO lt_msg_new.
+      ENDLOOP.
+
+      "add new log entries
+      LOOP AT lt_msg_new ASSIGNING <ls_msg>.
+        CALL FUNCTION 'BAL_LOG_MSG_ADD'
+          EXPORTING
+            i_log_handle = lv_loghandle            " Log handle
+            i_s_msg      = <ls_msg>.                 " Notification data
+      ENDLOOP.
+    ENDIF.
+
+    "display log as popup window
+    CALL FUNCTION 'BAL_DSP_PROFILE_POPUP_GET'
+      IMPORTING
+        e_s_display_profile = ls_disp_profile.
+    ls_disp_profile-use_grid = 'X'.
+    TRY.
+        CALL METHOD go_cl_mig_stock->mo_log->display_log
+          EXPORTING
+            is_display_profile = ls_disp_profile.
+      CATCH /scwm/cx_basics.
+    ENDTRY.
+  ENDIF.
+ENDFORM.                    " display_log

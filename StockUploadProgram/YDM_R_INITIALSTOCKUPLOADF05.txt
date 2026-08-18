@@ -1,0 +1,532 @@
+*&---------------------------------------------------------------------*
+*&  Include           /SCWM/R_INITIALSTOCKUPLOADF05
+*&---------------------------------------------------------------------*
+*&---------------------------------------------------------------------*
+*&      Form  get_data
+*&---------------------------------------------------------------------*
+*       Get data out of specified file
+*----------------------------------------------------------------------*
+FORM get_data.
+  DATA: lt_stock      TYPE /scwm/tt_stock_upload_ext,
+        lt_pmat       TYPE tty_matnr,
+        lv_blank_flag TYPE abap_bool,
+        lv_fill_flag  TYPE abap_bool.
+
+  CLEAR gv_error.
+  CLEAR gt_stock_out.
+  CLEAR lt_stock.
+
+  PERFORM upload_file CHANGING lt_stock.
+
+  CHECK lt_stock IS NOT INITIAL.
+* check data
+* Note 3317854
+* Check if inconsistent ROW numbers are uploaded in the excel
+  LOOP AT lt_stock ASSIGNING FIELD-SYMBOL(<ls_stock>) WHERE row IS NOT INITIAL.
+    lv_fill_flag = abap_true.
+    EXIT.
+  ENDLOOP.
+  LOOP AT lt_stock ASSIGNING <ls_stock> WHERE row IS INITIAL.
+    lv_blank_flag = abap_true.
+    EXIT.
+  ENDLOOP.
+
+  IF lv_blank_flag EQ abap_true AND lv_fill_flag EQ abap_true. "Inconsistent entries
+* Issue error message
+    MESSAGE s106(/scwm/stock_upload) DISPLAY LIKE 'E'.
+    EXIT.
+  ENDIF.
+
+  IF go_cl_mig_stock IS NOT BOUND.
+    /scwm/cl_mig_stock=>get_instance(
+      EXPORTING
+        iv_called_from_mc = abap_false
+      IMPORTING
+        eo_object = go_cl_mig_stock ).
+  ENDIF.
+
+* Prevent HU and WO printing,
+* needed here, additionally to the "prevent print" in the constructor of class
+* /scwm/cl_mig_stock, for cases when migration stock object already exists
+  CALL FUNCTION '/SCWM/PRINT_GLOBAL_DATA'
+    EXPORTING
+      iv_print_hu_wo = wmegc_no_print_hu_and_wo.
+
+  CALL METHOD go_cl_mig_stock->check_data
+    EXPORTING
+      iv_lgnum     = /scwm/s_t300t-lgnum
+    IMPORTING
+      et_pmat      = lt_pmat
+    CHANGING
+      ct_stock_ext = lt_stock
+      cv_error     = gv_error.
+
+  gt_stock[] = lt_stock[].
+* PERFORM check_data CHANGING lt_stock lt_pmat.
+
+  PERFORM display_log.
+
+  IF g_show_data IS NOT INITIAL.
+    PERFORM display_file USING go_cl_mig_stock->mt_stock lt_pmat.
+  ELSE.
+    IF r_alv IS BOUND.
+      r_alv->set_visible( visible = ' ' ).
+    ENDIF.
+  ENDIF.
+ENDFORM.                    " get_data
+*&---------------------------------------------------------------------*
+*&      Form  open_file_dialog
+*&---------------------------------------------------------------------*
+*       Display file open dialog for file selection
+*----------------------------------------------------------------------*
+FORM open_file_dialog .
+  DATA: lt_filetable TYPE filetable,
+        ls_filetable TYPE file_table,
+        lv_logfile   TYPE fileintern,
+        lv_rc        TYPE i,
+        lv_string    TYPE string,
+        ls_help_info TYPE help_info,
+        lt_dselc     TYPE TABLE OF dselc,
+        lt_dval      TYPE TABLE OF dval.
+
+  IF g_pc_file IS NOT INITIAL.
+    lv_string = TEXT-001.
+
+    CALL METHOD cl_gui_frontend_services=>file_open_dialog
+      EXPORTING
+        window_title            = lv_string
+        default_extension       = 'CSV'    "EC notext
+        initial_directory       = 'C:\'    "EC notext
+        file_filter             = '(*.CSV)|*.CSV' "EC notext
+      CHANGING
+        file_table              = lt_filetable
+        rc                      = lv_rc
+      EXCEPTIONS
+        file_open_dialog_failed = 1
+        cntl_error              = 2
+        error_no_gui            = 3
+        not_supported_by_gui    = 4
+        OTHERS                  = 5.
+    IF sy-subrc <> 0.
+      MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
+                 WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+      RETURN.
+    ENDIF.
+    READ TABLE lt_filetable INTO ls_filetable INDEX 1.
+    MOVE: ls_filetable-filename TO g_file.
+  ELSEIF g_log_file IS NOT INITIAL.
+    CALL FUNCTION 'FILE_LOGFILE_ALIAS_F4'
+      EXPORTING
+        ed_logfile_appl   = gc_logfile
+        ed_parameter_name = 'G_FILE'
+*       ED_PROGRAM_NAME   = SY-CPROG
+*       ED_SCREEN_NUMBER  = SY-DYNNR
+      CHANGING
+        cd_logical_file   = lv_logfile
+* EXCEPTIONS
+*       EXC_NO_VALUES_FOUND       = 1
+*       OTHERS            = 2
+      .
+    IF sy-subrc <> 0.
+* Implement suitable error handling here
+    ELSE.
+      g_file = lv_logfile.
+    ENDIF.
+  ENDIF.
+ENDFORM.                    " open_file_dialog
+*&---------------------------------------------------------------------*
+*&      Form  upload_file
+*&---------------------------------------------------------------------*
+*       Upload data either from a file on the front end PC or
+*       via a logical file from the application server (LSMW)
+*----------------------------------------------------------------------*
+*  <->  ct_stock  data stored within file uploaded
+*----------------------------------------------------------------------*
+FORM upload_file CHANGING ct_stock TYPE /scwm/tt_stock_upload_ext .
+  DATA: BEGIN OF data_tab OCCURS 10,
+          line(1000),
+        END OF data_tab.
+  DATA: lv_file     TYPE string,
+        lv_line     TYPE string,
+        lv_log_file TYPE fileintern,
+        lv_left     TYPE i.
+  FIELD-SYMBOLS: <fs_line> TYPE any.
+  DATA: ls_stock TYPE /scwm/s_stock_upload_ext,
+        ls_t300  TYPE /scwm/s_t300.
+  DATA: lv_sep(1).
+  DATA: lv_num  TYPE p DECIMALS 1,
+        lv_char TYPE char10.
+
+  MOVE: g_file TO lv_file.
+
+
+  AUTHORITY-CHECK OBJECT '/SCWM/SLFU'
+    ID '/SCWM/LGNU' FIELD /scwm/s_t300t-lgnum
+    ID '/SCWM/SLFU' FIELD 'IS'.
+  IF sy-subrc <> 0.
+    MESSAGE s650(/scwm/l3) DISPLAY LIKE 'E' WITH /scwm/s_t300t-lgnum.
+    EXIT.
+  ENDIF.
+
+* central init
+  /scwm/cl_tm=>cleanup( EXPORTING iv_lgnum = /scwm/s_t300t-lgnum ).
+
+  IF g_log_file IS INITIAL.
+    CALL METHOD cl_gui_frontend_services=>gui_upload
+      EXPORTING
+        filename                = lv_file
+        filetype                = 'ASC'          "EC notext
+      CHANGING
+        data_tab                = data_tab[]
+      EXCEPTIONS
+        file_open_error         = 1
+        file_read_error         = 2
+        no_batch                = 3
+        gui_refuse_filetransfer = 4
+        invalid_type            = 5
+        no_authority            = 6
+        unknown_error           = 7
+        bad_data_format         = 8
+        header_not_allowed      = 9
+        separator_not_allowed   = 10
+        header_too_long         = 11
+        OTHERS                  = 12.
+
+    IF sy-subrc IS NOT INITIAL.
+      MESSAGE e015 WITH lv_file.
+      EXIT.
+    ENDIF.
+
+*   new file is uploaded (and thus tested) => clear gv_run
+    CLEAR: gv_run.
+
+*   delete line with headings
+    DELETE data_tab INDEX 1.
+*   determine separator
+    IF g_sep IS INITIAL.
+      lv_num = 42 / 10.
+      WRITE lv_num TO lv_char.
+      FIND ',' IN lv_char.
+      IF sy-subrc = 0.
+        lv_sep = ';'.
+      ELSE.
+        lv_sep = ','.
+      ENDIF.
+    ELSE.
+      lv_sep = g_sep.
+    ENDIF.
+
+    READ TABLE data_tab ASSIGNING <fs_line> INDEX 1.
+    CHECK <fs_line> IS ASSIGNED.
+    FIND lv_sep IN <fs_line>.
+    IF sy-subrc <> 0.
+      MESSAGE e016 WITH lv_file.
+      EXIT.
+    ENDIF.
+
+    LOOP AT data_tab ASSIGNING <fs_line>.
+      MOVE: <fs_line> TO lv_line.
+      PERFORM string_split USING lv_line lv_sep
+                        CHANGING ls_stock.
+
+*********START WIP MANAGEMENT***************
+********* You can not use ISU to upload WIP Product
+      IF ls_stock-stock_doccat = wmegc_stock_doccat_wip.
+        "  AND /scwm/cl_wip_util=>is_wip_product( iv_matid  = ls_stock-matid ) = abap_true.
+        MESSAGE e105(/scwm/stock_upload) WITH ls_stock-matnr.
+      ENDIF.
+*********END WIP MANAGEMENT***************
+*     Convert the units into internal format:
+      CALL FUNCTION 'CONVERSION_EXIT_CUNIT_INPUT'
+        EXPORTING
+          input          = ls_stock-unit
+          language       = /scwm/s_t300t-spras
+        IMPORTING
+          output         = ls_stock-unit
+        EXCEPTIONS
+          unit_not_found = 1
+          OTHERS         = 2.
+
+      CALL FUNCTION 'CONVERSION_EXIT_CUNIT_INPUT'
+        EXPORTING
+          input          = ls_stock-cwunit
+          language       = /scwm/s_t300t-spras
+        IMPORTING
+          output         = ls_stock-cwunit
+        EXCEPTIONS
+          unit_not_found = 1
+          OTHERS         = 2.
+
+      CALL FUNCTION 'CONVERSION_EXIT_CUNIT_INPUT'
+        EXPORTING
+          input          = ls_stock-unit_gw
+          language       = /scwm/s_t300t-spras
+        IMPORTING
+          output         = ls_stock-unit_gw
+        EXCEPTIONS
+          unit_not_found = 1
+          OTHERS         = 2.
+
+      CALL FUNCTION 'CONVERSION_EXIT_CUNIT_INPUT'
+        EXPORTING
+          input          = ls_stock-unit_tw
+          language       = /scwm/s_t300t-spras
+        IMPORTING
+          output         = ls_stock-unit_tw
+        EXCEPTIONS
+          unit_not_found = 1
+          OTHERS         = 2.
+
+      CALL FUNCTION 'CONVERSION_EXIT_CUNIT_INPUT'
+        EXPORTING
+          input          = ls_stock-unit_gv
+          language       = /scwm/s_t300t-spras
+        IMPORTING
+          output         = ls_stock-unit_gv
+        EXCEPTIONS
+          unit_not_found = 1
+          OTHERS         = 2.
+
+      CALL FUNCTION 'CONVERSION_EXIT_CUNIT_INPUT'
+        EXPORTING
+          input          = ls_stock-unit_tv
+          language       = /scwm/s_t300t-spras
+        IMPORTING
+          output         = ls_stock-unit_tv
+        EXCEPTIONS
+          unit_not_found = 1
+          OTHERS         = 2.
+
+
+      CALL FUNCTION 'CONVERSION_EXIT_CUNIT_INPUT'
+        EXPORTING
+          input          = ls_stock-unit_lwh            "2952938
+          language       = /scwm/s_t300t-spras
+        IMPORTING
+          output         = ls_stock-unit_lwh
+        EXCEPTIONS
+          unit_not_found = 1
+          OTHERS         = 2.
+
+      CALL FUNCTION 'CONVERSION_EXIT_CUNIT_INPUT'
+        EXPORTING
+          input          = ls_stock-unit_max_lwh        "2952938
+          language       = /scwm/s_t300t-spras
+        IMPORTING
+          output         = ls_stock-unit_max_lwh
+        EXCEPTIONS
+          unit_not_found = 1
+          OTHERS         = 2.
+
+
+      APPEND ls_stock TO ct_stock.
+      CLEAR: <fs_line>, lv_line, ls_stock.
+    ENDLOOP.
+    MESSAGE s017 WITH lv_file.
+  ELSE.
+*   lv_file should contain the logical filename
+*   for this logical filename try to get physical filename for
+*   open dataset
+    lv_log_file = lv_file.
+
+    CALL FUNCTION 'FILE_LOGFILE_ALIAS_PAI'
+      EXPORTING
+        ed_logfile_appl = gc_logfile
+      CHANGING
+        cd_logfile      = lv_log_file
+      EXCEPTIONS
+        OTHERS          = 1.
+
+    IF sy-subrc <> 0.
+      MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
+        WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+      RETURN.
+    ENDIF.
+
+    "prevent potential misuse of parameter LGNUM from UI
+    "verify that a valid warehouse number was entered
+    CALL FUNCTION '/SCWM/T300_READ_SINGLE'
+      EXPORTING
+        iv_lgnum  = /scwm/s_t300t-lgnum
+      IMPORTING
+        es_t300   = ls_t300
+      EXCEPTIONS
+        not_found = 1
+        OTHERS    = 99.
+    IF sy-subrc <> 0.
+      MESSAGE ID sy-msgid TYPE 'E' NUMBER sy-msgno
+              WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+      RETURN.
+    ENDIF.
+
+    TRY .
+        /scwm/s_t300t-lgnum = cl_abap_dyn_prg=>check_whitelist_str(
+                              val       = /scwm/s_t300t-lgnum
+                              whitelist = ls_t300-lgnum ).
+      CATCH cx_abap_not_in_whitelist INTO DATA(lx_whitelist).
+        MESSAGE lx_whitelist->get_text( ) TYPE 'E'.
+        RETURN.
+    ENDTRY.
+
+    CALL FUNCTION 'FILE_GET_NAME'
+      EXPORTING
+        logical_filename = lv_log_file
+        parameter_1      = /scwm/s_t300t-lgnum "warehouse number
+      IMPORTING
+        file_name        = lv_file
+      EXCEPTIONS
+        file_not_found   = 1
+        OTHERS           = 2.
+    IF sy-subrc <> 0.
+      MESSAGE ID sy-msgid TYPE 'E' NUMBER sy-msgno
+              WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+      RETURN.
+    ENDIF.
+
+    CALL FUNCTION 'FILE_VALIDATE_NAME'
+      EXPORTING
+        logical_filename           = lv_log_file
+        parameter_1                = /scwm/s_t300t-lgnum "warehouse number
+      CHANGING
+        physical_filename          = lv_file
+      EXCEPTIONS
+        logical_filename_not_found = 1
+        validation_failed          = 2
+        OTHERS                     = 3.
+    IF sy-subrc <> 0.
+      MESSAGE ID sy-msgid TYPE 'E' NUMBER sy-msgno
+              WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+      RETURN.
+    ENDIF.
+
+    IF g_sep IS INITIAL.
+      lv_num = 42 / 10.
+      WRITE lv_num TO lv_char.
+      FIND ',' IN lv_char.
+      IF sy-subrc = 0.
+        lv_sep = ';'.
+      ELSE.
+        lv_sep = ','.
+      ENDIF.
+    ELSE.
+      lv_sep = g_sep.
+    ENDIF.
+
+*   open dataset based on physical filename
+    OPEN DATASET lv_file FOR INPUT IN TEXT MODE ENCODING DEFAULT.
+    IF sy-subrc IS NOT INITIAL.
+*     logical file is still shown in the input field
+*     shorten file name if necessary to fit into message variable
+      IF strlen( lv_file ) > 50.
+        lv_left = strlen( lv_file ) - 47.
+        lv_file = lv_file+lv_left.
+        CONCATENATE '...' lv_file INTO lv_file. "EC notext
+      ENDIF.
+      MESSAGE e015 WITH lv_file.
+      RETURN.
+    ENDIF.
+
+    DO.
+      READ DATASET lv_file INTO lv_line.
+      IF sy-subrc IS NOT INITIAL.
+        EXIT.
+      ENDIF.
+
+      PERFORM string_split USING lv_line lv_sep
+                           CHANGING ls_stock.
+
+*     Convert the units into internal format:
+      CALL FUNCTION 'CONVERSION_EXIT_CUNIT_INPUT'
+        EXPORTING
+          input          = ls_stock-unit
+          language       = /scwm/s_t300t-spras
+        IMPORTING
+          output         = ls_stock-unit
+        EXCEPTIONS
+          unit_not_found = 1
+          OTHERS         = 2.
+
+      CALL FUNCTION 'CONVERSION_EXIT_CUNIT_INPUT'
+        EXPORTING
+          input          = ls_stock-cwunit
+          language       = /scwm/s_t300t-spras
+        IMPORTING
+          output         = ls_stock-cwunit
+        EXCEPTIONS
+          unit_not_found = 1
+          OTHERS         = 2.
+
+      APPEND ls_stock TO ct_stock.
+    ENDDO.
+
+    MESSAGE s017 WITH lv_log_file.
+    CLOSE DATASET lv_file.
+  ENDIF.
+ENDFORM.                    " upload_file
+*&---------------------------------------------------------------------*
+*&      Form  string_split
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      -->P_<FS_LINE>  text
+*      -->P_LV_SEP  text
+*      <--P_LS_STOCK  text
+*----------------------------------------------------------------------*
+FORM string_split  USING    is_line  TYPE string
+                            iv_sep   TYPE char1
+                   CHANGING cs_stock TYPE /scwm/s_stock_upload_ext.
+  DATA: lv_index  TYPE sy-index,
+        lv_len    TYPE sytabix,
+        lv_totlen TYPE sytabix,
+        lv_remlen TYPE sytabix,
+        lv_field  TYPE string,
+        lv_last   TYPE xfeld.
+  DATA: ls_line     TYPE string.
+  FIELD-SYMBOLS: <fv_field> TYPE any.
+
+  lv_index = 1.
+  ls_line = is_line.
+
+  DO.
+    ADD 1 TO lv_index.
+    lv_totlen = strlen( ls_line ).
+    SEARCH ls_line FOR iv_sep.
+    IF sy-subrc IS INITIAL OR
+       lv_totlen > 0.
+      IF sy-subrc IS INITIAL.
+        lv_len = sy-fdpos.
+        lv_remlen = lv_totlen - lv_len - 1.
+      ELSE.
+*       in case the sy-subrc NE 0 and there are still chars in the
+*       string the CSV is malformed.
+*       it will be assumed that the remaining chars should be in the
+*       next field. Thereafter the loop will be left.
+        lv_len = lv_totlen.
+        lv_last = 'X'.
+      ENDIF.
+      lv_field = ls_line(lv_len).
+
+      IF lv_len > 0.
+        ASSIGN COMPONENT lv_index OF STRUCTURE cs_stock TO <fv_field>.
+        IF sy-subrc IS INITIAL.
+          WRITE: lv_field TO <fv_field>.
+          TRANSLATE <fv_field> TO UPPER CASE.
+        ENDIF.
+        ADD 1 TO lv_len.
+        UNASSIGN <fv_field>.
+      ELSE.
+        ADD 1 TO lv_len.
+      ENDIF.
+*     if lv_last is set the loop should be left, because the string
+*     is empty
+      IF lv_last IS NOT INITIAL.
+        EXIT.
+      ENDIF.
+      ls_line = ls_line+lv_len(lv_remlen).
+    ELSE.
+      EXIT.
+    ENDIF.
+  ENDDO.
+
+  MOVE: sy-mandt  TO cs_stock-mandt.
+ENDFORM.                    " string_split

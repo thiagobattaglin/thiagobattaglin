@@ -1,0 +1,54 @@
+*&---------------------------------------------------------------------*
+*&  Include           /SCWM/R_INITIALSTOCKUPLOADF02
+*&---------------------------------------------------------------------*
+*&---------------------------------------------------------------------*
+*&      Form  initialize_alv
+*&---------------------------------------------------------------------*
+*       Initialize ALV Grid
+*----------------------------------------------------------------------*
+FORM initialize_alv_0100 .
+  CREATE OBJECT r_container
+    EXPORTING
+      container_name              = 'CONTAINER'.
+
+  CREATE OBJECT r_alv
+    EXPORTING
+      i_parent          = r_container.
+ENDFORM.                    " initialize_alv
+*&---------------------------------------------------------------------*
+*&      Form  alv_fieldcat
+*&---------------------------------------------------------------------*
+*       Modify ALV field catalog
+*----------------------------------------------------------------------*
+*      -->CT_FIELDCAT  ALV field catalog for output
+*----------------------------------------------------------------------*
+FORM alv_fieldcat_to USING ct_fieldcat TYPE lvc_t_fcat.
+  FIELD-SYMBOLS: <fieldcat> TYPE lvc_s_fcat.
+
+* create fieldcat
+  CALL FUNCTION 'LVC_FIELDCATALOG_MERGE'
+    EXPORTING
+      i_structure_name       = '/SCWM/S_STOCK_UPLOAD_OUT'
+      i_client_never_display = 'X'
+    CHANGING
+      ct_fieldcat            = ct_fieldcat
+    EXCEPTIONS
+      inconsistent_interface = 1
+      program_error          = 2
+      OTHERS                 = 3.
+  IF sy-subrc <> 0.
+    MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
+            WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+  ENDIF.
+
+* modify fieldcat
+  LOOP AT ct_fieldcat ASSIGNING <fieldcat>.
+    CASE <fieldcat>-fieldname.
+      WHEN 'ICON'.
+        <fieldcat>-icon = 'X'.
+      WHEN 'DUMMY_ISU'.
+        <fieldcat>-tech = 'X'.
+      WHEN OTHERS.
+    ENDCASE.
+  ENDLOOP.
+ENDFORM.                    " alv_fieldcat

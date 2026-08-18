@@ -14,6 +14,7 @@ CLASS ltcl_hyb_test DEFINITION FINAL FOR TESTING
     METHODS lex_split_nested      FOR TESTING.
     METHODS dispatch_chunk_mode   FOR TESTING RAISING cx_static_check.
     METHODS dispatch_bulk_splits  FOR TESTING RAISING cx_static_check.
+    METHODS test_salesorder_json  FOR TESTING RAISING cx_static_check.
 ENDCLASS.
 
 
@@ -126,6 +127,23 @@ CLASS ltcl_hyb_test IMPLEMENTATION.
     cl_abap_unit_assert=>assert_equals( exp = 2 act = ls-accepted ).
     cl_abap_unit_assert=>assert_equals( exp = 2 act = ls-workers  ).
     cl_abap_unit_assert=>assert_equals( exp = 2 act = lines( ltc_hyb_stub=>gt_last_chunks ) ).
+  ENDMETHOD.
+
+  METHOD test_salesorder_json.
+* Test with the exact JSON from Insomnia
+    DATA(lv_json) =
+      `{\"bapi_name\":\"BAPI_SALESORDER_CREATEFROMDAT1\",\"mode\":\"async\",\"kind\":\"bulk\",\"worker_threads\":4,\"worker_rows\":100,\"documents\":[{\"heders_values\":[{\"value\":\"ORDER_HEADER_IN\",\"fields\":[{\"name\":\"DOC_TYPE\",\"value\":\"TA\"},{\"name\":\"SALES_ORG\",\"value\":\"1000\"},{\"name\":\"DISTR_CHAN\",\"value\":\"10\"},{\"name\":\"DIVISION\",\"value\":\"00\"},{\"name\":\"PURCH_NO_C\",\"value\":\"PO-REF-0001\"}]}],\"items_values\":[{\"value\":\"ORDER_ITEMS_IN\",\"fields\":[{\"name\":\"ITM_NUMBER\",\"value\":\"000010\"},{\"name\":\"MATERIAL\",\"value\":\"MAT-001\"},{\"name\":\"PLANT\",\"value\":\"1000\"},{\"name\":\"TARGET_QTY\",\"value\":\"10\"},{\"name\":\"TARGET_QU\",\"value\":\"EA\"}]},{\"value\":\"ORDER_PARTNERS\",\"fields\":[{\"name\":\"PARTN_ROLE\",\"value\":\"AG\"},{\"name\":\"PARTN_NUMB\",\"value\":\"0000001000\"}]}]}]}`.
+
+    DATA(lo) = NEW zcl_bapi_hyb_dispatcher( ).
+    DATA(lv_trimmed) = lo->get_trimmed_header( lv_json ).
+    DATA(ls_hdr) = lo->parse_header( lv_json ).
+
+    cl_abap_unit_assert=>assert_not_initial( lv_trimmed ).
+    cl_abap_unit_assert=>assert_equals(
+      exp = `BAPI_SALESORDER_CREATEFROMDAT1`
+      act = ls_hdr-bapi_name ).
+    cl_abap_unit_assert=>assert_equals( exp = `async` act = ls_hdr-mode ).
+    cl_abap_unit_assert=>assert_equals( exp = `bulk`  act = ls_hdr-kind ).
   ENDMETHOD.
 
 ENDCLASS.
