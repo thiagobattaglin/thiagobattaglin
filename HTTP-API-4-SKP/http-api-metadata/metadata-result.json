@@ -1,0 +1,10347 @@
+{
+	"bapi_name": "BAPI_PO_CREATE1",
+	"documents": [
+		{
+			"headers_values": [
+				{
+					"structure": "POHEADER",
+					"fields": [
+						{
+							"name": "PO_NUMBER",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "COMP_CODE",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "DOC_TYPE",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "DELETE_IND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "STATUS",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CREAT_DATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "CREATED_BY",
+							"type": "char12",
+							"length": 12,
+							"size": 12,
+							"decimal": 0
+						},
+						{
+							"name": "ITEM_INTVL",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "VENDOR",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "LANGU",
+							"type": "lang",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "LANGU_ISO",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "PMNTTRMS",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "DSCNT1_TO",
+							"type": "dec3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "DSCNT2_TO",
+							"type": "dec3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "DSCNT3_TO",
+							"type": "dec3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "DSCT_PCT1",
+							"type": "dec5.3",
+							"length": 5,
+							"size": 5,
+							"decimal": 3
+						},
+						{
+							"name": "DSCT_PCT2",
+							"type": "dec5.3",
+							"length": 5,
+							"size": 5,
+							"decimal": 3
+						},
+						{
+							"name": "PURCH_ORG",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "PUR_GROUP",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "CURRENCY",
+							"type": "cuky5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "CURRENCY_ISO",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "EXCH_RATE",
+							"type": "dec9.5",
+							"length": 9,
+							"size": 9,
+							"decimal": 5
+						},
+						{
+							"name": "EX_RATE_FX",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DOC_DATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "VPER_START",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "VPER_END",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "WARRANTY",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "QUOTATION",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "QUOT_DATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "REF_1",
+							"type": "char12",
+							"length": 12,
+							"size": 12,
+							"decimal": 0
+						},
+						{
+							"name": "SALES_PERS",
+							"type": "char30",
+							"length": 30,
+							"size": 30,
+							"decimal": 0
+						},
+						{
+							"name": "TELEPHONE",
+							"type": "char16",
+							"length": 16,
+							"size": 16,
+							"decimal": 0
+						},
+						{
+							"name": "SUPPL_VEND",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "CUSTOMER",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "AGREEMENT",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "GR_MESSAGE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SUPPL_PLNT",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "INCOTERMS1",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "INCOTERMS2",
+							"type": "char28",
+							"length": 28,
+							"size": 28,
+							"decimal": 0
+						},
+						{
+							"name": "COLLECT_NO",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "DIFF_INV",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "OUR_REF",
+							"type": "char12",
+							"length": 12,
+							"size": 12,
+							"decimal": 0
+						},
+						{
+							"name": "LOGSYSTEM",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "SUBITEMINT",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "PO_REL_IND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REL_STATUS",
+							"type": "char8",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "VAT_CNTRY",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "VAT_CNTRY_ISO",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "REASON_CANCEL",
+							"type": "numc2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "REASON_CODE",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "RETENTION_TYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "RETENTION_PERCENTAGE",
+							"type": "dec5.2",
+							"length": 5,
+							"size": 5,
+							"decimal": 2
+						},
+						{
+							"name": "DOWNPAY_TYPE",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "DOWNPAY_AMOUNT",
+							"type": "dec23.4",
+							"length": 23,
+							"size": 23,
+							"decimal": 4
+						},
+						{
+							"name": "DOWNPAY_PERCENT",
+							"type": "dec5.2",
+							"length": 5,
+							"size": 5,
+							"decimal": 2
+						},
+						{
+							"name": "DOWNPAY_DUEDATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "MEMORY",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "MEMORYTYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SHIPTYPE",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "HANDOVERLOC",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "SHIPCOND",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "INCOTERMSV",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "INCOTERMS2L",
+							"type": "char70",
+							"length": 70,
+							"size": 70,
+							"decimal": 0
+						},
+						{
+							"name": "INCOTERMS3L",
+							"type": "char70",
+							"length": 70,
+							"size": 70,
+							"decimal": 0
+						},
+						{
+							"name": "EXT_SYS",
+							"type": "char60",
+							"length": 60,
+							"size": 60,
+							"decimal": 0
+						},
+						{
+							"name": "EXT_REF",
+							"type": "char70",
+							"length": 70,
+							"size": 70,
+							"decimal": 0
+						},
+						{
+							"name": "INTRASTAT_REL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "INTRASTAT_EXCL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "EXT_REV_TMSTMP",
+							"type": "dec21.7",
+							"length": 21,
+							"size": 21,
+							"decimal": 7
+						},
+						{
+							"name": "TOTAL_STATUS_PCS",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "TOTAL_STATUS_PMA",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "TOTAL_STATUS_DG",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "TOTAL_STATUS_SDS",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"structure": "POHEADERX",
+					"fields": [
+						{
+							"name": "PO_NUMBER",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COMP_CODE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DOC_TYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DELETE_IND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "STATUS",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CREAT_DATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CREATED_BY",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ITEM_INTVL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "VENDOR",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "LANGU",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "LANGU_ISO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PMNTTRMS",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DSCNT1_TO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DSCNT2_TO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DSCNT3_TO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DSCT_PCT1",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DSCT_PCT2",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PURCH_ORG",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PUR_GROUP",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CURRENCY",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CURRENCY_ISO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "EXCH_RATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "EX_RATE_FX",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DOC_DATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "VPER_START",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "VPER_END",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "WARRANTY",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "QUOTATION",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "QUOT_DATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REF_1",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SALES_PERS",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "TELEPHONE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SUPPL_VEND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CUSTOMER",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "AGREEMENT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "GR_MESSAGE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SUPPL_PLNT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "INCOTERMS1",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "INCOTERMS2",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COLLECT_NO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DIFF_INV",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "OUR_REF",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "LOGSYSTEM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SUBITEMINT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PO_REL_IND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REL_STATUS",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "VAT_CNTRY",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "VAT_CNTRY_ISO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REASON_CANCEL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REASON_CODE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "RETENTION_TYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "RETENTION_PERCENTAGE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DOWNPAY_TYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DOWNPAY_AMOUNT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DOWNPAY_PERCENT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DOWNPAY_DUEDATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "MEMORY",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "MEMORYTYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SHIPTYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "HANDOVERLOC",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SHIPCOND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "INCOTERMSV",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "INCOTERMS2L",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "INCOTERMS3L",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "EXT_SYS",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "EXT_REF",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "INTRASTAT_REL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "INTRASTAT_EXCL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "EXT_REV_TMSTMP",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"structure": "POADDRVENDOR",
+					"fields": [
+						{
+							"name": "PO_NUMBER",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "ADDR_NO",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "FORMOFADDR",
+							"type": "char20",
+							"length": 20,
+							"size": 20,
+							"decimal": 0
+						},
+						{
+							"name": "NAME",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "NAME_2",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "NAME_3",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "NAME_4",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "C_O_NAME",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "CITY",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "DISTRICT",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "CITY_NO",
+							"type": "char12",
+							"length": 12,
+							"size": 12,
+							"decimal": 0
+						},
+						{
+							"name": "POSTL_COD1",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "POSTL_COD2",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "POSTL_COD3",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "PO_BOX",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "PO_BOX_CIT",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "DELIV_DIS",
+							"type": "char15",
+							"length": 15,
+							"size": 15,
+							"decimal": 0
+						},
+						{
+							"name": "STREET",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "STREET_NO",
+							"type": "char12",
+							"length": 12,
+							"size": 12,
+							"decimal": 0
+						},
+						{
+							"name": "STR_ABBR",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "HOUSE_NO",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "STR_SUPPL1",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "STR_SUPPL2",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "LOCATION",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "BUILDING",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "FLOOR",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "ROOM_NO",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "COUNTRY",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "LANGU",
+							"type": "lang",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REGION",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "SORT1",
+							"type": "char20",
+							"length": 20,
+							"size": 20,
+							"decimal": 0
+						},
+						{
+							"name": "SORT2",
+							"type": "char20",
+							"length": 20,
+							"size": 20,
+							"decimal": 0
+						},
+						{
+							"name": "TIME_ZONE",
+							"type": "char6",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "TAXJURCODE",
+							"type": "char15",
+							"length": 15,
+							"size": 15,
+							"decimal": 0
+						},
+						{
+							"name": "ADR_NOTES",
+							"type": "char50",
+							"length": 50,
+							"size": 50,
+							"decimal": 0
+						},
+						{
+							"name": "COMM_TYPE",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "TEL1_NUMBR",
+							"type": "char30",
+							"length": 30,
+							"size": 30,
+							"decimal": 0
+						},
+						{
+							"name": "TEL1_EXT",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "FAX_NUMBER",
+							"type": "char30",
+							"length": 30,
+							"size": 30,
+							"decimal": 0
+						},
+						{
+							"name": "FAX_EXTENS",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "STREET_LNG",
+							"type": "char60",
+							"length": 60,
+							"size": 60,
+							"decimal": 0
+						},
+						{
+							"name": "DISTRCT_NO",
+							"type": "char8",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "CHCKSTATUS",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PBOXCIT_NO",
+							"type": "char12",
+							"length": 12,
+							"size": 12,
+							"decimal": 0
+						},
+						{
+							"name": "TRANSPZONE",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "HOUSE_NO2",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "E_MAIL",
+							"type": "char241",
+							"length": 241,
+							"size": 241,
+							"decimal": 0
+						},
+						{
+							"name": "STR_SUPPL3",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "TITLE",
+							"type": "char30",
+							"length": 30,
+							"size": 30,
+							"decimal": 0
+						},
+						{
+							"name": "COUNTRYISO",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "LANGU_ISO",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "BUILD_LONG",
+							"type": "char20",
+							"length": 20,
+							"size": 20,
+							"decimal": 0
+						},
+						{
+							"name": "REGIOGROUP",
+							"type": "char8",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"structure": "TESTRUN",
+					"fields": []
+				},
+				{
+					"structure": "MEMORY_UNCOMPLETE",
+					"fields": []
+				},
+				{
+					"structure": "MEMORY_COMPLETE",
+					"fields": []
+				},
+				{
+					"structure": "POEXPIMPHEADER",
+					"fields": [
+						{
+							"name": "TRANSPORT_MODE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CUSTOMS",
+							"type": "char6",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"structure": "POEXPIMPHEADERX",
+					"fields": [
+						{
+							"name": "TRANSPORT_MODE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CUSTOMS",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"structure": "VERSIONS",
+					"fields": [
+						{
+							"name": "POST_DATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "COMPLETED",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REASON",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "DESCRIPTION",
+							"type": "char60",
+							"length": 60,
+							"size": 60,
+							"decimal": 0
+						},
+						{
+							"name": "REQ_BY",
+							"type": "char12",
+							"length": 12,
+							"size": 12,
+							"decimal": 0
+						},
+						{
+							"name": "REQ_BY_EXT",
+							"type": "char20",
+							"length": 20,
+							"size": 20,
+							"decimal": 0
+						},
+						{
+							"name": "ACTIVITY",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"structure": "NO_MESSAGING",
+					"fields": []
+				},
+				{
+					"structure": "NO_MESSAGE_REQ",
+					"fields": []
+				},
+				{
+					"structure": "NO_AUTHORITY",
+					"fields": []
+				},
+				{
+					"structure": "NO_PRICE_FROM_PO",
+					"fields": []
+				},
+				{
+					"structure": "PARK_COMPLETE",
+					"fields": []
+				},
+				{
+					"structure": "PARK_UNCOMPLETE",
+					"fields": []
+				}
+			],
+			"items_values": [
+				{
+					"table": "RETURN",
+					"fields": [
+						{
+							"name": "TYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ID",
+							"type": "char20",
+							"length": 20,
+							"size": 20,
+							"decimal": 0
+						},
+						{
+							"name": "NUMBER",
+							"type": "numc3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "MESSAGE",
+							"type": "char220",
+							"length": 220,
+							"size": 220,
+							"decimal": 0
+						},
+						{
+							"name": "LOG_NO",
+							"type": "char20",
+							"length": 20,
+							"size": 20,
+							"decimal": 0
+						},
+						{
+							"name": "LOG_MSG_NO",
+							"type": "numc6",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "MESSAGE_V1",
+							"type": "char50",
+							"length": 50,
+							"size": 50,
+							"decimal": 0
+						},
+						{
+							"name": "MESSAGE_V2",
+							"type": "char50",
+							"length": 50,
+							"size": 50,
+							"decimal": 0
+						},
+						{
+							"name": "MESSAGE_V3",
+							"type": "char50",
+							"length": 50,
+							"size": 50,
+							"decimal": 0
+						},
+						{
+							"name": "MESSAGE_V4",
+							"type": "char50",
+							"length": 50,
+							"size": 50,
+							"decimal": 0
+						},
+						{
+							"name": "PARAMETER",
+							"type": "char32",
+							"length": 32,
+							"size": 32,
+							"decimal": 0
+						},
+						{
+							"name": "ROW",
+							"type": "int4",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "FIELD",
+							"type": "char30",
+							"length": 30,
+							"size": 30,
+							"decimal": 0
+						},
+						{
+							"name": "SYSTEM",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "POITEM",
+					"fields": [
+						{
+							"name": "PO_ITEM",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "DELETE_IND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SHORT_TEXT",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "MATERIAL",
+							"type": "char18",
+							"length": 18,
+							"size": 18,
+							"decimal": 0
+						},
+						{
+							"name": "MATERIAL_EXTERNAL",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "MATERIAL_GUID",
+							"type": "char32",
+							"length": 32,
+							"size": 32,
+							"decimal": 0
+						},
+						{
+							"name": "MATERIAL_VERSION",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "EMATERIAL",
+							"type": "char18",
+							"length": 18,
+							"size": 18,
+							"decimal": 0
+						},
+						{
+							"name": "EMATERIAL_EXTERNAL",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "EMATERIAL_GUID",
+							"type": "char32",
+							"length": 32,
+							"size": 32,
+							"decimal": 0
+						},
+						{
+							"name": "EMATERIAL_VERSION",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "PLANT",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "STGE_LOC",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "TRACKINGNO",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "MATL_GROUP",
+							"type": "char9",
+							"length": 9,
+							"size": 9,
+							"decimal": 0
+						},
+						{
+							"name": "INFO_REC",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "VEND_MAT",
+							"type": "char35",
+							"length": 35,
+							"size": 35,
+							"decimal": 0
+						},
+						{
+							"name": "QUANTITY",
+							"type": "quan13.3",
+							"length": 13,
+							"size": 13,
+							"decimal": 3
+						},
+						{
+							"name": "PO_UNIT",
+							"type": "unit3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "PO_UNIT_ISO",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "ORDERPR_UN",
+							"type": "unit3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "ORDERPR_UN_ISO",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "CONV_NUM1",
+							"type": "dec5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "CONV_DEN1",
+							"type": "dec5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "NET_PRICE",
+							"type": "dec28.9",
+							"length": 28,
+							"size": 28,
+							"decimal": 9
+						},
+						{
+							"name": "PRICE_UNIT",
+							"type": "dec5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "GR_PR_TIME",
+							"type": "dec3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "TAX_CODE",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "BON_GRP1",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "QUAL_INSP",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "INFO_UPD",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PRNT_PRICE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "EST_PRICE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REMINDER1",
+							"type": "dec3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "REMINDER2",
+							"type": "dec3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "REMINDER3",
+							"type": "dec3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "OVER_DLV_TOL",
+							"type": "dec3.1",
+							"length": 3,
+							"size": 3,
+							"decimal": 1
+						},
+						{
+							"name": "UNLIMITED_DLV",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "UNDER_DLV_TOL",
+							"type": "dec3.1",
+							"length": 3,
+							"size": 3,
+							"decimal": 1
+						},
+						{
+							"name": "VAL_TYPE",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "NO_MORE_GR",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "FINAL_INV",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ITEM_CAT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ACCTASSCAT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DISTRIB",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PART_INV",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "GR_IND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "GR_NON_VAL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "IR_IND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "FREE_ITEM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "GR_BASEDIV",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ACKN_REQD",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ACKNOWL_NO",
+							"type": "char20",
+							"length": 20,
+							"size": 20,
+							"decimal": 0
+						},
+						{
+							"name": "AGREEMENT",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "AGMT_ITEM",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "SHIPPING",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "CUSTOMER",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "COND_GROUP",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "NO_DISCT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PLAN_DEL",
+							"type": "dec3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "NET_WEIGHT",
+							"type": "quan13.3",
+							"length": 13,
+							"size": 13,
+							"decimal": 3
+						},
+						{
+							"name": "WEIGHTUNIT",
+							"type": "unit3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "WEIGHTUNIT_ISO",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "TAXJURCODE",
+							"type": "char15",
+							"length": 15,
+							"size": 15,
+							"decimal": 0
+						},
+						{
+							"name": "CTRL_KEY",
+							"type": "char8",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "CONF_CTRL",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "REV_LEV",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "FUND",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "FUNDS_CTR",
+							"type": "char16",
+							"length": 16,
+							"size": 16,
+							"decimal": 0
+						},
+						{
+							"name": "CMMT_ITEM",
+							"type": "char14",
+							"length": 14,
+							"size": 14,
+							"decimal": 0
+						},
+						{
+							"name": "PRICEDATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PRICE_DATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "GROSS_WT",
+							"type": "quan13.3",
+							"length": 13,
+							"size": 13,
+							"decimal": 3
+						},
+						{
+							"name": "VOLUME",
+							"type": "quan13.3",
+							"length": 13,
+							"size": 13,
+							"decimal": 3
+						},
+						{
+							"name": "VOLUMEUNIT",
+							"type": "unit3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "VOLUMEUNIT_ISO",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "INCOTERMS1",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "INCOTERMS2",
+							"type": "char28",
+							"length": 28,
+							"size": 28,
+							"decimal": 0
+						},
+						{
+							"name": "PRE_VENDOR",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "VEND_PART",
+							"type": "char6",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "HL_ITEM",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "GR_TO_DATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "SUPP_VENDOR",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "SC_VENDOR",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "KANBAN_IND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ERS",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "R_PROMO",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "POINTS",
+							"type": "quan13.3",
+							"length": 13,
+							"size": 13,
+							"decimal": 3
+						},
+						{
+							"name": "POINT_UNIT",
+							"type": "unit3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "POINT_UNIT_ISO",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "SEASON",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "SEASON_YR",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "BON_GRP2",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "BON_GRP3",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "SETT_ITEM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "MINREMLIFE",
+							"type": "dec4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "RFQ_NO",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "RFQ_ITEM",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "PREQ_NO",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "PREQ_ITEM",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "REF_DOC",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "REF_ITEM",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "SI_CAT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "RET_ITEM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "AT_RELEV",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ORDER_REASON",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "BRAS_NBM",
+							"type": "char16",
+							"length": 16,
+							"size": 16,
+							"decimal": 0
+						},
+						{
+							"name": "MATL_USAGE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "MAT_ORIGIN",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "IN_HOUSE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "INDUS3",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "INF_INDEX",
+							"type": "char5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "UNTIL_DATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "DELIV_COMPL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PART_DELIV",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SHIP_BLOCKED",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PREQ_NAME",
+							"type": "char12",
+							"length": 12,
+							"size": 12,
+							"decimal": 0
+						},
+						{
+							"name": "PERIOD_IND_EXPIRATION_DATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "INT_OBJ_NO",
+							"type": "numc18",
+							"length": 18,
+							"size": 18,
+							"decimal": 0
+						},
+						{
+							"name": "PCKG_NO",
+							"type": "numc10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "BATCH",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "VENDRBATCH",
+							"type": "char15",
+							"length": 15,
+							"size": 15,
+							"decimal": 0
+						},
+						{
+							"name": "CALCTYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "GRANT_NBR",
+							"type": "char20",
+							"length": 20,
+							"size": 20,
+							"decimal": 0
+						},
+						{
+							"name": "CMMT_ITEM_LONG",
+							"type": "char24",
+							"length": 24,
+							"size": 24,
+							"decimal": 0
+						},
+						{
+							"name": "FUNC_AREA_LONG",
+							"type": "char16",
+							"length": 16,
+							"size": 16,
+							"decimal": 0
+						},
+						{
+							"name": "NO_ROUNDING",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PO_PRICE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SUPPL_STLOC",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "SRV_BASED_IV",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "FUNDS_RES",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "RES_ITEM",
+							"type": "numc3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "ORIG_ACCEPT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ALLOC_TBL",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "ALLOC_TBL_ITEM",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "SRC_STOCK_TYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REASON_REJ",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "CRM_SALES_ORDER_NO",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "CRM_SALES_ORDER_ITEM_NO",
+							"type": "numc6",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "CRM_REF_SALES_ORDER_NO",
+							"type": "char35",
+							"length": 35,
+							"size": 35,
+							"decimal": 0
+						},
+						{
+							"name": "CRM_REF_SO_ITEM_NO",
+							"type": "char6",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "PRIO_URGENCY",
+							"type": "numc2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "PRIO_REQUIREMENT",
+							"type": "numc3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "REASON_CODE",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "FUND_LONG",
+							"type": "char20",
+							"length": 20,
+							"size": 20,
+							"decimal": 0
+						},
+						{
+							"name": "LONG_ITEM_NUMBER",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "EXTERNAL_SORT_NUMBER",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "EXTERNAL_HIERARCHY_TYPE",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "RETENTION_PERCENTAGE",
+							"type": "dec5.2",
+							"length": 5,
+							"size": 5,
+							"decimal": 2
+						},
+						{
+							"name": "DOWNPAY_TYPE",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "DOWNPAY_AMOUNT",
+							"type": "dec23.4",
+							"length": 23,
+							"size": 23,
+							"decimal": 4
+						},
+						{
+							"name": "DOWNPAY_PERCENT",
+							"type": "dec5.2",
+							"length": 5,
+							"size": 5,
+							"decimal": 2
+						},
+						{
+							"name": "DOWNPAY_DUEDATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "EXT_RFX_NUMBER",
+							"type": "char35",
+							"length": 35,
+							"size": 35,
+							"decimal": 0
+						},
+						{
+							"name": "EXT_RFX_ITEM",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "EXT_RFX_SYSTEM",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "SRM_CONTRACT_ID",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "SRM_CONTRACT_ITM",
+							"type": "numc10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "BUDGET_PERIOD",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "BLOCK_REASON_ID",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "BLOCK_REASON_TEXT",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "SPE_CRM_FKREL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DATE_QTY_FIXED",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "GI_BASED_GR",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SHIPTYPE",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "HANDOVERLOC",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "TC_AUT_DET",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "MANUAL_TC_REASON",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "FISCAL_INCENTIVE",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "FISCAL_INCENTIVE_ID",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "TAX_SUBJECT_ST",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REQ_SEGMENT",
+							"type": "char16",
+							"length": 16,
+							"size": 16,
+							"decimal": 0
+						},
+						{
+							"name": "STK_SEGMENT",
+							"type": "char16",
+							"length": 16,
+							"size": 16,
+							"decimal": 0
+						},
+						{
+							"name": "SF_TXJCD",
+							"type": "char15",
+							"length": 15,
+							"size": 15,
+							"decimal": 0
+						},
+						{
+							"name": "INCOTERMS2L",
+							"type": "char70",
+							"length": 70,
+							"size": 70,
+							"decimal": 0
+						},
+						{
+							"name": "INCOTERMS3L",
+							"type": "char70",
+							"length": 70,
+							"size": 70,
+							"decimal": 0
+						},
+						{
+							"name": "MATERIAL_LONG",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "EMATERIAL_LONG",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "SERVICEPERFORMER",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "PRODUCTTYPE",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "STARTDATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "ENDDATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "REQ_SEG_LONG",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "STK_SEG_LONG",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "EXPECTED_VALUE",
+							"type": "dec28.9",
+							"length": 28,
+							"size": 28,
+							"decimal": 9
+						},
+						{
+							"name": "LIMIT_AMOUNT",
+							"type": "dec28.9",
+							"length": 28,
+							"size": 28,
+							"decimal": 9
+						},
+						{
+							"name": "EXT_REF",
+							"type": "char70",
+							"length": 70,
+							"size": 70,
+							"decimal": 0
+						},
+						{
+							"name": "GL_ACCOUNT",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "COSTCENTER",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "WBS_ELEMENT",
+							"type": "char24",
+							"length": 24,
+							"size": 24,
+							"decimal": 0
+						},
+						{
+							"name": "COMMODITY_CODE",
+							"type": "char30",
+							"length": 30,
+							"size": 30,
+							"decimal": 0
+						},
+						{
+							"name": "INTRASTAT_SERVICE_CODE",
+							"type": "char30",
+							"length": 30,
+							"size": 30,
+							"decimal": 0
+						},
+						{
+							"name": "CONTRACT_FOR_LIMIT",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "TAXCALCDATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "TAXCOUNTRY",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "STATUS_PCS",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "STATUS_PMA",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "STATUS_DG",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "STATUS_SDS",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "TXS_BUSINESS_TRANSACTION",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "TXS_USAGE_PURPOSE",
+							"type": "char25",
+							"length": 25,
+							"size": 25,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "POITEMX",
+					"fields": [
+						{
+							"name": "PO_ITEM",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "PO_ITEMX",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DELETE_IND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SHORT_TEXT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "MATERIAL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "MATERIAL_EXTERNAL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "MATERIAL_GUID",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "MATERIAL_VERSION",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "EMATERIAL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "EMATERIAL_EXTERNAL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "EMATERIAL_GUID",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "EMATERIAL_VERSION",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PLANT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "STGE_LOC",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "TRACKINGNO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "MATL_GROUP",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "INFO_REC",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "VEND_MAT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "QUANTITY",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PO_UNIT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PO_UNIT_ISO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ORDERPR_UN",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ORDERPR_UN_ISO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONV_NUM1",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONV_DEN1",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "NET_PRICE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PRICE_UNIT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "GR_PR_TIME",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "TAX_CODE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "BON_GRP1",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "QUAL_INSP",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "INFO_UPD",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PRNT_PRICE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "EST_PRICE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REMINDER1",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REMINDER2",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REMINDER3",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "OVER_DLV_TOL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "UNLIMITED_DLV",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "UNDER_DLV_TOL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "VAL_TYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "NO_MORE_GR",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "FINAL_INV",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ITEM_CAT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ACCTASSCAT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DISTRIB",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PART_INV",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "GR_IND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "GR_NON_VAL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "IR_IND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "FREE_ITEM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "GR_BASEDIV",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ACKN_REQD",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ACKNOWL_NO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "AGREEMENT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "AGMT_ITEM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SHIPPING",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CUSTOMER",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COND_GROUP",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "NO_DISCT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PLAN_DEL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "NET_WEIGHT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "WEIGHTUNIT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "WEIGHTUNIT_ISO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "TAXJURCODE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CTRL_KEY",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONF_CTRL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REV_LEV",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "FUND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "FUNDS_CTR",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CMMT_ITEM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PRICEDATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PRICE_DATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "GROSS_WT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "VOLUME",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "VOLUMEUNIT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "VOLUMEUNIT_ISO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "INCOTERMS1",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "INCOTERMS2",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PRE_VENDOR",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "VEND_PART",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "HL_ITEM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "GR_TO_DATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SUPP_VENDOR",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SC_VENDOR",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "KANBAN_IND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ERS",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "R_PROMO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "POINTS",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "POINT_UNIT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "POINT_UNIT_ISO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SEASON",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SEASON_YR",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "BON_GRP2",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "BON_GRP3",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SETT_ITEM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "MINREMLIFE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "RFQ_NO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "RFQ_ITEM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PREQ_NO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PREQ_ITEM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REF_DOC",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REF_ITEM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SI_CAT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "RET_ITEM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "AT_RELEV",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ORDER_REASON",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "BRAS_NBM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "MATL_USAGE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "MAT_ORIGIN",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "IN_HOUSE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "INDUS3",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "INF_INDEX",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "UNTIL_DATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DELIV_COMPL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PART_DELIV",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SHIP_BLOCKED",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PREQ_NAME",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PERIOD_IND_EXPIRATION_DATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "INT_OBJ_NO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PCKG_NO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "BATCH",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "VENDRBATCH",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CALCTYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "NO_ROUNDING",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PO_PRICE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SUPPL_STLOC",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SRV_BASED_IV",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "FUNDS_RES",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "RES_ITEM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "GRANT_NBR",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "FUNC_AREA_LONG",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ORIG_ACCEPT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ALLOC_TBL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ALLOC_TBL_ITEM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SRC_STOCK_TYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REASON_REJ",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CRM_SALES_ORDER_NO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CRM_SALES_ORDER_ITEM_NO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CRM_REF_SALES_ORDER_NO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CRM_REF_SO_ITEM_NO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PRIO_URGENCY",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PRIO_REQUIREMENT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REASON_CODE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "LONG_ITEM_NUMBER",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "EXTERNAL_SORT_NUMBER",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "EXTERNAL_HIERARCHY_TYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "RETENTION_PERCENTAGE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DOWNPAY_TYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DOWNPAY_AMOUNT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DOWNPAY_PERCENT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DOWNPAY_DUEDATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "EXT_RFX_NUMBER",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "EXT_RFX_ITEM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "EXT_RFX_SYSTEM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SRM_CONTRACT_ID",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SRM_CONTRACT_ITM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "BUDGET_PERIOD",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "BLOCK_REASON_ID",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "BLOCK_REASON_TEXT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SPE_CRM_FKREL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DATE_QTY_FIXED",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "GI_BASED_GR",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SHIPTYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "HANDOVERLOC",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "TC_AUT_DET",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "MANUAL_TC_REASON",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "FISCAL_INCENTIVE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "FISCAL_INCENTIVE_ID",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "TAX_SUBJECT_ST",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REQ_SEGMENT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "STK_SEGMENT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SF_TXJCD",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "INCOTERMS2L",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "INCOTERMS3L",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "MATERIAL_LONG",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "EMATERIAL_LONG",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SERVICEPERFORMER",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PRODUCTTYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "STARTDATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ENDDATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REQ_SEG_LONG",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "STK_SEG_LONG",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "EXPECTED_VALUE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "LIMIT_AMOUNT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "EXT_REF",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "GL_ACCOUNT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COSTCENTER",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "WBS_ELEMENT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COMMODITY_CODE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "INTRASTAT_SERVICE_CODE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONTRACT_FOR_LIMIT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "TAXCALCDATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "TAXCOUNTRY",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "TXS_BUSINESS_TRANSACTION",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "TXS_USAGE_PURPOSE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "POADDRDELIVERY",
+					"fields": [
+						{
+							"name": "PO_ITEM",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "ADDR_NO",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "FORMOFADDR",
+							"type": "char20",
+							"length": 20,
+							"size": 20,
+							"decimal": 0
+						},
+						{
+							"name": "NAME",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "NAME_2",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "NAME_3",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "NAME_4",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "C_O_NAME",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "CITY",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "DISTRICT",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "CITY_NO",
+							"type": "char12",
+							"length": 12,
+							"size": 12,
+							"decimal": 0
+						},
+						{
+							"name": "POSTL_COD1",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "POSTL_COD2",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "POSTL_COD3",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "PO_BOX",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "PO_BOX_CIT",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "DELIV_DIS",
+							"type": "char15",
+							"length": 15,
+							"size": 15,
+							"decimal": 0
+						},
+						{
+							"name": "STREET",
+							"type": "char60",
+							"length": 60,
+							"size": 60,
+							"decimal": 0
+						},
+						{
+							"name": "STREET_NO",
+							"type": "char12",
+							"length": 12,
+							"size": 12,
+							"decimal": 0
+						},
+						{
+							"name": "STR_ABBR",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "HOUSE_NO",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "STR_SUPPL1",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "STR_SUPPL2",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "LOCATION",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "BUILDING",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "FLOOR",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "ROOM_NO",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "COUNTRY",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "LANGU",
+							"type": "lang",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REGION",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "SORT1",
+							"type": "char20",
+							"length": 20,
+							"size": 20,
+							"decimal": 0
+						},
+						{
+							"name": "SORT2",
+							"type": "char20",
+							"length": 20,
+							"size": 20,
+							"decimal": 0
+						},
+						{
+							"name": "TIME_ZONE",
+							"type": "char6",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "TAXJURCODE",
+							"type": "char15",
+							"length": 15,
+							"size": 15,
+							"decimal": 0
+						},
+						{
+							"name": "ADR_NOTES",
+							"type": "char50",
+							"length": 50,
+							"size": 50,
+							"decimal": 0
+						},
+						{
+							"name": "COMM_TYPE",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "TEL1_NUMBR",
+							"type": "char30",
+							"length": 30,
+							"size": 30,
+							"decimal": 0
+						},
+						{
+							"name": "TEL1_EXT",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "FAX_NUMBER",
+							"type": "char30",
+							"length": 30,
+							"size": 30,
+							"decimal": 0
+						},
+						{
+							"name": "FAX_EXTENS",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "STREET_LNG",
+							"type": "char60",
+							"length": 60,
+							"size": 60,
+							"decimal": 0
+						},
+						{
+							"name": "DISTRCT_NO",
+							"type": "char8",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "CHCKSTATUS",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PBOXCIT_NO",
+							"type": "char12",
+							"length": 12,
+							"size": 12,
+							"decimal": 0
+						},
+						{
+							"name": "TRANSPZONE",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "HOUSE_NO2",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "E_MAIL",
+							"type": "char241",
+							"length": 241,
+							"size": 241,
+							"decimal": 0
+						},
+						{
+							"name": "STR_SUPPL3",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "TITLE",
+							"type": "char30",
+							"length": 30,
+							"size": 30,
+							"decimal": 0
+						},
+						{
+							"name": "COUNTRYISO",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "LANGU_ISO",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "BUILD_LONG",
+							"type": "char20",
+							"length": 20,
+							"size": 20,
+							"decimal": 0
+						},
+						{
+							"name": "REGIOGROUP",
+							"type": "char8",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "SUPP_VENDOR",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "CUSTOMER",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "SC_VENDOR",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "POSCHEDULE",
+					"fields": [
+						{
+							"name": "PO_ITEM",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "SCHED_LINE",
+							"type": "numc4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "DEL_DATCAT_EXT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DELIVERY_DATE",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "QUANTITY",
+							"type": "quan13.3",
+							"length": 13,
+							"size": 13,
+							"decimal": 3
+						},
+						{
+							"name": "DELIV_TIME",
+							"type": "tims",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "STAT_DATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "PREQ_NO",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "PREQ_ITEM",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "PO_DATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "ROUTESCHED",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "MS_DATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "MS_TIME",
+							"type": "tims",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "LOAD_DATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "LOAD_TIME",
+							"type": "tims",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "TP_DATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "TP_TIME",
+							"type": "tims",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "GI_DATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "GI_TIME",
+							"type": "tims",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "DELETE_IND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REQ_CLOSED",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "GR_END_DATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "GR_END_TIME",
+							"type": "tims",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "COM_QTY",
+							"type": "quan13.3",
+							"length": 13,
+							"size": 13,
+							"decimal": 3
+						},
+						{
+							"name": "COM_DATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "GEO_ROUTE",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "HANDOVERDATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "HANDOVERTIME",
+							"type": "tims",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "POSCHEDULEX",
+					"fields": [
+						{
+							"name": "PO_ITEM",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "SCHED_LINE",
+							"type": "numc4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "PO_ITEMX",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SCHED_LINEX",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DEL_DATCAT_EXT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DELIVERY_DATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "QUANTITY",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DELIV_TIME",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "STAT_DATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PREQ_NO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PREQ_ITEM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PO_DATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ROUTESCHED",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "MS_DATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "MS_TIME",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "LOAD_DATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "LOAD_TIME",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "TP_DATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "TP_TIME",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "GI_DATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "GI_TIME",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DELETE_IND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REQ_CLOSED",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "GR_END_DATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "GR_END_TIME",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COM_QTY",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COM_DATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "GEO_ROUTE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "HANDOVERDATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "HANDOVERTIME",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "POACCOUNT",
+					"fields": [
+						{
+							"name": "PO_ITEM",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "SERIAL_NO",
+							"type": "numc2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "DELETE_IND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CREAT_DATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "QUANTITY",
+							"type": "quan13.3",
+							"length": 13,
+							"size": 13,
+							"decimal": 3
+						},
+						{
+							"name": "DISTR_PERC",
+							"type": "dec3.1",
+							"length": 3,
+							"size": 3,
+							"decimal": 1
+						},
+						{
+							"name": "NET_VALUE",
+							"type": "dec28.9",
+							"length": 28,
+							"size": 28,
+							"decimal": 9
+						},
+						{
+							"name": "GL_ACCOUNT",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "BUS_AREA",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "COSTCENTER",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "SD_DOC",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "ITM_NUMBER",
+							"type": "numc6",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "SCHED_LINE",
+							"type": "numc4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "ASSET_NO",
+							"type": "char12",
+							"length": 12,
+							"size": 12,
+							"decimal": 0
+						},
+						{
+							"name": "SUB_NUMBER",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "ORDERID",
+							"type": "char12",
+							"length": 12,
+							"size": 12,
+							"decimal": 0
+						},
+						{
+							"name": "GR_RCPT",
+							"type": "char12",
+							"length": 12,
+							"size": 12,
+							"decimal": 0
+						},
+						{
+							"name": "UNLOAD_PT",
+							"type": "char25",
+							"length": 25,
+							"size": 25,
+							"decimal": 0
+						},
+						{
+							"name": "CO_AREA",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "COSTOBJECT",
+							"type": "char12",
+							"length": 12,
+							"size": 12,
+							"decimal": 0
+						},
+						{
+							"name": "PROFIT_CTR",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "WBS_ELEMENT",
+							"type": "char24",
+							"length": 24,
+							"size": 24,
+							"decimal": 0
+						},
+						{
+							"name": "NETWORK",
+							"type": "char12",
+							"length": 12,
+							"size": 12,
+							"decimal": 0
+						},
+						{
+							"name": "RL_EST_KEY",
+							"type": "char8",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "PART_ACCT",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "CMMT_ITEM",
+							"type": "char14",
+							"length": 14,
+							"size": 14,
+							"decimal": 0
+						},
+						{
+							"name": "REC_IND",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "FUNDS_CTR",
+							"type": "char16",
+							"length": 16,
+							"size": 16,
+							"decimal": 0
+						},
+						{
+							"name": "FUND",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "FUNC_AREA",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "REF_DATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "TAX_CODE",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "TAXJURCODE",
+							"type": "char15",
+							"length": 15,
+							"size": 15,
+							"decimal": 0
+						},
+						{
+							"name": "NOND_ITAX",
+							"type": "dec28.9",
+							"length": 28,
+							"size": 28,
+							"decimal": 9
+						},
+						{
+							"name": "ACTTYPE",
+							"type": "char6",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "CO_BUSPROC",
+							"type": "char12",
+							"length": 12,
+							"size": 12,
+							"decimal": 0
+						},
+						{
+							"name": "RES_DOC",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "RES_ITEM",
+							"type": "numc3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "ACTIVITY",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "GRANT_NBR",
+							"type": "char20",
+							"length": 20,
+							"size": 20,
+							"decimal": 0
+						},
+						{
+							"name": "CMMT_ITEM_LONG",
+							"type": "char24",
+							"length": 24,
+							"size": 24,
+							"decimal": 0
+						},
+						{
+							"name": "FUNC_AREA_LONG",
+							"type": "char16",
+							"length": 16,
+							"size": 16,
+							"decimal": 0
+						},
+						{
+							"name": "BUDGET_PERIOD",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "FINAL_IND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "FINAL_REASON",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "SERVICE_DOC",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "SERVICE_ITEM",
+							"type": "numc6",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "SERVICE_DOC_TYPE",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "POACCOUNTPROFITSEGMENT",
+					"fields": [
+						{
+							"name": "PO_ITEM",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "SERIAL_NO",
+							"type": "numc2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "FIELDNAME",
+							"type": "char30",
+							"length": 30,
+							"size": 30,
+							"decimal": 0
+						},
+						{
+							"name": "VALUE",
+							"type": "char50",
+							"length": 50,
+							"size": 50,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "POACCOUNTX",
+					"fields": [
+						{
+							"name": "PO_ITEM",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "SERIAL_NO",
+							"type": "numc2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "PO_ITEMX",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SERIAL_NOX",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DELETE_IND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CREAT_DATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "QUANTITY",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DISTR_PERC",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "NET_VALUE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "GL_ACCOUNT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "BUS_AREA",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COSTCENTER",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SD_DOC",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ITM_NUMBER",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SCHED_LINE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ASSET_NO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SUB_NUMBER",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ORDERID",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "GR_RCPT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "UNLOAD_PT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CO_AREA",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COSTOBJECT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PROFIT_CTR",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "WBS_ELEMENT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "NETWORK",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "RL_EST_KEY",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PART_ACCT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CMMT_ITEM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REC_IND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "FUNDS_CTR",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "FUND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "FUNC_AREA",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REF_DATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "TAX_CODE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "TAXJURCODE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "NOND_ITAX",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ACTTYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CO_BUSPROC",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "RES_DOC",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "RES_ITEM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ACTIVITY",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "GRANT_NBR",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "BUDGET_PERIOD",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "FINAL_IND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "FINAL_REASON",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SERVICE_DOC",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SERVICE_ITEM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SERVICE_DOC_TYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "POCONDHEADER",
+					"fields": [
+						{
+							"name": "CONDITION_NO",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "ITM_NUMBER",
+							"type": "numc6",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "COND_ST_NO",
+							"type": "numc3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "COND_COUNT",
+							"type": "numc2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "COND_TYPE",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "COND_VALUE",
+							"type": "dec28.9",
+							"length": 28,
+							"size": 28,
+							"decimal": 9
+						},
+						{
+							"name": "CURRENCY",
+							"type": "cuky5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "CURRENCY_ISO",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "COND_UNIT",
+							"type": "unit3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "COND_UNIT_ISO",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "COND_P_UNT",
+							"type": "dec5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "APPLICATIO",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "CONPRICDAT",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "CALCTYPCON",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONBASEVAL",
+							"type": "dec28.9",
+							"length": 28,
+							"size": 28,
+							"decimal": 9
+						},
+						{
+							"name": "CONEXCHRAT",
+							"type": "dec9.5",
+							"length": 9,
+							"size": 9,
+							"decimal": 5
+						},
+						{
+							"name": "NUMCONVERT",
+							"type": "dec5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "DENOMINATO",
+							"type": "dec5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "CONDTYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "STAT_CON",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SCALETYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ACCRUALS",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONINVOLST",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONDORIGIN",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "GROUPCOND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COND_UPDAT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ACCESS_SEQ",
+							"type": "numc2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "CONDCOUNT",
+							"type": "numc2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "CONDCNTRL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONDISACTI",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONDCLASS",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "FACTBASVAL",
+							"type": "fltp",
+							"length": 16,
+							"size": 16,
+							"decimal": 16
+						},
+						{
+							"name": "SCALEBASIN",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SCALBASVAL",
+							"type": "dec28.9",
+							"length": 28,
+							"size": 28,
+							"decimal": 9
+						},
+						{
+							"name": "UNITMEASUR",
+							"type": "unit3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "UNITMEASUR_ISO",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "CURRENCKEY",
+							"type": "cuky5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "CURRENCKEY_ISO",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "CONDINCOMP",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONDCONFIG",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONDCHAMAN",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COND_NO",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "CHANGE_ID",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "VENDOR_NO",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "ACCESS_SEQ_LONG",
+							"type": "numc3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "COND_COUNT_LONG",
+							"type": "numc3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "POCONDHEADERX",
+					"fields": [
+						{
+							"name": "CONDITION_NO",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "ITM_NUMBER",
+							"type": "numc6",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "COND_ST_NO",
+							"type": "numc3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "CONDITION_NOX",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ITM_NUMBERX",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COND_ST_NOX",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COND_COUNT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COND_TYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COND_VALUE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CURRENCY",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CURRENCY_ISO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COND_UNIT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COND_UNIT_ISO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COND_P_UNT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "APPLICATIO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONPRICDAT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CALCTYPCON",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONBASEVAL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONEXCHRAT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "NUMCONVERT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DENOMINATO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONDTYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "STAT_CON",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SCALETYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ACCRUALS",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONINVOLST",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONDORIGIN",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "GROUPCOND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COND_UPDAT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ACCESS_SEQ",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONDCOUNT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONDCNTRL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONDISACTI",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONDCLASS",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "FACTBASVAL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SCALEBASIN",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SCALBASVAL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "UNITMEASUR",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "UNITMEASUR_ISO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CURRENCKEY",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CURRENCKEY_ISO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONDINCOMP",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONDCONFIG",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONDCHAMAN",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COND_NO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CHANGE_ID",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "VENDOR_NO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ACCESS_SEQ_LONG",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COND_COUNT_LONG",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "POCOND",
+					"fields": [
+						{
+							"name": "CONDITION_NO",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "ITM_NUMBER",
+							"type": "numc6",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "COND_ST_NO",
+							"type": "numc3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "COND_COUNT",
+							"type": "numc2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "COND_TYPE",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "COND_VALUE",
+							"type": "dec28.9",
+							"length": 28,
+							"size": 28,
+							"decimal": 9
+						},
+						{
+							"name": "CURRENCY",
+							"type": "cuky5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "CURRENCY_ISO",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "COND_UNIT",
+							"type": "unit3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "COND_UNIT_ISO",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "COND_P_UNT",
+							"type": "dec5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "APPLICATIO",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "CONPRICDAT",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "CALCTYPCON",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONBASEVAL",
+							"type": "dec28.9",
+							"length": 28,
+							"size": 28,
+							"decimal": 9
+						},
+						{
+							"name": "CONEXCHRAT",
+							"type": "dec9.5",
+							"length": 9,
+							"size": 9,
+							"decimal": 5
+						},
+						{
+							"name": "NUMCONVERT",
+							"type": "dec5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "DENOMINATO",
+							"type": "dec5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "CONDTYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "STAT_CON",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SCALETYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ACCRUALS",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONINVOLST",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONDORIGIN",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "GROUPCOND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COND_UPDAT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ACCESS_SEQ",
+							"type": "numc2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "CONDCOUNT",
+							"type": "numc2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "CONDCNTRL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONDISACTI",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONDCLASS",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "FACTBASVAL",
+							"type": "fltp",
+							"length": 16,
+							"size": 16,
+							"decimal": 16
+						},
+						{
+							"name": "SCALEBASIN",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SCALBASVAL",
+							"type": "dec28.9",
+							"length": 28,
+							"size": 28,
+							"decimal": 9
+						},
+						{
+							"name": "UNITMEASUR",
+							"type": "unit3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "UNITMEASUR_ISO",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "CURRENCKEY",
+							"type": "cuky5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "CURRENCKEY_ISO",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "CONDINCOMP",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONDCONFIG",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONDCHAMAN",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COND_NO",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "CHANGE_ID",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "VENDOR_NO",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "ACCESS_SEQ_LONG",
+							"type": "numc3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "COND_COUNT_LONG",
+							"type": "numc3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "POCONDX",
+					"fields": [
+						{
+							"name": "CONDITION_NO",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "ITM_NUMBER",
+							"type": "numc6",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "COND_ST_NO",
+							"type": "numc3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "CONDITION_NOX",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ITM_NUMBERX",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COND_ST_NOX",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COND_COUNT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COND_TYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COND_VALUE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CURRENCY",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CURRENCY_ISO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COND_UNIT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COND_UNIT_ISO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COND_P_UNT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "APPLICATIO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONPRICDAT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CALCTYPCON",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONBASEVAL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONEXCHRAT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "NUMCONVERT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DENOMINATO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONDTYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "STAT_CON",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SCALETYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ACCRUALS",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONINVOLST",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONDORIGIN",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "GROUPCOND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COND_UPDAT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ACCESS_SEQ",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONDCOUNT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONDCNTRL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONDISACTI",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONDCLASS",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "FACTBASVAL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SCALEBASIN",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SCALBASVAL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "UNITMEASUR",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "UNITMEASUR_ISO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CURRENCKEY",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CURRENCKEY_ISO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONDINCOMP",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONDCONFIG",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CONDCHAMAN",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COND_NO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CHANGE_ID",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "VENDOR_NO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ACCESS_SEQ_LONG",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COND_COUNT_LONG",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "POLIMITS",
+					"fields": [
+						{
+							"name": "PCKG_NO",
+							"type": "numc10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "LIMIT",
+							"type": "dec23.4",
+							"length": 23,
+							"size": 23,
+							"decimal": 4
+						},
+						{
+							"name": "NO_LIMIT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "EXP_VALUE",
+							"type": "dec23.4",
+							"length": 23,
+							"size": 23,
+							"decimal": 4
+						},
+						{
+							"name": "SSC_EXIST",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CON_EXIST",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "TMP_EXIST",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PRICE_CHG",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "FREE_LIMIT",
+							"type": "dec23.4",
+							"length": 23,
+							"size": 23,
+							"decimal": 4
+						},
+						{
+							"name": "NO_FRLIMIT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SERV_TYPE",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "EDITION",
+							"type": "numc4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "SSC_LIMIT",
+							"type": "dec23.4",
+							"length": 23,
+							"size": 23,
+							"decimal": 4
+						},
+						{
+							"name": "SSC_NOLIM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SSC_PRSCHG",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SSC_PERC",
+							"type": "dec3.1",
+							"length": 3,
+							"size": 3,
+							"decimal": 1
+						},
+						{
+							"name": "TMP_NUMBER",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "TMP_LIMIT",
+							"type": "dec23.4",
+							"length": 23,
+							"size": 23,
+							"decimal": 4
+						},
+						{
+							"name": "TMP_NOLIM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "TMP_PRSCHG",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "TMP_PERC",
+							"type": "dec3.1",
+							"length": 3,
+							"size": 3,
+							"decimal": 1
+						},
+						{
+							"name": "CONT_PERC",
+							"type": "dec3.1",
+							"length": 3,
+							"size": 3,
+							"decimal": 1
+						}
+					]
+				},
+				{
+					"table": "POCONTRACTLIMITS",
+					"fields": [
+						{
+							"name": "PCKG_NO",
+							"type": "numc10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "LINE_NO",
+							"type": "numc10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "CON_NUMBER",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "CON_ITEM",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "LIMIT",
+							"type": "dec23.4",
+							"length": 23,
+							"size": 23,
+							"decimal": 4
+						},
+						{
+							"name": "NO_LIMIT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PRICE_CHG",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SHORT_TEXT",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "DELETE_IND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "POSERVICES",
+					"fields": [
+						{
+							"name": "PCKG_NO",
+							"type": "numc10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "LINE_NO",
+							"type": "numc10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "EXT_LINE",
+							"type": "numc10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "OUTL_LEVEL",
+							"type": "int1",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "OUTL_NO",
+							"type": "char8",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "OUTL_IND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SUBPCKG_NO",
+							"type": "numc10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "SERVICE",
+							"type": "char18",
+							"length": 18,
+							"size": 18,
+							"decimal": 0
+						},
+						{
+							"name": "SERV_TYPE",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "EDITION",
+							"type": "numc4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "SSC_ITEM",
+							"type": "char18",
+							"length": 18,
+							"size": 18,
+							"decimal": 0
+						},
+						{
+							"name": "EXT_SERV",
+							"type": "char18",
+							"length": 18,
+							"size": 18,
+							"decimal": 0
+						},
+						{
+							"name": "QUANTITY",
+							"type": "quan13.3",
+							"length": 13,
+							"size": 13,
+							"decimal": 3
+						},
+						{
+							"name": "BASE_UOM",
+							"type": "unit3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "UOM_ISO",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "OVF_TOL",
+							"type": "dec3.1",
+							"length": 3,
+							"size": 3,
+							"decimal": 1
+						},
+						{
+							"name": "OVF_UNLIM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PRICE_UNIT",
+							"type": "dec5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "GR_PRICE",
+							"type": "dec23.4",
+							"length": 23,
+							"size": 23,
+							"decimal": 4
+						},
+						{
+							"name": "FROM_LINE",
+							"type": "char6",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "TO_LINE",
+							"type": "char6",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "SHORT_TEXT",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "DISTRIB",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PERS_NO",
+							"type": "numc8",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "WAGETYPE",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "PLN_PCKG",
+							"type": "numc10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "PLN_LINE",
+							"type": "numc10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "CON_PCKG",
+							"type": "numc10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "CON_LINE",
+							"type": "numc10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "TMP_PCKG",
+							"type": "numc10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "TMP_LINE",
+							"type": "numc10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "SSC_LIM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "LIMIT_LINE",
+							"type": "numc10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "TARGET_VAL",
+							"type": "dec23.4",
+							"length": 23,
+							"size": 23,
+							"decimal": 4
+						},
+						{
+							"name": "BASLINE_NO",
+							"type": "numc10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "BASIC_LINE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ALTERNAT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "BIDDER",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SUPP_LINE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "OPEN_QTY",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "INFORM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "BLANKET",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "EVENTUAL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "TAX_CODE",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "TAXJURCODE",
+							"type": "char15",
+							"length": 15,
+							"size": 15,
+							"decimal": 0
+						},
+						{
+							"name": "PRICE_CHG",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "MATL_GROUP",
+							"type": "char9",
+							"length": 9,
+							"size": 9,
+							"decimal": 0
+						},
+						{
+							"name": "DATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "BEGINTIME",
+							"type": "tims",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "ENDTIME",
+							"type": "tims",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "EXTPERS_NO",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "FORMULA",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "FORM_VAL1",
+							"type": "quan13.3",
+							"length": 13,
+							"size": 13,
+							"decimal": 3
+						},
+						{
+							"name": "FORM_VAL2",
+							"type": "quan13.3",
+							"length": 13,
+							"size": 13,
+							"decimal": 3
+						},
+						{
+							"name": "FORM_VAL3",
+							"type": "quan13.3",
+							"length": 13,
+							"size": 13,
+							"decimal": 3
+						},
+						{
+							"name": "FORM_VAL4",
+							"type": "quan13.3",
+							"length": 13,
+							"size": 13,
+							"decimal": 3
+						},
+						{
+							"name": "FORM_VAL5",
+							"type": "quan13.3",
+							"length": 13,
+							"size": 13,
+							"decimal": 3
+						},
+						{
+							"name": "USERF1_NUM",
+							"type": "numc10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "USERF2_NUM",
+							"type": "quan13.3",
+							"length": 13,
+							"size": 13,
+							"decimal": 3
+						},
+						{
+							"name": "USERF1_TXT",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "USERF2_TXT",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "HI_LINE_NO",
+							"type": "numc10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "EXTREFKEY",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "DELETE_IND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PER_SDATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "PER_EDATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "EXTERNAL_ITEM_ID",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "SERVICE_ITEM_KEY",
+							"type": "numc10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "NET_VALUE",
+							"type": "dec23.4",
+							"length": 23,
+							"size": 23,
+							"decimal": 4
+						}
+					]
+				},
+				{
+					"table": "POSRVACCESSVALUES",
+					"fields": [
+						{
+							"name": "PCKG_NO",
+							"type": "numc10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "LINE_NO",
+							"type": "numc10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "SERNO_LINE",
+							"type": "numc2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "PERCENTAGE",
+							"type": "dec4.1",
+							"length": 4,
+							"size": 4,
+							"decimal": 1
+						},
+						{
+							"name": "SERIAL_NO",
+							"type": "numc2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "QUANTITY",
+							"type": "quan13.3",
+							"length": 13,
+							"size": 13,
+							"decimal": 3
+						},
+						{
+							"name": "NET_VALUE",
+							"type": "curr11.2",
+							"length": 11,
+							"size": 11,
+							"decimal": 2
+						}
+					]
+				},
+				{
+					"table": "POSERVICESTEXT",
+					"fields": [
+						{
+							"name": "PCKG_NO",
+							"type": "numc10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "LINE_NO",
+							"type": "numc10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "TEXT_ID",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "FORMAT_COL",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "TEXT_LINE",
+							"type": "char132",
+							"length": 132,
+							"size": 132,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "EXTENSIONIN",
+					"fields": [
+						{
+							"name": "STRUCTURE",
+							"type": "char30",
+							"length": 30,
+							"size": 30,
+							"decimal": 0
+						},
+						{
+							"name": "VALUEPART1",
+							"type": "char240",
+							"length": 240,
+							"size": 240,
+							"decimal": 0
+						},
+						{
+							"name": "VALUEPART2",
+							"type": "char240",
+							"length": 240,
+							"size": 240,
+							"decimal": 0
+						},
+						{
+							"name": "VALUEPART3",
+							"type": "char240",
+							"length": 240,
+							"size": 240,
+							"decimal": 0
+						},
+						{
+							"name": "VALUEPART4",
+							"type": "char240",
+							"length": 240,
+							"size": 240,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "EXTENSIONOUT",
+					"fields": [
+						{
+							"name": "STRUCTURE",
+							"type": "char30",
+							"length": 30,
+							"size": 30,
+							"decimal": 0
+						},
+						{
+							"name": "VALUEPART1",
+							"type": "char240",
+							"length": 240,
+							"size": 240,
+							"decimal": 0
+						},
+						{
+							"name": "VALUEPART2",
+							"type": "char240",
+							"length": 240,
+							"size": 240,
+							"decimal": 0
+						},
+						{
+							"name": "VALUEPART3",
+							"type": "char240",
+							"length": 240,
+							"size": 240,
+							"decimal": 0
+						},
+						{
+							"name": "VALUEPART4",
+							"type": "char240",
+							"length": 240,
+							"size": 240,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "POEXPIMPITEM",
+					"fields": [
+						{
+							"name": "PO_ITEM",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "BUSINESS_TRANSACTION_TYPE",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "EXPORT_IMPORT_PROCEDURE",
+							"type": "char8",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "COUNTRYORI",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "COUNTRYORI_ISO",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "REGIONORIG",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "COMM_CODE",
+							"type": "char17",
+							"length": 17,
+							"size": 17,
+							"decimal": 0
+						},
+						{
+							"name": "SHIPPING_COUNTRY",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "SHIPPING_COUNTRY_ISO",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "POEXPIMPITEMX",
+					"fields": [
+						{
+							"name": "PO_ITEM",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "BUSINESS_TRANSACTION_TYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "EXPORT_IMPORT_PROCEDURE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COUNTRYORI",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COUNTRYORI_ISO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REGIONORIG",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "COMM_CODE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SHIPPING_COUNTRY",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SHIPPING_COUNTRY_ISO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "POTEXTHEADER",
+					"fields": [
+						{
+							"name": "PO_NUMBER",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "PO_ITEM",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "TEXT_ID",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "TEXT_FORM",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "TEXT_LINE",
+							"type": "char132",
+							"length": 132,
+							"size": 132,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "POTEXTITEM",
+					"fields": [
+						{
+							"name": "PO_NUMBER",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "PO_ITEM",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "TEXT_ID",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "TEXT_FORM",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "TEXT_LINE",
+							"type": "char132",
+							"length": 132,
+							"size": 132,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "ALLVERSIONS",
+					"fields": [
+						{
+							"name": "DOC_TYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DOC_NUMBER",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "ITEM_NUMBER",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "VERSION",
+							"type": "char8",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "CREATED_BY",
+							"type": "char12",
+							"length": 12,
+							"size": 12,
+							"decimal": 0
+						},
+						{
+							"name": "CR_ON",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "REC_TIME",
+							"type": "tims",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "RELEASED_BY",
+							"type": "char12",
+							"length": 12,
+							"size": 12,
+							"decimal": 0
+						},
+						{
+							"name": "RELEASE_DATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "RELEASE_TIME",
+							"type": "tims",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "RELEASEBY_PUR",
+							"type": "char12",
+							"length": 12,
+							"size": 12,
+							"decimal": 0
+						},
+						{
+							"name": "RELEASEDATE_PUR",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "RELEASETIME_PUR",
+							"type": "tims",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "REASON",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "DESCRIPTION",
+							"type": "char60",
+							"length": 60,
+							"size": 60,
+							"decimal": 0
+						},
+						{
+							"name": "REQ_BY_EXT",
+							"type": "char20",
+							"length": 20,
+							"size": 20,
+							"decimal": 0
+						},
+						{
+							"name": "REQ_BY",
+							"type": "char12",
+							"length": 12,
+							"size": 12,
+							"decimal": 0
+						},
+						{
+							"name": "NET_VALUE",
+							"type": "curr13.2",
+							"length": 13,
+							"size": 13,
+							"decimal": 2
+						},
+						{
+							"name": "VALUE_CHANGED",
+							"type": "curr13.2",
+							"length": 13,
+							"size": 13,
+							"decimal": 2
+						},
+						{
+							"name": "CURRENCY",
+							"type": "cuky5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "CURRENCY_ISO",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "POST_DATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "COMPLETED",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "STATUS",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DELETE_IND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "STATUS_DOC_OLD",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "POPARTNER",
+					"fields": [
+						{
+							"name": "PARTNERDESC",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "LANGU",
+							"type": "lang",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "BUSPARTNO",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "DELETE_IND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "POCOMPONENTS",
+					"fields": [
+						{
+							"name": "PO_ITEM",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "SCHED_LINE",
+							"type": "numc4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "ITEM_NO",
+							"type": "numc4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "MATERIAL",
+							"type": "char18",
+							"length": 18,
+							"size": 18,
+							"decimal": 0
+						},
+						{
+							"name": "ENTRY_QUANTITY",
+							"type": "quan13.3",
+							"length": 13,
+							"size": 13,
+							"decimal": 3
+						},
+						{
+							"name": "ENTRY_UOM",
+							"type": "unit3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "ENTRY_UOM_ISO",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "FIXED_QUAN",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PLANT",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "REQ_DATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "CHANGE_ID",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "MATERIAL_EXTERNAL",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "MATERIAL_GUID",
+							"type": "char32",
+							"length": 32,
+							"size": 32,
+							"decimal": 0
+						},
+						{
+							"name": "MATERIAL_VERSION",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "ITEM_CAT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REQ_QUAN",
+							"type": "quan13.3",
+							"length": 13,
+							"size": 13,
+							"decimal": 3
+						},
+						{
+							"name": "BASE_UOM",
+							"type": "unit3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "BASE_UOM_ISO",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "PHANT_ITEM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "BATCH",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "MAT_PROVISION",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ISS_ST_LOC",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "REV_LEV",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "REQ_SEGMENT",
+							"type": "char16",
+							"length": 16,
+							"size": 16,
+							"decimal": 0
+						},
+						{
+							"name": "MATERIAL_LONG",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						},
+						{
+							"name": "REQ_SEG_LONG",
+							"type": "char40",
+							"length": 40,
+							"size": 40,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "POCOMPONENTSX",
+					"fields": [
+						{
+							"name": "PO_ITEM",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "SCHED_LINE",
+							"type": "numc4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "ITEM_NO",
+							"type": "numc4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "PO_ITEMX",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SCHED_LINEX",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ITEM_NOX",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "MATERIAL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ENTRY_QUANTITY",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ENTRY_UOM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ENTRY_UOM_ISO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "FIXED_QUAN",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PLANT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REQ_DATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CHANGE_ID",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "MATERIAL_EXTERNAL",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "MATERIAL_GUID",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "MATERIAL_VERSION",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REQ_QUAN",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "BASE_UOM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "BASE_UOM_ISO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PHANT_ITEM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "BATCH",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "MAT_PROVISION",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ISS_ST_LOC",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ITEM_CAT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REV_LEV",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REQ_SEGMENT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "MATERIAL_LONG",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REQ_SEG_LONG",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "POSHIPPING",
+					"fields": [
+						{
+							"name": "PO_ITEM",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "SHIP_POINT",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "SHIP_COND",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "DLV_PRIO",
+							"type": "numc2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "ROUTE",
+							"type": "char6",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "UNLOAD_PT",
+							"type": "char25",
+							"length": 25,
+							"size": 25,
+							"decimal": 0
+						},
+						{
+							"name": "AUTH_NUMBER",
+							"type": "char20",
+							"length": 20,
+							"size": 20,
+							"decimal": 0
+						},
+						{
+							"name": "SRC_DLV_NO",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "SRC_HANDLG_UNIT",
+							"type": "char20",
+							"length": 20,
+							"size": 20,
+							"decimal": 0
+						},
+						{
+							"name": "INSPOUT_GUID",
+							"type": "char32",
+							"length": 32,
+							"size": 32,
+							"decimal": 0
+						},
+						{
+							"name": "FOLLOW_UP",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "LOADINGGRP",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "TRANS_GRP",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "POSHIPPINGX",
+					"fields": [
+						{
+							"name": "PO_ITEM",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "PO_ITEMX",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SHIP_POINT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SHIP_COND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DLV_PRIO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ROUTE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "UNLOAD_PT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "AUTH_NUMBER",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SRC_DLV_NO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SRC_HANDLG_UNIT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "INSPOUT_GUID",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "FOLLOW_UP",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "LOADINGGRP",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "TRANS_GRP",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "POSHIPPINGEXP",
+					"fields": [
+						{
+							"name": "PO_ITEM",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "SHIP_POINT",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "DLV_PRIO",
+							"type": "numc2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "ROUTE",
+							"type": "char6",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "CUSTOMER",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "SOLD_TO",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "FWDAGENT",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "SALESORG",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "DISTR_CHAN",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "DIVISION",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "DEL_CREATE_DATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "PLND_DELRY",
+							"type": "dec3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "LANGU",
+							"type": "lang",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "LANGU_ISO",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "SHIP_COND",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "LOADINGGRP",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "TRANS_GRP",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "UNLOAD_PT",
+							"type": "char25",
+							"length": 25,
+							"size": 25,
+							"decimal": 0
+						},
+						{
+							"name": "ORDCOMBIND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "TIME_ZONE",
+							"type": "char6",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "AUTH_NUMBER",
+							"type": "char20",
+							"length": 20,
+							"size": 20,
+							"decimal": 0
+						},
+						{
+							"name": "SRC_DLV_NO",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "SRC_HANDLG_UNIT",
+							"type": "char20",
+							"length": 20,
+							"size": 20,
+							"decimal": 0
+						},
+						{
+							"name": "INSPOUT_GUID",
+							"type": "char32",
+							"length": 32,
+							"size": 32,
+							"decimal": 0
+						},
+						{
+							"name": "FOLLOW_UP",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "SERIALNUMBER",
+					"fields": [
+						{
+							"name": "PO_ITEM",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "SCHED_LINE",
+							"type": "numc4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "DELETE_IND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SERIALNO",
+							"type": "char18",
+							"length": 18,
+							"size": 18,
+							"decimal": 0
+						},
+						{
+							"name": "UII",
+							"type": "char72",
+							"length": 72,
+							"size": 72,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "SERIALNUMBERX",
+					"fields": [
+						{
+							"name": "PO_ITEM",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "SCHED_LINE",
+							"type": "numc4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "PO_ITEMX",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SCHED_LINEX",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DELETE_IND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SERIALNO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "UII",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "INVPLANHEADER",
+					"fields": [
+						{
+							"name": "DOC_ITEM",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "IV_PLAN_NUM",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "CATEGORY",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "IP_TYPE",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "SORT_FLD",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "START_DATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "END_DATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "HORIZON",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "ORGN_ST_DAT",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "ORGN_END_DAT",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "PERIOD",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "LNGTH_STAND_PRD",
+							"type": "numc3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "REF_IV_PLAN_NUM",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "DATES_FROM",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "IN_ADVANCE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ORGN_FROM_DAT",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "DEV_BILL_DAT",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "CALENDER_ID",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "DATES_TO",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "ORGN_UNTIL_DAT",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "PO_NUMBER",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "UNLIMITED",
+							"type": "numc6",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "AUTO_COR_DAT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "INVPLANHEADERX",
+					"fields": [
+						{
+							"name": "DOC_ITEM",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "IV_PLAN_NUM",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "CATEGORY",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "IP_TYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SORT_FLD",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "START_DATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "END_DATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "HORIZON",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ORGN_ST_DAT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ORGN_END_DAT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PERIOD",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "LNGTH_STAND_PRD",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REF_IV_PLAN_NUM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DATES_FROM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "IN_ADVANCE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ORGN_FROM_DAT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DEV_BILL_DAT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CALENDER_ID",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DATES_TO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "ORGN_UNTIL_DAT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PO_NUMBER",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "UNLIMITED",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "AUTO_COR_DAT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "INVPLANITEM",
+					"fields": [
+						{
+							"name": "DOC_ITEM",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "IV_PLAN_NUM",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "IV_PLAN_ITEM",
+							"type": "numc6",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "DEL_IND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DATE_CATG",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "DATE_DESC",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "SETT_DATE_FROM",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "BILL_RULE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "INVOICE_PERCENTAGE",
+							"type": "dec5.2",
+							"length": 5,
+							"size": 5,
+							"decimal": 2
+						},
+						{
+							"name": "CURRENCY",
+							"type": "cuky5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "CURRENCY_ISO",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "EXCHG_RAT_DAT",
+							"type": "dec9.5",
+							"length": 9,
+							"size": 9,
+							"decimal": 5
+						},
+						{
+							"name": "BILL_VALUE",
+							"type": "dec23.4",
+							"length": 23,
+							"size": 23,
+							"decimal": 4
+						},
+						{
+							"name": "BILLING_BLOCK",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "BILLING_STATUS",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SETT_DATE_TO",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "CALENDER_ID",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "BILL_DATE",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "CASH_DISCOUNT",
+							"type": "curr13.2",
+							"length": 13,
+							"size": 13,
+							"decimal": 2
+						},
+						{
+							"name": "REBATE_BASIS1",
+							"type": "curr13.2",
+							"length": 13,
+							"size": 13,
+							"decimal": 2
+						},
+						{
+							"name": "PRICING_OK",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "MILESTONE_NUM",
+							"type": "numc12",
+							"length": 12,
+							"size": 12,
+							"decimal": 0
+						},
+						{
+							"name": "MILESTONE_USE",
+							"type": "char5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "MANUALLY",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "INVPLANITEMX",
+					"fields": [
+						{
+							"name": "DOC_ITEM",
+							"type": "numc5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "IV_PLAN_NUM",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "IV_PLAN_ITEM",
+							"type": "numc6",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "DEL_IND",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DATE_CATG",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "DATE_DESC",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SETT_DATE_FROM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "BILL_RULE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "INVOICE_PERCENTAGE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CURRENCY",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CURRENCY_ISO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "EXCHG_RAT_DAT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "BILL_VALUE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "BILLING_BLOCK",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "BILLING_STATUS",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "SETT_DATE_TO",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CALENDER_ID",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "BILL_DATE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "CASH_DISCOUNT",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "REBATE_BASIS1",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "PRICING_OK",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "MILESTONE_NUM",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "MILESTONE_USE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						},
+						{
+							"name": "MANUALLY",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						}
+					]
+				},
+				{
+					"table": "NFMETALLITMS",
+					"fields": [
+						{
+							"name": "DATA_INDEX",
+							"type": "int4",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "DOC_NUMBER",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "ITM_NUMBER",
+							"type": "numc6",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "COMPCODE",
+							"type": "char4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "FISCYEAR",
+							"type": "numc4",
+							"length": 4,
+							"size": 4,
+							"decimal": 0
+						},
+						{
+							"name": "NFMKEY",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "RATEDETKEY",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "BASEKEY",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "EXCHANGEKEY",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "RATEDETDAT",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "RATEMONTH",
+							"type": "accp6",
+							"length": 6,
+							"size": 6,
+							"decimal": 0
+						},
+						{
+							"name": "ACTRATEDAT",
+							"type": "dats",
+							"length": 8,
+							"size": 8,
+							"decimal": 0
+						},
+						{
+							"name": "RATE",
+							"type": "curr13.2",
+							"length": 13,
+							"size": 13,
+							"decimal": 2
+						},
+						{
+							"name": "RATECURKY",
+							"type": "cuky5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "RATECURKYISO",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "RATEDOCCUR",
+							"type": "curr15.2",
+							"length": 15,
+							"size": 15,
+							"decimal": 2
+						},
+						{
+							"name": "INVOICEBL",
+							"type": "char2",
+							"length": 2,
+							"size": 2,
+							"decimal": 0
+						},
+						{
+							"name": "BVALDOCCUR",
+							"type": "curr15.2",
+							"length": 15,
+							"size": 15,
+							"decimal": 2
+						},
+						{
+							"name": "BVALCURKYD",
+							"type": "cuky5",
+							"length": 5,
+							"size": 5,
+							"decimal": 0
+						},
+						{
+							"name": "BVALCURKYDISO",
+							"type": "char3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "NETRATE",
+							"type": "curr13.2",
+							"length": 13,
+							"size": 13,
+							"decimal": 2
+						},
+						{
+							"name": "PROVIDER",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "VENDORCOV",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "COVERAGEKY",
+							"type": "char10",
+							"length": 10,
+							"size": 10,
+							"decimal": 0
+						},
+						{
+							"name": "POSTINGDAYS",
+							"type": "numc3",
+							"length": 3,
+							"size": 3,
+							"decimal": 0
+						},
+						{
+							"name": "UPDTYPE",
+							"type": "char1",
+							"length": 1,
+							"size": 1,
+							"decimal": 0
+						}
+					]
+				}
+			]
+		}
+	]
+}

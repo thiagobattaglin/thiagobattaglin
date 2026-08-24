@@ -20,15 +20,19 @@ CLASS zcl_http_bapi_meta_builder DEFINITION
 
     TYPES:
       BEGIN OF ty_field,
-        name TYPE c LENGTH 30,
-        type TYPE string,
+        name    TYPE string,
+        type    TYPE string,
+        length  TYPE i,
+        size    TYPE i,
+        decimal TYPE i,
       END OF ty_field,
       tt_field TYPE STANDARD TABLE OF ty_field WITH EMPTY KEY.
 
     TYPES:
       BEGIN OF ty_struct,
-        param_name TYPE c LENGTH 30,
+        param_name TYPE string,
         fields     TYPE tt_field,
+        json_name  TYPE string,
       END OF ty_struct,
       tt_struct TYPE STANDARD TABLE OF ty_struct WITH EMPTY KEY.
 
@@ -101,13 +105,17 @@ CLASS zcl_http_bapi_meta_builder IMPLEMENTATION.
                 et_tables    = lt_tables ).
 
     LOOP AT lt_imports INTO DATA(ls_imp).
-      APPEND build_struct( iv_param = ls_imp-param_name
-                           iv_type  = ls_imp-type_name ) TO lt_headers.
+      DATA(ls_header) = build_struct( iv_param = ls_imp-param_name
+                                      iv_type  = ls_imp-type_name ).
+      ls_header-json_name = `structure`.
+      APPEND ls_header TO lt_headers.
     ENDLOOP.
 
     LOOP AT lt_tables INTO DATA(ls_tab).
-      APPEND build_struct( iv_param = ls_tab-param_name
-                           iv_type  = ls_tab-type_name ) TO lt_items.
+      DATA(ls_item) = build_struct( iv_param = ls_tab-param_name
+                                    iv_type  = ls_tab-type_name ).
+      ls_item-json_name = `table`.
+      APPEND ls_item TO lt_items.
     ENDLOOP.
 
     rv_json = |\{"bapi_name":"{ json_escape( lv_bapi ) }",|
@@ -186,32 +194,15 @@ CLASS zcl_http_bapi_meta_builder IMPLEMENTATION.
 
     LOOP AT lt_fields INTO DATA(ls_f).
       APPEND VALUE #( name = ls_f-fieldname
-                      type = map_type( ls_f ) ) TO rs_out-fields.
+                      type = map_type( ls_f )
+                      length = CONV i( ls_f-leng )
+                      size = CONV i( ls_f-leng )
+                      decimal = CONV i( ls_f-decimals ) ) TO rs_out-fields.
     ENDLOOP.
   ENDMETHOD.
 
   METHOD map_type.
-    DATA(lv_dt)  = to_lower( CONV string( is_dfies-datatype ) ).
-    DATA(lv_len) = CONV i( is_dfies-leng ).
-    DATA(lv_dec) = CONV i( is_dfies-decimals ).
-
-    CASE is_dfies-datatype.
-      WHEN 'STRING' OR 'RAWSTRING' OR 'SSTRING'
-        OR 'DATS'   OR 'TIMS'      OR 'FLTP'
-        OR 'INT1'   OR 'INT2'      OR 'INT4' OR 'INT8'
-        OR 'CLNT'   OR 'LANG'      OR 'UTCLONG'.
-        rv_type = lv_dt.
-
-      WHEN 'DEC' OR 'QUAN' OR 'CURR'.
-        rv_type = COND #( WHEN lv_dec > 0
-                          THEN |{ lv_dt }{ lv_len }.{ lv_dec }|
-                          ELSE |{ lv_dt }{ lv_len }| ).
-
-      WHEN OTHERS.
-        rv_type = COND #( WHEN lv_len > 0
-                          THEN |{ lv_dt }{ lv_len }|
-                          ELSE lv_dt ).
-    ENDCASE.
+    rv_type = to_lower( CONV string( is_dfies-datatype ) ).
   ENDMETHOD.
 
   METHOD structs_to_json.
@@ -223,7 +214,7 @@ CLASS zcl_http_bapi_meta_builder IMPLEMENTATION.
       ENDIF.
       lv_first_s = abap_false.
 
-      rv_json = rv_json && |\{"value":"{ json_escape( <s>-param_name ) }","fields":[|.
+      rv_json = rv_json && |\{"{ <s>-json_name }":"{ json_escape( <s>-param_name ) }","fields":[|.
 
       DATA(lv_first_f) = abap_true.
       LOOP AT <s>-fields ASSIGNING FIELD-SYMBOL(<f>).
@@ -232,7 +223,8 @@ CLASS zcl_http_bapi_meta_builder IMPLEMENTATION.
         ENDIF.
         lv_first_f = abap_false.
         rv_json = rv_json &&
-          |\{"name":"{ json_escape( <f>-name ) }","type":"{ json_escape( <f>-type ) }"\}|.
+          |\{"name":"{ json_escape( <f>-name ) }","type":"{ json_escape( <f>-type ) }",| &&
+          |"length":{ <f>-length },"size":{ <f>-size },"decimal":{ <f>-decimal }\}|.
       ENDLOOP.
 
       rv_json = rv_json && `]}`.

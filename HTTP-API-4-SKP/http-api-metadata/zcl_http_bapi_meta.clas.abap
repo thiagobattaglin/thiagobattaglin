@@ -10,8 +10,8 @@ CLASS zcl_http_bapi_meta DEFINITION
 *     "bapi_name": "...",
 *     "documents": [
 *       {
-*         "headers_values": [ { "value":"POHEADER", "fields":[...] }, ... ],
-*         "items_values":   [ { "value":"POITEM",   "fields":[...] }, ... ]
+*         "headers_values": [ { "structure":"POHEADER", "fields":[...] }, ... ],
+*         "items_values":   [ { "table":"POITEM", "fields":[...] }, ... ]
 *       }
 *     ]
 *   }

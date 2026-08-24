@@ -29,20 +29,20 @@ Mesmo shape de [`metadata-ex.json`](./metadata-ex.json):
     {
       "headers_values": [
         {
-          "value": "POHEADER",
+          "structure": "POHEADER",
           "fields": [
-            { "name": "DOC_TYPE",  "type": "char2" },
-            { "name": "VENDOR",    "type": "char10" }
+            { "name": "DOC_TYPE",  "type": "char", "length": 2, "size": 2, "decimal": 0 },
+            { "name": "VENDOR",    "type": "char", "length": 10, "size": 10, "decimal": 0 }
           ]
         }
       ],
       "items_values": [
         {
-          "value": "POITEM",
+          "table": "POITEM",
           "fields": [
-            { "name": "PO_ITEM",  "type": "numc5" },
-            { "name": "MATERIAL", "type": "char18" },
-            { "name": "QUANTITY", "type": "quan13.3" }
+            { "name": "PO_ITEM",  "type": "numc", "length": 5, "size": 5, "decimal": 0 },
+            { "name": "MATERIAL", "type": "char", "length": 18, "size": 18, "decimal": 0 },
+            { "name": "QUANTITY", "type": "quan", "length": 13, "size": 13, "decimal": 3 }
           ]
         }
       ]
@@ -55,9 +55,10 @@ Mesmo shape de [`metadata-ex.json`](./metadata-ex.json):
   estrutura DDIC (`POHEADER`, `POHEADERX`, `POADDRVENDOR` …).
 - `items_values` = parâmetros `TABLES` da BAPI (line type = estrutura
   DDIC — `POITEM`, `POACCOUNT`, `POCOND`, `RETURN` …).
-- `fields[].type` é derivado de `DDIF_FIELDINFO_GET` (`char10`,
-  `numc5`, `dec5.2`, `quan13.3`, `dats`, `tims`, `lang`, `cuky5`,
-  `fltp`, `accp6`, `int4`, `unit3` …).
+- `fields[].type` é derivado de `DDIF_FIELDINFO_GET` (`char`, `numc`,
+  `dec`, `quan`, `dats`, `tims`, `lang`, `cuky`, `fltp`, `accp`,
+  `int4`, `unit` …); `length`, `size` e `decimal` carregam as dimensões
+  do campo.
 
 ## Códigos HTTP
 

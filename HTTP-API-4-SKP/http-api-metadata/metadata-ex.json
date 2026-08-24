@@ -6,12 +6,12 @@
         {
           "structure": "POHEADER",
           "fields": [
-            { "name": "DOC_TYPE",  "type": "char4", "length": 4 },
-            { "name": "COMP_CODE", "type": "char4", "length": 4 },
-            { "name": "PURCH_ORG", "type": "char4", "length": 4 },
-            { "name": "PURCH_GROUP","type": "char3", "length": 3 },
-            { "name": "VENDOR",    "type": "char10", "length": 10 },
-            { "name": "PURCH_ORG", "type": "char4", "length": 4 }
+            { "name": "DOC_TYPE",  "type": "char", "length": 4, "size": 4, "decimal": 0 },
+            { "name": "COMP_CODE", "type": "char", "length": 4, "size": 4, "decimal": 0 },
+            { "name": "PURCH_ORG", "type": "char", "length": 4, "size": 4, "decimal": 0 },
+            { "name": "PURCH_GROUP","type": "char", "length": 3, "size": 3, "decimal": 0 },
+            { "name": "VENDOR",    "type": "char", "length": 10, "size": 10, "decimal": 0 },
+            { "name": "PURCH_ORG", "type": "char", "length": 4, "size": 4, "decimal": 0 }
           ]
         }
       ],
@@ -19,38 +19,13 @@
         {
           "table": "POITEM",
           "fields": [
-            { "name": "PO_ITEM",  "type": "numc5" },
-            { "name": "MATERIAL", "type": "char18" },
-            { "name": "QUANTITY", "type": "quan13.3" }
+            { "name": "PO_ITEM",  "type": "numc", "length": 5, "size": 5, "decimal": 0 },
+            { "name": "MATERIAL", "type": "char", "length": 18, "size": 18, "decimal": 0 },
+            { "name": "QUANTITY", "type": "quan", "length": 13, "size": 13, "decimal": 3 }
 
           ]
         }
       ]
-    },
-    {
-      "headers_values": [
-        {
-          "value": "POHEADER",
-          "fields": [
-            { "name": "DOC_TYPE",  "type": "char4", "length": 4 },
-            { "name": "COMP_CODE", "type": "char4", "length": 4 },
-            { "name": "PURCH_ORG", "type": "char4", "length": 4 },
-            { "name": "PURCH_GROUP","type": "char3", "length": 3 },
-            { "name": "VENDOR",    "type": "char10", "length": 10 },
-            { "name": "PURCH_ORG", "type": "char4", "length": 4 }
-          ]
-        }
-      ],
-      "items_values": [
-        {
-          "value": "POITEM",
-          "fields": [
-            { "name": "PO_ITEM",  "type": "numc5" },
-            { "name": "MATERIAL", "type": "char18" },
-            { "name": "QUANTITY", "type": "quan13.3" }
-          ]
-        }
-      ]
-    },
+    }
   ]
 }
