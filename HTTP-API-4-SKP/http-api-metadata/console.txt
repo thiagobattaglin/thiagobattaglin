@@ -1,0 +1,85 @@
+* Preparing request to https://54.161.147.160:4300/sap/bc/http/sap/zbapi_meta?bapi_name=BAPI_PO_CREATE1
+* Current time is 2026-08-18T23:24:16.046Z
+* Enable automatic URL encoding
+* Using default HTTP version
+* Enable timeout of 30000ms
+* Disable SSL validation
+* Enable cookie sending with jar of 2 cookies
+* Connection 13 seems to be dead
+* Closing connection 13
+* TLSv1.2 (IN), TLS header, Supplemental data (23):
+* TLSv1.2 (OUT), TLS header, Unknown (21):
+* TLSv1.2 (OUT), TLS alert, close notify (256):
+* Hostname in DNS cache was stale, zapped
+*   Trying 54.161.147.160:4300...
+* Connected to 54.161.147.160 (54.161.147.160) port 4300 (#14)
+* ALPN: offers h2
+* ALPN: offers http/1.1
+* TLSv1.0 (OUT), TLS header, Certificate Status (22):
+* TLSv1.3 (OUT), TLS handshake, Client hello (1):
+* TLSv1.2 (IN), TLS header, Certificate Status (22):
+* TLSv1.3 (IN), TLS handshake, Server hello (2):
+* TLSv1.2 (IN), TLS header, Certificate Status (22):
+* TLSv1.2 (IN), TLS handshake, Certificate (11):
+* TLSv1.2 (IN), TLS header, Certificate Status (22):
+* TLSv1.2 (IN), TLS handshake, Server key exchange (12):
+* TLSv1.2 (IN), TLS header, Certificate Status (22):
+* TLSv1.2 (IN), TLS handshake, Request CERT (13):
+* TLSv1.2 (IN), TLS header, Certificate Status (22):
+* TLSv1.2 (IN), TLS handshake, Server finished (14):
+* TLSv1.2 (OUT), TLS header, Certificate Status (22):
+* TLSv1.2 (OUT), TLS handshake, Certificate (11):
+* TLSv1.2 (OUT), TLS header, Certificate Status (22):
+* TLSv1.2 (OUT), TLS handshake, Client key exchange (16):
+* TLSv1.2 (OUT), TLS header, Finished (20):
+* TLSv1.2 (OUT), TLS change cipher, Change cipher spec (1):
+* TLSv1.2 (OUT), TLS header, Certificate Status (22):
+* TLSv1.2 (OUT), TLS handshake, Finished (20):
+* TLSv1.2 (IN), TLS header, Finished (20):
+* TLSv1.2 (IN), TLS header, Certificate Status (22):
+* TLSv1.2 (IN), TLS handshake, Finished (20):
+* SSL connection using TLSv1.2 / ECDHE-RSA-AES128-GCM-SHA256
+* ALPN: server accepted h2
+* Server certificate:
+*  subject: C=US; O=DMR; OU=SAP; CN=dmr-sap-a02.dmroffice.com
+*  start date: Sep 11 10:51:38 2025 GMT
+*  expire date: Sep 11 10:51:38 2027 GMT
+*  issuer: C=US; O=DMR; OU=SAP; CN=dmr-sap-a02.dmroffice.com
+*  SSL certificate verify result: unable to get local issuer certificate (20), continuing anyway.
+* Using HTTP2, server supports multiplexing
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* TLSv1.2 (OUT), TLS header, Supplemental data (23):
+* TLSv1.2 (OUT), TLS header, Supplemental data (23):
+* TLSv1.2 (OUT), TLS header, Supplemental data (23):
+* h2h3 [:method: GET]
+* h2h3 [:path: /sap/bc/http/sap/zbapi_meta?bapi_name=BAPI_PO_CREATE1]
+* h2h3 [:scheme: https]
+* h2h3 [:authority: 54.161.147.160:4300]
+* h2h3 [user-agent: insomnia/13.1.0]
+* h2h3 [cookie: SAP_SESSIONID_S41_100=pd4mRm0NrTM9rJDyHts-Lbpt31abWxHxmhAWPDgs-_M%3d; sap-usercontext=sap-client=100]
+* h2h3 [authorization: Basic dGJhdHRhZ2xpbjI6UkRHQHM0MS1UaGlhZ28=]
+* h2h3 [accept: */*]
+* Using Stream ID: 1 (easy handle 0x24c9b9d3b40)
+* TLSv1.2 (OUT), TLS header, Supplemental data (23):
+
+> GET /sap/bc/http/sap/zbapi_meta?bapi_name=BAPI_PO_CREATE1 HTTP/2
+> Host: 54.161.147.160:4300
+> user-agent: insomnia/13.1.0
+> cookie: SAP_SESSIONID_S41_100=pd4mRm0NrTM9rJDyHts-Lbpt31abWxHxmhAWPDgs-_M%3d; sap-usercontext=sap-client=100
+> authorization: Basic dGJhdHRhZ2xpbjI6UkRHQHM0MS1UaGlhZ28=
+> accept: */*
+
+* TLSv1.2 (IN), TLS header, Supplemental data (23):
+* TLSv1.2 (OUT), TLS header, Supplemental data (23):
+* TLSv1.2 (IN), TLS header, Supplemental data (23):
+* TLSv1.2 (IN), TLS header, Supplemental data (23):
+* TLSv1.2 (IN), TLS header, Supplemental data (23):
+
+< HTTP/2 403 
+< content-type: text/html
+< content-length: 0
+< sap-server: true
+< sap-perf-fesrec: 12628.000000
+
+
+* Connection #14 to host 54.161.147.160 left intact

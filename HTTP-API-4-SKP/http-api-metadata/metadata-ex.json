@@ -4,11 +4,40 @@
     {
       "headers_values": [
         {
+          "structure": "POHEADER",
+          "fields": [
+            { "name": "DOC_TYPE",  "type": "char4", "length": 4 },
+            { "name": "COMP_CODE", "type": "char4", "length": 4 },
+            { "name": "PURCH_ORG", "type": "char4", "length": 4 },
+            { "name": "PURCH_GROUP","type": "char3", "length": 3 },
+            { "name": "VENDOR",    "type": "char10", "length": 10 },
+            { "name": "PURCH_ORG", "type": "char4", "length": 4 }
+          ]
+        }
+      ],
+      "items_values": [
+        {
+          "table": "POITEM",
+          "fields": [
+            { "name": "PO_ITEM",  "type": "numc5" },
+            { "name": "MATERIAL", "type": "char18" },
+            { "name": "QUANTITY", "type": "quan13.3" }
+
+          ]
+        }
+      ]
+    },
+    {
+      "headers_values": [
+        {
           "value": "POHEADER",
           "fields": [
-            { "name": "DOC_TYPE",  "type": "char2" },
-            { "name": "VENDOR",    "type": "char10" },
-            { "name": "PURCH_ORG", "type": "char4" }
+            { "name": "DOC_TYPE",  "type": "char4", "length": 4 },
+            { "name": "COMP_CODE", "type": "char4", "length": 4 },
+            { "name": "PURCH_ORG", "type": "char4", "length": 4 },
+            { "name": "PURCH_GROUP","type": "char3", "length": 3 },
+            { "name": "VENDOR",    "type": "char10", "length": 10 },
+            { "name": "PURCH_ORG", "type": "char4", "length": 4 }
           ]
         }
       ],
@@ -22,6 +51,6 @@
           ]
         }
       ]
-    }
+    },
   ]
 }

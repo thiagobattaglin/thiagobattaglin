@@ -3,7 +3,7 @@
   "kind": "bulk",
   "bapi_name": "BAPI_PO_CREATE1",
   "worker_threads": 10,
-  "worker_rows": 5000,
+  "worker_documents": 5000,
   "documents": [
     {
       "heders_values": [

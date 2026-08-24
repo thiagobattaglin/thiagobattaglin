@@ -75,17 +75,42 @@ Mesmo shape de [`metadata-ex.json`](./metadata-ex.json):
 | [zcl_http_bapi_meta_builder.clas.abap](./zcl_http_bapi_meta_builder.clas.abap) | Introspecção (`FUNCTION_IMPORT_INTERFACE` + `DDIF_FIELDINFO_GET`) e montagem do JSON aninhado |
 | [metadata-ex.json](./metadata-ex.json) | Exemplo do formato de resposta |
 
-## Ativação / Publicação
+## Ativação / Publicação no SICF
 
 1. Ativar `zcl_http_bapi_meta_builder`.
 2. Ativar `zcl_http_bapi_meta`.
-3. Criar um **HTTP Service** (ADT: *New → Other ABAP Repository Object
-   → HTTP Service*) apontando para `zcl_http_bapi_meta`.
-4. Testar no navegador ou Insomnia:
+3. Abrir transação `SICF`.
+4. Navegar até o nó `/sap/bc/http/sap`.
+5. Criar um novo serviço com o nome `zbapi_meta`.
+6. No campo de handler, apontar para a classe `ZCL_HTTP_BAPI_META`.
+7. Salvar o nó.
+8. Ativar o serviço no SICF.
+9. Verificar se o path final fica assim:
+
+   ```
+   /sap/bc/http/sap/zbapi_meta
+   ```
+
+10. Ajustar autenticação conforme o ambiente de teste.
+11. Testar no navegador, Postman, Insomnia ou curl:
 
    ```
    GET https://<host>:<port>/sap/bc/http/sap/zbapi_meta?bapi_name=BAPI_PO_CREATE1
    ```
+
+### Alternativa via ADT
+
+Se preferir criar pelo ADT:
+
+1. `New` → `Other ABAP Repository Object` → `HTTP Service`
+2. definir o nome do serviço, por exemplo `ZBAPI_META`
+3. apontar para a classe `ZCL_HTTP_BAPI_META`
+4. salvar e ativar
+
+### Observação importante
+
+O SICF funciona como registro do endpoint HTTP no ICF. Sem o nó ativo e
+publicado, a classe existe, mas o serviço não estará acessível pela URL.
 
 ## Diferença vs. `rap-bapi-hybrid/GetMetadata`
 
