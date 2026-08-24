@@ -93,7 +93,14 @@ Mesmo shape de [`metadata-ex.json`](./metadata-ex.json):
    ```
 
 10. Ajustar autenticação conforme o ambiente de teste.
-11. Testar no navegador, Postman, Insomnia ou curl:
+11. Liberar o serviço na transação `UCON_HTTP_SERVICES` (UCON HTTP
+    Allowlist Scenario). Sem essa liberação o serviço retorna `403
+    Forbidden` mesmo com o nó SICF ativo:
+    - abrir `UCON_HTTP_SERVICES`
+    - localizar o serviço `zbapi_meta` (ou o path completo `/sap/bc/http/sap/zbapi_meta`)
+    - marcar como *Active* / *Released* no cenário HTTP Allowlist
+    - salvar e ativar
+12. Testar no navegador, Postman, Insomnia ou curl:
 
    ```
    GET https://<host>:<port>/sap/bc/http/sap/zbapi_meta?bapi_name=BAPI_PO_CREATE1
@@ -112,6 +119,10 @@ Se preferir criar pelo ADT:
 
 O SICF funciona como registro do endpoint HTTP no ICF. Sem o nó ativo e
 publicado, a classe existe, mas o serviço não estará acessível pela URL.
+Além disso, em S/4HANA a UCON HTTP Allowlist (`UCON_HTTP_SERVICES`)
+funciona como uma segunda camada de autorização: se o serviço não estiver
+liberado lá, o gateway responde `403 Forbidden` mesmo com o nó SICF
+ativo.
 
 ## Diferença vs. `rap-bapi-hybrid/GetMetadata`
 
