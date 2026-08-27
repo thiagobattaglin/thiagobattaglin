@@ -1,0 +1,29 @@
+{
+  "bapi_name": "BAPI_PO_CREATE1",
+  "documents": [
+    {
+      "headers_values": [
+        {
+          "structure": "POHEADER",
+          "fields": [
+            { "name": "DOC_TYPE",   "type": "char", "length": 4,  "size": 4,  "decimal": 0 },
+            { "name": "COMP_CODE",  "type": "char", "length": 4,  "size": 4,  "decimal": 0 },
+            { "name": "PURCH_ORG",  "type": "char", "length": 4,  "size": 4,  "decimal": 0 },
+            { "name": "PUR_GROUP",  "type": "char", "length": 3,  "size": 3,  "decimal": 0 },
+            { "name": "VENDOR",     "type": "char", "length": 10, "size": 10, "decimal": 0 }
+          ]
+        }
+      ],
+      "items_values": [
+        {
+          "table": "POITEM",
+          "fields": [
+            { "name": "PO_ITEM",   "type": "numc", "length": 5,  "size": 5,  "decimal": 0 },
+            { "name": "MATERIAL",  "type": "char", "length": 18, "size": 18, "decimal": 0 },
+            { "name": "QUANTITY",  "type": "quan", "length": 13, "size": 13, "decimal": 3 }
+          ]
+        }
+      ]
+    }
+  ]
+}

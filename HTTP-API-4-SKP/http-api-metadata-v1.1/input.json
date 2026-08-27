@@ -1,0 +1,66 @@
+{
+  "mode": "async",
+  "bapi_name": "BAPI_PO_CREATE1",
+  "worker_threads": 10,
+  "worker_rows": 5000,
+  "documents": [
+    {
+      "heders_values": [
+        {
+          "value": "POHEADER",
+          "fields": [
+            { "name": "DOC_TYPE",     "value": "NB" },
+            { "name": "VENDOR",       "value": "100000" },
+            { "name": "PURCH_ORG",    "value": "1010" },
+            { "name": "PUR_GROUP",    "value": "001" },
+            { "name": "COMP_CODE",    "value": "1000" }
+          ]
+        },
+        {
+          "value": "POHEADERX",
+          "fields": [
+            { "name": "DOC_TYPE",     "value": "X" },
+            { "name": "VENDOR",       "value": "X" },
+            { "name": "PURCH_ORG",    "value": "X" },
+            { "name": "PUR_GROUP",    "value": "X" },
+            { "name": "COMP_CODE",    "value": "X" }
+          ]
+        },
+        {
+          "value": "POADDRVENDOR",
+          "fields": [
+            { "name": "NAME",         "value": "Vendor Name" },
+            { "name": "STREET",       "value": "Vendor Street" },
+            { "name": "CITY",         "value": "Vendor City" },
+            { "name": "POSTL_COD1",   "value": "12345" },
+            { "name": "COUNTRY",      "value": "US" }
+          ]
+        }
+      ],
+      "items_values": [
+        {
+          "value": "POITEM",
+          "fields": [
+            { "name": "PO_ITEM",      "value": "00010" },
+            { "name": "MATERIAL",     "value": "MAT001" },
+            { "name": "PLANT",        "value": "1000" },
+            { "name": "QUANTITY",     "value": "10" },
+            { "name": "NET_PRICE",    "value": "100.00" },
+            { "name": "CURRENCY",     "value": "USD" }
+          ]
+        },
+        {
+          "value": "POITEMX",
+          "fields": [
+            { "name": "PO_ITEM",      "value": "00010" },
+            { "name": "MATERIAL",     "value": "X" },
+            { "name": "PLANT",        "value": "X" },
+            { "name": "QUANTITY",     "value": "X" },
+            { "name": "NET_PRICE",    "value": "X" },
+            { "name": "CURRENCY",     "value": "X" }
+          ]
+        }
+      ]
+    }
+  ]
+}

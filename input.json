@@ -8,6 +8,7 @@
         {
           "value": "poheader",
           "fields": [
+            { "name": "po_number", "value": "4500000001" },
             { "name": "doc_type", "value": "NB" },
             { "name": "vendor", "value": "100000" },
             { "name": "purch_org", "value": "1010" },

@@ -1,0 +1,28 @@
+﻿flowchart LR
+    Client["HTTP Client"]
+
+    Client -->|"GET ?bapi_name=..."| Node["HTTP Service Node<br/>/sap/bc/http/sap/zbapi_meta_v11"]
+    Client -->|"POST body: input.json"| Node
+
+    Node --> Handler["zcl_http_bapi_meta_v11<br/>(composition root)"]
+
+    subgraph CleanCore["Núcleo Clean Core (só APIs released)"]
+        Handler -->|"GET"| Builder["zcl_bapi_meta_v11_builder<br/>xco_cp_json"]
+        Handler -->|"POST"| Dispatcher["zcl_bapi_meta_v11_dispatch<br/>xco_cp_json + resolve_workers"]
+        Dispatcher -->|"chunks xstring<br/>EXPORT TO DATA BUFFER"| Parallel["cl_abap_parallel<br/>run_inline"]
+        Parallel --> Provider["zcl_bapi_meta_v11_parallel_prv<br/>if_abap_parallel~do"]
+        Provider --> Caller["zcl_bapi_meta_v11_caller<br/>process_chunk"]
+    end
+
+    subgraph Legacy["Legacy Adapters (NÃO Clean Core, on-prem only)"]
+        LgcyIntro["zcl_bapi_meta_v11_lgcy_intro<br/>FUNCTION_IMPORT_INTERFACE<br/>DDIF_FIELDINFO_GET"]
+        LgcyExec["zcl_bapi_meta_v11_lgcy_exec<br/>CALL FUNCTION dyn PARAMETER-TABLE<br/>BAPI_TRANSACTION_COMMIT/ROLLBACK"]
+    end
+
+    Builder -.->|"zif_bapi_meta_v11_introspector"| LgcyIntro
+    Caller  -.->|"zif_bapi_meta_v11_executor"| LgcyExec
+
+    LgcyExec --> BAPI["CALL FUNCTION bapi_name<br/>(dinâmico)"]
+
+    Handler -->|"200 OK / 202 Accepted"| Client
+

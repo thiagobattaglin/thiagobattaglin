@@ -1,0 +1,25 @@
+{ "mode": "async",
+  "bapi_name": "BAPI_PO_CREATE1",
+  "worker_threads": 10,
+  "worker_rows": 5000,
+  "documents": [
+    {
+      "heders_values": [{"structure": "", "fields": [ {"name": "", "value": "" }, {"name": "", "value": "" } ]},
+                        {"structure": "", "fields": [ {"name": "", "value": "" }, {"name": "", "value": "" } ]}],
+      "items_values": [{"table": "", "fields": [ {"name": "", "value": "" }, {"name": "", "value": "" } ]},
+                       {"table": "", "fields": [ {"name": "", "value": "" }, {"name": "", "value": "" } ]}]
+    },
+    {
+      "heders_values": [{"structure": "", "fields": [ {"name": "", "value": "" }, {"name": "", "value": "" } ]},
+                        {"structure": "", "fields": [ {"name": "", "value": "" }, {"name": "", "value": "" } ]}],
+      "items_values": [{"table": "", "fields": [ {"name": "", "value": "" }, {"name": "", "value": "" } ]},
+                       {"table": "", "fields": [ {"name": "", "value": "" }, {"name": "", "value": "" } ]}]
+    },
+    {
+      "heders_values": [{"structure": "", "fields": [ {"name": "", "value": "" }, {"name": "", "value": "" } ]},
+                        {"structure": "", "fields": [ {"name": "", "value": "" }, {"name": "", "value": "" } ]}],
+      "items_values": [{"table": "", "fields": [ {"name": "", "value": "" }, {"name": "", "value": "" } ]},
+                       {"table": "", "fields": [ {"name": "", "value": "" }, {"name": "", "value": "" } ]}]
+    }
+  ]
+}
