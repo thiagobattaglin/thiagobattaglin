@@ -1,25 +1,24 @@
-﻿CLASS zcl_bapi_meta_v11_dispatch DEFINITION
+CLASS zcl_bapi_integration_dispatch DEFINITION
   PUBLIC
   FINAL
   CREATE PUBLIC.
 
-* Dispatcher Clean Core do POST v1.1.
+* Clean Core dispatcher for POST v1.1.
 *
-* Regras de default:
-*   - worker_rows    em branco / <= 0  =>  5000 linhas por worker (cap).
-*   - worker_threads em branco / <= 0  =>  quantos workers forem necessários
-*                                          para respeitar o cap de linhas.
-*   - worker_threads > 0               =>  usado como limite máximo.
+* Default rules:
+*   - worker_rows    blank / <= 0  =>  5000 rows per worker (cap).
+*   - worker_threads blank / <= 0  =>  as many workers as needed
+*                                    to respect the row cap.
+*   - worker_threads > 0           =>  used as the maximum limit.
 *
-* APIs released usadas:
+* Released APIs used:
 *   - if_web_http_request / if_web_http_response      (HTTP handler)
 *   - xco_cp_json                                     (parse + serialize)
-*   - EXPORT/IMPORT TO/FROM DATA BUFFER               (transporte binário)
-*   - cl_abap_parallel                                (paralelismo)
+*   - cl_abap_parallel=>run_inst                      (parallel processing)
 *
-* NENHUMA API não-released é chamada aqui. O acoplamento com o legacy
+* NO non-released API is called here. Coupling with legacy code
 * (dynamic CALL FUNCTION, FUNCTION_IMPORT_INTERFACE, BAPI commit) acontece
-* apenas em zcl_bapi_meta_v11_lgcy_exec, instanciado no provider paralelo.
+* only in zcl_bapi_integration_exec, instantiated by the parallel provider.
 
   PUBLIC SECTION.
 
@@ -33,7 +32,7 @@
         bapi_name      TYPE string,
         worker_threads TYPE i,
         worker_rows    TYPE i,
-        documents      TYPE zif_bapi_meta_v11_executor=>tt_documents,
+        documents      TYPE zif_bapi_integration_executor=>tt_documents,
       END OF ty_request.
 
     TYPES:
@@ -45,34 +44,34 @@
         response_json TYPE string,
       END OF ty_outcome.
 
-    TYPES tt_chunks TYPE STANDARD TABLE OF xstring WITH DEFAULT KEY.
+    TYPES tt_chunks TYPE cl_abap_parallel=>t_in_inst_tab.
 
     METHODS dispatch
       IMPORTING iv_json           TYPE string
       RETURNING VALUE(rs_outcome) TYPE ty_outcome
       RAISING   cx_static_check.
 
-    "! Exposto para testes unitários.
+    "! Exposed for unit tests.
     METHODS parse_request
       IMPORTING iv_json           TYPE string
       RETURNING VALUE(rs_request) TYPE ty_request
       RAISING   cx_static_check.
 
-    "! Exposto para testes unitários.
+    "! Exposed for unit tests.
     METHODS resolve_workers
       IMPORTING iv_docs_total    TYPE i
                 iv_worker_rows   TYPE i
                 iv_worker_max    TYPE i
       RETURNING VALUE(rv_result) TYPE i.
 
-    "! Exposto para testes unitários.
+    "! Exposed for unit tests.
     METHODS split_documents
       IMPORTING iv_bapi_name     TYPE string
-                it_documents     TYPE zif_bapi_meta_v11_executor=>tt_documents
+                it_documents     TYPE zif_bapi_integration_executor=>tt_documents
                 iv_workers       TYPE i
       RETURNING VALUE(rt_chunks) TYPE tt_chunks.
 
-    "! Exposto para testes unitários.
+    "! Exposed for unit tests.
     METHODS build_response
       IMPORTING iv_bapi_name   TYPE string
                 iv_accepted    TYPE i
@@ -82,7 +81,7 @@
 
   PROTECTED SECTION.
 
-    "! Hook redefinido em testes para não disparar cl_abap_parallel real.
+    "! Hook redefined in tests to avoid triggering real cl_abap_parallel.
     METHODS dispatch_chunks
       IMPORTING iv_workers TYPE i
                 it_chunks  TYPE tt_chunks
@@ -101,7 +100,7 @@
 ENDCLASS.
 
 
-CLASS zcl_bapi_meta_v11_dispatch IMPLEMENTATION.
+CLASS zcl_bapi_integration_dispatch IMPLEMENTATION.
 
   METHOD dispatch.
     DATA(ls_request) = parse_request( iv_json ).
@@ -162,8 +161,7 @@ CLASS zcl_bapi_meta_v11_dispatch IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD split_documents.
-    DATA lt_chunk TYPE zif_bapi_meta_v11_executor=>tt_documents.
-    DATA lv_bin   TYPE xstring.
+    DATA lt_chunk TYPE zif_bapi_integration_executor=>tt_documents.
 
     DATA(lv_total) = lines( it_documents ).
     IF iv_workers <= 0 OR lv_total = 0.
@@ -183,11 +181,13 @@ CLASS zcl_bapi_meta_v11_dispatch IMPLEMENTATION.
       ENDLOOP.
 
       IF lt_chunk IS NOT INITIAL.
-        " Transporte binário nativo entre dispatcher e provider paralelo.
-        EXPORT bapi_name = iv_bapi_name
-               documents = lt_chunk
-               TO DATA BUFFER lv_bin.
-        APPEND lv_bin TO rt_chunks.
+        " One worker instance per chunk keeps the state stateless
+        " from the parallel framework's perspective (run_inst pattern).
+        APPEND CAST if_abap_parallel(
+                      NEW zcl_bapi_integration_parallel(
+                        iv_bapi_name = iv_bapi_name
+                        it_documents = lt_chunk ) )
+               TO rt_chunks.
       ENDIF.
 
       lv_processed = lv_end.
@@ -210,22 +210,18 @@ CLASS zcl_bapi_meta_v11_dispatch IMPLEMENTATION.
       RETURN.
     ENDIF.
 
-    DATA(lo_provider) = CAST if_abap_parallel( NEW zcl_bapi_meta_v11_parallel_prv( ) ).
     DATA(lo_parallel) = NEW cl_abap_parallel( ).
+    DATA lt_out TYPE cl_abap_parallel=>t_out_inst_tab.
 
-    DATA lt_out TYPE cl_abap_parallel=>t_out_tab.
-
-    " cl_abap_parallel = released substituto do aRFC clássico
+    " cl_abap_parallel=>run_inst = released replacement for classic aRFC
     " (STARTING NEW TASK ... DESTINATION IN GROUP DEFAULT).
-    " run_inline bloqueia até todos os workers terminarem.
-    lo_parallel->run_inline(
+    " run_inst blocks until all workers finish and delivers each worker's
+    " own state via if_abap_parallel~do, without any xstring buffer.
+    lo_parallel->run_inst(
       EXPORTING
-        p_num_processes = iv_workers
-        p_in_tab        = it_chunks
+        p_in_tab  = it_chunks
       IMPORTING
-        p_out_tab       = lt_out
-      CHANGING
-        p_provider      = lo_provider ).
+        p_out_tab = lt_out ).
   ENDMETHOD.
 
 ENDCLASS.

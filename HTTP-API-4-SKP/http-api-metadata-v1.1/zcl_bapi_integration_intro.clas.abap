@@ -1,25 +1,25 @@
-CLASS zcl_bapi_meta_v11_lgcy_intro DEFINITION
+CLASS zcl_bapi_integration_intro DEFINITION
   PUBLIC
   FINAL
   CREATE PUBLIC.
 
 * ============================================================================
-* LEGACY ADAPTER \u2014 NAO Clean Core.
+* LEGACY ADAPTER \u2014 NOT Clean Core.
 * ============================================================================
-* Implementa zif_bapi_meta_v11_introspector usando APIs cl\u00e1ssicas do DDIC
-* que NAO est\u00e3o released em ABAP Cloud:
+* Implements zif_bapi_integration_intro using classic DDIC APIs
+* that are NOT released in ABAP Cloud:
 *   - FUNCTION_IMPORT_INTERFACE
 *   - DDIF_FIELDINFO_GET
 *
-* Destinado a on-premise, embedded Steampunk ou private cloud.
-* Para ABAP Cloud puro, substituir por uma implementa\u00e7\u00e3o baseada em:
-*   - Whitelist de BAPIs released (JSON/tabela de config)
-*   - cl_abap_typedescr=>describe_by_name (released) para os types
-*   - xco_cp_abap_dictionary para introspec\u00e7\u00e3o adicional
+* Intended for on-premise, embedded Steampunk, or private cloud.
+* For pure ABAP Cloud, replace with an implementation based on:
+*   - Whitelist of released BAPIs (JSON/configuration table)
+*   - cl_abap_typedescr=>describe_by_name (released) for types
+*   - xco_cp_abap_dictionary for additional introspection
 * ============================================================================
 
   PUBLIC SECTION.
-    INTERFACES zif_bapi_meta_v11_introspector.
+    INTERFACES zif_bapi_integration_intro.
 
   PRIVATE SECTION.
 
@@ -40,7 +40,7 @@ CLASS zcl_bapi_meta_v11_lgcy_intro DEFINITION
       IMPORTING iv_param      TYPE csequence
                 iv_type       TYPE csequence
                 iv_json_name  TYPE csequence
-      RETURNING VALUE(rs_out) TYPE zif_bapi_meta_v11_introspector=>ty_struct_meta.
+      RETURNING VALUE(rs_out) TYPE zif_bapi_integration_intro=>ty_struct_meta.
 
     METHODS resolve_type_name
       IMPORTING iv_primary          TYPE csequence
@@ -50,9 +50,9 @@ CLASS zcl_bapi_meta_v11_lgcy_intro DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_bapi_meta_v11_lgcy_intro IMPLEMENTATION.
+CLASS zcl_bapi_integration_intro IMPLEMENTATION.
 
-  METHOD zif_bapi_meta_v11_introspector~describe.
+  METHOD zif_bapi_integration_intro~describe.
 
     DATA lt_imports TYPE tt_struct_ref.
     DATA lt_tables  TYPE tt_struct_ref.

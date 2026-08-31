@@ -1,15 +1,15 @@
-INTERFACE zif_bapi_meta_v11_executor
+INTERFACE zif_bapi_integration_executor
   PUBLIC.
 
-* Contrato Clean Core para execu\u00e7\u00e3o de 1 documento contra uma BAPI.
-* A implementa\u00e7\u00e3o padr\u00e3o (zcl_bapi_meta_v11_lgcy_exec) usa CALL FUNCTION
-* din\u00e2mico + PARAMETER-TABLE + BAPI_TRANSACTION_COMMIT/ROLLBACK, todos
-* NAO released em ABAP Cloud puro. Em Cloud, trocar por implementa\u00e7\u00e3o
-* baseada em whitelist de BAPIs released ou RAP/EML.
+* Clean Core contract for executing one document against a BAPI.
+* The default implementation (zcl_bapi_integration_exec) uses CALL FUNCTION
+* dynamically + PARAMETER-TABLE + BAPI_TRANSACTION_COMMIT/ROLLBACK, all
+* non-released in pure ABAP Cloud. In Cloud, replace it with an implementation
+* based on a whitelist of released BAPIs or RAP/EML.
 *
-* O n\u00facleo (zcl_bapi_meta_v11_caller e o provider paralelo) depende
-* apenas dessa interface \u2014 \u00e9 o \u00fanico ponto onde a implementa\u00e7\u00e3o legacy
-* fica acoplada, definido no composition root (zcl_http_bapi_meta_v11).
+* The core (zcl_bapi_integration_caller and the parallel provider) depends
+* only on this interface \u2014 it is the only point where the legacy implementation
+* fica acoplada, definido no composition root (zcl_http_bapi_integration).
 
   TYPES:
     BEGIN OF ty_field,

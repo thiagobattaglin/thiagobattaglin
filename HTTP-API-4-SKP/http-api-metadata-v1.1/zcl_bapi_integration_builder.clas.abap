@@ -1,19 +1,19 @@
-﻿CLASS zcl_bapi_meta_v11_builder DEFINITION
+CLASS zcl_bapi_integration_builder DEFINITION
   PUBLIC
   FINAL
   CREATE PUBLIC.
 
-* Núcleo Clean Core.
-* Depende apenas da interface zif_bapi_meta_v11_introspector.
-* Toda a introspecção DDIC (APIs não-released) fica isolada no adapter
-* injetado pelo composition root (zcl_http_bapi_meta_v11).
+* Clean Core core.
+* Depends only on the zif_bapi_integration_intro interface.
+* All DDIC introspection (non-released APIs) is isolated in the adapter
+* injected by the composition root (zcl_http_bapi_integration).
 *
-* Serialização do JSON de resposta usa xco_cp_json (released em ABAP Cloud).
+* Response JSON serialization uses xco_cp_json (released in ABAP Cloud).
 
   PUBLIC SECTION.
 
     METHODS constructor
-      IMPORTING io_introspector TYPE REF TO zif_bapi_meta_v11_introspector.
+      IMPORTING io_introspector TYPE REF TO zif_bapi_integration_intro.
 
     METHODS build_json
       IMPORTING iv_bapi_name   TYPE csequence
@@ -55,12 +55,12 @@
         documents TYPE STANDARD TABLE OF ty_document_out WITH DEFAULT KEY,
       END OF ty_response.
 
-    DATA mo_introspector TYPE REF TO zif_bapi_meta_v11_introspector.
+    DATA mo_introspector TYPE REF TO zif_bapi_integration_intro.
 
 ENDCLASS.
 
 
-CLASS zcl_bapi_meta_v11_builder IMPLEMENTATION.
+CLASS zcl_bapi_integration_builder IMPLEMENTATION.
 
   METHOD constructor.
     mo_introspector = io_introspector.

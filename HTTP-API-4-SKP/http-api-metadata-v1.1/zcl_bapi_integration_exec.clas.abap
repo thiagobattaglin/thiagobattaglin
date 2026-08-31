@@ -1,26 +1,26 @@
-CLASS zcl_bapi_meta_v11_lgcy_exec DEFINITION
+CLASS zcl_bapi_integration_exec DEFINITION
   PUBLIC
   FINAL
   CREATE PUBLIC.
 
 * ============================================================================
-* LEGACY ADAPTER \u2014 NAO Clean Core.
+* LEGACY ADAPTER \u2014 NOT Clean Core.
 * ============================================================================
-* Implementa zif_bapi_meta_v11_executor usando APIs cl\u00e1ssicas de RFC/BAPI
-* que NAO est\u00e3o released em ABAP Cloud:
-*   - CALL FUNCTION dyn_name PARAMETER-TABLE (chamada din\u00e2mica de FM)
-*   - FUNCTION_IMPORT_INTERFACE (via cl_abap_typedescr ele \u00e9 released, mas
-*     precisamos das metadatas da interface do FM, que s\u00f3 vem por essa API)
+* Implements zif_bapi_integration_executor using classic RFC/BAPI APIs
+* that are NOT released in ABAP Cloud:
+*   - CALL FUNCTION dyn_name PARAMETER-TABLE (dynamic function module call)
+*   - FUNCTION_IMPORT_INTERFACE (cl_abap_typedescr is released, but
+*     we need the function module interface metadata, which is only available through this API)
 *   - BAPI_TRANSACTION_COMMIT / BAPI_TRANSACTION_ROLLBACK
 *
-* Destinado a on-premise, embedded Steampunk ou private cloud.
-* Para ABAP Cloud puro, substituir por implementa\u00e7\u00e3o baseada em:
-*   - Whitelist de BAPIs released (static CALL FUNCTION 'BAPI_XXX')
-*   - RAP/EML (COMMIT ENTITIES ...) para transa\u00e7\u00f5es
+* Intended for on-premise, embedded Steampunk, or private cloud.
+* For pure ABAP Cloud, replace with an implementation based on:
+*   - Whitelist of released BAPIs (static CALL FUNCTION 'BAPI_XXX')
+*   - RAP/EML (COMMIT ENTITIES ...) for transactions
 * ============================================================================
 
   PUBLIC SECTION.
-    INTERFACES zif_bapi_meta_v11_executor.
+    INTERFACES zif_bapi_integration_executor.
 
     METHODS constructor
       IMPORTING iv_bapi_name TYPE csequence
@@ -63,11 +63,11 @@ CLASS zcl_bapi_meta_v11_lgcy_exec DEFINITION
       RETURNING VALUE(rs_meta) TYPE ty_param_meta.
 
     METHODS fill_structure
-      IMPORTING it_fields TYPE zif_bapi_meta_v11_executor=>tt_fields
+      IMPORTING it_fields TYPE zif_bapi_integration_executor=>tt_fields
                 ir_target TYPE REF TO data.
 
     METHODS append_row
-      IMPORTING it_fields TYPE zif_bapi_meta_v11_executor=>tt_fields
+      IMPORTING it_fields TYPE zif_bapi_integration_executor=>tt_fields
                 ir_table  TYPE REF TO data.
 
     METHODS get_or_create_table_ref
@@ -80,13 +80,13 @@ CLASS zcl_bapi_meta_v11_lgcy_exec DEFINITION
 
     METHODS extract_bapi_messages
       IMPORTING ir_return   TYPE REF TO data
-      EXPORTING et_messages TYPE zif_bapi_meta_v11_executor=>tt_messages
+      EXPORTING et_messages TYPE zif_bapi_integration_executor=>tt_messages
                 ev_success  TYPE abap_bool.
 
 ENDCLASS.
 
 
-CLASS zcl_bapi_meta_v11_lgcy_exec IMPLEMENTATION.
+CLASS zcl_bapi_integration_exec IMPLEMENTATION.
 
   METHOD constructor.
     mv_bapi_name = to_upper( iv_bapi_name ).
@@ -193,7 +193,7 @@ CLASS zcl_bapi_meta_v11_lgcy_exec IMPLEMENTATION.
     ENDIF.
   ENDMETHOD.
 
-  METHOD zif_bapi_meta_v11_executor~execute.
+  METHOD zif_bapi_integration_executor~execute.
     DATA lt_ptab   TYPE abap_func_parmbind_tab.
     DATA lt_etab   TYPE abap_func_excpbind_tab.
     DATA lt_bucket TYPE tt_rows_bucket.
@@ -266,7 +266,7 @@ CLASS zcl_bapi_meta_v11_lgcy_exec IMPLEMENTATION.
           EXCEPTION-TABLE lt_etab.
       CATCH cx_root INTO DATA(lx_call).
         rs_result-success = abap_false.
-        APPEND VALUE zif_bapi_meta_v11_executor=>ty_message(
+        APPEND VALUE zif_bapi_integration_executor=>ty_message(
                        type    = 'A'
                        message = lx_call->get_text( ) ) TO rs_result-messages.
         commit_or_rollback( abap_false ).
@@ -355,7 +355,7 @@ CLASS zcl_bapi_meta_v11_lgcy_exec IMPLEMENTATION.
 
     IF lo_desc->kind = cl_abap_typedescr=>kind_table.
       LOOP AT <fs_return> ASSIGNING FIELD-SYMBOL(<fs_row>).
-        DATA ls_msg TYPE zif_bapi_meta_v11_executor=>ty_message.
+        DATA ls_msg TYPE zif_bapi_integration_executor=>ty_message.
         CLEAR ls_msg.
         ASSIGN COMPONENT 'TYPE'    OF STRUCTURE <fs_row> TO FIELD-SYMBOL(<fs_v>).
         IF sy-subrc = 0. ls_msg-type = <fs_v>. ENDIF.
@@ -371,7 +371,7 @@ CLASS zcl_bapi_meta_v11_lgcy_exec IMPLEMENTATION.
         ENDIF.
       ENDLOOP.
     ELSEIF lo_desc->kind = cl_abap_typedescr=>kind_struct.
-      DATA ls_msg2 TYPE zif_bapi_meta_v11_executor=>ty_message.
+      DATA ls_msg2 TYPE zif_bapi_integration_executor=>ty_message.
       ASSIGN COMPONENT 'TYPE'    OF STRUCTURE <fs_return> TO FIELD-SYMBOL(<fs_v2>).
       IF sy-subrc = 0. ls_msg2-type = <fs_v2>. ENDIF.
       ASSIGN COMPONENT 'MESSAGE' OF STRUCTURE <fs_return> TO <fs_v2>.

@@ -1,10 +1,10 @@
-INTERFACE zif_bapi_meta_v11_introspector
+INTERFACE zif_bapi_integration_intro
   PUBLIC.
 
-* Contrato Clean Core para descoberta do metadata de uma BAPI.
-* A implementa\u00e7\u00e3o padr\u00e3o (zcl_bapi_meta_v11_lgcy_intro) usa APIs legadas
+* Clean Core contract for discovering BAPI metadata.
+* The default implementation (zcl_bapi_integration_intro) uses legacy APIs
 * (FUNCTION_IMPORT_INTERFACE + DDIF_FIELDINFO_GET). Em ABAP Cloud puro,
-* trocar por uma implementa\u00e7\u00e3o baseada em whitelist + cl_abap_typedescr.
+* replace it with an implementation based on a whitelist + cl_abap_typedescr.
 
   TYPES:
     BEGIN OF ty_field,
