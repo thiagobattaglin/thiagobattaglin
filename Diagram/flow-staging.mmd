@@ -1,0 +1,33 @@
+flowchart LR
+    DB[(Migration Working DB)] --> Source[Replication Source]
+    Source --> Cloud[Cloud Replication]
+    Cloud --> Target[SAP Target Replication]
+
+    Target -->|Stores documents| Staging[(Staging Tables)]
+    Target -->|Calls| API[RAP API]
+
+    Scanner <-->|Retrieve| API
+    Catalog[SKP Catalog] <--> Scanner[Scanner]
+
+    API -->|Creates workers| Workers
+    Staging <-->|Workers consume documents| Workers
+
+    subgraph Workers[Parallel Workers]
+        direction LR
+        Worker1[Worker 1]
+        Worker2[Worker 2]
+        WorkerN[Worker N]
+    end
+
+    Workers -->|Batch Commit| Commit[Commit per Worker] 
+    Commit -->|Creates SAP documents| Documents[(SAP Documents)]
+
+    classDef service fill:#ffffff,stroke:#536dfe,color:#111111
+    classDef storage fill:#202124,stroke:#536dfe,color:#ffffff
+    classDef processing fill:#1f513e,stroke:#71c99a,color:#ffffff
+    classDef commit fill:#5c4814,stroke:#d6b75c,color:#ffffff
+
+    class DB,Staging,Documents storage
+    class Source,Cloud,Target,API,Scanner,Catalog service
+    class Worker1,Worker2,WorkerN processing
+    class Commit commit

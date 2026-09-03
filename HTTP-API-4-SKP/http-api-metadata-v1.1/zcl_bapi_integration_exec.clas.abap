@@ -83,6 +83,11 @@ CLASS zcl_bapi_integration_exec DEFINITION
       EXPORTING et_messages TYPE zif_bapi_integration_executor=>tt_messages
                 ev_success  TYPE abap_bool.
 
+    "! Apply DDIC CONVEXIT (e.g. ALPHA) if the target field has one; otherwise plain assignment.
+    METHODS assign_with_convexit
+      IMPORTING iv_value  TYPE string
+      CHANGING  cv_target TYPE any.
+
 ENDCLASS.
 
 
@@ -199,6 +204,8 @@ CLASS zcl_bapi_integration_exec IMPLEMENTATION.
     DATA lt_bucket TYPE tt_rows_bucket.
     DATA lr_data   TYPE REF TO data.
 
+    TRY.
+
     LOOP AT is_document-heders_values INTO DATA(ls_hdr).
       DATA(ls_meta_h) = find_param( ls_hdr-value ).
       IF ls_meta_h-name IS INITIAL OR ls_meta_h-type IS NOT BOUND.
@@ -213,15 +220,16 @@ CLASS zcl_bapi_integration_exec IMPLEMENTATION.
       fill_structure( it_fields = ls_hdr-fields
                       ir_target = lr_data ).
 
-      DATA lv_kind_p TYPE c LENGTH 1.
-      lv_kind_p = SWITCH #( ls_meta_h-kind
-                              WHEN c_kind_import THEN abap_func_exporting
-                              WHEN c_kind_change THEN abap_func_changing
-                              ELSE abap_func_exporting ).
-
-      INSERT VALUE #( name  = ls_meta_h-name
-                      kind  = lv_kind_p
-                      value = lr_data ) INTO TABLE lt_ptab.
+      DATA ls_parm LIKE LINE OF lt_ptab.
+      CLEAR ls_parm.
+      ls_parm-name  = ls_meta_h-name.
+      ls_parm-value = lr_data.
+      IF ls_meta_h-kind = c_kind_change.
+        ls_parm-kind = abap_func_changing.
+      ELSE.
+        ls_parm-kind = abap_func_exporting.
+      ENDIF.
+      INSERT ls_parm INTO TABLE lt_ptab.
     ENDLOOP.
 
     LOOP AT is_document-items_values INTO DATA(ls_itm).
@@ -248,15 +256,23 @@ CLASS zcl_bapi_integration_exec IMPLEMENTATION.
     DATA lr_return TYPE REF TO data.
     DATA(ls_meta_ret) = find_param( `RETURN` ).
     IF ls_meta_ret-name IS NOT INITIAL AND ls_meta_ret-type IS BOUND.
-      CREATE DATA lr_return TYPE HANDLE ls_meta_ret-type.
-      IF ls_meta_ret-kind = c_kind_table.
-        INSERT VALUE #( name  = ls_meta_ret-name
-                        kind  = abap_func_tables
-                        value = lr_return ) INTO TABLE lt_ptab.
+      DATA ls_p_ret LIKE LINE OF lt_ptab.
+      CLEAR ls_p_ret.
+      ls_p_ret-name = ls_meta_ret-name.
+
+      IF ls_meta_ret-kind = c_kind_table
+         AND ls_meta_ret-type->kind = cl_abap_typedescr=>kind_struct.
+        DATA(lo_line_ret) = CAST cl_abap_structdescr( ls_meta_ret-type ).
+        DATA(lo_tab_ret)  = cl_abap_tabledescr=>create( p_line_type = lo_line_ret ).
+        CREATE DATA lr_return TYPE HANDLE lo_tab_ret.
+        ls_p_ret-kind  = abap_func_tables.
+        ls_p_ret-value = lr_return.
+        INSERT ls_p_ret INTO TABLE lt_ptab.
       ELSEIF ls_meta_ret-kind = c_kind_export.
-        INSERT VALUE #( name  = ls_meta_ret-name
-                        kind  = abap_func_importing
-                        value = lr_return ) INTO TABLE lt_ptab.
+        CREATE DATA lr_return TYPE HANDLE ls_meta_ret-type.
+        ls_p_ret-kind  = abap_func_importing.
+        ls_p_ret-value = lr_return.
+        INSERT ls_p_ret INTO TABLE lt_ptab.
       ENDIF.
     ENDIF.
 
@@ -278,6 +294,16 @@ CLASS zcl_bapi_integration_exec IMPLEMENTATION.
                                      ev_success  = rs_result-success ).
 
     commit_or_rollback( rs_result-success ).
+
+      CATCH cx_root INTO DATA(lx_exec).
+        rs_result-success = abap_false.
+        DATA(lv_class) = cl_abap_typedescr=>describe_by_object_ref( lx_exec )->get_relative_name( ).
+        APPEND VALUE zif_bapi_integration_executor=>ty_message(
+                       type    = 'A'
+                       message = |{ lv_class }: { lx_exec->get_text( ) }| )
+               TO rs_result-messages.
+        commit_or_rollback( abap_false ).
+    ENDTRY.
   ENDMETHOD.
 
   METHOD get_or_create_table_ref.
@@ -312,12 +338,30 @@ CLASS zcl_bapi_integration_exec IMPLEMENTATION.
       ASSIGN COMPONENT to_upper( ls_field-name )
              OF STRUCTURE <fs_target> TO FIELD-SYMBOL(<fs_comp>).
       IF sy-subrc = 0.
-        TRY.
-            <fs_comp> = ls_field-value.
-          CATCH cx_root ##NO_HANDLER.
-        ENDTRY.
+        assign_with_convexit( EXPORTING iv_value  = ls_field-value
+                              CHANGING  cv_target = <fs_comp> ).
       ENDIF.
     ENDLOOP.
+  ENDMETHOD.
+
+  METHOD assign_with_convexit.
+    TRY.
+        DATA(lo_type) = cl_abap_typedescr=>describe_by_data( cv_target ).
+        IF lo_type->kind = cl_abap_typedescr=>kind_elem AND iv_value IS NOT INITIAL.
+          DATA(lo_elem) = CAST cl_abap_elemdescr( lo_type ).
+          DATA(ls_ddic) = lo_elem->get_ddic_field( ).
+          IF ls_ddic-convexit = 'ALPHA'.
+            cv_target = |{ iv_value ALPHA = IN }|.
+            RETURN.
+          ENDIF.
+        ENDIF.
+      CATCH cx_root ##NO_HANDLER.
+    ENDTRY.
+
+    TRY.
+        cv_target = iv_value.
+      CATCH cx_root ##NO_HANDLER.
+    ENDTRY.
   ENDMETHOD.
 
   METHOD append_row.
@@ -388,7 +432,7 @@ CLASS zcl_bapi_integration_exec IMPLEMENTATION.
   METHOD commit_or_rollback.
     IF iv_success = abap_true.
       CALL FUNCTION 'BAPI_TRANSACTION_COMMIT'
-        EXPORTING wait = abap_true.
+        EXPORTING wait = abap_false.
     ELSE.
       CALL FUNCTION 'BAPI_TRANSACTION_ROLLBACK'.
     ENDIF.

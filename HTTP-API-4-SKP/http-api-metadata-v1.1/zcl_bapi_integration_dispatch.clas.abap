@@ -14,11 +14,20 @@ CLASS zcl_bapi_integration_dispatch DEFINITION
 * Released APIs used:
 *   - if_web_http_request / if_web_http_response      (HTTP handler)
 *   - xco_cp_json                                     (parse + serialize)
-*   - cl_abap_parallel=>run_inst                      (parallel processing)
+*   - cl_abap_parallel=>run_inst                      (sync: parallel processing)
+*   - CALL FUNCTION ... IN BACKGROUND TASK            (async: tRFC fire-and-forget)
 *
-* NO non-released API is called here. Coupling with legacy code
-* (dynamic CALL FUNCTION, FUNCTION_IMPORT_INTERFACE, BAPI commit) acontece
-* only in zcl_bapi_integration_exec, instantiated by the parallel provider.
+* Async note (S/4HANA On-Premise 2022, SAP_BASIS 757):
+*   bgMC / BGPF (cl_bgmc_process_factory, if_bgmc_op_*) is only released
+*   on-premise as of S/4HANA 2023. cl_bgrfc_unit_factory is also not
+*   visible from this package's language version, so async is scheduled
+*   with classic tRFC via CALL FUNCTION ... IN BACKGROUND TASK. Monitoring
+*   is done in SM58; each unit is one LUW committed via COMMIT WORK below.
+*   The RFC-enabled worker lives in function group Z_BAPI_INTEGRATION_WORKER.
+*
+* Full Clean Core — all coupling with legacy code (dynamic CALL FUNCTION,
+* FUNCTION_IMPORT_INTERFACE, BAPI commit) stays inside zcl_bapi_integration_exec,
+* instantiated by the parallel provider.
 
   PUBLIC SECTION.
 
@@ -44,7 +53,8 @@ CLASS zcl_bapi_integration_dispatch DEFINITION
         response_json TYPE string,
       END OF ty_outcome.
 
-    TYPES tt_chunks TYPE cl_abap_parallel=>t_in_inst_tab.
+    TYPES tt_chunks     TYPE cl_abap_parallel=>t_in_inst_tab.
+    TYPES tt_doc_chunks TYPE STANDARD TABLE OF zif_bapi_integration_executor=>tt_documents WITH DEFAULT KEY.
 
     METHODS dispatch
       IMPORTING iv_json           TYPE string
@@ -65,11 +75,25 @@ CLASS zcl_bapi_integration_dispatch DEFINITION
       RETURNING VALUE(rv_result) TYPE i.
 
     "! Exposed for unit tests.
-    METHODS split_documents
-      IMPORTING iv_bapi_name     TYPE string
-                it_documents     TYPE zif_bapi_integration_executor=>tt_documents
+    METHODS split_into_raw_chunks
+      IMPORTING it_documents     TYPE zif_bapi_integration_executor=>tt_documents
                 iv_workers       TYPE i
-      RETURNING VALUE(rt_chunks) TYPE tt_chunks.
+      RETURNING VALUE(rt_chunks) TYPE tt_doc_chunks.
+
+    "! Exposed for unit tests.
+    METHODS wrap_for_parallel
+      IMPORTING iv_bapi_name      TYPE string
+                iv_correlation_id TYPE string OPTIONAL
+                it_raw_chunks     TYPE tt_doc_chunks
+      RETURNING VALUE(rt_chunks)  TYPE tt_chunks.
+
+    "! Exposed for unit tests. Kept for backward-compatibility.
+    METHODS split_documents
+      IMPORTING iv_bapi_name      TYPE string
+                it_documents      TYPE zif_bapi_integration_executor=>tt_documents
+                iv_workers        TYPE i
+                iv_correlation_id TYPE string OPTIONAL
+      RETURNING VALUE(rt_chunks)  TYPE tt_chunks.
 
     "! Exposed for unit tests.
     METHODS build_response
@@ -87,6 +111,15 @@ CLASS zcl_bapi_integration_dispatch DEFINITION
                 it_chunks  TYPE tt_chunks
       RAISING   cx_static_check.
 
+    "! Fire-and-forget dispatch used when mode=async.
+    "! Schedules one tRFC unit per chunk via CALL FUNCTION IN BACKGROUND TASK;
+    "! COMMIT WORK at the end persists the units in ARFCSSTATE/ARFCSDATA.
+    METHODS dispatch_async_chunks
+      IMPORTING iv_bapi_name      TYPE string
+                iv_correlation_id TYPE string
+                it_raw_chunks     TYPE tt_doc_chunks
+      RAISING   cx_static_check.
+
   PRIVATE SECTION.
 
     TYPES:
@@ -96,6 +129,9 @@ CLASS zcl_bapi_integration_dispatch DEFINITION
         workers   TYPE i,
         mode      TYPE string,
       END OF ty_response.
+
+    METHODS build_correlation_id
+      RETURNING VALUE(rv_id) TYPE string.
 
 ENDCLASS.
 
@@ -111,21 +147,41 @@ CLASS zcl_bapi_integration_dispatch IMPLEMENTATION.
                   value     = `(empty)`.
     ENDIF.
 
+    DATA(lv_correlation_id) = build_correlation_id( ).
+
+    DATA(lo_log) = zcl_bapi_integration_logger=>open(
+                     iv_subobject   = zcl_bapi_integration_logger=>c_sub_dispatch
+                     iv_external_id = lv_correlation_id ).
+
     DATA(lv_total) = lines( ls_request-documents ).
 
     DATA(lv_workers) = resolve_workers( iv_docs_total  = lv_total
                                         iv_worker_rows = ls_request-worker_rows
                                         iv_worker_max  = ls_request-worker_threads ).
 
-    DATA(lt_chunks) = split_documents( iv_bapi_name = ls_request-bapi_name
-                                       it_documents = ls_request-documents
-                                       iv_workers   = lv_workers ).
+    DATA(lt_raw_chunks) = split_into_raw_chunks( it_documents = ls_request-documents
+                                                 iv_workers   = lv_workers ).
 
     DATA(lv_mode) = COND string( WHEN ls_request-mode = c_mode_sync THEN c_mode_sync
                                  ELSE c_mode_async ).
 
-    dispatch_chunks( iv_workers = lv_workers
-                     it_chunks  = lt_chunks ).
+    lo_log->add_info( |Dispatch started: BAPI { ls_request-bapi_name }, docs { lv_total }, workers { lv_workers }, mode { lv_mode }| ).
+
+    IF lv_mode = c_mode_async.
+      dispatch_async_chunks( iv_bapi_name      = ls_request-bapi_name
+                             iv_correlation_id = lv_correlation_id
+                             it_raw_chunks     = lt_raw_chunks ).
+      lo_log->add_info( |Dispatch scheduled { lines( lt_raw_chunks ) } tRFC unit(s) (async)| ).
+    ELSE.
+      DATA(lt_chunks) = wrap_for_parallel( iv_bapi_name      = ls_request-bapi_name
+                                           iv_correlation_id = lv_correlation_id
+                                           it_raw_chunks     = lt_raw_chunks ).
+      dispatch_chunks( iv_workers = lv_workers
+                       it_chunks  = lt_chunks ).
+      lo_log->add_info( |Dispatch finished (workers returned)| ).
+    ENDIF.
+
+    lo_log->save( ).
 
     rs_outcome = VALUE #(
       bapi_name     = ls_request-bapi_name
@@ -136,6 +192,18 @@ CLASS zcl_bapi_integration_dispatch IMPLEMENTATION.
                                       iv_accepted  = lv_total
                                       iv_workers   = lv_workers
                                       iv_mode      = lv_mode ) ).
+  ENDMETHOD.
+
+  METHOD build_correlation_id.
+    TRY.
+        rv_id = cl_system_uuid=>create_uuid_c32_static( ).
+        rv_id = rv_id+0(20).
+      CATCH cx_root.
+        rv_id = |{ sy-datum }{ sy-uzeit }{ sy-uname }|.
+        IF strlen( rv_id ) > 20.
+          rv_id = rv_id(20).
+        ENDIF.
+    ENDTRY.
   ENDMETHOD.
 
   METHOD parse_request.
@@ -161,6 +229,14 @@ CLASS zcl_bapi_integration_dispatch IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD split_documents.
+    DATA(lt_raw) = split_into_raw_chunks( it_documents = it_documents
+                                          iv_workers   = iv_workers ).
+    rt_chunks = wrap_for_parallel( iv_bapi_name      = iv_bapi_name
+                                   iv_correlation_id = iv_correlation_id
+                                   it_raw_chunks     = lt_raw ).
+  ENDMETHOD.
+
+  METHOD split_into_raw_chunks.
     DATA lt_chunk TYPE zif_bapi_integration_executor=>tt_documents.
 
     DATA(lv_total) = lines( it_documents ).
@@ -181,13 +257,7 @@ CLASS zcl_bapi_integration_dispatch IMPLEMENTATION.
       ENDLOOP.
 
       IF lt_chunk IS NOT INITIAL.
-        " One worker instance per chunk keeps the state stateless
-        " from the parallel framework's perspective (run_inst pattern).
-        APPEND CAST if_abap_parallel(
-                      NEW zcl_bapi_integration_parallel(
-                        iv_bapi_name = iv_bapi_name
-                        it_documents = lt_chunk ) )
-               TO rt_chunks.
+        APPEND lt_chunk TO rt_chunks.
       ENDIF.
 
       lv_processed = lv_end.
@@ -195,6 +265,46 @@ CLASS zcl_bapi_integration_dispatch IMPLEMENTATION.
         EXIT.
       ENDIF.
     ENDDO.
+  ENDMETHOD.
+
+  METHOD wrap_for_parallel.
+    DATA lv_idx TYPE i.
+    LOOP AT it_raw_chunks INTO DATA(lt_chunk).
+      lv_idx += 1.
+      " One worker instance per chunk keeps the state stateless
+      " from the parallel framework's perspective (run_inst pattern).
+      APPEND CAST if_abap_parallel(
+                    NEW zcl_bapi_integration_parallel(
+                      iv_bapi_name      = iv_bapi_name
+                      it_documents      = lt_chunk
+                      iv_correlation_id = iv_correlation_id
+                      iv_worker_index   = lv_idx ) )
+             TO rt_chunks.
+    ENDLOOP.
+  ENDMETHOD.
+
+  METHOD dispatch_async_chunks.
+    DATA lv_idx TYPE i.
+
+    LOOP AT it_raw_chunks INTO DATA(lt_chunk).
+      lv_idx += 1.
+      DATA(lv_json) = xco_cp_json=>data->from_abap( lt_chunk )->to_string( ).
+
+      " DESTINATION 'NONE' = local execution; each call becomes one tRFC LUW
+      " persisted at COMMIT WORK below (see transaction SM58 for monitoring).
+      CALL FUNCTION 'Z_BAPI_INTG_WORKER_EXEC'
+        IN BACKGROUND TASK
+        DESTINATION 'NONE'
+        EXPORTING iv_bapi_name      = iv_bapi_name
+                  iv_documents_json = lv_json
+                  iv_correlation_id = iv_correlation_id
+                  iv_worker_index   = lv_idx.
+    ENDLOOP.
+
+    " Persist the tRFC units so the scheduler picks them up in a separate
+    " LUW; the HTTP handler returns 202 immediately after this.
+    COMMIT WORK.
+
   ENDMETHOD.
 
   METHOD build_response.

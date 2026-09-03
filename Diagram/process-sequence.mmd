@@ -6,7 +6,10 @@ sequenceDiagram
     participant Target as Replicate SAP Target Connector
     participant Catalog as SKP Catalog
     participant Scanner as Scanner
-    participant API as HTTP API
+    participant Staging as SAP staging /1LT/*
+    participant API as RAP Processing API
+    participant Orchestrator as RAP Orchestrator
+    participant Queue as Application Jobs / bgRFC
     participant Worker1 as Worker 1
     participant Worker2 as Worker 2
     participant Worker3 as Worker 3
@@ -16,30 +19,38 @@ sequenceDiagram
     DB->>Source: Replicate migration data
     Source->>Cloud: Send replicated data
     Cloud->>Target: Deliver replicated data
-    Target->>API: Submit processing request
+    Target->>Staging: Persist staging records /1LT/*
 
     Scanner->>Catalog: Request SKP catalog data
     Catalog-->>Scanner: Return SKP catalog data
-    Scanner->>API: Submit scan result
+    Scanner->>API: POST batch reference and scan result
+    API->>Orchestrator: Validate scope and idempotency
+    Orchestrator->>Staging: Check records and create batch control
+    Orchestrator-->>API: BatchId and 202 Accepted
     API-->>Scanner: Return processing response
+    Orchestrator->>Queue: Create controlled worker jobs
 
     rect rgb(49, 134, 46)
         Note over Worker1,WorkerN: Parallel Processing
         par Worker 1
-            API->>Worker1: Dispatch request
-            Worker1->>Worker1: Process batch
+            Queue->>Worker1: Dispatch reserved range
+            Worker1->>Staging: Select range from /1LT/*
+            Worker1->>Worker1: Create documents and collect results
             Worker1->>Commit: Commit batch
         and Worker 2
-            API->>Worker2: Dispatch request
-            Worker2->>Worker2: Process batch
+            Queue->>Worker2: Dispatch reserved range
+            Worker2->>Staging: Select range from /1LT/*
+            Worker2->>Worker2: Create documents and collect results
             Worker2->>Commit: Commit batch
         and Worker 3
-            API->>Worker3: Dispatch request
-            Worker3->>Worker3: Process batch
+            Queue->>Worker3: Dispatch reserved range
+            Worker3->>Staging: Select range from /1LT/*
+            Worker3->>Worker3: Create documents and collect results
             Worker3->>Commit: Commit batch
         and Worker N
-            API->>WorkerN: Dispatch request
-            WorkerN->>WorkerN: Process batch
+            Queue->>WorkerN: Dispatch reserved range
+            WorkerN->>Staging: Select range from /1LT/*
+            WorkerN->>WorkerN: Create documents and collect results
             WorkerN->>Commit: Commit batch
         end
     end
