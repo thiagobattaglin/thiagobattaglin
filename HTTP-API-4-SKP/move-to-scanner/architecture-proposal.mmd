@@ -1,0 +1,49 @@
+flowchart LR
+    subgraph SRC["Origem / Replicacao (sem mudanca)"]
+        MWD[("Migration Working DB")]
+    end
+    MWD --> RS["Replication Source"]
+    RS --> CR["Cloud Replication"]
+    CR --> STR["SAP Target Replication"]
+    STR -->|"Stores documents"| ST[("Staging Tables")]
+
+    subgraph SCAN["Scanner / Catalogo (design-time, via metadata.xml)"]
+        SC["Scanner"]
+        CAT[("SKP Catalog")]
+        SC <--> CAT
+    end
+    ST -.->|"tabelas/campos do Migration Object"| SC
+
+    subgraph CTRL["Novo: Particionamento e Controle de Job"]
+        PM["Partition Manager<br/>divide Staging Table em chunks<br/>por faixa de chave (ex: EBELN)"]
+        JCT[("Z Job Control Table<br/>chunk, status, worker, tentativas")]
+        PM --> JCT
+    end
+    ST --> PM
+    CAT -. "config: quais tabelas/campos migrar" .-> PM
+
+    JCT --> SCH["Background Job Scheduler<br/>N jobs, server group dedicado (RZ12)"]
+    SCH --> W1["Worker 1"]
+    SCH --> W2["Worker 2"]
+    SCH --> WN["Worker N"]
+
+    subgraph RAPAPI["RAP API - criacao em lote (EML bulk)"]
+        W1 --> B1["CREATE BO em lote<br/>chunk 500-1000 docs"]
+        W2 --> B2["CREATE BO em lote<br/>chunk 500-1000 docs"]
+        WN --> BN["CREATE BO em lote<br/>chunk 500-1000 docs"]
+    end
+
+    B1 -->|"COMMIT por chunk"| DOC[("SAP Documents")]
+    B2 -->|"COMMIT por chunk"| DOC
+    BN -->|"COMMIT por chunk"| DOC
+
+    B1 -.->|"atualiza status"| JCT
+    B2 -.->|"atualiza status"| JCT
+    BN -.->|"atualiza status"| JCT
+
+    W1 -->|"erro"| ERRQ[("Error / Retry Queue")]
+    W2 -->|"erro"| ERRQ
+    WN -->|"erro"| ERRQ
+    ERRQ -.->|"reprocessa chunk"| SCH
+
+    JCT --> MON["Monitoring Dashboard<br/>Application Log (BAL) agregado"]

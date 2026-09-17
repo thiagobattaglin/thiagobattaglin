@@ -1,0 +1,80 @@
+---
+title: Syniti Migrate → SAP LTMC — Fluxo de carga de Purchase Orders
+---
+sequenceDiagram
+    autonumber
+    actor User as Usuário (TB)
+    participant UI as Syniti Migrate UI
+    participant SKP as SKP ETL (DEV/LOAD DB)
+    participant GW as SAP Gateway<br/>MIG_MC_ODATA_SRV
+    participant DPC as /LTB/CL_MIG_MC_ODATA_DPC_EXT
+    participant LTMC as LTMC Framework<br/>(mc_proxy_factory)
+    participant STG as Staging Tables<br/>/1LT/DSSxxxxxxx
+    participant PO as SAP MM (EKKO/EKPO)
+
+    Note over User,UI: Etapa 1 — Load Program Setup
+
+    User->>UI: Abre LTMC Load Program
+    UI->>GW: GET /MigrationProjectSet
+    GW->>DPC: MIGRATIONPROJECT_GET_ENTITYSET
+    DPC->>LTMC: get_projects(cntxt)
+    LTMC-->>DPC: Lista de projetos
+    DPC-->>GW: Feed OData
+    GW-->>UI: Projetos (ZTEST_PO_SKP, ZSKP_WORK_ORDERS…)
+    UI-->>User: Exibe tabela "Existing LTMC Projects"
+
+    User->>UI: Preenche formulário<br/>(SKP System, Env, Nome, MO, Approach)
+    UI->>GW: POST /MigrationProjectSet<br/>(changeset CREPROJ)
+    GW->>DPC: changeset_begin → CREATE_ENTITY
+    DPC->>DPC: check_execute_auth_for_request()
+    DPC->>DPC: check_system_upgrade()
+    DPC->>LTMC: maintain_project(CREATE)
+    LTMC-->>DPC: MigrationProjectUUID
+    DPC-->>GW: 201 Created + UUID
+    GW-->>UI: MigrationProjectUUID
+
+    UI->>GW: GET /MigrationProjectSet('…')/to_MigrationObjects
+    GW-->>UI: MigrationObjectUUID (MM PO)
+    UI->>GW: GET /MigrationObjectSet(…)/to_TableStructure
+    GW-->>UI: 9 tabelas (S_EKKO…S_COMP) com /1LT/DSSxxxxxxx
+
+    Note over User,SKP: Etapa 2 — ETL Export Task
+
+    User->>UI: Mapeia origem→destino,<br/>seleciona "Map By Name"
+    User->>UI: Clica "Run Export"
+    UI->>SKP: Executa job ETL<br/>(PO_EKKO_T, PO_EKPO_T…)
+    SKP->>STG: INSERT INTO /1LT/DSS41002602 (S_EKKO)
+    SKP->>STG: INSERT INTO /1LT/DSS41002605 (S_EKPO)
+    SKP->>STG: INSERT INTO /1LT/DSS41002607 (S_EKKN)
+    SKP-->>UI: Records Exported, Last Run
+
+    Note over User,PO: Etapa 3 — Run & Monitor
+
+    User->>UI: Define paralelismo (4)
+    UI->>GW: POST /SetParallelJobs?<br/>MigrationProjectUUID=…&<br/>MigrationObjectUUID=…&NumBackgroundJob=4
+    GW->>DPC: EXECUTE_ACTION SetParallelJobs
+    DPC->>LTMC: SET_PARALLEL_JOBS
+    LTMC-->>DPC: OK
+    DPC-->>UI: 200 OK
+
+    User->>UI: Escolhe Simulation ou Production
+    UI->>GW: POST /StartMigration?<br/>ProjectUUID=…&ObjectUUID=…&AllRecords=true
+    GW->>DPC: EXECUTE_ACTION StartMigration
+    DPC->>LTMC: MO_MIGRATION_TRANSACTION
+    LTMC->>STG: Lê registros do staging
+    LTMC->>PO: BAPI_PO_CREATE1 (via ME21N)
+    PO-->>LTMC: EBELN novo ou erro
+    LTMC-->>DPC: Status por instância
+    DPC-->>UI: 202 Accepted (job em background)
+
+    loop Polling do progresso
+        UI->>GW: GET /MigrationProjectSet('…')/to_TaskProcessing
+        UI->>GW: GET /ActivityMonitorSet?$filter=…
+        UI->>GW: GET /ApplicationLogSet?$filter=…
+        GW-->>UI: Progresso + eventos
+        UI-->>User: Atualiza barras + Activity Log
+    end
+
+    UI->>GW: GET /MigrationInstanceSet?$filter=…
+    GW-->>UI: Legacy PO# → New SAP PO#
+    UI-->>User: Tabela "Load Results — PO Readback"

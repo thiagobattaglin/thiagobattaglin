@@ -1,0 +1,255 @@
+<feed
+	xmlns="http://www.w3.org/2005/Atom"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+	xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xml:base="http://dmr-sap-a02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/">
+	<id>http://dmr-sap-a02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_TableStructure</id>
+	<title type="text">TableStructureSet</title>
+	<updated>2026-09-08T20:15:41Z</updated>
+	<author>
+		<name/>
+	</author>
+	<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_TableStructure" rel="self" title="TableStructureSet"/>
+	<entry>
+		<id>http://dmr-sap-a02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002602',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')</id>
+		<title type="text">TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002602',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')</title>
+		<updated>2026-09-08T20:15:41Z</updated>
+		<category term="MCCockpit.TableStructure" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+		<link href="TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002602',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')" rel="edit" title="TableStructure"/>
+		<link href="TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002602',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')/to_Data" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Data" type="application/atom+xml;type=feed" title="to_Data"/>
+		<link href="TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002602',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')/to_Columns" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Columns" type="application/atom+xml;type=feed" title="to_Columns"/>
+		<content type="application/xml">
+			<m:properties
+				xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+				xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+				<d:MigrationObjectUUID>5ZmuBFlp7z6Ze7oMY7pKj0</d:MigrationObjectUUID>
+				<d:TableUUID>/1LT/DSS41002602</d:TableUUID>
+				<d:MigrationProjectUUID>5ZmuBFlp7z6Ze7Z6{HFqj0</d:MigrationProjectUUID>
+				<d:MigrationInstanceUUID></d:MigrationInstanceUUID>
+				<d:TableName>S_EKKO</d:TableName>
+				<d:TableDescription>Header Data</d:TableDescription>
+				<d:TreeNodeID>/1LT/DSS41002602</d:TreeNodeID>
+				<d:SequenceNumber>1 </d:SequenceNumber>
+				<d:StructureLevel>0</d:StructureLevel>
+				<d:ParentId></d:ParentId>
+				<d:DrillState>expanded</d:DrillState>
+				<d:TableRecordNumber>0</d:TableRecordNumber>
+			</m:properties>
+		</content>
+	</entry>
+	<entry>
+		<id>http://dmr-sap-a02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002603',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')</id>
+		<title type="text">TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002603',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')</title>
+		<updated>2026-09-08T20:15:41Z</updated>
+		<category term="MCCockpit.TableStructure" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+		<link href="TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002603',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')" rel="edit" title="TableStructure"/>
+		<link href="TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002603',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')/to_Data" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Data" type="application/atom+xml;type=feed" title="to_Data"/>
+		<link href="TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002603',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')/to_Columns" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Columns" type="application/atom+xml;type=feed" title="to_Columns"/>
+		<content type="application/xml">
+			<m:properties
+				xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+				xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+				<d:MigrationObjectUUID>5ZmuBFlp7z6Ze7oMY7pKj0</d:MigrationObjectUUID>
+				<d:TableUUID>/1LT/DSS41002603</d:TableUUID>
+				<d:MigrationProjectUUID>5ZmuBFlp7z6Ze7Z6{HFqj0</d:MigrationProjectUUID>
+				<d:MigrationInstanceUUID></d:MigrationInstanceUUID>
+				<d:TableName>S_ADRC</d:TableName>
+				<d:TableDescription>Header Address</d:TableDescription>
+				<d:TreeNodeID>/1LT/DSS41002603</d:TreeNodeID>
+				<d:SequenceNumber>2 </d:SequenceNumber>
+				<d:StructureLevel>1</d:StructureLevel>
+				<d:ParentId>S_EKKO</d:ParentId>
+				<d:DrillState>leaf</d:DrillState>
+				<d:TableRecordNumber>0</d:TableRecordNumber>
+			</m:properties>
+		</content>
+	</entry>
+	<entry>
+		<id>http://dmr-sap-a02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002604',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')</id>
+		<title type="text">TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002604',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')</title>
+		<updated>2026-09-08T20:15:41Z</updated>
+		<category term="MCCockpit.TableStructure" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+		<link href="TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002604',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')" rel="edit" title="TableStructure"/>
+		<link href="TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002604',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')/to_Data" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Data" type="application/atom+xml;type=feed" title="to_Data"/>
+		<link href="TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002604',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')/to_Columns" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Columns" type="application/atom+xml;type=feed" title="to_Columns"/>
+		<content type="application/xml">
+			<m:properties
+				xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+				xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+				<d:MigrationObjectUUID>5ZmuBFlp7z6Ze7oMY7pKj0</d:MigrationObjectUUID>
+				<d:TableUUID>/1LT/DSS41002604</d:TableUUID>
+				<d:MigrationProjectUUID>5ZmuBFlp7z6Ze7Z6{HFqj0</d:MigrationProjectUUID>
+				<d:MigrationInstanceUUID></d:MigrationInstanceUUID>
+				<d:TableName>S_EKKO_TEXT</d:TableName>
+				<d:TableDescription>Header Texts</d:TableDescription>
+				<d:TreeNodeID>/1LT/DSS41002604</d:TreeNodeID>
+				<d:SequenceNumber>3 </d:SequenceNumber>
+				<d:StructureLevel>1</d:StructureLevel>
+				<d:ParentId>S_EKKO</d:ParentId>
+				<d:DrillState>leaf</d:DrillState>
+				<d:TableRecordNumber>0</d:TableRecordNumber>
+			</m:properties>
+		</content>
+	</entry>
+	<entry>
+		<id>http://dmr-sap-a02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002605',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')</id>
+		<title type="text">TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002605',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')</title>
+		<updated>2026-09-08T20:15:41Z</updated>
+		<category term="MCCockpit.TableStructure" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+		<link href="TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002605',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')" rel="edit" title="TableStructure"/>
+		<link href="TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002605',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')/to_Data" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Data" type="application/atom+xml;type=feed" title="to_Data"/>
+		<link href="TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002605',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')/to_Columns" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Columns" type="application/atom+xml;type=feed" title="to_Columns"/>
+		<content type="application/xml">
+			<m:properties
+				xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+				xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+				<d:MigrationObjectUUID>5ZmuBFlp7z6Ze7oMY7pKj0</d:MigrationObjectUUID>
+				<d:TableUUID>/1LT/DSS41002605</d:TableUUID>
+				<d:MigrationProjectUUID>5ZmuBFlp7z6Ze7Z6{HFqj0</d:MigrationProjectUUID>
+				<d:MigrationInstanceUUID></d:MigrationInstanceUUID>
+				<d:TableName>S_EKPO</d:TableName>
+				<d:TableDescription>Item Data</d:TableDescription>
+				<d:TreeNodeID>/1LT/DSS41002605</d:TreeNodeID>
+				<d:SequenceNumber>4 </d:SequenceNumber>
+				<d:StructureLevel>1</d:StructureLevel>
+				<d:ParentId>S_EKKO</d:ParentId>
+				<d:DrillState>expanded</d:DrillState>
+				<d:TableRecordNumber>0</d:TableRecordNumber>
+			</m:properties>
+		</content>
+	</entry>
+	<entry>
+		<id>http://dmr-sap-a02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002606',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')</id>
+		<title type="text">TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002606',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')</title>
+		<updated>2026-09-08T20:15:41Z</updated>
+		<category term="MCCockpit.TableStructure" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+		<link href="TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002606',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')" rel="edit" title="TableStructure"/>
+		<link href="TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002606',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')/to_Data" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Data" type="application/atom+xml;type=feed" title="to_Data"/>
+		<link href="TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002606',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')/to_Columns" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Columns" type="application/atom+xml;type=feed" title="to_Columns"/>
+		<content type="application/xml">
+			<m:properties
+				xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+				xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+				<d:MigrationObjectUUID>5ZmuBFlp7z6Ze7oMY7pKj0</d:MigrationObjectUUID>
+				<d:TableUUID>/1LT/DSS41002606</d:TableUUID>
+				<d:MigrationProjectUUID>5ZmuBFlp7z6Ze7Z6{HFqj0</d:MigrationProjectUUID>
+				<d:MigrationInstanceUUID></d:MigrationInstanceUUID>
+				<d:TableName>S_ADRC_2</d:TableName>
+				<d:TableDescription>Item Address</d:TableDescription>
+				<d:TreeNodeID>/1LT/DSS41002606</d:TreeNodeID>
+				<d:SequenceNumber>5 </d:SequenceNumber>
+				<d:StructureLevel>2</d:StructureLevel>
+				<d:ParentId>S_EKPO</d:ParentId>
+				<d:DrillState>leaf</d:DrillState>
+				<d:TableRecordNumber>0</d:TableRecordNumber>
+			</m:properties>
+		</content>
+	</entry>
+	<entry>
+		<id>http://dmr-sap-a02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002607',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')</id>
+		<title type="text">TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002607',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')</title>
+		<updated>2026-09-08T20:15:41Z</updated>
+		<category term="MCCockpit.TableStructure" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+		<link href="TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002607',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')" rel="edit" title="TableStructure"/>
+		<link href="TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002607',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')/to_Data" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Data" type="application/atom+xml;type=feed" title="to_Data"/>
+		<link href="TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002607',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')/to_Columns" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Columns" type="application/atom+xml;type=feed" title="to_Columns"/>
+		<content type="application/xml">
+			<m:properties
+				xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+				xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+				<d:MigrationObjectUUID>5ZmuBFlp7z6Ze7oMY7pKj0</d:MigrationObjectUUID>
+				<d:TableUUID>/1LT/DSS41002607</d:TableUUID>
+				<d:MigrationProjectUUID>5ZmuBFlp7z6Ze7Z6{HFqj0</d:MigrationProjectUUID>
+				<d:MigrationInstanceUUID></d:MigrationInstanceUUID>
+				<d:TableName>S_EKKN</d:TableName>
+				<d:TableDescription>Account Assignment</d:TableDescription>
+				<d:TreeNodeID>/1LT/DSS41002607</d:TreeNodeID>
+				<d:SequenceNumber>6 </d:SequenceNumber>
+				<d:StructureLevel>2</d:StructureLevel>
+				<d:ParentId>S_EKPO</d:ParentId>
+				<d:DrillState>leaf</d:DrillState>
+				<d:TableRecordNumber>0</d:TableRecordNumber>
+			</m:properties>
+		</content>
+	</entry>
+	<entry>
+		<id>http://dmr-sap-a02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002608',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')</id>
+		<title type="text">TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002608',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')</title>
+		<updated>2026-09-08T20:15:41Z</updated>
+		<category term="MCCockpit.TableStructure" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+		<link href="TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002608',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')" rel="edit" title="TableStructure"/>
+		<link href="TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002608',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')/to_Data" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Data" type="application/atom+xml;type=feed" title="to_Data"/>
+		<link href="TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002608',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')/to_Columns" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Columns" type="application/atom+xml;type=feed" title="to_Columns"/>
+		<content type="application/xml">
+			<m:properties
+				xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+				xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+				<d:MigrationObjectUUID>5ZmuBFlp7z6Ze7oMY7pKj0</d:MigrationObjectUUID>
+				<d:TableUUID>/1LT/DSS41002608</d:TableUUID>
+				<d:MigrationProjectUUID>5ZmuBFlp7z6Ze7Z6{HFqj0</d:MigrationProjectUUID>
+				<d:MigrationInstanceUUID></d:MigrationInstanceUUID>
+				<d:TableName>S_EKET</d:TableName>
+				<d:TableDescription>Schedule Line</d:TableDescription>
+				<d:TreeNodeID>/1LT/DSS41002608</d:TreeNodeID>
+				<d:SequenceNumber>7 </d:SequenceNumber>
+				<d:StructureLevel>2</d:StructureLevel>
+				<d:ParentId>S_EKPO</d:ParentId>
+				<d:DrillState>expanded</d:DrillState>
+				<d:TableRecordNumber>0</d:TableRecordNumber>
+			</m:properties>
+		</content>
+	</entry>
+	<entry>
+		<id>http://dmr-sap-a02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002609',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')</id>
+		<title type="text">TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002609',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')</title>
+		<updated>2026-09-08T20:15:41Z</updated>
+		<category term="MCCockpit.TableStructure" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+		<link href="TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002609',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')" rel="edit" title="TableStructure"/>
+		<link href="TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002609',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')/to_Data" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Data" type="application/atom+xml;type=feed" title="to_Data"/>
+		<link href="TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002609',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')/to_Columns" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Columns" type="application/atom+xml;type=feed" title="to_Columns"/>
+		<content type="application/xml">
+			<m:properties
+				xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+				xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+				<d:MigrationObjectUUID>5ZmuBFlp7z6Ze7oMY7pKj0</d:MigrationObjectUUID>
+				<d:TableUUID>/1LT/DSS41002609</d:TableUUID>
+				<d:MigrationProjectUUID>5ZmuBFlp7z6Ze7Z6{HFqj0</d:MigrationProjectUUID>
+				<d:MigrationInstanceUUID></d:MigrationInstanceUUID>
+				<d:TableName>S_COMP</d:TableName>
+				<d:TableDescription>Components for Subcontracting</d:TableDescription>
+				<d:TreeNodeID>/1LT/DSS41002609</d:TreeNodeID>
+				<d:SequenceNumber>8 </d:SequenceNumber>
+				<d:StructureLevel>3</d:StructureLevel>
+				<d:ParentId>S_EKET</d:ParentId>
+				<d:DrillState>leaf</d:DrillState>
+				<d:TableRecordNumber>0</d:TableRecordNumber>
+			</m:properties>
+		</content>
+	</entry>
+	<entry>
+		<id>http://dmr-sap-a02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002610',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')</id>
+		<title type="text">TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002610',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')</title>
+		<updated>2026-09-08T20:15:41Z</updated>
+		<category term="MCCockpit.TableStructure" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+		<link href="TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002610',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')" rel="edit" title="TableStructure"/>
+		<link href="TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002610',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')/to_Data" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Data" type="application/atom+xml;type=feed" title="to_Data"/>
+		<link href="TableStructureSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',TableUUID='%2F1LT%2FDSS41002610',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='')/to_Columns" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Columns" type="application/atom+xml;type=feed" title="to_Columns"/>
+		<content type="application/xml">
+			<m:properties
+				xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+				xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+				<d:MigrationObjectUUID>5ZmuBFlp7z6Ze7oMY7pKj0</d:MigrationObjectUUID>
+				<d:TableUUID>/1LT/DSS41002610</d:TableUUID>
+				<d:MigrationProjectUUID>5ZmuBFlp7z6Ze7Z6{HFqj0</d:MigrationProjectUUID>
+				<d:MigrationInstanceUUID></d:MigrationInstanceUUID>
+				<d:TableName>S_EKPO_TEXT</d:TableName>
+				<d:TableDescription>Item Texts</d:TableDescription>
+				<d:TreeNodeID>/1LT/DSS41002610</d:TreeNodeID>
+				<d:SequenceNumber>9 </d:SequenceNumber>
+				<d:StructureLevel>2</d:StructureLevel>
+				<d:ParentId>S_EKPO</d:ParentId>
+				<d:DrillState>leaf</d:DrillState>
+				<d:TableRecordNumber>0</d:TableRecordNumber>
+			</m:properties>
+		</content>
+	</entry>
+</feed>

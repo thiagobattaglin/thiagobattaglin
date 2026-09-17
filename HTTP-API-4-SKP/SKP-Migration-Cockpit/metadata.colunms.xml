@@ -1,0 +1,387 @@
+<feed
+	xmlns="http://www.w3.org/2005/Atom"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+	xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xml:base="http://dmr-sap-a02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/">
+	<id>http://dmr-sap-a02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_Columns</id>
+	<title type="text">ItemColumnsSet</title>
+	<updated>2026-09-08T20:16:42Z</updated>
+	<author>
+		<name/>
+	</author>
+	<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_Columns" rel="self" title="ItemColumnsSet"/>
+	<entry>
+		<id>http://dmr-sap-a02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/ItemColumnsSet(TableUUID='',FieldName='EBELN',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')</id>
+		<title type="text">ItemColumnsSet(TableUUID='',FieldName='EBELN',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')</title>
+		<updated>2026-09-08T20:16:42Z</updated>
+		<category term="MCCockpit.ItemColumns" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+		<link href="ItemColumnsSet(TableUUID='',FieldName='EBELN',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')" rel="edit" title="ItemColumns"/>
+		<content type="application/xml">
+			<m:properties
+				xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+				xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+				<d:TableUUID></d:TableUUID>
+				<d:FieldName>EBELN</d:FieldName>
+				<d:MigrationObjectUUID>5ZmuBFlp7z6Ze7oMY7pKj0</d:MigrationObjectUUID>
+				<d:MigrationProjectUUID>5ZmuBFlp7z6Ze7Z6{HFqj0</d:MigrationProjectUUID>
+				<d:MigrationInstanceUUID></d:MigrationInstanceUUID>
+				<d:DisplayOption>S</d:DisplayOption>
+				<d:TableName></d:TableName>
+				<d:DisplayOrder>1</d:DisplayOrder>
+				<d:IsKey>true</d:IsKey>
+				<d:DataType>C</d:DataType>
+				<d:Filterable>false</d:Filterable>
+				<d:FieldLabel>Legacy Purchasing Document Number</d:FieldLabel>
+			</m:properties>
+		</content>
+	</entry>
+	<entry>
+		<id>http://dmr-sap-a02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/ItemColumnsSet(TableUUID='',FieldName='BUKRS',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')</id>
+		<title type="text">ItemColumnsSet(TableUUID='',FieldName='BUKRS',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')</title>
+		<updated>2026-09-08T20:16:42Z</updated>
+		<category term="MCCockpit.ItemColumns" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+		<link href="ItemColumnsSet(TableUUID='',FieldName='BUKRS',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')" rel="edit" title="ItemColumns"/>
+		<content type="application/xml">
+			<m:properties
+				xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+				xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+				<d:TableUUID></d:TableUUID>
+				<d:FieldName>BUKRS</d:FieldName>
+				<d:MigrationObjectUUID>5ZmuBFlp7z6Ze7oMY7pKj0</d:MigrationObjectUUID>
+				<d:MigrationProjectUUID>5ZmuBFlp7z6Ze7Z6{HFqj0</d:MigrationProjectUUID>
+				<d:MigrationInstanceUUID></d:MigrationInstanceUUID>
+				<d:DisplayOption>S</d:DisplayOption>
+				<d:TableName></d:TableName>
+				<d:DisplayOrder>2</d:DisplayOrder>
+				<d:IsKey>false</d:IsKey>
+				<d:DataType>C</d:DataType>
+				<d:Filterable>false</d:Filterable>
+				<d:FieldLabel>Company Code</d:FieldLabel>
+			</m:properties>
+		</content>
+	</entry>
+	<entry>
+		<id>http://dmr-sap-a02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/ItemColumnsSet(TableUUID='',FieldName='BSART',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')</id>
+		<title type="text">ItemColumnsSet(TableUUID='',FieldName='BSART',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')</title>
+		<updated>2026-09-08T20:16:42Z</updated>
+		<category term="MCCockpit.ItemColumns" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+		<link href="ItemColumnsSet(TableUUID='',FieldName='BSART',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')" rel="edit" title="ItemColumns"/>
+		<content type="application/xml">
+			<m:properties
+				xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+				xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+				<d:TableUUID></d:TableUUID>
+				<d:FieldName>BSART</d:FieldName>
+				<d:MigrationObjectUUID>5ZmuBFlp7z6Ze7oMY7pKj0</d:MigrationObjectUUID>
+				<d:MigrationProjectUUID>5ZmuBFlp7z6Ze7Z6{HFqj0</d:MigrationProjectUUID>
+				<d:MigrationInstanceUUID></d:MigrationInstanceUUID>
+				<d:DisplayOption>S</d:DisplayOption>
+				<d:TableName></d:TableName>
+				<d:DisplayOrder>3</d:DisplayOrder>
+				<d:IsKey>false</d:IsKey>
+				<d:DataType>C</d:DataType>
+				<d:Filterable>false</d:Filterable>
+				<d:FieldLabel>Purchasing Document Type</d:FieldLabel>
+			</m:properties>
+		</content>
+	</entry>
+	<entry>
+		<id>http://dmr-sap-a02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/ItemColumnsSet(TableUUID='',FieldName='LIFNR',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')</id>
+		<title type="text">ItemColumnsSet(TableUUID='',FieldName='LIFNR',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')</title>
+		<updated>2026-09-08T20:16:42Z</updated>
+		<category term="MCCockpit.ItemColumns" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+		<link href="ItemColumnsSet(TableUUID='',FieldName='LIFNR',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')" rel="edit" title="ItemColumns"/>
+		<content type="application/xml">
+			<m:properties
+				xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+				xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+				<d:TableUUID></d:TableUUID>
+				<d:FieldName>LIFNR</d:FieldName>
+				<d:MigrationObjectUUID>5ZmuBFlp7z6Ze7oMY7pKj0</d:MigrationObjectUUID>
+				<d:MigrationProjectUUID>5ZmuBFlp7z6Ze7Z6{HFqj0</d:MigrationProjectUUID>
+				<d:MigrationInstanceUUID></d:MigrationInstanceUUID>
+				<d:DisplayOption>S</d:DisplayOption>
+				<d:TableName></d:TableName>
+				<d:DisplayOrder>4</d:DisplayOrder>
+				<d:IsKey>false</d:IsKey>
+				<d:DataType>C</d:DataType>
+				<d:Filterable>false</d:Filterable>
+				<d:FieldLabel>Supplier Account Number</d:FieldLabel>
+			</m:properties>
+		</content>
+	</entry>
+	<entry>
+		<id>http://dmr-sap-a02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/ItemColumnsSet(TableUUID='',FieldName='EKORG',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')</id>
+		<title type="text">ItemColumnsSet(TableUUID='',FieldName='EKORG',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')</title>
+		<updated>2026-09-08T20:16:42Z</updated>
+		<category term="MCCockpit.ItemColumns" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+		<link href="ItemColumnsSet(TableUUID='',FieldName='EKORG',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')" rel="edit" title="ItemColumns"/>
+		<content type="application/xml">
+			<m:properties
+				xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+				xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+				<d:TableUUID></d:TableUUID>
+				<d:FieldName>EKORG</d:FieldName>
+				<d:MigrationObjectUUID>5ZmuBFlp7z6Ze7oMY7pKj0</d:MigrationObjectUUID>
+				<d:MigrationProjectUUID>5ZmuBFlp7z6Ze7Z6{HFqj0</d:MigrationProjectUUID>
+				<d:MigrationInstanceUUID></d:MigrationInstanceUUID>
+				<d:DisplayOption>S</d:DisplayOption>
+				<d:TableName></d:TableName>
+				<d:DisplayOrder>5</d:DisplayOrder>
+				<d:IsKey>false</d:IsKey>
+				<d:DataType>C</d:DataType>
+				<d:Filterable>false</d:Filterable>
+				<d:FieldLabel>Purchasing Organization</d:FieldLabel>
+			</m:properties>
+		</content>
+	</entry>
+	<entry>
+		<id>http://dmr-sap-a02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/ItemColumnsSet(TableUUID='',FieldName='EKGRP',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')</id>
+		<title type="text">ItemColumnsSet(TableUUID='',FieldName='EKGRP',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')</title>
+		<updated>2026-09-08T20:16:42Z</updated>
+		<category term="MCCockpit.ItemColumns" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+		<link href="ItemColumnsSet(TableUUID='',FieldName='EKGRP',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')" rel="edit" title="ItemColumns"/>
+		<content type="application/xml">
+			<m:properties
+				xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+				xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+				<d:TableUUID></d:TableUUID>
+				<d:FieldName>EKGRP</d:FieldName>
+				<d:MigrationObjectUUID>5ZmuBFlp7z6Ze7oMY7pKj0</d:MigrationObjectUUID>
+				<d:MigrationProjectUUID>5ZmuBFlp7z6Ze7Z6{HFqj0</d:MigrationProjectUUID>
+				<d:MigrationInstanceUUID></d:MigrationInstanceUUID>
+				<d:DisplayOption>S</d:DisplayOption>
+				<d:TableName></d:TableName>
+				<d:DisplayOrder>6</d:DisplayOrder>
+				<d:IsKey>false</d:IsKey>
+				<d:DataType>C</d:DataType>
+				<d:Filterable>false</d:Filterable>
+				<d:FieldLabel>Purchasing Group</d:FieldLabel>
+			</m:properties>
+		</content>
+	</entry>
+	<entry>
+		<id>http://dmr-sap-a02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/ItemColumnsSet(TableUUID='',FieldName='BEDAT',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')</id>
+		<title type="text">ItemColumnsSet(TableUUID='',FieldName='BEDAT',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')</title>
+		<updated>2026-09-08T20:16:42Z</updated>
+		<category term="MCCockpit.ItemColumns" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+		<link href="ItemColumnsSet(TableUUID='',FieldName='BEDAT',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')" rel="edit" title="ItemColumns"/>
+		<content type="application/xml">
+			<m:properties
+				xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+				xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+				<d:TableUUID></d:TableUUID>
+				<d:FieldName>BEDAT</d:FieldName>
+				<d:MigrationObjectUUID>5ZmuBFlp7z6Ze7oMY7pKj0</d:MigrationObjectUUID>
+				<d:MigrationProjectUUID>5ZmuBFlp7z6Ze7Z6{HFqj0</d:MigrationProjectUUID>
+				<d:MigrationInstanceUUID></d:MigrationInstanceUUID>
+				<d:DisplayOption>S</d:DisplayOption>
+				<d:TableName></d:TableName>
+				<d:DisplayOrder>7</d:DisplayOrder>
+				<d:IsKey>false</d:IsKey>
+				<d:DataType>C</d:DataType>
+				<d:Filterable>false</d:Filterable>
+				<d:FieldLabel>Purchasing Document Date</d:FieldLabel>
+			</m:properties>
+		</content>
+	</entry>
+	<entry>
+		<id>http://dmr-sap-a02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/ItemColumnsSet(TableUUID='',FieldName='ZTERM',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')</id>
+		<title type="text">ItemColumnsSet(TableUUID='',FieldName='ZTERM',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')</title>
+		<updated>2026-09-08T20:16:42Z</updated>
+		<category term="MCCockpit.ItemColumns" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+		<link href="ItemColumnsSet(TableUUID='',FieldName='ZTERM',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')" rel="edit" title="ItemColumns"/>
+		<content type="application/xml">
+			<m:properties
+				xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+				xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+				<d:TableUUID></d:TableUUID>
+				<d:FieldName>ZTERM</d:FieldName>
+				<d:MigrationObjectUUID>5ZmuBFlp7z6Ze7oMY7pKj0</d:MigrationObjectUUID>
+				<d:MigrationProjectUUID>5ZmuBFlp7z6Ze7Z6{HFqj0</d:MigrationProjectUUID>
+				<d:MigrationInstanceUUID></d:MigrationInstanceUUID>
+				<d:DisplayOption>S</d:DisplayOption>
+				<d:TableName></d:TableName>
+				<d:DisplayOrder>8</d:DisplayOrder>
+				<d:IsKey>false</d:IsKey>
+				<d:DataType>C</d:DataType>
+				<d:Filterable>false</d:Filterable>
+				<d:FieldLabel>Terms of Payment Key</d:FieldLabel>
+			</m:properties>
+		</content>
+	</entry>
+	<entry>
+		<id>http://dmr-sap-a02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/ItemColumnsSet(TableUUID='',FieldName='ZBD1T',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')</id>
+		<title type="text">ItemColumnsSet(TableUUID='',FieldName='ZBD1T',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')</title>
+		<updated>2026-09-08T20:16:42Z</updated>
+		<category term="MCCockpit.ItemColumns" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+		<link href="ItemColumnsSet(TableUUID='',FieldName='ZBD1T',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')" rel="edit" title="ItemColumns"/>
+		<content type="application/xml">
+			<m:properties
+				xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+				xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+				<d:TableUUID></d:TableUUID>
+				<d:FieldName>ZBD1T</d:FieldName>
+				<d:MigrationObjectUUID>5ZmuBFlp7z6Ze7oMY7pKj0</d:MigrationObjectUUID>
+				<d:MigrationProjectUUID>5ZmuBFlp7z6Ze7Z6{HFqj0</d:MigrationProjectUUID>
+				<d:MigrationInstanceUUID></d:MigrationInstanceUUID>
+				<d:DisplayOption>S</d:DisplayOption>
+				<d:TableName></d:TableName>
+				<d:DisplayOrder>9</d:DisplayOrder>
+				<d:IsKey>false</d:IsKey>
+				<d:DataType>P</d:DataType>
+				<d:Filterable>false</d:Filterable>
+				<d:FieldLabel>Cash (Prompt Payment) Discount Days 1</d:FieldLabel>
+			</m:properties>
+		</content>
+	</entry>
+	<entry>
+		<id>http://dmr-sap-a02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/ItemColumnsSet(TableUUID='',FieldName='ZBD2T',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')</id>
+		<title type="text">ItemColumnsSet(TableUUID='',FieldName='ZBD2T',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')</title>
+		<updated>2026-09-08T20:16:42Z</updated>
+		<category term="MCCockpit.ItemColumns" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+		<link href="ItemColumnsSet(TableUUID='',FieldName='ZBD2T',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')" rel="edit" title="ItemColumns"/>
+		<content type="application/xml">
+			<m:properties
+				xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+				xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+				<d:TableUUID></d:TableUUID>
+				<d:FieldName>ZBD2T</d:FieldName>
+				<d:MigrationObjectUUID>5ZmuBFlp7z6Ze7oMY7pKj0</d:MigrationObjectUUID>
+				<d:MigrationProjectUUID>5ZmuBFlp7z6Ze7Z6{HFqj0</d:MigrationProjectUUID>
+				<d:MigrationInstanceUUID></d:MigrationInstanceUUID>
+				<d:DisplayOption>S</d:DisplayOption>
+				<d:TableName></d:TableName>
+				<d:DisplayOrder>10</d:DisplayOrder>
+				<d:IsKey>false</d:IsKey>
+				<d:DataType>P</d:DataType>
+				<d:Filterable>false</d:Filterable>
+				<d:FieldLabel>Cash (Prompt Payment) Discount Days 2</d:FieldLabel>
+			</m:properties>
+		</content>
+	</entry>
+	<entry>
+		<id>http://dmr-sap-a02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/ItemColumnsSet(TableUUID='',FieldName='ZBD3T',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')</id>
+		<title type="text">ItemColumnsSet(TableUUID='',FieldName='ZBD3T',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')</title>
+		<updated>2026-09-08T20:16:42Z</updated>
+		<category term="MCCockpit.ItemColumns" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+		<link href="ItemColumnsSet(TableUUID='',FieldName='ZBD3T',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')" rel="edit" title="ItemColumns"/>
+		<content type="application/xml">
+			<m:properties
+				xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+				xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+				<d:TableUUID></d:TableUUID>
+				<d:FieldName>ZBD3T</d:FieldName>
+				<d:MigrationObjectUUID>5ZmuBFlp7z6Ze7oMY7pKj0</d:MigrationObjectUUID>
+				<d:MigrationProjectUUID>5ZmuBFlp7z6Ze7Z6{HFqj0</d:MigrationProjectUUID>
+				<d:MigrationInstanceUUID></d:MigrationInstanceUUID>
+				<d:DisplayOption>S</d:DisplayOption>
+				<d:TableName></d:TableName>
+				<d:DisplayOrder>11</d:DisplayOrder>
+				<d:IsKey>false</d:IsKey>
+				<d:DataType>P</d:DataType>
+				<d:Filterable>false</d:Filterable>
+				<d:FieldLabel>Cash (Prompt Payment) Discount Days 3</d:FieldLabel>
+			</m:properties>
+		</content>
+	</entry>
+	<entry>
+		<id>http://dmr-sap-a02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/ItemColumnsSet(TableUUID='',FieldName='ZBD1P',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')</id>
+		<title type="text">ItemColumnsSet(TableUUID='',FieldName='ZBD1P',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')</title>
+		<updated>2026-09-08T20:16:42Z</updated>
+		<category term="MCCockpit.ItemColumns" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+		<link href="ItemColumnsSet(TableUUID='',FieldName='ZBD1P',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')" rel="edit" title="ItemColumns"/>
+		<content type="application/xml">
+			<m:properties
+				xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+				xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+				<d:TableUUID></d:TableUUID>
+				<d:FieldName>ZBD1P</d:FieldName>
+				<d:MigrationObjectUUID>5ZmuBFlp7z6Ze7oMY7pKj0</d:MigrationObjectUUID>
+				<d:MigrationProjectUUID>5ZmuBFlp7z6Ze7Z6{HFqj0</d:MigrationProjectUUID>
+				<d:MigrationInstanceUUID></d:MigrationInstanceUUID>
+				<d:DisplayOption>S</d:DisplayOption>
+				<d:TableName></d:TableName>
+				<d:DisplayOrder>12</d:DisplayOrder>
+				<d:IsKey>false</d:IsKey>
+				<d:DataType>P</d:DataType>
+				<d:Filterable>false</d:Filterable>
+				<d:FieldLabel>Cash Discount Percentage 1</d:FieldLabel>
+			</m:properties>
+		</content>
+	</entry>
+	<entry>
+		<id>http://dmr-sap-a02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/ItemColumnsSet(TableUUID='',FieldName='ZBD2P',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')</id>
+		<title type="text">ItemColumnsSet(TableUUID='',FieldName='ZBD2P',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')</title>
+		<updated>2026-09-08T20:16:42Z</updated>
+		<category term="MCCockpit.ItemColumns" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+		<link href="ItemColumnsSet(TableUUID='',FieldName='ZBD2P',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')" rel="edit" title="ItemColumns"/>
+		<content type="application/xml">
+			<m:properties
+				xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+				xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+				<d:TableUUID></d:TableUUID>
+				<d:FieldName>ZBD2P</d:FieldName>
+				<d:MigrationObjectUUID>5ZmuBFlp7z6Ze7oMY7pKj0</d:MigrationObjectUUID>
+				<d:MigrationProjectUUID>5ZmuBFlp7z6Ze7Z6{HFqj0</d:MigrationProjectUUID>
+				<d:MigrationInstanceUUID></d:MigrationInstanceUUID>
+				<d:DisplayOption>S</d:DisplayOption>
+				<d:TableName></d:TableName>
+				<d:DisplayOrder>13</d:DisplayOrder>
+				<d:IsKey>false</d:IsKey>
+				<d:DataType>P</d:DataType>
+				<d:Filterable>false</d:Filterable>
+				<d:FieldLabel>Cash Discount Percentage 2</d:FieldLabel>
+			</m:properties>
+		</content>
+	</entry>
+	<entry>
+		<id>http://dmr-sap-a02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/ItemColumnsSet(TableUUID='',FieldName='WAERS',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')</id>
+		<title type="text">ItemColumnsSet(TableUUID='',FieldName='WAERS',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')</title>
+		<updated>2026-09-08T20:16:42Z</updated>
+		<category term="MCCockpit.ItemColumns" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+		<link href="ItemColumnsSet(TableUUID='',FieldName='WAERS',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='S')" rel="edit" title="ItemColumns"/>
+		<content type="application/xml">
+			<m:properties
+				xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+				xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+				<d:TableUUID></d:TableUUID>
+				<d:FieldName>WAERS</d:FieldName>
+				<d:MigrationObjectUUID>5ZmuBFlp7z6Ze7oMY7pKj0</d:MigrationObjectUUID>
+				<d:MigrationProjectUUID>5ZmuBFlp7z6Ze7Z6{HFqj0</d:MigrationProjectUUID>
+				<d:MigrationInstanceUUID></d:MigrationInstanceUUID>
+				<d:DisplayOption>S</d:DisplayOption>
+				<d:TableName></d:TableName>
+				<d:DisplayOrder>14</d:DisplayOrder>
+				<d:IsKey>false</d:IsKey>
+				<d:DataType>C</d:DataType>
+				<d:Filterable>false</d:Filterable>
+				<d:FieldLabel>Currency Key (ISO Format)</d:FieldLabel>
+			</m:properties>
+		</content>
+	</entry>
+	<entry>
+		<id>http://dmr-sap-a02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/ItemColumnsSet(TableUUID='',FieldName='RESULT1HEADING',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='R')</id>
+		<title type="text">ItemColumnsSet(TableUUID='',FieldName='RESULT1HEADING',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='R')</title>
+		<updated>2026-09-08T20:16:42Z</updated>
+		<category term="MCCockpit.ItemColumns" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+		<link href="ItemColumnsSet(TableUUID='',FieldName='RESULT1HEADING',MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0',MigrationInstanceUUID='',DisplayOption='R')" rel="edit" title="ItemColumns"/>
+		<content type="application/xml">
+			<m:properties
+				xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+				xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+				<d:TableUUID></d:TableUUID>
+				<d:FieldName>RESULT1HEADING</d:FieldName>
+				<d:MigrationObjectUUID>5ZmuBFlp7z6Ze7oMY7pKj0</d:MigrationObjectUUID>
+				<d:MigrationProjectUUID>5ZmuBFlp7z6Ze7Z6{HFqj0</d:MigrationProjectUUID>
+				<d:MigrationInstanceUUID></d:MigrationInstanceUUID>
+				<d:DisplayOption>R</d:DisplayOption>
+				<d:TableName></d:TableName>
+				<d:DisplayOrder>1</d:DisplayOrder>
+				<d:IsKey>false</d:IsKey>
+				<d:DataType>C</d:DataType>
+				<d:Filterable>false</d:Filterable>
+				<d:FieldLabel>Result of Step "Migration"</d:FieldLabel>
+			</m:properties>
+		</content>
+	</entry>
+</feed>

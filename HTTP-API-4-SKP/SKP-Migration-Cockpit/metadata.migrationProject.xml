@@ -1,0 +1,1366 @@
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xml:base="http://DMR-SAP-A02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/">
+<id>http://DMR-SAP-A02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/MigrationProjectSet</id>
+<title type="text">MigrationProjectSet</title>
+<updated>2026-09-08T19:56:55Z</updated>
+<author>
+<name/>
+</author>
+<link href="MigrationProjectSet" rel="self" title="MigrationProjectSet"/>
+<entry>
+<id>http://DMR-SAP-A02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/MigrationProjectSet('5ZmuBFlp7z6gXlMnWkxVx0')</id>
+<title type="text">MigrationProjectSet('5ZmuBFlp7z6gXlMnWkxVx0')</title>
+<updated>2026-09-08T19:56:55Z</updated>
+<category term="MCCockpit.MigrationProject" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6gXlMnWkxVx0')" rel="edit" title="MigrationProject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6gXlMnWkxVx0')/to_ActivityTrack" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityTrack" type="application/atom+xml;type=feed" title="to_ActivityTrack"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6gXlMnWkxVx0')/to_TaskOverview" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskOverview" type="application/atom+xml;type=feed" title="to_TaskOverview"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6gXlMnWkxVx0')/to_CompanyCode" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_CompanyCode" type="application/atom+xml;type=feed" title="to_CompanyCode"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6gXlMnWkxVx0')/to_MigrationObjects" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjects" type="application/atom+xml;type=feed" title="to_MigrationObjects"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6gXlMnWkxVx0')/to_Task" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Task" type="application/atom+xml;type=feed" title="to_Task"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6gXlMnWkxVx0')/to_ActivityMonitorDetail" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorDetail" type="application/atom+xml;type=feed" title="to_ActivityMonitorDetail"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6gXlMnWkxVx0')/to_MigrationObjectJob" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjectJob" type="application/atom+xml;type=feed" title="to_MigrationObjectJob"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6gXlMnWkxVx0')/to_TaskFile" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskFile" type="application/atom+xml;type=feed" title="to_TaskFile"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6gXlMnWkxVx0')/to_UpgradeState" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_UpgradeState" type="application/atom+xml;type=feed" title="to_UpgradeState"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6gXlMnWkxVx0')/to_TaskProcessing" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskProcessing" type="application/atom+xml;type=feed" title="to_TaskProcessing"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6gXlMnWkxVx0')/to_AvailableTask" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableTask" type="application/atom+xml;type=feed" title="to_AvailableTask"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6gXlMnWkxVx0')/to_InprocessObject" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InprocessObject" type="application/atom+xml;type=feed" title="to_InprocessObject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6gXlMnWkxVx0')/to_History" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_History" type="application/atom+xml;type=feed" title="to_History"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6gXlMnWkxVx0')/to_ActivityMonitor" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitor" type="application/atom+xml;type=feed" title="to_ActivityMonitor"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6gXlMnWkxVx0')/to_JobInfo" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_JobInfo" type="application/atom+xml;type=entry" title="to_JobInfo"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6gXlMnWkxVx0')/to_ActivityMonitorFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorFilter" type="application/atom+xml;type=feed" title="to_ActivityMonitorFilter"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6gXlMnWkxVx0')/to_ScenarioFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ScenarioFilter" type="application/atom+xml;type=feed" title="to_ScenarioFilter"/>
+<content type="application/xml">
+<m:properties xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+<d:MigrationProjectUUID>5ZmuBFlp7z6gXlMnWkxVx0</d:MigrationProjectUUID>
+<d:MigrationScenarioUUID>DEFAULT</d:MigrationScenarioUUID>
+<d:MigrationScenario>Default Scenario</d:MigrationScenario>
+<d:MigrationApproachUUID>STAGING</d:MigrationApproachUUID>
+<d:MigrationApproach>Migrate Data Using Staging Tables</d:MigrationApproach>
+<d:MigrationProjectMTID/>
+<d:MigrationProjectName>ZDLO_TEST</d:MigrationProjectName>
+<d:CreateBy>AKANAMUKKALA</d:CreateBy>
+<d:CreatedAt>2026-09-04T08:07:34</d:CreatedAt>
+<d:ConnectionTypeName>Database Connection</d:ConnectionTypeName>
+<d:MigrationProjectStatusUUID/>
+<d:MigrationProjectStatus>Not Started</d:MigrationProjectStatus>
+<d:MigrationObjectCount>1</d:MigrationObjectCount>
+<d:BatchTrigger/>
+<d:ConnectionUUID>DEFA0000000000000000000000000000</d:ConnectionUUID>
+<d:ConnectionDescr>LOCAL</d:ConnectionDescr>
+<d:ConnectionName>DEFAULT</d:ConnectionName>
+<d:RetentionStart m:null="true"/>
+<d:RetentionDays>0</d:RetentionDays>
+<d:MigrationProjectTechName/>
+<d:MigrationProjectTempID/>
+<d:RetentionMessage/>
+<d:NumofUsedJob>0</d:NumofUsedJob>
+<d:NumofAvailableJob>0</d:NumofAvailableJob>
+<d:NumBackgroundJob>0</d:NumBackgroundJob>
+<d:ActiveViewName/>
+<d:IsViewEditable>false</d:IsViewEditable>
+<d:ActiveViewDescription/>
+<d:DevelopmentClass/>
+<d:IsDBConLost>false</d:IsDBConLost>
+<d:RfcConnectionInvalid/>
+</m:properties>
+</content>
+</entry>
+<entry>
+<id>http://DMR-SAP-A02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/MigrationProjectSet('5ZmuBFlp7z6Ze7Z6%7BHFqj0')</id>
+<title type="text">MigrationProjectSet('5ZmuBFlp7z6Ze7Z6%7BHFqj0')</title>
+<updated>2026-09-08T19:56:55Z</updated>
+<category term="MCCockpit.MigrationProject" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Ze7Z6%7BHFqj0')" rel="edit" title="MigrationProject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_ActivityTrack" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityTrack" type="application/atom+xml;type=feed" title="to_ActivityTrack"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_TaskOverview" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskOverview" type="application/atom+xml;type=feed" title="to_TaskOverview"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_CompanyCode" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_CompanyCode" type="application/atom+xml;type=feed" title="to_CompanyCode"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_MigrationObjects" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjects" type="application/atom+xml;type=feed" title="to_MigrationObjects"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_Task" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Task" type="application/atom+xml;type=feed" title="to_Task"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_ActivityMonitorDetail" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorDetail" type="application/atom+xml;type=feed" title="to_ActivityMonitorDetail"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_MigrationObjectJob" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjectJob" type="application/atom+xml;type=feed" title="to_MigrationObjectJob"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_TaskFile" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskFile" type="application/atom+xml;type=feed" title="to_TaskFile"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_UpgradeState" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_UpgradeState" type="application/atom+xml;type=feed" title="to_UpgradeState"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_TaskProcessing" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskProcessing" type="application/atom+xml;type=feed" title="to_TaskProcessing"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_AvailableTask" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableTask" type="application/atom+xml;type=feed" title="to_AvailableTask"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_InprocessObject" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InprocessObject" type="application/atom+xml;type=feed" title="to_InprocessObject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_History" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_History" type="application/atom+xml;type=feed" title="to_History"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_ActivityMonitor" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitor" type="application/atom+xml;type=feed" title="to_ActivityMonitor"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_JobInfo" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_JobInfo" type="application/atom+xml;type=entry" title="to_JobInfo"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_ActivityMonitorFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorFilter" type="application/atom+xml;type=feed" title="to_ActivityMonitorFilter"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_ScenarioFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ScenarioFilter" type="application/atom+xml;type=feed" title="to_ScenarioFilter"/>
+<content type="application/xml">
+<m:properties xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+<d:MigrationProjectUUID>5ZmuBFlp7z6Ze7Z6{HFqj0</d:MigrationProjectUUID>
+<d:MigrationScenarioUUID>DEFAULT</d:MigrationScenarioUUID>
+<d:MigrationScenario>Default Scenario</d:MigrationScenario>
+<d:MigrationApproachUUID>STAGING</d:MigrationApproachUUID>
+<d:MigrationApproach>Migrate Data Using Staging Tables</d:MigrationApproach>
+<d:MigrationProjectMTID/>
+<d:MigrationProjectName>ZSKP_HISTORICAL_DATA_LOAD</d:MigrationProjectName>
+<d:CreateBy>TBATTAGLIN2</d:CreateBy>
+<d:CreatedAt>2026-07-31T17:17:59</d:CreatedAt>
+<d:ConnectionTypeName>Database Connection</d:ConnectionTypeName>
+<d:MigrationProjectStatusUUID/>
+<d:MigrationProjectStatus>Not Started</d:MigrationProjectStatus>
+<d:MigrationObjectCount>3</d:MigrationObjectCount>
+<d:BatchTrigger/>
+<d:ConnectionUUID>DEFA0000000000000000000000000000</d:ConnectionUUID>
+<d:ConnectionDescr>LOCAL</d:ConnectionDescr>
+<d:ConnectionName>DEFAULT</d:ConnectionName>
+<d:RetentionStart m:null="true"/>
+<d:RetentionDays>0</d:RetentionDays>
+<d:MigrationProjectTechName/>
+<d:MigrationProjectTempID/>
+<d:RetentionMessage/>
+<d:NumofUsedJob>0</d:NumofUsedJob>
+<d:NumofAvailableJob>0</d:NumofAvailableJob>
+<d:NumBackgroundJob>0</d:NumBackgroundJob>
+<d:ActiveViewName/>
+<d:IsViewEditable>false</d:IsViewEditable>
+<d:ActiveViewDescription/>
+<d:DevelopmentClass/>
+<d:IsDBConLost>false</d:IsDBConLost>
+<d:RfcConnectionInvalid/>
+</m:properties>
+</content>
+</entry>
+<entry>
+<id>http://DMR-SAP-A02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/MigrationProjectSet('5ZmuBFlp7z6XdBaINMinpG')</id>
+<title type="text">MigrationProjectSet('5ZmuBFlp7z6XdBaINMinpG')</title>
+<updated>2026-09-08T19:56:55Z</updated>
+<category term="MCCockpit.MigrationProject" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6XdBaINMinpG')" rel="edit" title="MigrationProject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6XdBaINMinpG')/to_ActivityTrack" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityTrack" type="application/atom+xml;type=feed" title="to_ActivityTrack"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6XdBaINMinpG')/to_TaskOverview" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskOverview" type="application/atom+xml;type=feed" title="to_TaskOverview"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6XdBaINMinpG')/to_CompanyCode" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_CompanyCode" type="application/atom+xml;type=feed" title="to_CompanyCode"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6XdBaINMinpG')/to_MigrationObjects" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjects" type="application/atom+xml;type=feed" title="to_MigrationObjects"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6XdBaINMinpG')/to_Task" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Task" type="application/atom+xml;type=feed" title="to_Task"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6XdBaINMinpG')/to_ActivityMonitorDetail" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorDetail" type="application/atom+xml;type=feed" title="to_ActivityMonitorDetail"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6XdBaINMinpG')/to_MigrationObjectJob" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjectJob" type="application/atom+xml;type=feed" title="to_MigrationObjectJob"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6XdBaINMinpG')/to_TaskFile" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskFile" type="application/atom+xml;type=feed" title="to_TaskFile"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6XdBaINMinpG')/to_UpgradeState" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_UpgradeState" type="application/atom+xml;type=feed" title="to_UpgradeState"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6XdBaINMinpG')/to_TaskProcessing" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskProcessing" type="application/atom+xml;type=feed" title="to_TaskProcessing"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6XdBaINMinpG')/to_AvailableTask" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableTask" type="application/atom+xml;type=feed" title="to_AvailableTask"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6XdBaINMinpG')/to_InprocessObject" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InprocessObject" type="application/atom+xml;type=feed" title="to_InprocessObject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6XdBaINMinpG')/to_History" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_History" type="application/atom+xml;type=feed" title="to_History"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6XdBaINMinpG')/to_ActivityMonitor" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitor" type="application/atom+xml;type=feed" title="to_ActivityMonitor"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6XdBaINMinpG')/to_JobInfo" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_JobInfo" type="application/atom+xml;type=entry" title="to_JobInfo"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6XdBaINMinpG')/to_ActivityMonitorFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorFilter" type="application/atom+xml;type=feed" title="to_ActivityMonitorFilter"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6XdBaINMinpG')/to_ScenarioFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ScenarioFilter" type="application/atom+xml;type=feed" title="to_ScenarioFilter"/>
+<content type="application/xml">
+<m:properties xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+<d:MigrationProjectUUID>5ZmuBFlp7z6XdBaINMinpG</d:MigrationProjectUUID>
+<d:MigrationScenarioUUID>DEFAULT</d:MigrationScenarioUUID>
+<d:MigrationScenario>Default Scenario</d:MigrationScenario>
+<d:MigrationApproachUUID>STAGING</d:MigrationApproachUUID>
+<d:MigrationApproach>Migrate Data Using Staging Tables</d:MigrationApproach>
+<d:MigrationProjectMTID/>
+<d:MigrationProjectName>ZSKP_WORK_ORDERS2</d:MigrationProjectName>
+<d:CreateBy>HHERNANDEZ</d:CreateBy>
+<d:CreatedAt>2026-07-21T09:23:08</d:CreatedAt>
+<d:ConnectionTypeName>Database Connection</d:ConnectionTypeName>
+<d:MigrationProjectStatusUUID/>
+<d:MigrationProjectStatus>Not Started</d:MigrationProjectStatus>
+<d:MigrationObjectCount>4</d:MigrationObjectCount>
+<d:BatchTrigger/>
+<d:ConnectionUUID>DEFA0000000000000000000000000000</d:ConnectionUUID>
+<d:ConnectionDescr>LOCAL</d:ConnectionDescr>
+<d:ConnectionName>DEFAULT</d:ConnectionName>
+<d:RetentionStart m:null="true"/>
+<d:RetentionDays>0</d:RetentionDays>
+<d:MigrationProjectTechName/>
+<d:MigrationProjectTempID/>
+<d:RetentionMessage/>
+<d:NumofUsedJob>0</d:NumofUsedJob>
+<d:NumofAvailableJob>0</d:NumofAvailableJob>
+<d:NumBackgroundJob>0</d:NumBackgroundJob>
+<d:ActiveViewName/>
+<d:IsViewEditable>false</d:IsViewEditable>
+<d:ActiveViewDescription/>
+<d:DevelopmentClass/>
+<d:IsDBConLost>false</d:IsDBConLost>
+<d:RfcConnectionInvalid/>
+</m:properties>
+</content>
+</entry>
+<entry>
+<id>http://DMR-SAP-A02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/MigrationProjectSet('5ZmuBFlp7z6VyKKia%7DRFqG')</id>
+<title type="text">MigrationProjectSet('5ZmuBFlp7z6VyKKia%7DRFqG')</title>
+<updated>2026-09-08T19:56:55Z</updated>
+<category term="MCCockpit.MigrationProject" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyKKia%7DRFqG')" rel="edit" title="MigrationProject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyKKia%7DRFqG')/to_ActivityTrack" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityTrack" type="application/atom+xml;type=feed" title="to_ActivityTrack"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyKKia%7DRFqG')/to_TaskOverview" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskOverview" type="application/atom+xml;type=feed" title="to_TaskOverview"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyKKia%7DRFqG')/to_CompanyCode" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_CompanyCode" type="application/atom+xml;type=feed" title="to_CompanyCode"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyKKia%7DRFqG')/to_MigrationObjects" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjects" type="application/atom+xml;type=feed" title="to_MigrationObjects"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyKKia%7DRFqG')/to_Task" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Task" type="application/atom+xml;type=feed" title="to_Task"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyKKia%7DRFqG')/to_ActivityMonitorDetail" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorDetail" type="application/atom+xml;type=feed" title="to_ActivityMonitorDetail"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyKKia%7DRFqG')/to_MigrationObjectJob" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjectJob" type="application/atom+xml;type=feed" title="to_MigrationObjectJob"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyKKia%7DRFqG')/to_TaskFile" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskFile" type="application/atom+xml;type=feed" title="to_TaskFile"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyKKia%7DRFqG')/to_UpgradeState" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_UpgradeState" type="application/atom+xml;type=feed" title="to_UpgradeState"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyKKia%7DRFqG')/to_TaskProcessing" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskProcessing" type="application/atom+xml;type=feed" title="to_TaskProcessing"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyKKia%7DRFqG')/to_AvailableTask" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableTask" type="application/atom+xml;type=feed" title="to_AvailableTask"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyKKia%7DRFqG')/to_InprocessObject" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InprocessObject" type="application/atom+xml;type=feed" title="to_InprocessObject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyKKia%7DRFqG')/to_History" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_History" type="application/atom+xml;type=feed" title="to_History"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyKKia%7DRFqG')/to_ActivityMonitor" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitor" type="application/atom+xml;type=feed" title="to_ActivityMonitor"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyKKia%7DRFqG')/to_JobInfo" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_JobInfo" type="application/atom+xml;type=entry" title="to_JobInfo"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyKKia%7DRFqG')/to_ActivityMonitorFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorFilter" type="application/atom+xml;type=feed" title="to_ActivityMonitorFilter"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyKKia%7DRFqG')/to_ScenarioFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ScenarioFilter" type="application/atom+xml;type=feed" title="to_ScenarioFilter"/>
+<content type="application/xml">
+<m:properties xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+<d:MigrationProjectUUID>5ZmuBFlp7z6VyKKia}RFqG</d:MigrationProjectUUID>
+<d:MigrationScenarioUUID>DEFAULT</d:MigrationScenarioUUID>
+<d:MigrationScenario>Default Scenario</d:MigrationScenario>
+<d:MigrationApproachUUID>STAGING</d:MigrationApproachUUID>
+<d:MigrationApproach>Migrate Data Using Staging Tables</d:MigrationApproach>
+<d:MigrationProjectMTID/>
+<d:MigrationProjectName>ZTEST_WO</d:MigrationProjectName>
+<d:CreateBy>PSHARMA</d:CreateBy>
+<d:CreatedAt>2026-07-14T13:44:41</d:CreatedAt>
+<d:ConnectionTypeName>Database Connection</d:ConnectionTypeName>
+<d:MigrationProjectStatusUUID/>
+<d:MigrationProjectStatus>Not Started</d:MigrationProjectStatus>
+<d:MigrationObjectCount>1</d:MigrationObjectCount>
+<d:BatchTrigger/>
+<d:ConnectionUUID>DEFA0000000000000000000000000000</d:ConnectionUUID>
+<d:ConnectionDescr>LOCAL</d:ConnectionDescr>
+<d:ConnectionName>DEFAULT</d:ConnectionName>
+<d:RetentionStart m:null="true"/>
+<d:RetentionDays>0</d:RetentionDays>
+<d:MigrationProjectTechName/>
+<d:MigrationProjectTempID/>
+<d:RetentionMessage/>
+<d:NumofUsedJob>0</d:NumofUsedJob>
+<d:NumofAvailableJob>0</d:NumofAvailableJob>
+<d:NumBackgroundJob>0</d:NumBackgroundJob>
+<d:ActiveViewName/>
+<d:IsViewEditable>false</d:IsViewEditable>
+<d:ActiveViewDescription/>
+<d:DevelopmentClass/>
+<d:IsDBConLost>false</d:IsDBConLost>
+<d:RfcConnectionInvalid/>
+</m:properties>
+</content>
+</entry>
+<entry>
+<id>http://DMR-SAP-A02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/MigrationProjectSet('5ZmuBFlp7z6VyDA%7DtYBFpW')</id>
+<title type="text">MigrationProjectSet('5ZmuBFlp7z6VyDA%7DtYBFpW')</title>
+<updated>2026-09-08T19:56:55Z</updated>
+<category term="MCCockpit.MigrationProject" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyDA%7DtYBFpW')" rel="edit" title="MigrationProject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyDA%7DtYBFpW')/to_ActivityTrack" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityTrack" type="application/atom+xml;type=feed" title="to_ActivityTrack"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyDA%7DtYBFpW')/to_TaskOverview" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskOverview" type="application/atom+xml;type=feed" title="to_TaskOverview"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyDA%7DtYBFpW')/to_CompanyCode" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_CompanyCode" type="application/atom+xml;type=feed" title="to_CompanyCode"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyDA%7DtYBFpW')/to_MigrationObjects" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjects" type="application/atom+xml;type=feed" title="to_MigrationObjects"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyDA%7DtYBFpW')/to_Task" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Task" type="application/atom+xml;type=feed" title="to_Task"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyDA%7DtYBFpW')/to_ActivityMonitorDetail" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorDetail" type="application/atom+xml;type=feed" title="to_ActivityMonitorDetail"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyDA%7DtYBFpW')/to_MigrationObjectJob" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjectJob" type="application/atom+xml;type=feed" title="to_MigrationObjectJob"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyDA%7DtYBFpW')/to_TaskFile" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskFile" type="application/atom+xml;type=feed" title="to_TaskFile"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyDA%7DtYBFpW')/to_UpgradeState" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_UpgradeState" type="application/atom+xml;type=feed" title="to_UpgradeState"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyDA%7DtYBFpW')/to_TaskProcessing" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskProcessing" type="application/atom+xml;type=feed" title="to_TaskProcessing"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyDA%7DtYBFpW')/to_AvailableTask" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableTask" type="application/atom+xml;type=feed" title="to_AvailableTask"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyDA%7DtYBFpW')/to_InprocessObject" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InprocessObject" type="application/atom+xml;type=feed" title="to_InprocessObject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyDA%7DtYBFpW')/to_History" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_History" type="application/atom+xml;type=feed" title="to_History"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyDA%7DtYBFpW')/to_ActivityMonitor" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitor" type="application/atom+xml;type=feed" title="to_ActivityMonitor"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyDA%7DtYBFpW')/to_JobInfo" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_JobInfo" type="application/atom+xml;type=entry" title="to_JobInfo"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyDA%7DtYBFpW')/to_ActivityMonitorFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorFilter" type="application/atom+xml;type=feed" title="to_ActivityMonitorFilter"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VyDA%7DtYBFpW')/to_ScenarioFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ScenarioFilter" type="application/atom+xml;type=feed" title="to_ScenarioFilter"/>
+<content type="application/xml">
+<m:properties xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+<d:MigrationProjectUUID>5ZmuBFlp7z6VyDA}tYBFpW</d:MigrationProjectUUID>
+<d:MigrationScenarioUUID>DEFAULT</d:MigrationScenarioUUID>
+<d:MigrationScenario>Default Scenario</d:MigrationScenario>
+<d:MigrationApproachUUID>STAGING</d:MigrationApproachUUID>
+<d:MigrationApproach>Migrate Data Using Staging Tables</d:MigrationApproach>
+<d:MigrationProjectMTID/>
+<d:MigrationProjectName>ZTEST_PO_SKP</d:MigrationProjectName>
+<d:CreateBy>AKANAMUKKALA</d:CreateBy>
+<d:CreatedAt>2026-07-14T13:19:06</d:CreatedAt>
+<d:ConnectionTypeName>Database Connection</d:ConnectionTypeName>
+<d:MigrationProjectStatusUUID>P</d:MigrationProjectStatusUUID>
+<d:MigrationProjectStatus>In Process</d:MigrationProjectStatus>
+<d:MigrationObjectCount>2</d:MigrationObjectCount>
+<d:BatchTrigger/>
+<d:ConnectionUUID>DEFA0000000000000000000000000000</d:ConnectionUUID>
+<d:ConnectionDescr>LOCAL</d:ConnectionDescr>
+<d:ConnectionName>DEFAULT</d:ConnectionName>
+<d:RetentionStart m:null="true"/>
+<d:RetentionDays>0</d:RetentionDays>
+<d:MigrationProjectTechName/>
+<d:MigrationProjectTempID/>
+<d:RetentionMessage/>
+<d:NumofUsedJob>0</d:NumofUsedJob>
+<d:NumofAvailableJob>0</d:NumofAvailableJob>
+<d:NumBackgroundJob>0</d:NumBackgroundJob>
+<d:ActiveViewName/>
+<d:IsViewEditable>false</d:IsViewEditable>
+<d:ActiveViewDescription/>
+<d:DevelopmentClass/>
+<d:IsDBConLost>false</d:IsDBConLost>
+<d:RfcConnectionInvalid/>
+</m:properties>
+</content>
+</entry>
+<entry>
+<id>http://DMR-SAP-A02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/MigrationProjectSet('5ZmuBFlp7z6VYtQIt8zkjW')</id>
+<title type="text">MigrationProjectSet('5ZmuBFlp7z6VYtQIt8zkjW')</title>
+<updated>2026-09-08T19:56:55Z</updated>
+<category term="MCCockpit.MigrationProject" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VYtQIt8zkjW')" rel="edit" title="MigrationProject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VYtQIt8zkjW')/to_ActivityTrack" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityTrack" type="application/atom+xml;type=feed" title="to_ActivityTrack"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VYtQIt8zkjW')/to_TaskOverview" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskOverview" type="application/atom+xml;type=feed" title="to_TaskOverview"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VYtQIt8zkjW')/to_CompanyCode" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_CompanyCode" type="application/atom+xml;type=feed" title="to_CompanyCode"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VYtQIt8zkjW')/to_MigrationObjects" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjects" type="application/atom+xml;type=feed" title="to_MigrationObjects"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VYtQIt8zkjW')/to_Task" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Task" type="application/atom+xml;type=feed" title="to_Task"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VYtQIt8zkjW')/to_ActivityMonitorDetail" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorDetail" type="application/atom+xml;type=feed" title="to_ActivityMonitorDetail"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VYtQIt8zkjW')/to_MigrationObjectJob" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjectJob" type="application/atom+xml;type=feed" title="to_MigrationObjectJob"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VYtQIt8zkjW')/to_TaskFile" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskFile" type="application/atom+xml;type=feed" title="to_TaskFile"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VYtQIt8zkjW')/to_UpgradeState" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_UpgradeState" type="application/atom+xml;type=feed" title="to_UpgradeState"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VYtQIt8zkjW')/to_TaskProcessing" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskProcessing" type="application/atom+xml;type=feed" title="to_TaskProcessing"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VYtQIt8zkjW')/to_AvailableTask" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableTask" type="application/atom+xml;type=feed" title="to_AvailableTask"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VYtQIt8zkjW')/to_InprocessObject" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InprocessObject" type="application/atom+xml;type=feed" title="to_InprocessObject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VYtQIt8zkjW')/to_History" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_History" type="application/atom+xml;type=feed" title="to_History"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VYtQIt8zkjW')/to_ActivityMonitor" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitor" type="application/atom+xml;type=feed" title="to_ActivityMonitor"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VYtQIt8zkjW')/to_JobInfo" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_JobInfo" type="application/atom+xml;type=entry" title="to_JobInfo"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VYtQIt8zkjW')/to_ActivityMonitorFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorFilter" type="application/atom+xml;type=feed" title="to_ActivityMonitorFilter"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VYtQIt8zkjW')/to_ScenarioFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ScenarioFilter" type="application/atom+xml;type=feed" title="to_ScenarioFilter"/>
+<content type="application/xml">
+<m:properties xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+<d:MigrationProjectUUID>5ZmuBFlp7z6VYtQIt8zkjW</d:MigrationProjectUUID>
+<d:MigrationScenarioUUID>DEFAULT</d:MigrationScenarioUUID>
+<d:MigrationScenario>Default Scenario</d:MigrationScenario>
+<d:MigrationApproachUUID>STAGING</d:MigrationApproachUUID>
+<d:MigrationApproach>Migrate Data Using Staging Tables</d:MigrationApproach>
+<d:MigrationProjectMTID/>
+<d:MigrationProjectName>ZSKP_WORK_ORDERS</d:MigrationProjectName>
+<d:CreateBy>HHERNANDEZ</d:CreateBy>
+<d:CreatedAt>2026-07-10T12:34:35</d:CreatedAt>
+<d:ConnectionTypeName>Database Connection</d:ConnectionTypeName>
+<d:MigrationProjectStatusUUID>P</d:MigrationProjectStatusUUID>
+<d:MigrationProjectStatus>In Process</d:MigrationProjectStatus>
+<d:MigrationObjectCount>4</d:MigrationObjectCount>
+<d:BatchTrigger/>
+<d:ConnectionUUID>DEFA0000000000000000000000000000</d:ConnectionUUID>
+<d:ConnectionDescr>LOCAL</d:ConnectionDescr>
+<d:ConnectionName>DEFAULT</d:ConnectionName>
+<d:RetentionStart m:null="true"/>
+<d:RetentionDays>0</d:RetentionDays>
+<d:MigrationProjectTechName/>
+<d:MigrationProjectTempID/>
+<d:RetentionMessage/>
+<d:NumofUsedJob>0</d:NumofUsedJob>
+<d:NumofAvailableJob>0</d:NumofAvailableJob>
+<d:NumBackgroundJob>0</d:NumBackgroundJob>
+<d:ActiveViewName/>
+<d:IsViewEditable>false</d:IsViewEditable>
+<d:ActiveViewDescription/>
+<d:DevelopmentClass/>
+<d:IsDBConLost>false</d:IsDBConLost>
+<d:RfcConnectionInvalid/>
+</m:properties>
+</content>
+</entry>
+<entry>
+<id>http://DMR-SAP-A02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/MigrationProjectSet('5ZmuBFlp7z6VX8TyIgokcG')</id>
+<title type="text">MigrationProjectSet('5ZmuBFlp7z6VX8TyIgokcG')</title>
+<updated>2026-09-08T19:56:55Z</updated>
+<category term="MCCockpit.MigrationProject" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VX8TyIgokcG')" rel="edit" title="MigrationProject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VX8TyIgokcG')/to_ActivityTrack" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityTrack" type="application/atom+xml;type=feed" title="to_ActivityTrack"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VX8TyIgokcG')/to_TaskOverview" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskOverview" type="application/atom+xml;type=feed" title="to_TaskOverview"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VX8TyIgokcG')/to_CompanyCode" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_CompanyCode" type="application/atom+xml;type=feed" title="to_CompanyCode"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VX8TyIgokcG')/to_MigrationObjects" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjects" type="application/atom+xml;type=feed" title="to_MigrationObjects"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VX8TyIgokcG')/to_Task" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Task" type="application/atom+xml;type=feed" title="to_Task"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VX8TyIgokcG')/to_ActivityMonitorDetail" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorDetail" type="application/atom+xml;type=feed" title="to_ActivityMonitorDetail"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VX8TyIgokcG')/to_MigrationObjectJob" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjectJob" type="application/atom+xml;type=feed" title="to_MigrationObjectJob"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VX8TyIgokcG')/to_TaskFile" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskFile" type="application/atom+xml;type=feed" title="to_TaskFile"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VX8TyIgokcG')/to_UpgradeState" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_UpgradeState" type="application/atom+xml;type=feed" title="to_UpgradeState"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VX8TyIgokcG')/to_TaskProcessing" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskProcessing" type="application/atom+xml;type=feed" title="to_TaskProcessing"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VX8TyIgokcG')/to_AvailableTask" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableTask" type="application/atom+xml;type=feed" title="to_AvailableTask"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VX8TyIgokcG')/to_InprocessObject" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InprocessObject" type="application/atom+xml;type=feed" title="to_InprocessObject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VX8TyIgokcG')/to_History" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_History" type="application/atom+xml;type=feed" title="to_History"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VX8TyIgokcG')/to_ActivityMonitor" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitor" type="application/atom+xml;type=feed" title="to_ActivityMonitor"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VX8TyIgokcG')/to_JobInfo" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_JobInfo" type="application/atom+xml;type=entry" title="to_JobInfo"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VX8TyIgokcG')/to_ActivityMonitorFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorFilter" type="application/atom+xml;type=feed" title="to_ActivityMonitorFilter"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6VX8TyIgokcG')/to_ScenarioFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ScenarioFilter" type="application/atom+xml;type=feed" title="to_ScenarioFilter"/>
+<content type="application/xml">
+<m:properties xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+<d:MigrationProjectUUID>5ZmuBFlp7z6VX8TyIgokcG</d:MigrationProjectUUID>
+<d:MigrationScenarioUUID>DEFAULT</d:MigrationScenarioUUID>
+<d:MigrationScenario>Default Scenario</d:MigrationScenario>
+<d:MigrationApproachUUID>STAGING</d:MigrationApproachUUID>
+<d:MigrationApproach>Migrate Data Using Staging Tables</d:MigrationApproach>
+<d:MigrationProjectMTID/>
+<d:MigrationProjectName>FI_HISTORICAL_DATA_LOAD</d:MigrationProjectName>
+<d:CreateBy>HHERNANDEZ</d:CreateBy>
+<d:CreatedAt>2026-07-10T05:57:30</d:CreatedAt>
+<d:ConnectionTypeName>Database Connection</d:ConnectionTypeName>
+<d:MigrationProjectStatusUUID/>
+<d:MigrationProjectStatus>Not Started</d:MigrationProjectStatus>
+<d:MigrationObjectCount>2</d:MigrationObjectCount>
+<d:BatchTrigger/>
+<d:ConnectionUUID>DEFA0000000000000000000000000000</d:ConnectionUUID>
+<d:ConnectionDescr>LOCAL</d:ConnectionDescr>
+<d:ConnectionName>DEFAULT</d:ConnectionName>
+<d:RetentionStart m:null="true"/>
+<d:RetentionDays>0</d:RetentionDays>
+<d:MigrationProjectTechName/>
+<d:MigrationProjectTempID/>
+<d:RetentionMessage/>
+<d:NumofUsedJob>0</d:NumofUsedJob>
+<d:NumofAvailableJob>0</d:NumofAvailableJob>
+<d:NumBackgroundJob>0</d:NumBackgroundJob>
+<d:ActiveViewName/>
+<d:IsViewEditable>false</d:IsViewEditable>
+<d:ActiveViewDescription/>
+<d:DevelopmentClass/>
+<d:IsDBConLost>false</d:IsDBConLost>
+<d:RfcConnectionInvalid/>
+</m:properties>
+</content>
+</entry>
+<entry>
+<id>http://DMR-SAP-A02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/MigrationProjectSet('5ZmuBFlp7z6Uf3RnunsjgW')</id>
+<title type="text">MigrationProjectSet('5ZmuBFlp7z6Uf3RnunsjgW')</title>
+<updated>2026-09-08T19:56:55Z</updated>
+<category term="MCCockpit.MigrationProject" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Uf3RnunsjgW')" rel="edit" title="MigrationProject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Uf3RnunsjgW')/to_ActivityTrack" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityTrack" type="application/atom+xml;type=feed" title="to_ActivityTrack"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Uf3RnunsjgW')/to_TaskOverview" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskOverview" type="application/atom+xml;type=feed" title="to_TaskOverview"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Uf3RnunsjgW')/to_CompanyCode" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_CompanyCode" type="application/atom+xml;type=feed" title="to_CompanyCode"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Uf3RnunsjgW')/to_MigrationObjects" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjects" type="application/atom+xml;type=feed" title="to_MigrationObjects"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Uf3RnunsjgW')/to_Task" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Task" type="application/atom+xml;type=feed" title="to_Task"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Uf3RnunsjgW')/to_ActivityMonitorDetail" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorDetail" type="application/atom+xml;type=feed" title="to_ActivityMonitorDetail"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Uf3RnunsjgW')/to_MigrationObjectJob" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjectJob" type="application/atom+xml;type=feed" title="to_MigrationObjectJob"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Uf3RnunsjgW')/to_TaskFile" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskFile" type="application/atom+xml;type=feed" title="to_TaskFile"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Uf3RnunsjgW')/to_UpgradeState" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_UpgradeState" type="application/atom+xml;type=feed" title="to_UpgradeState"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Uf3RnunsjgW')/to_TaskProcessing" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskProcessing" type="application/atom+xml;type=feed" title="to_TaskProcessing"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Uf3RnunsjgW')/to_AvailableTask" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableTask" type="application/atom+xml;type=feed" title="to_AvailableTask"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Uf3RnunsjgW')/to_InprocessObject" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InprocessObject" type="application/atom+xml;type=feed" title="to_InprocessObject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Uf3RnunsjgW')/to_History" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_History" type="application/atom+xml;type=feed" title="to_History"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Uf3RnunsjgW')/to_ActivityMonitor" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitor" type="application/atom+xml;type=feed" title="to_ActivityMonitor"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Uf3RnunsjgW')/to_JobInfo" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_JobInfo" type="application/atom+xml;type=entry" title="to_JobInfo"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Uf3RnunsjgW')/to_ActivityMonitorFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorFilter" type="application/atom+xml;type=feed" title="to_ActivityMonitorFilter"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Uf3RnunsjgW')/to_ScenarioFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ScenarioFilter" type="application/atom+xml;type=feed" title="to_ScenarioFilter"/>
+<content type="application/xml">
+<m:properties xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+<d:MigrationProjectUUID>5ZmuBFlp7z6Uf3RnunsjgW</d:MigrationProjectUUID>
+<d:MigrationScenarioUUID>DEFAULT</d:MigrationScenarioUUID>
+<d:MigrationScenario>Default Scenario</d:MigrationScenario>
+<d:MigrationApproachUUID>STAGING</d:MigrationApproachUUID>
+<d:MigrationApproach>Migrate Data Using Staging Tables</d:MigrationApproach>
+<d:MigrationProjectMTID/>
+<d:MigrationProjectName>ZPS_REMOTE_HDB</d:MigrationProjectName>
+<d:CreateBy>PSHARMA</d:CreateBy>
+<d:CreatedAt>2026-07-06T10:01:55</d:CreatedAt>
+<d:ConnectionTypeName>Database Connection</d:ConnectionTypeName>
+<d:MigrationProjectStatusUUID>P</d:MigrationProjectStatusUUID>
+<d:MigrationProjectStatus>In Process</d:MigrationProjectStatus>
+<d:MigrationObjectCount>5</d:MigrationObjectCount>
+<d:BatchTrigger/>
+<d:ConnectionUUID>00000000000000000000000000000000</d:ConnectionUUID>
+<d:ConnectionDescr>SYN_SYNITI</d:ConnectionDescr>
+<d:ConnectionName>SYN_SYNITI</d:ConnectionName>
+<d:RetentionStart m:null="true"/>
+<d:RetentionDays>0</d:RetentionDays>
+<d:MigrationProjectTechName/>
+<d:MigrationProjectTempID/>
+<d:RetentionMessage/>
+<d:NumofUsedJob>0</d:NumofUsedJob>
+<d:NumofAvailableJob>0</d:NumofAvailableJob>
+<d:NumBackgroundJob>0</d:NumBackgroundJob>
+<d:ActiveViewName/>
+<d:IsViewEditable>false</d:IsViewEditable>
+<d:ActiveViewDescription/>
+<d:DevelopmentClass/>
+<d:IsDBConLost>false</d:IsDBConLost>
+<d:RfcConnectionInvalid/>
+</m:properties>
+</content>
+</entry>
+<entry>
+<id>http://DMR-SAP-A02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/MigrationProjectSet('5ZmuBFlp7z6SZ%7DJ3q94BAG')</id>
+<title type="text">MigrationProjectSet('5ZmuBFlp7z6SZ%7DJ3q94BAG')</title>
+<updated>2026-09-08T19:56:55Z</updated>
+<category term="MCCockpit.MigrationProject" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6SZ%7DJ3q94BAG')" rel="edit" title="MigrationProject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6SZ%7DJ3q94BAG')/to_ActivityTrack" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityTrack" type="application/atom+xml;type=feed" title="to_ActivityTrack"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6SZ%7DJ3q94BAG')/to_TaskOverview" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskOverview" type="application/atom+xml;type=feed" title="to_TaskOverview"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6SZ%7DJ3q94BAG')/to_CompanyCode" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_CompanyCode" type="application/atom+xml;type=feed" title="to_CompanyCode"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6SZ%7DJ3q94BAG')/to_MigrationObjects" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjects" type="application/atom+xml;type=feed" title="to_MigrationObjects"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6SZ%7DJ3q94BAG')/to_Task" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Task" type="application/atom+xml;type=feed" title="to_Task"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6SZ%7DJ3q94BAG')/to_ActivityMonitorDetail" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorDetail" type="application/atom+xml;type=feed" title="to_ActivityMonitorDetail"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6SZ%7DJ3q94BAG')/to_MigrationObjectJob" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjectJob" type="application/atom+xml;type=feed" title="to_MigrationObjectJob"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6SZ%7DJ3q94BAG')/to_TaskFile" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskFile" type="application/atom+xml;type=feed" title="to_TaskFile"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6SZ%7DJ3q94BAG')/to_UpgradeState" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_UpgradeState" type="application/atom+xml;type=feed" title="to_UpgradeState"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6SZ%7DJ3q94BAG')/to_TaskProcessing" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskProcessing" type="application/atom+xml;type=feed" title="to_TaskProcessing"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6SZ%7DJ3q94BAG')/to_AvailableTask" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableTask" type="application/atom+xml;type=feed" title="to_AvailableTask"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6SZ%7DJ3q94BAG')/to_InprocessObject" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InprocessObject" type="application/atom+xml;type=feed" title="to_InprocessObject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6SZ%7DJ3q94BAG')/to_History" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_History" type="application/atom+xml;type=feed" title="to_History"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6SZ%7DJ3q94BAG')/to_ActivityMonitor" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitor" type="application/atom+xml;type=feed" title="to_ActivityMonitor"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6SZ%7DJ3q94BAG')/to_JobInfo" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_JobInfo" type="application/atom+xml;type=entry" title="to_JobInfo"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6SZ%7DJ3q94BAG')/to_ActivityMonitorFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorFilter" type="application/atom+xml;type=feed" title="to_ActivityMonitorFilter"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6SZ%7DJ3q94BAG')/to_ScenarioFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ScenarioFilter" type="application/atom+xml;type=feed" title="to_ScenarioFilter"/>
+<content type="application/xml">
+<m:properties xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+<d:MigrationProjectUUID>5ZmuBFlp7z6SZ}J3q94BAG</d:MigrationProjectUUID>
+<d:MigrationScenarioUUID>DEFAULT</d:MigrationScenarioUUID>
+<d:MigrationScenario>Default Scenario</d:MigrationScenario>
+<d:MigrationApproachUUID>STAGING</d:MigrationApproachUUID>
+<d:MigrationApproach>Migrate Data Using Staging Tables</d:MigrationApproach>
+<d:MigrationProjectMTID/>
+<d:MigrationProjectName>ZSKP_FI_HISTORICAL_DATA_LOAD</d:MigrationProjectName>
+<d:CreateBy>AKANAMUKKALA</d:CreateBy>
+<d:CreatedAt>2026-06-25T10:21:39</d:CreatedAt>
+<d:ConnectionTypeName>Database Connection</d:ConnectionTypeName>
+<d:MigrationProjectStatusUUID>P</d:MigrationProjectStatusUUID>
+<d:MigrationProjectStatus>In Process</d:MigrationProjectStatus>
+<d:MigrationObjectCount>2</d:MigrationObjectCount>
+<d:BatchTrigger/>
+<d:ConnectionUUID>DEFA0000000000000000000000000000</d:ConnectionUUID>
+<d:ConnectionDescr>LOCAL</d:ConnectionDescr>
+<d:ConnectionName>DEFAULT</d:ConnectionName>
+<d:RetentionStart m:null="true"/>
+<d:RetentionDays>0</d:RetentionDays>
+<d:MigrationProjectTechName/>
+<d:MigrationProjectTempID/>
+<d:RetentionMessage/>
+<d:NumofUsedJob>0</d:NumofUsedJob>
+<d:NumofAvailableJob>0</d:NumofAvailableJob>
+<d:NumBackgroundJob>0</d:NumBackgroundJob>
+<d:ActiveViewName/>
+<d:IsViewEditable>false</d:IsViewEditable>
+<d:ActiveViewDescription/>
+<d:DevelopmentClass/>
+<d:IsDBConLost>false</d:IsDBConLost>
+<d:RfcConnectionInvalid/>
+</m:properties>
+</content>
+</entry>
+<entry>
+<id>http://DMR-SAP-A02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/MigrationProjectSet('5ZmuBFlp7z6Rmqn%7BhM4gHG')</id>
+<title type="text">MigrationProjectSet('5ZmuBFlp7z6Rmqn%7BhM4gHG')</title>
+<updated>2026-09-08T19:56:55Z</updated>
+<category term="MCCockpit.MigrationProject" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Rmqn%7BhM4gHG')" rel="edit" title="MigrationProject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Rmqn%7BhM4gHG')/to_ActivityTrack" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityTrack" type="application/atom+xml;type=feed" title="to_ActivityTrack"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Rmqn%7BhM4gHG')/to_TaskOverview" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskOverview" type="application/atom+xml;type=feed" title="to_TaskOverview"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Rmqn%7BhM4gHG')/to_CompanyCode" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_CompanyCode" type="application/atom+xml;type=feed" title="to_CompanyCode"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Rmqn%7BhM4gHG')/to_MigrationObjects" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjects" type="application/atom+xml;type=feed" title="to_MigrationObjects"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Rmqn%7BhM4gHG')/to_Task" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Task" type="application/atom+xml;type=feed" title="to_Task"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Rmqn%7BhM4gHG')/to_ActivityMonitorDetail" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorDetail" type="application/atom+xml;type=feed" title="to_ActivityMonitorDetail"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Rmqn%7BhM4gHG')/to_MigrationObjectJob" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjectJob" type="application/atom+xml;type=feed" title="to_MigrationObjectJob"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Rmqn%7BhM4gHG')/to_TaskFile" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskFile" type="application/atom+xml;type=feed" title="to_TaskFile"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Rmqn%7BhM4gHG')/to_UpgradeState" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_UpgradeState" type="application/atom+xml;type=feed" title="to_UpgradeState"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Rmqn%7BhM4gHG')/to_TaskProcessing" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskProcessing" type="application/atom+xml;type=feed" title="to_TaskProcessing"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Rmqn%7BhM4gHG')/to_AvailableTask" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableTask" type="application/atom+xml;type=feed" title="to_AvailableTask"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Rmqn%7BhM4gHG')/to_InprocessObject" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InprocessObject" type="application/atom+xml;type=feed" title="to_InprocessObject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Rmqn%7BhM4gHG')/to_History" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_History" type="application/atom+xml;type=feed" title="to_History"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Rmqn%7BhM4gHG')/to_ActivityMonitor" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitor" type="application/atom+xml;type=feed" title="to_ActivityMonitor"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Rmqn%7BhM4gHG')/to_JobInfo" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_JobInfo" type="application/atom+xml;type=entry" title="to_JobInfo"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Rmqn%7BhM4gHG')/to_ActivityMonitorFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorFilter" type="application/atom+xml;type=feed" title="to_ActivityMonitorFilter"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Rmqn%7BhM4gHG')/to_ScenarioFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ScenarioFilter" type="application/atom+xml;type=feed" title="to_ScenarioFilter"/>
+<content type="application/xml">
+<m:properties xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+<d:MigrationProjectUUID>5ZmuBFlp7z6Rmqn{hM4gHG</d:MigrationProjectUUID>
+<d:MigrationScenarioUUID>DEFAULT</d:MigrationScenarioUUID>
+<d:MigrationScenario>Default Scenario</d:MigrationScenario>
+<d:MigrationApproachUUID>STAGING</d:MigrationApproachUUID>
+<d:MigrationApproach>Migrate Data Using Staging Tables</d:MigrationApproach>
+<d:MigrationProjectMTID/>
+<d:MigrationProjectName>ZSKP_HISTORICAL_DATA_LOAD</d:MigrationProjectName>
+<d:CreateBy>AKANAMUKKALA</d:CreateBy>
+<d:CreatedAt>2026-06-22T09:11:46</d:CreatedAt>
+<d:ConnectionTypeName>Database Connection</d:ConnectionTypeName>
+<d:MigrationProjectStatusUUID>P</d:MigrationProjectStatusUUID>
+<d:MigrationProjectStatus>In Process</d:MigrationProjectStatus>
+<d:MigrationObjectCount>3</d:MigrationObjectCount>
+<d:BatchTrigger/>
+<d:ConnectionUUID>DEFA0000000000000000000000000000</d:ConnectionUUID>
+<d:ConnectionDescr>LOCAL</d:ConnectionDescr>
+<d:ConnectionName>DEFAULT</d:ConnectionName>
+<d:RetentionStart m:null="true"/>
+<d:RetentionDays>0</d:RetentionDays>
+<d:MigrationProjectTechName/>
+<d:MigrationProjectTempID/>
+<d:RetentionMessage/>
+<d:NumofUsedJob>0</d:NumofUsedJob>
+<d:NumofAvailableJob>0</d:NumofAvailableJob>
+<d:NumBackgroundJob>0</d:NumBackgroundJob>
+<d:ActiveViewName/>
+<d:IsViewEditable>false</d:IsViewEditable>
+<d:ActiveViewDescription/>
+<d:DevelopmentClass/>
+<d:IsDBConLost>false</d:IsDBConLost>
+<d:RfcConnectionInvalid/>
+</m:properties>
+</content>
+</entry>
+<entry>
+<id>http://DMR-SAP-A02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/MigrationProjectSet('5ZmuBFlp7z6Pot%7DOnQL7v0')</id>
+<title type="text">MigrationProjectSet('5ZmuBFlp7z6Pot%7DOnQL7v0')</title>
+<updated>2026-09-08T19:56:55Z</updated>
+<category term="MCCockpit.MigrationProject" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Pot%7DOnQL7v0')" rel="edit" title="MigrationProject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Pot%7DOnQL7v0')/to_ActivityTrack" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityTrack" type="application/atom+xml;type=feed" title="to_ActivityTrack"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Pot%7DOnQL7v0')/to_TaskOverview" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskOverview" type="application/atom+xml;type=feed" title="to_TaskOverview"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Pot%7DOnQL7v0')/to_CompanyCode" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_CompanyCode" type="application/atom+xml;type=feed" title="to_CompanyCode"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Pot%7DOnQL7v0')/to_MigrationObjects" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjects" type="application/atom+xml;type=feed" title="to_MigrationObjects"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Pot%7DOnQL7v0')/to_Task" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Task" type="application/atom+xml;type=feed" title="to_Task"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Pot%7DOnQL7v0')/to_ActivityMonitorDetail" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorDetail" type="application/atom+xml;type=feed" title="to_ActivityMonitorDetail"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Pot%7DOnQL7v0')/to_MigrationObjectJob" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjectJob" type="application/atom+xml;type=feed" title="to_MigrationObjectJob"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Pot%7DOnQL7v0')/to_TaskFile" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskFile" type="application/atom+xml;type=feed" title="to_TaskFile"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Pot%7DOnQL7v0')/to_UpgradeState" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_UpgradeState" type="application/atom+xml;type=feed" title="to_UpgradeState"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Pot%7DOnQL7v0')/to_TaskProcessing" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskProcessing" type="application/atom+xml;type=feed" title="to_TaskProcessing"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Pot%7DOnQL7v0')/to_AvailableTask" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableTask" type="application/atom+xml;type=feed" title="to_AvailableTask"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Pot%7DOnQL7v0')/to_InprocessObject" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InprocessObject" type="application/atom+xml;type=feed" title="to_InprocessObject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Pot%7DOnQL7v0')/to_History" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_History" type="application/atom+xml;type=feed" title="to_History"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Pot%7DOnQL7v0')/to_ActivityMonitor" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitor" type="application/atom+xml;type=feed" title="to_ActivityMonitor"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Pot%7DOnQL7v0')/to_JobInfo" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_JobInfo" type="application/atom+xml;type=entry" title="to_JobInfo"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Pot%7DOnQL7v0')/to_ActivityMonitorFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorFilter" type="application/atom+xml;type=feed" title="to_ActivityMonitorFilter"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Pot%7DOnQL7v0')/to_ScenarioFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ScenarioFilter" type="application/atom+xml;type=feed" title="to_ScenarioFilter"/>
+<content type="application/xml">
+<m:properties xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+<d:MigrationProjectUUID>5ZmuBFlp7z6Pot}OnQL7v0</d:MigrationProjectUUID>
+<d:MigrationScenarioUUID>DEFAULT</d:MigrationScenarioUUID>
+<d:MigrationScenario>Default Scenario</d:MigrationScenario>
+<d:MigrationApproachUUID>STAGING</d:MigrationApproachUUID>
+<d:MigrationApproach>Migrate Data Using Staging Tables</d:MigrationApproach>
+<d:MigrationProjectMTID/>
+<d:MigrationProjectName>Work_Orders</d:MigrationProjectName>
+<d:CreateBy>HHERNANDEZ</d:CreateBy>
+<d:CreatedAt>2026-06-12T12:41:14</d:CreatedAt>
+<d:ConnectionTypeName>Database Connection</d:ConnectionTypeName>
+<d:MigrationProjectStatusUUID>P</d:MigrationProjectStatusUUID>
+<d:MigrationProjectStatus>In Process</d:MigrationProjectStatus>
+<d:MigrationObjectCount>5</d:MigrationObjectCount>
+<d:BatchTrigger/>
+<d:ConnectionUUID>DEFA0000000000000000000000000000</d:ConnectionUUID>
+<d:ConnectionDescr>LOCAL</d:ConnectionDescr>
+<d:ConnectionName>DEFAULT</d:ConnectionName>
+<d:RetentionStart m:null="true"/>
+<d:RetentionDays>0</d:RetentionDays>
+<d:MigrationProjectTechName/>
+<d:MigrationProjectTempID/>
+<d:RetentionMessage/>
+<d:NumofUsedJob>0</d:NumofUsedJob>
+<d:NumofAvailableJob>0</d:NumofAvailableJob>
+<d:NumBackgroundJob>0</d:NumBackgroundJob>
+<d:ActiveViewName/>
+<d:IsViewEditable>false</d:IsViewEditable>
+<d:ActiveViewDescription/>
+<d:DevelopmentClass/>
+<d:IsDBConLost>false</d:IsDBConLost>
+<d:RfcConnectionInvalid/>
+</m:properties>
+</content>
+</entry>
+<entry>
+<id>http://DMR-SAP-A02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/MigrationProjectSet('5ZmuBFlp7z6Mv%7BjngDNaYm')</id>
+<title type="text">MigrationProjectSet('5ZmuBFlp7z6Mv%7BjngDNaYm')</title>
+<updated>2026-09-08T19:56:55Z</updated>
+<category term="MCCockpit.MigrationProject" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Mv%7BjngDNaYm')" rel="edit" title="MigrationProject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Mv%7BjngDNaYm')/to_ActivityTrack" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityTrack" type="application/atom+xml;type=feed" title="to_ActivityTrack"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Mv%7BjngDNaYm')/to_TaskOverview" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskOverview" type="application/atom+xml;type=feed" title="to_TaskOverview"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Mv%7BjngDNaYm')/to_CompanyCode" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_CompanyCode" type="application/atom+xml;type=feed" title="to_CompanyCode"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Mv%7BjngDNaYm')/to_MigrationObjects" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjects" type="application/atom+xml;type=feed" title="to_MigrationObjects"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Mv%7BjngDNaYm')/to_Task" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Task" type="application/atom+xml;type=feed" title="to_Task"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Mv%7BjngDNaYm')/to_ActivityMonitorDetail" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorDetail" type="application/atom+xml;type=feed" title="to_ActivityMonitorDetail"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Mv%7BjngDNaYm')/to_MigrationObjectJob" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjectJob" type="application/atom+xml;type=feed" title="to_MigrationObjectJob"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Mv%7BjngDNaYm')/to_TaskFile" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskFile" type="application/atom+xml;type=feed" title="to_TaskFile"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Mv%7BjngDNaYm')/to_UpgradeState" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_UpgradeState" type="application/atom+xml;type=feed" title="to_UpgradeState"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Mv%7BjngDNaYm')/to_TaskProcessing" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskProcessing" type="application/atom+xml;type=feed" title="to_TaskProcessing"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Mv%7BjngDNaYm')/to_AvailableTask" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableTask" type="application/atom+xml;type=feed" title="to_AvailableTask"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Mv%7BjngDNaYm')/to_InprocessObject" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InprocessObject" type="application/atom+xml;type=feed" title="to_InprocessObject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Mv%7BjngDNaYm')/to_History" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_History" type="application/atom+xml;type=feed" title="to_History"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Mv%7BjngDNaYm')/to_ActivityMonitor" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitor" type="application/atom+xml;type=feed" title="to_ActivityMonitor"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Mv%7BjngDNaYm')/to_JobInfo" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_JobInfo" type="application/atom+xml;type=entry" title="to_JobInfo"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Mv%7BjngDNaYm')/to_ActivityMonitorFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorFilter" type="application/atom+xml;type=feed" title="to_ActivityMonitorFilter"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Mv%7BjngDNaYm')/to_ScenarioFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ScenarioFilter" type="application/atom+xml;type=feed" title="to_ScenarioFilter"/>
+<content type="application/xml">
+<m:properties xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+<d:MigrationProjectUUID>5ZmuBFlp7z6Mv{jngDNaYm</d:MigrationProjectUUID>
+<d:MigrationScenarioUUID>DEFAULT</d:MigrationScenarioUUID>
+<d:MigrationScenario>Default Scenario</d:MigrationScenario>
+<d:MigrationApproachUUID>STAGING</d:MigrationApproachUUID>
+<d:MigrationApproach>Migrate Data Using Staging Tables</d:MigrationApproach>
+<d:MigrationProjectMTID/>
+<d:MigrationProjectName>ZSKP_AR_HIST_LOAD</d:MigrationProjectName>
+<d:CreateBy>AKANAMUKKALA</d:CreateBy>
+<d:CreatedAt>2026-05-29T09:18:31</d:CreatedAt>
+<d:ConnectionTypeName>Database Connection</d:ConnectionTypeName>
+<d:MigrationProjectStatusUUID>P</d:MigrationProjectStatusUUID>
+<d:MigrationProjectStatus>In Process</d:MigrationProjectStatus>
+<d:MigrationObjectCount>1</d:MigrationObjectCount>
+<d:BatchTrigger/>
+<d:ConnectionUUID>DEFA0000000000000000000000000000</d:ConnectionUUID>
+<d:ConnectionDescr>LOCAL</d:ConnectionDescr>
+<d:ConnectionName>DEFAULT</d:ConnectionName>
+<d:RetentionStart m:null="true"/>
+<d:RetentionDays>0</d:RetentionDays>
+<d:MigrationProjectTechName/>
+<d:MigrationProjectTempID/>
+<d:RetentionMessage/>
+<d:NumofUsedJob>0</d:NumofUsedJob>
+<d:NumofAvailableJob>0</d:NumofAvailableJob>
+<d:NumBackgroundJob>0</d:NumBackgroundJob>
+<d:ActiveViewName/>
+<d:IsViewEditable>false</d:IsViewEditable>
+<d:ActiveViewDescription/>
+<d:DevelopmentClass/>
+<d:IsDBConLost>false</d:IsDBConLost>
+<d:RfcConnectionInvalid/>
+</m:properties>
+</content>
+</entry>
+<entry>
+<id>http://DMR-SAP-A02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/MigrationProjectSet('5ZmuBFlp7z6Lct3YMog2sG')</id>
+<title type="text">MigrationProjectSet('5ZmuBFlp7z6Lct3YMog2sG')</title>
+<updated>2026-09-08T19:56:55Z</updated>
+<category term="MCCockpit.MigrationProject" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Lct3YMog2sG')" rel="edit" title="MigrationProject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Lct3YMog2sG')/to_ActivityTrack" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityTrack" type="application/atom+xml;type=feed" title="to_ActivityTrack"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Lct3YMog2sG')/to_TaskOverview" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskOverview" type="application/atom+xml;type=feed" title="to_TaskOverview"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Lct3YMog2sG')/to_CompanyCode" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_CompanyCode" type="application/atom+xml;type=feed" title="to_CompanyCode"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Lct3YMog2sG')/to_MigrationObjects" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjects" type="application/atom+xml;type=feed" title="to_MigrationObjects"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Lct3YMog2sG')/to_Task" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Task" type="application/atom+xml;type=feed" title="to_Task"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Lct3YMog2sG')/to_ActivityMonitorDetail" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorDetail" type="application/atom+xml;type=feed" title="to_ActivityMonitorDetail"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Lct3YMog2sG')/to_MigrationObjectJob" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjectJob" type="application/atom+xml;type=feed" title="to_MigrationObjectJob"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Lct3YMog2sG')/to_TaskFile" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskFile" type="application/atom+xml;type=feed" title="to_TaskFile"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Lct3YMog2sG')/to_UpgradeState" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_UpgradeState" type="application/atom+xml;type=feed" title="to_UpgradeState"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Lct3YMog2sG')/to_TaskProcessing" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskProcessing" type="application/atom+xml;type=feed" title="to_TaskProcessing"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Lct3YMog2sG')/to_AvailableTask" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableTask" type="application/atom+xml;type=feed" title="to_AvailableTask"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Lct3YMog2sG')/to_InprocessObject" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InprocessObject" type="application/atom+xml;type=feed" title="to_InprocessObject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Lct3YMog2sG')/to_History" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_History" type="application/atom+xml;type=feed" title="to_History"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Lct3YMog2sG')/to_ActivityMonitor" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitor" type="application/atom+xml;type=feed" title="to_ActivityMonitor"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Lct3YMog2sG')/to_JobInfo" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_JobInfo" type="application/atom+xml;type=entry" title="to_JobInfo"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Lct3YMog2sG')/to_ActivityMonitorFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorFilter" type="application/atom+xml;type=feed" title="to_ActivityMonitorFilter"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Lct3YMog2sG')/to_ScenarioFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ScenarioFilter" type="application/atom+xml;type=feed" title="to_ScenarioFilter"/>
+<content type="application/xml">
+<m:properties xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+<d:MigrationProjectUUID>5ZmuBFlp7z6Lct3YMog2sG</d:MigrationProjectUUID>
+<d:MigrationScenarioUUID>DEFAULT</d:MigrationScenarioUUID>
+<d:MigrationScenario>Default Scenario</d:MigrationScenario>
+<d:MigrationApproachUUID>STAGING</d:MigrationApproachUUID>
+<d:MigrationApproach>Migrate Data Using Staging Tables</d:MigrationApproach>
+<d:MigrationProjectMTID/>
+<d:MigrationProjectName>API_VALIDATION</d:MigrationProjectName>
+<d:CreateBy>HHERNANDEZ</d:CreateBy>
+<d:CreatedAt>2026-05-21T06:08:48</d:CreatedAt>
+<d:ConnectionTypeName>Database Connection</d:ConnectionTypeName>
+<d:MigrationProjectStatusUUID>P</d:MigrationProjectStatusUUID>
+<d:MigrationProjectStatus>In Process</d:MigrationProjectStatus>
+<d:MigrationObjectCount>3</d:MigrationObjectCount>
+<d:BatchTrigger/>
+<d:ConnectionUUID>00000000000000000000000000000000</d:ConnectionUUID>
+<d:ConnectionDescr>SYN_SYNITI</d:ConnectionDescr>
+<d:ConnectionName>SYN_SYNITI</d:ConnectionName>
+<d:RetentionStart m:null="true"/>
+<d:RetentionDays>0</d:RetentionDays>
+<d:MigrationProjectTechName/>
+<d:MigrationProjectTempID/>
+<d:RetentionMessage/>
+<d:NumofUsedJob>0</d:NumofUsedJob>
+<d:NumofAvailableJob>0</d:NumofAvailableJob>
+<d:NumBackgroundJob>0</d:NumBackgroundJob>
+<d:ActiveViewName/>
+<d:IsViewEditable>false</d:IsViewEditable>
+<d:ActiveViewDescription/>
+<d:DevelopmentClass/>
+<d:IsDBConLost>false</d:IsDBConLost>
+<d:RfcConnectionInvalid/>
+</m:properties>
+</content>
+</entry>
+<entry>
+<id>http://DMR-SAP-A02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/MigrationProjectSet('5ZmuBFlp7z6JxinPV8S0Um')</id>
+<title type="text">MigrationProjectSet('5ZmuBFlp7z6JxinPV8S0Um')</title>
+<updated>2026-09-08T19:56:55Z</updated>
+<category term="MCCockpit.MigrationProject" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxinPV8S0Um')" rel="edit" title="MigrationProject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxinPV8S0Um')/to_ActivityTrack" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityTrack" type="application/atom+xml;type=feed" title="to_ActivityTrack"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxinPV8S0Um')/to_TaskOverview" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskOverview" type="application/atom+xml;type=feed" title="to_TaskOverview"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxinPV8S0Um')/to_CompanyCode" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_CompanyCode" type="application/atom+xml;type=feed" title="to_CompanyCode"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxinPV8S0Um')/to_MigrationObjects" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjects" type="application/atom+xml;type=feed" title="to_MigrationObjects"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxinPV8S0Um')/to_Task" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Task" type="application/atom+xml;type=feed" title="to_Task"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxinPV8S0Um')/to_ActivityMonitorDetail" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorDetail" type="application/atom+xml;type=feed" title="to_ActivityMonitorDetail"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxinPV8S0Um')/to_MigrationObjectJob" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjectJob" type="application/atom+xml;type=feed" title="to_MigrationObjectJob"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxinPV8S0Um')/to_TaskFile" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskFile" type="application/atom+xml;type=feed" title="to_TaskFile"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxinPV8S0Um')/to_UpgradeState" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_UpgradeState" type="application/atom+xml;type=feed" title="to_UpgradeState"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxinPV8S0Um')/to_TaskProcessing" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskProcessing" type="application/atom+xml;type=feed" title="to_TaskProcessing"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxinPV8S0Um')/to_AvailableTask" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableTask" type="application/atom+xml;type=feed" title="to_AvailableTask"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxinPV8S0Um')/to_InprocessObject" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InprocessObject" type="application/atom+xml;type=feed" title="to_InprocessObject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxinPV8S0Um')/to_History" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_History" type="application/atom+xml;type=feed" title="to_History"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxinPV8S0Um')/to_ActivityMonitor" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitor" type="application/atom+xml;type=feed" title="to_ActivityMonitor"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxinPV8S0Um')/to_JobInfo" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_JobInfo" type="application/atom+xml;type=entry" title="to_JobInfo"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxinPV8S0Um')/to_ActivityMonitorFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorFilter" type="application/atom+xml;type=feed" title="to_ActivityMonitorFilter"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxinPV8S0Um')/to_ScenarioFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ScenarioFilter" type="application/atom+xml;type=feed" title="to_ScenarioFilter"/>
+<content type="application/xml">
+<m:properties xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+<d:MigrationProjectUUID>5ZmuBFlp7z6JxinPV8S0Um</d:MigrationProjectUUID>
+<d:MigrationScenarioUUID>DEFAULT</d:MigrationScenarioUUID>
+<d:MigrationScenario>Default Scenario</d:MigrationScenario>
+<d:MigrationApproachUUID>STAGING</d:MigrationApproachUUID>
+<d:MigrationApproach>Migrate Data Using Staging Tables</d:MigrationApproach>
+<d:MigrationProjectMTID/>
+<d:MigrationProjectName>ZFI_HISTORICAL_BAL_MIG</d:MigrationProjectName>
+<d:CreateBy>PSHARMA</d:CreateBy>
+<d:CreatedAt>2026-05-14T09:22:12</d:CreatedAt>
+<d:ConnectionTypeName>Database Connection</d:ConnectionTypeName>
+<d:MigrationProjectStatusUUID>P</d:MigrationProjectStatusUUID>
+<d:MigrationProjectStatus>In Process</d:MigrationProjectStatus>
+<d:MigrationObjectCount>1</d:MigrationObjectCount>
+<d:BatchTrigger/>
+<d:ConnectionUUID>DEFA0000000000000000000000000000</d:ConnectionUUID>
+<d:ConnectionDescr>LOCAL</d:ConnectionDescr>
+<d:ConnectionName>DEFAULT</d:ConnectionName>
+<d:RetentionStart m:null="true"/>
+<d:RetentionDays>0</d:RetentionDays>
+<d:MigrationProjectTechName/>
+<d:MigrationProjectTempID/>
+<d:RetentionMessage/>
+<d:NumofUsedJob>0</d:NumofUsedJob>
+<d:NumofAvailableJob>0</d:NumofAvailableJob>
+<d:NumBackgroundJob>0</d:NumBackgroundJob>
+<d:ActiveViewName/>
+<d:IsViewEditable>false</d:IsViewEditable>
+<d:ActiveViewDescription/>
+<d:DevelopmentClass/>
+<d:IsDBConLost>false</d:IsDBConLost>
+<d:RfcConnectionInvalid/>
+</m:properties>
+</content>
+</entry>
+<entry>
+<id>http://DMR-SAP-A02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/MigrationProjectSet('5ZmuBFlp7z6JxDqSWNL0TW')</id>
+<title type="text">MigrationProjectSet('5ZmuBFlp7z6JxDqSWNL0TW')</title>
+<updated>2026-09-08T19:56:55Z</updated>
+<category term="MCCockpit.MigrationProject" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxDqSWNL0TW')" rel="edit" title="MigrationProject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxDqSWNL0TW')/to_ActivityTrack" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityTrack" type="application/atom+xml;type=feed" title="to_ActivityTrack"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxDqSWNL0TW')/to_TaskOverview" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskOverview" type="application/atom+xml;type=feed" title="to_TaskOverview"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxDqSWNL0TW')/to_CompanyCode" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_CompanyCode" type="application/atom+xml;type=feed" title="to_CompanyCode"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxDqSWNL0TW')/to_MigrationObjects" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjects" type="application/atom+xml;type=feed" title="to_MigrationObjects"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxDqSWNL0TW')/to_Task" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Task" type="application/atom+xml;type=feed" title="to_Task"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxDqSWNL0TW')/to_ActivityMonitorDetail" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorDetail" type="application/atom+xml;type=feed" title="to_ActivityMonitorDetail"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxDqSWNL0TW')/to_MigrationObjectJob" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjectJob" type="application/atom+xml;type=feed" title="to_MigrationObjectJob"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxDqSWNL0TW')/to_TaskFile" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskFile" type="application/atom+xml;type=feed" title="to_TaskFile"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxDqSWNL0TW')/to_UpgradeState" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_UpgradeState" type="application/atom+xml;type=feed" title="to_UpgradeState"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxDqSWNL0TW')/to_TaskProcessing" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskProcessing" type="application/atom+xml;type=feed" title="to_TaskProcessing"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxDqSWNL0TW')/to_AvailableTask" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableTask" type="application/atom+xml;type=feed" title="to_AvailableTask"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxDqSWNL0TW')/to_InprocessObject" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InprocessObject" type="application/atom+xml;type=feed" title="to_InprocessObject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxDqSWNL0TW')/to_History" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_History" type="application/atom+xml;type=feed" title="to_History"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxDqSWNL0TW')/to_ActivityMonitor" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitor" type="application/atom+xml;type=feed" title="to_ActivityMonitor"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxDqSWNL0TW')/to_JobInfo" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_JobInfo" type="application/atom+xml;type=entry" title="to_JobInfo"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxDqSWNL0TW')/to_ActivityMonitorFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorFilter" type="application/atom+xml;type=feed" title="to_ActivityMonitorFilter"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JxDqSWNL0TW')/to_ScenarioFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ScenarioFilter" type="application/atom+xml;type=feed" title="to_ScenarioFilter"/>
+<content type="application/xml">
+<m:properties xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+<d:MigrationProjectUUID>5ZmuBFlp7z6JxDqSWNL0TW</d:MigrationProjectUUID>
+<d:MigrationScenarioUUID>DEFAULT</d:MigrationScenarioUUID>
+<d:MigrationScenario>Default Scenario</d:MigrationScenario>
+<d:MigrationApproachUUID>STAGING</d:MigrationApproachUUID>
+<d:MigrationApproach>Migrate Data Using Staging Tables</d:MigrationApproach>
+<d:MigrationProjectMTID/>
+<d:MigrationProjectName>ZFINACE_MIG_OBJ</d:MigrationProjectName>
+<d:CreateBy>AKANAMUKKALA</d:CreateBy>
+<d:CreatedAt>2026-05-14T07:31:25</d:CreatedAt>
+<d:ConnectionTypeName>Database Connection</d:ConnectionTypeName>
+<d:MigrationProjectStatusUUID>P</d:MigrationProjectStatusUUID>
+<d:MigrationProjectStatus>In Process</d:MigrationProjectStatus>
+<d:MigrationObjectCount>2</d:MigrationObjectCount>
+<d:BatchTrigger/>
+<d:ConnectionUUID>DEFA0000000000000000000000000000</d:ConnectionUUID>
+<d:ConnectionDescr>LOCAL</d:ConnectionDescr>
+<d:ConnectionName>DEFAULT</d:ConnectionName>
+<d:RetentionStart m:null="true"/>
+<d:RetentionDays>0</d:RetentionDays>
+<d:MigrationProjectTechName/>
+<d:MigrationProjectTempID/>
+<d:RetentionMessage/>
+<d:NumofUsedJob>0</d:NumofUsedJob>
+<d:NumofAvailableJob>0</d:NumofAvailableJob>
+<d:NumBackgroundJob>0</d:NumBackgroundJob>
+<d:ActiveViewName/>
+<d:IsViewEditable>false</d:IsViewEditable>
+<d:ActiveViewDescription/>
+<d:DevelopmentClass/>
+<d:IsDBConLost>false</d:IsDBConLost>
+<d:RfcConnectionInvalid/>
+</m:properties>
+</content>
+</entry>
+<entry>
+<id>http://DMR-SAP-A02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/MigrationProjectSet('5ZmuBFlp7z6JqjFh5YAW6W')</id>
+<title type="text">MigrationProjectSet('5ZmuBFlp7z6JqjFh5YAW6W')</title>
+<updated>2026-09-08T19:56:55Z</updated>
+<category term="MCCockpit.MigrationProject" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JqjFh5YAW6W')" rel="edit" title="MigrationProject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JqjFh5YAW6W')/to_ActivityTrack" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityTrack" type="application/atom+xml;type=feed" title="to_ActivityTrack"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JqjFh5YAW6W')/to_TaskOverview" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskOverview" type="application/atom+xml;type=feed" title="to_TaskOverview"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JqjFh5YAW6W')/to_CompanyCode" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_CompanyCode" type="application/atom+xml;type=feed" title="to_CompanyCode"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JqjFh5YAW6W')/to_MigrationObjects" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjects" type="application/atom+xml;type=feed" title="to_MigrationObjects"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JqjFh5YAW6W')/to_Task" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Task" type="application/atom+xml;type=feed" title="to_Task"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JqjFh5YAW6W')/to_ActivityMonitorDetail" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorDetail" type="application/atom+xml;type=feed" title="to_ActivityMonitorDetail"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JqjFh5YAW6W')/to_MigrationObjectJob" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjectJob" type="application/atom+xml;type=feed" title="to_MigrationObjectJob"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JqjFh5YAW6W')/to_TaskFile" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskFile" type="application/atom+xml;type=feed" title="to_TaskFile"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JqjFh5YAW6W')/to_UpgradeState" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_UpgradeState" type="application/atom+xml;type=feed" title="to_UpgradeState"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JqjFh5YAW6W')/to_TaskProcessing" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskProcessing" type="application/atom+xml;type=feed" title="to_TaskProcessing"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JqjFh5YAW6W')/to_AvailableTask" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableTask" type="application/atom+xml;type=feed" title="to_AvailableTask"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JqjFh5YAW6W')/to_InprocessObject" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InprocessObject" type="application/atom+xml;type=feed" title="to_InprocessObject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JqjFh5YAW6W')/to_History" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_History" type="application/atom+xml;type=feed" title="to_History"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JqjFh5YAW6W')/to_ActivityMonitor" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitor" type="application/atom+xml;type=feed" title="to_ActivityMonitor"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JqjFh5YAW6W')/to_JobInfo" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_JobInfo" type="application/atom+xml;type=entry" title="to_JobInfo"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JqjFh5YAW6W')/to_ActivityMonitorFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorFilter" type="application/atom+xml;type=feed" title="to_ActivityMonitorFilter"/>
+<link href="MigrationProjectSet('5ZmuBFlp7z6JqjFh5YAW6W')/to_ScenarioFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ScenarioFilter" type="application/atom+xml;type=feed" title="to_ScenarioFilter"/>
+<content type="application/xml">
+<m:properties xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+<d:MigrationProjectUUID>5ZmuBFlp7z6JqjFh5YAW6W</d:MigrationProjectUUID>
+<d:MigrationScenarioUUID>DEFAULT</d:MigrationScenarioUUID>
+<d:MigrationScenario>Default Scenario</d:MigrationScenario>
+<d:MigrationApproachUUID>STAGING</d:MigrationApproachUUID>
+<d:MigrationApproach>Migrate Data Using Staging Tables</d:MigrationApproach>
+<d:MigrationProjectMTID/>
+<d:MigrationProjectName>ZFI_OBJ_MIG</d:MigrationProjectName>
+<d:CreateBy>PSHARMA</d:CreateBy>
+<d:CreatedAt>2026-05-13T06:40:26</d:CreatedAt>
+<d:ConnectionTypeName>Database Connection</d:ConnectionTypeName>
+<d:MigrationProjectStatusUUID>P</d:MigrationProjectStatusUUID>
+<d:MigrationProjectStatus>In Process</d:MigrationProjectStatus>
+<d:MigrationObjectCount>2</d:MigrationObjectCount>
+<d:BatchTrigger/>
+<d:ConnectionUUID>DEFA0000000000000000000000000000</d:ConnectionUUID>
+<d:ConnectionDescr>LOCAL</d:ConnectionDescr>
+<d:ConnectionName>DEFAULT</d:ConnectionName>
+<d:RetentionStart m:null="true"/>
+<d:RetentionDays>0</d:RetentionDays>
+<d:MigrationProjectTechName/>
+<d:MigrationProjectTempID/>
+<d:RetentionMessage/>
+<d:NumofUsedJob>0</d:NumofUsedJob>
+<d:NumofAvailableJob>0</d:NumofAvailableJob>
+<d:NumBackgroundJob>0</d:NumBackgroundJob>
+<d:ActiveViewName/>
+<d:IsViewEditable>false</d:IsViewEditable>
+<d:ActiveViewDescription/>
+<d:DevelopmentClass/>
+<d:IsDBConLost>false</d:IsDBConLost>
+<d:RfcConnectionInvalid/>
+</m:properties>
+</content>
+</entry>
+<entry>
+<id>http://DMR-SAP-A02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/MigrationProjectSet('5ZmuBFlp7%7B6JmF7emD5Vvm')</id>
+<title type="text">MigrationProjectSet('5ZmuBFlp7%7B6JmF7emD5Vvm')</title>
+<updated>2026-09-08T19:56:55Z</updated>
+<category term="MCCockpit.MigrationProject" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6JmF7emD5Vvm')" rel="edit" title="MigrationProject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6JmF7emD5Vvm')/to_ActivityTrack" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityTrack" type="application/atom+xml;type=feed" title="to_ActivityTrack"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6JmF7emD5Vvm')/to_TaskOverview" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskOverview" type="application/atom+xml;type=feed" title="to_TaskOverview"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6JmF7emD5Vvm')/to_CompanyCode" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_CompanyCode" type="application/atom+xml;type=feed" title="to_CompanyCode"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6JmF7emD5Vvm')/to_MigrationObjects" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjects" type="application/atom+xml;type=feed" title="to_MigrationObjects"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6JmF7emD5Vvm')/to_Task" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Task" type="application/atom+xml;type=feed" title="to_Task"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6JmF7emD5Vvm')/to_ActivityMonitorDetail" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorDetail" type="application/atom+xml;type=feed" title="to_ActivityMonitorDetail"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6JmF7emD5Vvm')/to_MigrationObjectJob" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjectJob" type="application/atom+xml;type=feed" title="to_MigrationObjectJob"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6JmF7emD5Vvm')/to_TaskFile" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskFile" type="application/atom+xml;type=feed" title="to_TaskFile"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6JmF7emD5Vvm')/to_UpgradeState" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_UpgradeState" type="application/atom+xml;type=feed" title="to_UpgradeState"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6JmF7emD5Vvm')/to_TaskProcessing" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskProcessing" type="application/atom+xml;type=feed" title="to_TaskProcessing"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6JmF7emD5Vvm')/to_AvailableTask" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableTask" type="application/atom+xml;type=feed" title="to_AvailableTask"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6JmF7emD5Vvm')/to_InprocessObject" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InprocessObject" type="application/atom+xml;type=feed" title="to_InprocessObject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6JmF7emD5Vvm')/to_History" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_History" type="application/atom+xml;type=feed" title="to_History"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6JmF7emD5Vvm')/to_ActivityMonitor" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitor" type="application/atom+xml;type=feed" title="to_ActivityMonitor"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6JmF7emD5Vvm')/to_JobInfo" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_JobInfo" type="application/atom+xml;type=entry" title="to_JobInfo"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6JmF7emD5Vvm')/to_ActivityMonitorFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorFilter" type="application/atom+xml;type=feed" title="to_ActivityMonitorFilter"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6JmF7emD5Vvm')/to_ScenarioFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ScenarioFilter" type="application/atom+xml;type=feed" title="to_ScenarioFilter"/>
+<content type="application/xml">
+<m:properties xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+<d:MigrationProjectUUID>5ZmuBFlp7{6JmF7emD5Vvm</d:MigrationProjectUUID>
+<d:MigrationScenarioUUID>DEFAULT</d:MigrationScenarioUUID>
+<d:MigrationScenario>Default Scenario</d:MigrationScenario>
+<d:MigrationApproachUUID>STAGING</d:MigrationApproachUUID>
+<d:MigrationApproach>Migrate Data Using Staging Tables</d:MigrationApproach>
+<d:MigrationProjectMTID/>
+<d:MigrationProjectName>ZFI_HIST_BAL_MIG</d:MigrationProjectName>
+<d:CreateBy>TBATTAGLIN2</d:CreateBy>
+<d:CreatedAt>2026-05-12T13:36:22</d:CreatedAt>
+<d:ConnectionTypeName>Database Connection</d:ConnectionTypeName>
+<d:MigrationProjectStatusUUID/>
+<d:MigrationProjectStatus>Not Started</d:MigrationProjectStatus>
+<d:MigrationObjectCount>1</d:MigrationObjectCount>
+<d:BatchTrigger/>
+<d:ConnectionUUID>DEFA0000000000000000000000000000</d:ConnectionUUID>
+<d:ConnectionDescr>LOCAL</d:ConnectionDescr>
+<d:ConnectionName>DEFAULT</d:ConnectionName>
+<d:RetentionStart m:null="true"/>
+<d:RetentionDays>0</d:RetentionDays>
+<d:MigrationProjectTechName/>
+<d:MigrationProjectTempID/>
+<d:RetentionMessage/>
+<d:NumofUsedJob>0</d:NumofUsedJob>
+<d:NumofAvailableJob>0</d:NumofAvailableJob>
+<d:NumBackgroundJob>0</d:NumBackgroundJob>
+<d:ActiveViewName/>
+<d:IsViewEditable>false</d:IsViewEditable>
+<d:ActiveViewDescription/>
+<d:DevelopmentClass/>
+<d:IsDBConLost>false</d:IsDBConLost>
+<d:RfcConnectionInvalid/>
+</m:properties>
+</content>
+</entry>
+<entry>
+<id>http://DMR-SAP-A02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/MigrationProjectSet('5ZmuBFlp7%7B6IZFETwzFTEG')</id>
+<title type="text">MigrationProjectSet('5ZmuBFlp7%7B6IZFETwzFTEG')</title>
+<updated>2026-09-08T19:56:55Z</updated>
+<category term="MCCockpit.MigrationProject" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6IZFETwzFTEG')" rel="edit" title="MigrationProject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6IZFETwzFTEG')/to_ActivityTrack" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityTrack" type="application/atom+xml;type=feed" title="to_ActivityTrack"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6IZFETwzFTEG')/to_TaskOverview" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskOverview" type="application/atom+xml;type=feed" title="to_TaskOverview"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6IZFETwzFTEG')/to_CompanyCode" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_CompanyCode" type="application/atom+xml;type=feed" title="to_CompanyCode"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6IZFETwzFTEG')/to_MigrationObjects" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjects" type="application/atom+xml;type=feed" title="to_MigrationObjects"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6IZFETwzFTEG')/to_Task" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Task" type="application/atom+xml;type=feed" title="to_Task"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6IZFETwzFTEG')/to_ActivityMonitorDetail" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorDetail" type="application/atom+xml;type=feed" title="to_ActivityMonitorDetail"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6IZFETwzFTEG')/to_MigrationObjectJob" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjectJob" type="application/atom+xml;type=feed" title="to_MigrationObjectJob"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6IZFETwzFTEG')/to_TaskFile" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskFile" type="application/atom+xml;type=feed" title="to_TaskFile"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6IZFETwzFTEG')/to_UpgradeState" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_UpgradeState" type="application/atom+xml;type=feed" title="to_UpgradeState"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6IZFETwzFTEG')/to_TaskProcessing" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskProcessing" type="application/atom+xml;type=feed" title="to_TaskProcessing"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6IZFETwzFTEG')/to_AvailableTask" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableTask" type="application/atom+xml;type=feed" title="to_AvailableTask"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6IZFETwzFTEG')/to_InprocessObject" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InprocessObject" type="application/atom+xml;type=feed" title="to_InprocessObject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6IZFETwzFTEG')/to_History" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_History" type="application/atom+xml;type=feed" title="to_History"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6IZFETwzFTEG')/to_ActivityMonitor" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitor" type="application/atom+xml;type=feed" title="to_ActivityMonitor"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6IZFETwzFTEG')/to_JobInfo" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_JobInfo" type="application/atom+xml;type=entry" title="to_JobInfo"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6IZFETwzFTEG')/to_ActivityMonitorFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorFilter" type="application/atom+xml;type=feed" title="to_ActivityMonitorFilter"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6IZFETwzFTEG')/to_ScenarioFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ScenarioFilter" type="application/atom+xml;type=feed" title="to_ScenarioFilter"/>
+<content type="application/xml">
+<m:properties xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+<d:MigrationProjectUUID>5ZmuBFlp7{6IZFETwzFTEG</d:MigrationProjectUUID>
+<d:MigrationScenarioUUID>DEFAULT</d:MigrationScenarioUUID>
+<d:MigrationScenario>Default Scenario</d:MigrationScenario>
+<d:MigrationApproachUUID>STAGING</d:MigrationApproachUUID>
+<d:MigrationApproach>Migrate Data Using Staging Tables</d:MigrationApproach>
+<d:MigrationProjectMTID/>
+<d:MigrationProjectName>ZMIG_WO_HIST_DATA</d:MigrationProjectName>
+<d:CreateBy>PSHARMA</d:CreateBy>
+<d:CreatedAt>2026-05-05T09:48:49</d:CreatedAt>
+<d:ConnectionTypeName>Database Connection</d:ConnectionTypeName>
+<d:MigrationProjectStatusUUID>P</d:MigrationProjectStatusUUID>
+<d:MigrationProjectStatus>In Process</d:MigrationProjectStatus>
+<d:MigrationObjectCount>4</d:MigrationObjectCount>
+<d:BatchTrigger/>
+<d:ConnectionUUID>DEFA0000000000000000000000000000</d:ConnectionUUID>
+<d:ConnectionDescr>LOCAL</d:ConnectionDescr>
+<d:ConnectionName>DEFAULT</d:ConnectionName>
+<d:RetentionStart m:null="true"/>
+<d:RetentionDays>0</d:RetentionDays>
+<d:MigrationProjectTechName/>
+<d:MigrationProjectTempID/>
+<d:RetentionMessage/>
+<d:NumofUsedJob>0</d:NumofUsedJob>
+<d:NumofAvailableJob>0</d:NumofAvailableJob>
+<d:NumBackgroundJob>0</d:NumBackgroundJob>
+<d:ActiveViewName/>
+<d:IsViewEditable>false</d:IsViewEditable>
+<d:ActiveViewDescription/>
+<d:DevelopmentClass/>
+<d:IsDBConLost>false</d:IsDBConLost>
+<d:RfcConnectionInvalid/>
+</m:properties>
+</content>
+</entry>
+<entry>
+<id>http://DMR-SAP-A02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/MigrationProjectSet('5ZmuBFlp7%7B6EYKGNyzXs3m')</id>
+<title type="text">MigrationProjectSet('5ZmuBFlp7%7B6EYKGNyzXs3m')</title>
+<updated>2026-09-08T19:56:55Z</updated>
+<category term="MCCockpit.MigrationProject" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6EYKGNyzXs3m')" rel="edit" title="MigrationProject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6EYKGNyzXs3m')/to_ActivityTrack" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityTrack" type="application/atom+xml;type=feed" title="to_ActivityTrack"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6EYKGNyzXs3m')/to_TaskOverview" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskOverview" type="application/atom+xml;type=feed" title="to_TaskOverview"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6EYKGNyzXs3m')/to_CompanyCode" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_CompanyCode" type="application/atom+xml;type=feed" title="to_CompanyCode"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6EYKGNyzXs3m')/to_MigrationObjects" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjects" type="application/atom+xml;type=feed" title="to_MigrationObjects"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6EYKGNyzXs3m')/to_Task" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Task" type="application/atom+xml;type=feed" title="to_Task"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6EYKGNyzXs3m')/to_ActivityMonitorDetail" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorDetail" type="application/atom+xml;type=feed" title="to_ActivityMonitorDetail"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6EYKGNyzXs3m')/to_MigrationObjectJob" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjectJob" type="application/atom+xml;type=feed" title="to_MigrationObjectJob"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6EYKGNyzXs3m')/to_TaskFile" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskFile" type="application/atom+xml;type=feed" title="to_TaskFile"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6EYKGNyzXs3m')/to_UpgradeState" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_UpgradeState" type="application/atom+xml;type=feed" title="to_UpgradeState"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6EYKGNyzXs3m')/to_TaskProcessing" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskProcessing" type="application/atom+xml;type=feed" title="to_TaskProcessing"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6EYKGNyzXs3m')/to_AvailableTask" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableTask" type="application/atom+xml;type=feed" title="to_AvailableTask"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6EYKGNyzXs3m')/to_InprocessObject" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InprocessObject" type="application/atom+xml;type=feed" title="to_InprocessObject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6EYKGNyzXs3m')/to_History" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_History" type="application/atom+xml;type=feed" title="to_History"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6EYKGNyzXs3m')/to_ActivityMonitor" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitor" type="application/atom+xml;type=feed" title="to_ActivityMonitor"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6EYKGNyzXs3m')/to_JobInfo" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_JobInfo" type="application/atom+xml;type=entry" title="to_JobInfo"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6EYKGNyzXs3m')/to_ActivityMonitorFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorFilter" type="application/atom+xml;type=feed" title="to_ActivityMonitorFilter"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B6EYKGNyzXs3m')/to_ScenarioFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ScenarioFilter" type="application/atom+xml;type=feed" title="to_ScenarioFilter"/>
+<content type="application/xml">
+<m:properties xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+<d:MigrationProjectUUID>5ZmuBFlp7{6EYKGNyzXs3m</d:MigrationProjectUUID>
+<d:MigrationScenarioUUID>DEFAULT</d:MigrationScenarioUUID>
+<d:MigrationScenario>Default Scenario</d:MigrationScenario>
+<d:MigrationApproachUUID>STAGING</d:MigrationApproachUUID>
+<d:MigrationApproach>Migrate Data Using Staging Tables</d:MigrationApproach>
+<d:MigrationProjectMTID/>
+<d:MigrationProjectName>API_VALIDATION_PO</d:MigrationProjectName>
+<d:CreateBy>DCAUICH</d:CreateBy>
+<d:CreatedAt>2026-04-14T21:37:34</d:CreatedAt>
+<d:ConnectionTypeName>Database Connection</d:ConnectionTypeName>
+<d:MigrationProjectStatusUUID>P</d:MigrationProjectStatusUUID>
+<d:MigrationProjectStatus>In Process</d:MigrationProjectStatus>
+<d:MigrationObjectCount>2</d:MigrationObjectCount>
+<d:BatchTrigger/>
+<d:ConnectionUUID>00000000000000000000000000000000</d:ConnectionUUID>
+<d:ConnectionDescr>SYN_SYNITI</d:ConnectionDescr>
+<d:ConnectionName>SYN_SYNITI</d:ConnectionName>
+<d:RetentionStart m:null="true"/>
+<d:RetentionDays>0</d:RetentionDays>
+<d:MigrationProjectTechName/>
+<d:MigrationProjectTempID/>
+<d:RetentionMessage/>
+<d:NumofUsedJob>0</d:NumofUsedJob>
+<d:NumofAvailableJob>0</d:NumofAvailableJob>
+<d:NumBackgroundJob>0</d:NumBackgroundJob>
+<d:ActiveViewName/>
+<d:IsViewEditable>false</d:IsViewEditable>
+<d:ActiveViewDescription/>
+<d:DevelopmentClass/>
+<d:IsDBConLost>false</d:IsDBConLost>
+<d:RfcConnectionInvalid/>
+</m:properties>
+</content>
+</entry>
+<entry>
+<id>http://DMR-SAP-A02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/MigrationProjectSet('5ZmuBFlp7%7B67qxVpGZ9iKW')</id>
+<title type="text">MigrationProjectSet('5ZmuBFlp7%7B67qxVpGZ9iKW')</title>
+<updated>2026-09-08T19:56:55Z</updated>
+<category term="MCCockpit.MigrationProject" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67qxVpGZ9iKW')" rel="edit" title="MigrationProject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67qxVpGZ9iKW')/to_ActivityTrack" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityTrack" type="application/atom+xml;type=feed" title="to_ActivityTrack"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67qxVpGZ9iKW')/to_TaskOverview" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskOverview" type="application/atom+xml;type=feed" title="to_TaskOverview"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67qxVpGZ9iKW')/to_CompanyCode" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_CompanyCode" type="application/atom+xml;type=feed" title="to_CompanyCode"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67qxVpGZ9iKW')/to_MigrationObjects" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjects" type="application/atom+xml;type=feed" title="to_MigrationObjects"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67qxVpGZ9iKW')/to_Task" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Task" type="application/atom+xml;type=feed" title="to_Task"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67qxVpGZ9iKW')/to_ActivityMonitorDetail" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorDetail" type="application/atom+xml;type=feed" title="to_ActivityMonitorDetail"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67qxVpGZ9iKW')/to_MigrationObjectJob" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjectJob" type="application/atom+xml;type=feed" title="to_MigrationObjectJob"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67qxVpGZ9iKW')/to_TaskFile" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskFile" type="application/atom+xml;type=feed" title="to_TaskFile"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67qxVpGZ9iKW')/to_UpgradeState" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_UpgradeState" type="application/atom+xml;type=feed" title="to_UpgradeState"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67qxVpGZ9iKW')/to_TaskProcessing" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskProcessing" type="application/atom+xml;type=feed" title="to_TaskProcessing"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67qxVpGZ9iKW')/to_AvailableTask" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableTask" type="application/atom+xml;type=feed" title="to_AvailableTask"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67qxVpGZ9iKW')/to_InprocessObject" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InprocessObject" type="application/atom+xml;type=feed" title="to_InprocessObject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67qxVpGZ9iKW')/to_History" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_History" type="application/atom+xml;type=feed" title="to_History"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67qxVpGZ9iKW')/to_ActivityMonitor" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitor" type="application/atom+xml;type=feed" title="to_ActivityMonitor"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67qxVpGZ9iKW')/to_JobInfo" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_JobInfo" type="application/atom+xml;type=entry" title="to_JobInfo"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67qxVpGZ9iKW')/to_ActivityMonitorFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorFilter" type="application/atom+xml;type=feed" title="to_ActivityMonitorFilter"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67qxVpGZ9iKW')/to_ScenarioFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ScenarioFilter" type="application/atom+xml;type=feed" title="to_ScenarioFilter"/>
+<content type="application/xml">
+<m:properties xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+<d:MigrationProjectUUID>5ZmuBFlp7{67qxVpGZ9iKW</d:MigrationProjectUUID>
+<d:MigrationScenarioUUID>DEFAULT</d:MigrationScenarioUUID>
+<d:MigrationScenario>Default Scenario</d:MigrationScenario>
+<d:MigrationApproachUUID>STAGING</d:MigrationApproachUUID>
+<d:MigrationApproach>Migrate Data Using Staging Tables</d:MigrationApproach>
+<d:MigrationProjectMTID/>
+<d:MigrationProjectName>ZSKP_HISTORICAL_DATALOAD1</d:MigrationProjectName>
+<d:CreateBy>AKANAMUKKALA</d:CreateBy>
+<d:CreatedAt>2026-03-13T05:30:31</d:CreatedAt>
+<d:ConnectionTypeName>Database Connection</d:ConnectionTypeName>
+<d:MigrationProjectStatusUUID>P</d:MigrationProjectStatusUUID>
+<d:MigrationProjectStatus>In Process</d:MigrationProjectStatus>
+<d:MigrationObjectCount>2</d:MigrationObjectCount>
+<d:BatchTrigger/>
+<d:ConnectionUUID>DEFA0000000000000000000000000000</d:ConnectionUUID>
+<d:ConnectionDescr>LOCAL</d:ConnectionDescr>
+<d:ConnectionName>DEFAULT</d:ConnectionName>
+<d:RetentionStart m:null="true"/>
+<d:RetentionDays>0</d:RetentionDays>
+<d:MigrationProjectTechName/>
+<d:MigrationProjectTempID/>
+<d:RetentionMessage/>
+<d:NumofUsedJob>0</d:NumofUsedJob>
+<d:NumofAvailableJob>0</d:NumofAvailableJob>
+<d:NumBackgroundJob>0</d:NumBackgroundJob>
+<d:ActiveViewName/>
+<d:IsViewEditable>false</d:IsViewEditable>
+<d:ActiveViewDescription/>
+<d:DevelopmentClass/>
+<d:IsDBConLost>false</d:IsDBConLost>
+<d:RfcConnectionInvalid/>
+</m:properties>
+</content>
+</entry>
+<entry>
+<id>http://DMR-SAP-A02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/MigrationProjectSet('5ZmuBFlp7%7B67f05zFiDBXm')</id>
+<title type="text">MigrationProjectSet('5ZmuBFlp7%7B67f05zFiDBXm')</title>
+<updated>2026-09-08T19:56:55Z</updated>
+<category term="MCCockpit.MigrationProject" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67f05zFiDBXm')" rel="edit" title="MigrationProject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67f05zFiDBXm')/to_ActivityTrack" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityTrack" type="application/atom+xml;type=feed" title="to_ActivityTrack"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67f05zFiDBXm')/to_TaskOverview" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskOverview" type="application/atom+xml;type=feed" title="to_TaskOverview"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67f05zFiDBXm')/to_CompanyCode" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_CompanyCode" type="application/atom+xml;type=feed" title="to_CompanyCode"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67f05zFiDBXm')/to_MigrationObjects" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjects" type="application/atom+xml;type=feed" title="to_MigrationObjects"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67f05zFiDBXm')/to_Task" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Task" type="application/atom+xml;type=feed" title="to_Task"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67f05zFiDBXm')/to_ActivityMonitorDetail" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorDetail" type="application/atom+xml;type=feed" title="to_ActivityMonitorDetail"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67f05zFiDBXm')/to_MigrationObjectJob" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjectJob" type="application/atom+xml;type=feed" title="to_MigrationObjectJob"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67f05zFiDBXm')/to_TaskFile" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskFile" type="application/atom+xml;type=feed" title="to_TaskFile"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67f05zFiDBXm')/to_UpgradeState" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_UpgradeState" type="application/atom+xml;type=feed" title="to_UpgradeState"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67f05zFiDBXm')/to_TaskProcessing" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskProcessing" type="application/atom+xml;type=feed" title="to_TaskProcessing"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67f05zFiDBXm')/to_AvailableTask" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableTask" type="application/atom+xml;type=feed" title="to_AvailableTask"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67f05zFiDBXm')/to_InprocessObject" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InprocessObject" type="application/atom+xml;type=feed" title="to_InprocessObject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67f05zFiDBXm')/to_History" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_History" type="application/atom+xml;type=feed" title="to_History"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67f05zFiDBXm')/to_ActivityMonitor" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitor" type="application/atom+xml;type=feed" title="to_ActivityMonitor"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67f05zFiDBXm')/to_JobInfo" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_JobInfo" type="application/atom+xml;type=entry" title="to_JobInfo"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67f05zFiDBXm')/to_ActivityMonitorFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorFilter" type="application/atom+xml;type=feed" title="to_ActivityMonitorFilter"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B67f05zFiDBXm')/to_ScenarioFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ScenarioFilter" type="application/atom+xml;type=feed" title="to_ScenarioFilter"/>
+<content type="application/xml">
+<m:properties xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+<d:MigrationProjectUUID>5ZmuBFlp7{67f05zFiDBXm</d:MigrationProjectUUID>
+<d:MigrationScenarioUUID>DEFAULT</d:MigrationScenarioUUID>
+<d:MigrationScenario>Default Scenario</d:MigrationScenario>
+<d:MigrationApproachUUID>STAGING</d:MigrationApproachUUID>
+<d:MigrationApproach>Migrate Data Using Staging Tables</d:MigrationApproach>
+<d:MigrationProjectMTID/>
+<d:MigrationProjectName>ZSTAGINGTABLE</d:MigrationProjectName>
+<d:CreateBy>HHERNANDEZ</d:CreateBy>
+<d:CreatedAt>2026-03-11T07:58:11</d:CreatedAt>
+<d:ConnectionTypeName>Database Connection</d:ConnectionTypeName>
+<d:MigrationProjectStatusUUID>P</d:MigrationProjectStatusUUID>
+<d:MigrationProjectStatus>In Process</d:MigrationProjectStatus>
+<d:MigrationObjectCount>2</d:MigrationObjectCount>
+<d:BatchTrigger/>
+<d:ConnectionUUID>00000000000000000000000000000000</d:ConnectionUUID>
+<d:ConnectionDescr>SYN_SYNITI</d:ConnectionDescr>
+<d:ConnectionName>SYN_SYNITI</d:ConnectionName>
+<d:RetentionStart m:null="true"/>
+<d:RetentionDays>0</d:RetentionDays>
+<d:MigrationProjectTechName/>
+<d:MigrationProjectTempID/>
+<d:RetentionMessage/>
+<d:NumofUsedJob>0</d:NumofUsedJob>
+<d:NumofAvailableJob>0</d:NumofAvailableJob>
+<d:NumBackgroundJob>0</d:NumBackgroundJob>
+<d:ActiveViewName/>
+<d:IsViewEditable>false</d:IsViewEditable>
+<d:ActiveViewDescription/>
+<d:DevelopmentClass/>
+<d:IsDBConLost>false</d:IsDBConLost>
+<d:RfcConnectionInvalid/>
+</m:properties>
+</content>
+</entry>
+<entry>
+<id>http://DMR-SAP-A02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/MigrationProjectSet('5ZmuBFlp7%7B66ZHfvqJFfyG')</id>
+<title type="text">MigrationProjectSet('5ZmuBFlp7%7B66ZHfvqJFfyG')</title>
+<updated>2026-09-08T19:56:55Z</updated>
+<category term="MCCockpit.MigrationProject" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B66ZHfvqJFfyG')" rel="edit" title="MigrationProject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B66ZHfvqJFfyG')/to_ActivityTrack" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityTrack" type="application/atom+xml;type=feed" title="to_ActivityTrack"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B66ZHfvqJFfyG')/to_TaskOverview" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskOverview" type="application/atom+xml;type=feed" title="to_TaskOverview"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B66ZHfvqJFfyG')/to_CompanyCode" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_CompanyCode" type="application/atom+xml;type=feed" title="to_CompanyCode"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B66ZHfvqJFfyG')/to_MigrationObjects" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjects" type="application/atom+xml;type=feed" title="to_MigrationObjects"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B66ZHfvqJFfyG')/to_Task" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Task" type="application/atom+xml;type=feed" title="to_Task"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B66ZHfvqJFfyG')/to_ActivityMonitorDetail" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorDetail" type="application/atom+xml;type=feed" title="to_ActivityMonitorDetail"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B66ZHfvqJFfyG')/to_MigrationObjectJob" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjectJob" type="application/atom+xml;type=feed" title="to_MigrationObjectJob"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B66ZHfvqJFfyG')/to_TaskFile" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskFile" type="application/atom+xml;type=feed" title="to_TaskFile"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B66ZHfvqJFfyG')/to_UpgradeState" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_UpgradeState" type="application/atom+xml;type=feed" title="to_UpgradeState"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B66ZHfvqJFfyG')/to_TaskProcessing" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskProcessing" type="application/atom+xml;type=feed" title="to_TaskProcessing"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B66ZHfvqJFfyG')/to_AvailableTask" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableTask" type="application/atom+xml;type=feed" title="to_AvailableTask"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B66ZHfvqJFfyG')/to_InprocessObject" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InprocessObject" type="application/atom+xml;type=feed" title="to_InprocessObject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B66ZHfvqJFfyG')/to_History" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_History" type="application/atom+xml;type=feed" title="to_History"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B66ZHfvqJFfyG')/to_ActivityMonitor" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitor" type="application/atom+xml;type=feed" title="to_ActivityMonitor"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B66ZHfvqJFfyG')/to_JobInfo" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_JobInfo" type="application/atom+xml;type=entry" title="to_JobInfo"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B66ZHfvqJFfyG')/to_ActivityMonitorFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorFilter" type="application/atom+xml;type=feed" title="to_ActivityMonitorFilter"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B66ZHfvqJFfyG')/to_ScenarioFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ScenarioFilter" type="application/atom+xml;type=feed" title="to_ScenarioFilter"/>
+<content type="application/xml">
+<m:properties xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+<d:MigrationProjectUUID>5ZmuBFlp7{66ZHfvqJFfyG</d:MigrationProjectUUID>
+<d:MigrationScenarioUUID>DEFAULT</d:MigrationScenarioUUID>
+<d:MigrationScenario>Default Scenario</d:MigrationScenario>
+<d:MigrationApproachUUID>STAGING</d:MigrationApproachUUID>
+<d:MigrationApproach>Migrate Data Using Staging Tables</d:MigrationApproach>
+<d:MigrationProjectMTID/>
+<d:MigrationProjectName>ZSKP_HISTORICAL_DATALOAD</d:MigrationProjectName>
+<d:CreateBy>AKANAMUKKALA</d:CreateBy>
+<d:CreatedAt>2026-03-05T07:56:34</d:CreatedAt>
+<d:ConnectionTypeName>Database Connection</d:ConnectionTypeName>
+<d:MigrationProjectStatusUUID>P</d:MigrationProjectStatusUUID>
+<d:MigrationProjectStatus>In Process</d:MigrationProjectStatus>
+<d:MigrationObjectCount>2</d:MigrationObjectCount>
+<d:BatchTrigger/>
+<d:ConnectionUUID>DEFA0000000000000000000000000000</d:ConnectionUUID>
+<d:ConnectionDescr>LOCAL</d:ConnectionDescr>
+<d:ConnectionName>DEFAULT</d:ConnectionName>
+<d:RetentionStart m:null="true"/>
+<d:RetentionDays>0</d:RetentionDays>
+<d:MigrationProjectTechName/>
+<d:MigrationProjectTempID/>
+<d:RetentionMessage/>
+<d:NumofUsedJob>0</d:NumofUsedJob>
+<d:NumofAvailableJob>0</d:NumofAvailableJob>
+<d:NumBackgroundJob>0</d:NumBackgroundJob>
+<d:ActiveViewName/>
+<d:IsViewEditable>false</d:IsViewEditable>
+<d:ActiveViewDescription/>
+<d:DevelopmentClass/>
+<d:IsDBConLost>false</d:IsDBConLost>
+<d:RfcConnectionInvalid/>
+</m:properties>
+</content>
+</entry>
+<entry>
+<id>http://DMR-SAP-A02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/MigrationProjectSet('5ZmuBFlp7%7B62W2570a%7B5Im')</id>
+<title type="text">MigrationProjectSet('5ZmuBFlp7%7B62W2570a%7B5Im')</title>
+<updated>2026-09-08T19:56:55Z</updated>
+<category term="MCCockpit.MigrationProject" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B62W2570a%7B5Im')" rel="edit" title="MigrationProject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B62W2570a%7B5Im')/to_ActivityTrack" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityTrack" type="application/atom+xml;type=feed" title="to_ActivityTrack"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B62W2570a%7B5Im')/to_TaskOverview" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskOverview" type="application/atom+xml;type=feed" title="to_TaskOverview"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B62W2570a%7B5Im')/to_CompanyCode" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_CompanyCode" type="application/atom+xml;type=feed" title="to_CompanyCode"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B62W2570a%7B5Im')/to_MigrationObjects" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjects" type="application/atom+xml;type=feed" title="to_MigrationObjects"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B62W2570a%7B5Im')/to_Task" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Task" type="application/atom+xml;type=feed" title="to_Task"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B62W2570a%7B5Im')/to_ActivityMonitorDetail" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorDetail" type="application/atom+xml;type=feed" title="to_ActivityMonitorDetail"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B62W2570a%7B5Im')/to_MigrationObjectJob" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationObjectJob" type="application/atom+xml;type=feed" title="to_MigrationObjectJob"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B62W2570a%7B5Im')/to_TaskFile" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskFile" type="application/atom+xml;type=feed" title="to_TaskFile"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B62W2570a%7B5Im')/to_UpgradeState" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_UpgradeState" type="application/atom+xml;type=feed" title="to_UpgradeState"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B62W2570a%7B5Im')/to_TaskProcessing" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskProcessing" type="application/atom+xml;type=feed" title="to_TaskProcessing"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B62W2570a%7B5Im')/to_AvailableTask" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableTask" type="application/atom+xml;type=feed" title="to_AvailableTask"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B62W2570a%7B5Im')/to_InprocessObject" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InprocessObject" type="application/atom+xml;type=feed" title="to_InprocessObject"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B62W2570a%7B5Im')/to_History" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_History" type="application/atom+xml;type=feed" title="to_History"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B62W2570a%7B5Im')/to_ActivityMonitor" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitor" type="application/atom+xml;type=feed" title="to_ActivityMonitor"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B62W2570a%7B5Im')/to_JobInfo" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_JobInfo" type="application/atom+xml;type=entry" title="to_JobInfo"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B62W2570a%7B5Im')/to_ActivityMonitorFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ActivityMonitorFilter" type="application/atom+xml;type=feed" title="to_ActivityMonitorFilter"/>
+<link href="MigrationProjectSet('5ZmuBFlp7%7B62W2570a%7B5Im')/to_ScenarioFilter" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ScenarioFilter" type="application/atom+xml;type=feed" title="to_ScenarioFilter"/>
+<content type="application/xml">
+<m:properties xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+<d:MigrationProjectUUID>5ZmuBFlp7{62W2570a{5Im</d:MigrationProjectUUID>
+<d:MigrationScenarioUUID>DEFAULT</d:MigrationScenarioUUID>
+<d:MigrationScenario>Default Scenario</d:MigrationScenario>
+<d:MigrationApproachUUID>STAGING</d:MigrationApproachUUID>
+<d:MigrationApproach>Migrate Data Using Staging Tables</d:MigrationApproach>
+<d:MigrationProjectMTID/>
+<d:MigrationProjectName>ZTEST_PROJ</d:MigrationProjectName>
+<d:CreateBy>PSHARMA</d:CreateBy>
+<d:CreatedAt>2026-02-12T10:53:21</d:CreatedAt>
+<d:ConnectionTypeName>Database Connection</d:ConnectionTypeName>
+<d:MigrationProjectStatusUUID>P</d:MigrationProjectStatusUUID>
+<d:MigrationProjectStatus>In Process</d:MigrationProjectStatus>
+<d:MigrationObjectCount>6</d:MigrationObjectCount>
+<d:BatchTrigger/>
+<d:ConnectionUUID>DEFA0000000000000000000000000000</d:ConnectionUUID>
+<d:ConnectionDescr>LOCAL</d:ConnectionDescr>
+<d:ConnectionName>DEFAULT</d:ConnectionName>
+<d:RetentionStart m:null="true"/>
+<d:RetentionDays>0</d:RetentionDays>
+<d:MigrationProjectTechName/>
+<d:MigrationProjectTempID/>
+<d:RetentionMessage/>
+<d:NumofUsedJob>0</d:NumofUsedJob>
+<d:NumofAvailableJob>0</d:NumofAvailableJob>
+<d:NumBackgroundJob>0</d:NumBackgroundJob>
+<d:ActiveViewName/>
+<d:IsViewEditable>false</d:IsViewEditable>
+<d:ActiveViewDescription/>
+<d:DevelopmentClass/>
+<d:IsDBConLost>false</d:IsDBConLost>
+<d:RfcConnectionInvalid/>
+</m:properties>
+</content>
+</entry>
+</feed>

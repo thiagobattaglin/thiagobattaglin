@@ -1,0 +1,246 @@
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xml:base="http://DMR-SAP-A02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/">
+<id>http://DMR-SAP-A02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/MigrationProjectSet('5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_MigrationObjects</id>
+<title type="text">MigrationObjectSet</title>
+<updated>2026-09-08T20:11:40Z</updated>
+<author>
+<name/>
+</author>
+<link href="MigrationProjectSet('5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_MigrationObjects" rel="self" title="MigrationObjectSet"/>
+<entry>
+<id>http://DMR-SAP-A02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')</id>
+<title type="text">MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')</title>
+<updated>2026-09-08T20:11:40Z</updated>
+<category term="MCCockpit.MigrationObject" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')" rel="edit" title="MigrationObject"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_StagingOverview" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_StagingOverview" type="application/atom+xml;type=feed" title="to_StagingOverview"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_TaskOverview" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskOverview" type="application/atom+xml;type=feed" title="to_TaskOverview"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_History" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_History" type="application/atom+xml;type=feed" title="to_History"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_InUse" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InUse" type="application/atom+xml;type=feed" title="to_InUse"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_Columns" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Columns" type="application/atom+xml;type=feed" title="to_Columns"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_PieChart" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_PieChart" type="application/atom+xml;type=feed" title="to_PieChart"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_Task" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Task" type="application/atom+xml;type=feed" title="to_Task"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_TableStructure" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TableStructure" type="application/atom+xml;type=feed" title="to_TableStructure"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_MigrationInstance" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationInstance" type="application/atom+xml;type=feed" title="to_MigrationInstance"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_Dependency" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Dependency" type="application/atom+xml;type=feed" title="to_Dependency"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_Source" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Source" type="application/atom+xml;type=feed" title="to_Source"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_Description" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Description" type="application/atom+xml;type=feed" title="to_Description"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_InstanceMeta" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InstanceMeta" type="application/atom+xml;type=feed" title="to_InstanceMeta"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_InstanceBulkAction" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InstanceBulkAction" type="application/atom+xml;type=feed" title="to_InstanceBulkAction"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_File" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_File" type="application/atom+xml;type=feed" title="to_File"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_FileCount" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_FileCount" type="application/atom+xml;type=entry" title="to_FileCount"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_CSVBundle" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_CSVBundle" type="application/atom+xml;type=feed" title="to_CSVBundle"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_AvailableDownloadMessageFields" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableDownloadMessageFields" type="application/atom+xml;type=feed" title="to_AvailableDownloadMessageFields"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_AvailableDownloadInstanceFields" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableDownloadInstanceFields" type="application/atom+xml;type=feed" title="to_AvailableDownloadInstanceFields"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_GroupIndicator" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_GroupIndicator" type="application/atom+xml;type=feed" title="to_GroupIndicator"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_Correction" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Correction" type="application/atom+xml;type=feed" title="to_Correction"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_AvailableTask" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableTask" type="application/atom+xml;type=feed" title="to_AvailableTask"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_ViewList" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ViewList" type="application/atom+xml;type=feed" title="to_ViewList"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_CurrentView" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_CurrentView" type="application/atom+xml;type=entry" title="to_CurrentView"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_IndProcess" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_IndProcess" type="application/atom+xml;type=feed" title="to_IndProcess"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7oMY7pKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_IndProcessLane" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_IndProcessLane" type="application/atom+xml;type=feed" title="to_IndProcessLane"/>
+<content type="application/xml">
+<m:properties xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+<d:MigrationObjectUUID>5ZmuBFlp7z6Ze7oMY7pKj0</d:MigrationObjectUUID>
+<d:MigrationProjectUUID>5ZmuBFlp7z6Ze7Z6{HFqj0</d:MigrationProjectUUID>
+<d:MigrationObjectActiveStatusUUID>A</d:MigrationObjectActiveStatusUUID>
+<d:MigrationObjectActiveStatus>A</d:MigrationObjectActiveStatus>
+<d:MigrationObjectName>MM - Purchase order (only open PO)</d:MigrationObjectName>
+<d:NotMigratedCount>0</d:NotMigratedCount>
+<d:SelectionCount>0</d:SelectionCount>
+<d:OpenTaskCount>1</d:OpenTaskCount>
+<d:ConfirmedTaskCount>0</d:ConfirmedTaskCount>
+<d:ErrorTaskCount>0</d:ErrorTaskCount>
+<d:SimulationSuccessCount>0</d:SimulationSuccessCount>
+<d:SimulationErrorCount>0</d:SimulationErrorCount>
+<d:SimulationNotAvailable>false</d:SimulationNotAvailable>
+<d:IsCopied>true</d:IsCopied>
+<d:MigrationSuccessCount>0</d:MigrationSuccessCount>
+<d:MigrationErrorCount>0</d:MigrationErrorCount>
+<d:MigrationObjectStatus/>
+<d:DocumentId/>
+<d:DocumentURL/>
+<d:NumOfDependencies>0</d:NumOfDependencies>
+<d:NumOfInUse>0</d:NumOfInUse>
+<d:NumOfPredecessor>1</d:NumOfPredecessor>
+<d:DefaultAction>T</d:DefaultAction>
+<d:MigrationObjectTechName/>
+<d:MigrationObjectTempID/>
+<d:NumOfStagingTable>9</d:NumOfStagingTable>
+<d:NumBackgroundJob>1</d:NumBackgroundJob>
+<d:UpgradeState/>
+<d:InprocessCount>0</d:InprocessCount>
+<d:ExcludeCount>0</d:ExcludeCount>
+<d:MigrationObjectLatestEvent/>
+<d:PartlymigCount>0</d:PartlymigCount>
+<d:HasMultSteps>false</d:HasMultSteps>
+<d:LifeCycleText/>
+<d:PrepareMappingErrorCount>0</d:PrepareMappingErrorCount>
+<d:PrepareMappingNotProcessedCount>0</d:PrepareMappingNotProcessedCount>
+<d:PrepareMappingAvailable>false</d:PrepareMappingAvailable>
+<d:FinalSteps/>
+<d:NonFinalSteps/>
+<d:PreliminaryOpenTaskCount>1</d:PreliminaryOpenTaskCount>
+<d:SuccessorObjectUUID/>
+<d:LatestEventStatus/>
+</m:properties>
+</content>
+</entry>
+<entry>
+<id>http://DMR-SAP-A02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7aI07Fqj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')</id>
+<title type="text">MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7aI07Fqj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')</title>
+<updated>2026-09-08T20:11:40Z</updated>
+<category term="MCCockpit.MigrationObject" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7aI07Fqj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')" rel="edit" title="MigrationObject"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7aI07Fqj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_StagingOverview" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_StagingOverview" type="application/atom+xml;type=feed" title="to_StagingOverview"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7aI07Fqj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_TaskOverview" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskOverview" type="application/atom+xml;type=feed" title="to_TaskOverview"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7aI07Fqj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_History" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_History" type="application/atom+xml;type=feed" title="to_History"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7aI07Fqj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_InUse" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InUse" type="application/atom+xml;type=feed" title="to_InUse"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7aI07Fqj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_Columns" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Columns" type="application/atom+xml;type=feed" title="to_Columns"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7aI07Fqj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_PieChart" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_PieChart" type="application/atom+xml;type=feed" title="to_PieChart"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7aI07Fqj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_Task" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Task" type="application/atom+xml;type=feed" title="to_Task"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7aI07Fqj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_TableStructure" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TableStructure" type="application/atom+xml;type=feed" title="to_TableStructure"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7aI07Fqj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_MigrationInstance" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationInstance" type="application/atom+xml;type=feed" title="to_MigrationInstance"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7aI07Fqj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_Dependency" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Dependency" type="application/atom+xml;type=feed" title="to_Dependency"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7aI07Fqj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_Source" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Source" type="application/atom+xml;type=feed" title="to_Source"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7aI07Fqj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_Description" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Description" type="application/atom+xml;type=feed" title="to_Description"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7aI07Fqj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_InstanceMeta" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InstanceMeta" type="application/atom+xml;type=feed" title="to_InstanceMeta"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7aI07Fqj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_InstanceBulkAction" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InstanceBulkAction" type="application/atom+xml;type=feed" title="to_InstanceBulkAction"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7aI07Fqj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_File" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_File" type="application/atom+xml;type=feed" title="to_File"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7aI07Fqj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_FileCount" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_FileCount" type="application/atom+xml;type=entry" title="to_FileCount"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7aI07Fqj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_CSVBundle" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_CSVBundle" type="application/atom+xml;type=feed" title="to_CSVBundle"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7aI07Fqj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_AvailableDownloadMessageFields" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableDownloadMessageFields" type="application/atom+xml;type=feed" title="to_AvailableDownloadMessageFields"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7aI07Fqj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_AvailableDownloadInstanceFields" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableDownloadInstanceFields" type="application/atom+xml;type=feed" title="to_AvailableDownloadInstanceFields"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7aI07Fqj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_GroupIndicator" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_GroupIndicator" type="application/atom+xml;type=feed" title="to_GroupIndicator"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7aI07Fqj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_Correction" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Correction" type="application/atom+xml;type=feed" title="to_Correction"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7aI07Fqj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_AvailableTask" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableTask" type="application/atom+xml;type=feed" title="to_AvailableTask"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7aI07Fqj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_ViewList" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ViewList" type="application/atom+xml;type=feed" title="to_ViewList"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7aI07Fqj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_CurrentView" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_CurrentView" type="application/atom+xml;type=entry" title="to_CurrentView"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7aI07Fqj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_IndProcess" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_IndProcess" type="application/atom+xml;type=feed" title="to_IndProcess"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze7aI07Fqj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_IndProcessLane" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_IndProcessLane" type="application/atom+xml;type=feed" title="to_IndProcessLane"/>
+<content type="application/xml">
+<m:properties xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+<d:MigrationObjectUUID>5ZmuBFlp7z6Ze7aI07Fqj0</d:MigrationObjectUUID>
+<d:MigrationProjectUUID>5ZmuBFlp7z6Ze7Z6{HFqj0</d:MigrationProjectUUID>
+<d:MigrationObjectActiveStatusUUID>A</d:MigrationObjectActiveStatusUUID>
+<d:MigrationObjectActiveStatus>A</d:MigrationObjectActiveStatus>
+<d:MigrationObjectName>PP - Production order (only open PO)</d:MigrationObjectName>
+<d:NotMigratedCount>0</d:NotMigratedCount>
+<d:SelectionCount>0</d:SelectionCount>
+<d:OpenTaskCount>0</d:OpenTaskCount>
+<d:ConfirmedTaskCount>0</d:ConfirmedTaskCount>
+<d:ErrorTaskCount>0</d:ErrorTaskCount>
+<d:SimulationSuccessCount>0</d:SimulationSuccessCount>
+<d:SimulationErrorCount>0</d:SimulationErrorCount>
+<d:SimulationNotAvailable>false</d:SimulationNotAvailable>
+<d:IsCopied>true</d:IsCopied>
+<d:MigrationSuccessCount>0</d:MigrationSuccessCount>
+<d:MigrationErrorCount>0</d:MigrationErrorCount>
+<d:MigrationObjectStatus/>
+<d:DocumentId/>
+<d:DocumentURL/>
+<d:NumOfDependencies>0</d:NumOfDependencies>
+<d:NumOfInUse>0</d:NumOfInUse>
+<d:NumOfPredecessor>1</d:NumOfPredecessor>
+<d:DefaultAction>D</d:DefaultAction>
+<d:MigrationObjectTechName/>
+<d:MigrationObjectTempID/>
+<d:NumOfStagingTable>1</d:NumOfStagingTable>
+<d:NumBackgroundJob>1</d:NumBackgroundJob>
+<d:UpgradeState/>
+<d:InprocessCount>0</d:InprocessCount>
+<d:ExcludeCount>0</d:ExcludeCount>
+<d:MigrationObjectLatestEvent/>
+<d:PartlymigCount>0</d:PartlymigCount>
+<d:HasMultSteps>false</d:HasMultSteps>
+<d:LifeCycleText/>
+<d:PrepareMappingErrorCount>0</d:PrepareMappingErrorCount>
+<d:PrepareMappingNotProcessedCount>0</d:PrepareMappingNotProcessedCount>
+<d:PrepareMappingAvailable>false</d:PrepareMappingAvailable>
+<d:FinalSteps/>
+<d:NonFinalSteps/>
+<d:PreliminaryOpenTaskCount>0</d:PreliminaryOpenTaskCount>
+<d:SuccessorObjectUUID/>
+<d:LatestEventStatus/>
+</m:properties>
+</content>
+</entry>
+<entry>
+<id>http://DMR-SAP-A02.dmroffice.com:8000/sap/opu/odata/LTB/MIG_MC_ODATA_SRV/MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze85VwhMKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')</id>
+<title type="text">MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze85VwhMKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')</title>
+<updated>2026-09-08T20:11:40Z</updated>
+<category term="MCCockpit.MigrationObject" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze85VwhMKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')" rel="edit" title="MigrationObject"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze85VwhMKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_StagingOverview" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_StagingOverview" type="application/atom+xml;type=feed" title="to_StagingOverview"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze85VwhMKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_TaskOverview" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TaskOverview" type="application/atom+xml;type=feed" title="to_TaskOverview"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze85VwhMKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_History" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_History" type="application/atom+xml;type=feed" title="to_History"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze85VwhMKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_InUse" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InUse" type="application/atom+xml;type=feed" title="to_InUse"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze85VwhMKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_Columns" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Columns" type="application/atom+xml;type=feed" title="to_Columns"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze85VwhMKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_PieChart" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_PieChart" type="application/atom+xml;type=feed" title="to_PieChart"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze85VwhMKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_Task" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Task" type="application/atom+xml;type=feed" title="to_Task"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze85VwhMKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_TableStructure" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_TableStructure" type="application/atom+xml;type=feed" title="to_TableStructure"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze85VwhMKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_MigrationInstance" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_MigrationInstance" type="application/atom+xml;type=feed" title="to_MigrationInstance"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze85VwhMKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_Dependency" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Dependency" type="application/atom+xml;type=feed" title="to_Dependency"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze85VwhMKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_Source" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Source" type="application/atom+xml;type=feed" title="to_Source"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze85VwhMKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_Description" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Description" type="application/atom+xml;type=feed" title="to_Description"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze85VwhMKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_InstanceMeta" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InstanceMeta" type="application/atom+xml;type=feed" title="to_InstanceMeta"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze85VwhMKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_InstanceBulkAction" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_InstanceBulkAction" type="application/atom+xml;type=feed" title="to_InstanceBulkAction"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze85VwhMKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_File" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_File" type="application/atom+xml;type=feed" title="to_File"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze85VwhMKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_FileCount" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_FileCount" type="application/atom+xml;type=entry" title="to_FileCount"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze85VwhMKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_CSVBundle" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_CSVBundle" type="application/atom+xml;type=feed" title="to_CSVBundle"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze85VwhMKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_AvailableDownloadMessageFields" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableDownloadMessageFields" type="application/atom+xml;type=feed" title="to_AvailableDownloadMessageFields"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze85VwhMKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_AvailableDownloadInstanceFields" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableDownloadInstanceFields" type="application/atom+xml;type=feed" title="to_AvailableDownloadInstanceFields"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze85VwhMKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_GroupIndicator" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_GroupIndicator" type="application/atom+xml;type=feed" title="to_GroupIndicator"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze85VwhMKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_Correction" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_Correction" type="application/atom+xml;type=feed" title="to_Correction"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze85VwhMKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_AvailableTask" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_AvailableTask" type="application/atom+xml;type=feed" title="to_AvailableTask"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze85VwhMKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_ViewList" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_ViewList" type="application/atom+xml;type=feed" title="to_ViewList"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze85VwhMKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_CurrentView" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_CurrentView" type="application/atom+xml;type=entry" title="to_CurrentView"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze85VwhMKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_IndProcess" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_IndProcess" type="application/atom+xml;type=feed" title="to_IndProcess"/>
+<link href="MigrationObjectSet(MigrationObjectUUID='5ZmuBFlp7z6Ze85VwhMKj0',MigrationProjectUUID='5ZmuBFlp7z6Ze7Z6%7BHFqj0')/to_IndProcessLane" rel="http://schemas.microsoft.com/ado/2007/08/dataservices/related/to_IndProcessLane" type="application/atom+xml;type=feed" title="to_IndProcessLane"/>
+<content type="application/xml">
+<m:properties xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+<d:MigrationObjectUUID>5ZmuBFlp7z6Ze85VwhMKj0</d:MigrationObjectUUID>
+<d:MigrationProjectUUID>5ZmuBFlp7z6Ze7Z6{HFqj0</d:MigrationProjectUUID>
+<d:MigrationObjectActiveStatusUUID>A</d:MigrationObjectActiveStatusUUID>
+<d:MigrationObjectActiveStatus>A</d:MigrationObjectActiveStatus>
+<d:MigrationObjectName>SD - Sales order (only open SO)</d:MigrationObjectName>
+<d:NotMigratedCount>0</d:NotMigratedCount>
+<d:SelectionCount>0</d:SelectionCount>
+<d:OpenTaskCount>1</d:OpenTaskCount>
+<d:ConfirmedTaskCount>0</d:ConfirmedTaskCount>
+<d:ErrorTaskCount>0</d:ErrorTaskCount>
+<d:SimulationSuccessCount>0</d:SimulationSuccessCount>
+<d:SimulationErrorCount>0</d:SimulationErrorCount>
+<d:SimulationNotAvailable>false</d:SimulationNotAvailable>
+<d:IsCopied>true</d:IsCopied>
+<d:MigrationSuccessCount>0</d:MigrationSuccessCount>
+<d:MigrationErrorCount>0</d:MigrationErrorCount>
+<d:MigrationObjectStatus/>
+<d:DocumentId/>
+<d:DocumentURL/>
+<d:NumOfDependencies>0</d:NumOfDependencies>
+<d:NumOfInUse>0</d:NumOfInUse>
+<d:NumOfPredecessor>0</d:NumOfPredecessor>
+<d:DefaultAction>T</d:DefaultAction>
+<d:MigrationObjectTechName/>
+<d:MigrationObjectTempID/>
+<d:NumOfStagingTable>8</d:NumOfStagingTable>
+<d:NumBackgroundJob>1</d:NumBackgroundJob>
+<d:UpgradeState/>
+<d:InprocessCount>0</d:InprocessCount>
+<d:ExcludeCount>0</d:ExcludeCount>
+<d:MigrationObjectLatestEvent/>
+<d:PartlymigCount>0</d:PartlymigCount>
+<d:HasMultSteps>false</d:HasMultSteps>
+<d:LifeCycleText/>
+<d:PrepareMappingErrorCount>0</d:PrepareMappingErrorCount>
+<d:PrepareMappingNotProcessedCount>0</d:PrepareMappingNotProcessedCount>
+<d:PrepareMappingAvailable>false</d:PrepareMappingAvailable>
+<d:FinalSteps/>
+<d:NonFinalSteps/>
+<d:PreliminaryOpenTaskCount>1</d:PreliminaryOpenTaskCount>
+<d:SuccessorObjectUUID/>
+<d:LatestEventStatus/>
+</m:properties>
+</content>
+</entry>
+</feed>

@@ -1,0 +1,51 @@
+---
+title: Fluxograma — Syniti Migrate LTMC Load Program (PO em aberto)
+---
+flowchart TD
+    Start([Início: abrir LTMC Load Program]) --> Auth{Usuário autenticado<br/>no SAP?}
+    Auth -- Não --> AuthFail[/Erro 401 — CSRF/SAP Auth/]
+    AuthFail --> End([Fim])
+    Auth -- Sim --> ListProj["GET MigrationProjectSet<br/>Listar projetos LTMC existentes"]
+
+    ListProj --> Exists{Projeto já<br/>existe?}
+    Exists -- Sim --> Select[Selecionar projeto existente]
+    Exists -- Não --> Form[Preencher form:<br/>System, Env, Nome,<br/>Migration Object,<br/>Approach = STAGING]
+
+    Form --> Validate{Nome único<br/>e Env liberado?}
+    Validate -- Não --> Form
+    Validate -- Sim --> Create["POST MigrationProjectSet<br/>changeset CREPROJ"]
+    Create --> CreateOK{201 Created?}
+    CreateOK -- Não --> CreateFail[/Falha CSRF, auth,<br/>upgrade lock ou<br/>nome duplicado/]
+    CreateFail --> Form
+
+    CreateOK -- Sim --> Select
+    Select --> LoadStruct["GET to_MigrationObjects<br/>GET to_TableStructure<br/>9 tabelas: S_EKKO … S_COMP"]
+
+    LoadStruct --> Map["Etapa 2 — ETL Export Task<br/>Mapear PO_EKKO_T → S_EKKO,<br/>PO_EKPO_T → S_EKPO,<br/>PO_EKKN_T → S_EKKN,<br/>PO_EKET_T → S_EKET,<br/>PO_EKKO_ADDR_T → S_ADRC,<br/>PO_TEXT_T → S_EKKO_TEXT"]
+    Map --> Rule[Escolher regra:<br/>Map By Name / Explicit / No Mapping]
+    Rule --> RunExport[Executar Run Export]
+    RunExport --> Export{Todos os<br/>mapeamentos OK?}
+    Export -- Não --> Fix[Corrigir transform / tipo<br/>ex.: PO_EKET_T Error]
+    Fix --> RunExport
+    Export -- Sim --> Staged["Staging carregado<br/>~5.847 headers / 54.939 linhas"]
+
+    Staged --> Monitor[Etapa 3 — Run & Monitor]
+    Monitor --> Parallel["POST SetParallelJobs<br/>NumBackgroundJob = 4"]
+    Parallel --> ModeCheck{Execution Mode}
+    ModeCheck -- Simulation --> SimStart["POST Simulation<br/>MO_SIMULATION_TRANSACTION"]
+    ModeCheck -- Production --> ProdStart["POST StartMigration<br/>MO_MIGRATION_TRANSACTION"]
+
+    SimStart --> Poll[Polling:<br/>to_TaskProcessing,<br/>ActivityMonitorSet,<br/>ApplicationLogSet]
+    ProdStart --> Poll
+
+    Poll --> Progress{Job concluído?}
+    Progress -- Ainda em execução --> Poll
+    Progress -- Sim --> Result{Erros de linha?}
+    Result -- Sim --> Analyze["Analisar Application Log<br/>ex.: Vendor V-ABC003 not found"]
+    Analyze --> Action{Corrigir e reprocessar?}
+    Action -- Sim --> Fix
+    Action -- Não --> Readback
+
+    Result -- Não --> Readback["GET MigrationInstanceSet<br/>Readback: Legacy PO# → New EBELN"]
+    Readback --> ShowResult[/Tabela "Load Results — PO Readback"/]
+    ShowResult --> End

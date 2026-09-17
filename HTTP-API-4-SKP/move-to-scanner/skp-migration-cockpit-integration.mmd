@@ -1,0 +1,19 @@
+flowchart LR
+    SKP["SKP<br/>catalog + orchestrator"]
+    subgraph MC["Migration Cockpit S/4HANA (LTB/LTMC)"]
+        OD["OData /LTB/MIG_MC_ODATA_SRV"]
+        FW["LTB Framework<br/>SetParallelJobs + MigrationInstance + Background Jobs"]
+        STG[("Staging Tables /1LT/DSSxxxx")]
+        LOG["ApplicationLog + ActivityMonitor"]
+    end
+    REP["Your replication layer<br/>Working DB -> Staging"]
+    SAP[("SAP Documents<br/>EKKO EKPO VBAK VBAP ...")]
+
+    SKP -->|"1. GET metadata<br/>Project/Object/Table/Columns"| OD
+    REP -->|"2. loads staging"| STG
+    SKP -->|"3. POST SetParallelJobs<br/>+ POST migration action"| OD
+    OD --> FW
+    FW --> STG
+    FW -->|"Bulk EML/BAPI"| SAP
+    FW --> LOG
+    SKP -->|"4. polling status<br/>ActivityMonitor + ApplicationLog"| OD

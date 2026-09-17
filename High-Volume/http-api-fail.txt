@@ -1,0 +1,60 @@
+RESUMO — Limitacoes do HTTP API atual para alto volume (BAPI Integration v1.1)
+
+CONTEXTO
+Projeto: http-api-metadata-v1.1 (zcl_http_bapi_integration + zcl_bapi_integration_dispatch).
+Endpoint HTTP com GET (metadata da BAPI) e POST (executa BAPI para N documentos em paralelo
+via cl_abap_parallel, com particionamento em workers baseado em worker_rows/worker_threads).
+
+CENARIO AVALIADO
+1 milhao de documentos, divididos em chamadas de 10 mil documentos cada.
+
+PROBLEMA 1 — Tamanho do payload
+- request->get_text() carrega o body inteiro em uma unica string antes de qualquer processamento.
+- xco_cp_json->from_string() monta uma DOM tree (2-4x o tamanho do texto).
+- Materializacao da estrutura ABAP (documents[]) soma mais copias.
+- Pico estimado: 500MB-1GB de memoria por chamada HTTP para 10k documentos.
+- Risco: TSV_TNEW_PAGE_ALLOC_FAILED, estouro de abap/heap_area_dia e em/max_size_MB.
+
+PROBLEMA 2 — Volume total de documentos
+- 1M documentos geram pressao sobre banco de dados, work processes, filas RFC/tRFC,
+  numeracao de documentos e locks, mesmo que cada chamada individual seja aceita.
+- Sem streaming real disponivel na plataforma (if_web_http_request e xco_cp_json nao
+  expoem parsing incremental/SAX); nao ha alternativa nativa de ND-JSON.
+
+PROBLEMA 3 — Chamadas simultaneas
+- mode=sync bloqueia a thread HTTP em cl_abap_parallel->run_inst ate todos os workers
+  terminarem; risco alto de estourar rdisp/max_wprun_time (timeout quase garantido).
+- mode=async retorna 202 rapido (tRFC via CALL FUNCTION IN BACKGROUND TASK + COMMIT WORK),
+  mas nao elimina o parse/serializacao pesados na thread HTTP antes do commit.
+- Multiplas chamadas concorrentes de 10k docs saturam o server group RFC (RZ12),
+  a fila SM58/ARFCSSTATE-ARFCSDATA, e podem gerar contencao de locks (EKKO/EBAN etc.).
+- Sem backpressure: nao ha mecanismo para rejeitar/adiar chamadas quando o sistema
+  esta sob carga (nao ha 429/503 nem controle de fila).
+
+ARQUITETURA RECOMENDADA (Staging + Worker Pool)
+1. Ingestao: endpoint recebe chunks pequenos (100-500 docs), valida e grava em tabelas
+   de staging (ZSTG_BATCH, ZSTG_DOCUMENT, ZSTG_ITEM), commit imediato, retorna 202 + batch_id.
+2. Staging: guarda status por documento (NEW, IN_PROCESS, DONE, ERROR), payload e chaves
+   de negocio; permite idempotencia, retomada apos falha e reprocessamento seletivo.
+3. Dispatcher: job (SM36 recorrente ou disparo via bgRFC/evento) seleciona documentos NEW,
+   marca IN_PROCESS e distribui em micro-batches para workers controlados.
+4. Workers: paralelismo controlado (cl_abap_parallel ou jobs BTC), executam a BAPI,
+   commitam por documento/micro-batch e atualizam status (DONE/ERROR + mensagens BAPI).
+5. Status API: consulta de lotes e documentos com erro, para monitoramento e reprocessamento.
+
+POR QUE RAP ODATA V4 EM VEZ DE SO HTTP API CUSTOMIZADA
+- RAP + OData V4 entrega de graca: contrato tipado ($metadata), $batch nativo, filtros,
+  paginacao, expand, tratamento padronizado de erros, ETag/concorrencia otimista.
+- Reduz esforco de construir manualmente: validacao de contrato, versionamento, docs de API.
+- Maior aderencia a Clean Core quando as APIs subjacentes (BAPI/CDS) sao released.
+- RAP OData V4 NAO resolve sozinho o volume/timeout: $batch grande tambem consome memoria
+  e mantem a request aberta; async real (bgMC) nao esta released no S/4 2022 on-prem.
+- Uso recomendado do RAP V4: API de ingestao em chunks pequenos + API de status/consulta
+  de lotes e documentos. O processamento pesado continua em staging + workers assincronos.
+
+CONCLUSAO
+O design atual (HTTP API + cl_abap_parallel) funciona para volumes moderados, mas para
+1M+ documentos precisa evoluir para: payloads menores por chamada, staging tables,
+processamento assincrono desacoplado da thread HTTP, workers com paralelismo controlado,
+e uma API RAP OData V4 para ingestao/status — nao para manter a chamada aberta durante
+a criacao dos documentos.

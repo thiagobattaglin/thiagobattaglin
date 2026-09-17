@@ -1,0 +1,54 @@
+flowchart TB
+    subgraph SourcePlane[Migration and Replication Plane]
+        direction LR
+        DB[(Migration Working DB)] --> Source[Replication Source]
+        Source --> Cloud[Cloud Replication]
+        Cloud --> Target[SAP Target Replication]
+    end
+
+    subgraph SAPStaging[SAP Persistent Staging Plane]
+        direction TB
+        Stage[(Typed Object Staging Tables)]
+        Manifest[(Run and Package Manifest)]
+        Queue[(Object Work Queue)]
+        Results[(Object Results and Messages)]
+        Target -->|Bulk replicate business data| Stage
+        Target -->|Publish READY after data and counts| Manifest
+        Manifest -->|Release complete objects| Queue
+    end
+
+    Catalog[SKP Object Catalog] <-->|Metadata| Scanner[Scanner]
+    Scanner <-->|Trigger, status, retry, reconciliation| ControlAPI[RAP OData V4 Control API]
+    ControlAPI -->|Short control transaction only| Manifest
+
+    Scheduler[Background Scheduler or Event] --> Dispatcher[Durable Dispatcher]
+    Manifest -->|Lease READY packages| Dispatcher
+    Dispatcher -->|Apply capacity and backpressure limits| Queue
+
+    subgraph WorkerPool[Bounded Parallel Worker Pool]
+        direction TB
+        Worker1[Worker 1]
+        Worker2[Worker 2]
+        WorkerN[Worker N]
+    end
+
+    Queue -->|Claim object IDs or small ranges| WorkerPool
+    Stage -->|Read complete object by key| WorkerPool
+    WorkerPool --> Adapter[Versioned Object Adapter]
+    Registry[Object Contract and Adapter Registry] --> Adapter
+    Adapter -->|Sales Order, PO, BP, Delivery, Production Order| BusinessAPI[Standard BAPI or Released API]
+    BusinessAPI --> Transaction[Commit or Rollback per Object]
+    Transaction --> Documents[(SAP Business Objects)]
+    Transaction -->|Persist status, SAP key, timings, messages| Results
+    Results -->|Monitoring and selective retry| ControlAPI
+    Results -->|Finalize object and package state| Manifest
+
+    classDef service fill:#ffffff,stroke:#315b7d,color:#111111
+    classDef storage fill:#202124,stroke:#6da9d2,color:#ffffff
+    classDef processing fill:#1f513e,stroke:#71c99a,color:#ffffff
+    classDef transaction fill:#5c4814,stroke:#d6b75c,color:#ffffff
+
+    class Source,Cloud,Target,Catalog,Scanner,ControlAPI,Scheduler,Registry service
+    class DB,Stage,Manifest,Queue,Results,Documents storage
+    class Dispatcher,Worker1,Worker2,WorkerN,Adapter,BusinessAPI processing
+    class Transaction transaction

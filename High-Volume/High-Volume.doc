@@ -1,0 +1,1056 @@
+Date: Thu, 3 Sep 2026 19:43:16 +0000 (UTC)
+Message-ID: <2031121272.27.1788464596457@2ba981281660>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_26_115122367.1788464596457"
+
+------=_Part_26_115122367.1788464596457
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>High-Volume SAP Sales Order Loading Architecture from SKP Using =
+BAPI Processing</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>High-Volume SAP Sales Order Loading Architecture from SKP Using BAP=
+I Processing</h1>
+    <div class=3D"Section1">
+        <h1 local-id=3D"5f7aa483" id=3D"High-VolumeSAPSalesOrderLoadingArch=
+itecturefromSKPUsingBAPIProcessing-High-VolumeSAPBusinessObjectLoadingfromS=
+KP">High-Volume SAP Business Object Loading from SKP</h1>
+<p local-id=3D"43774598"><em>Status:</em> Target-State Architecture Proposa=
+l</p>
+<p local-id=3D"4aa89226"><em>Primary example:</em> Sales orders using <code=
+>BAPI_SALESORDER_CREATEFROMDAT2</code></p>
+<p local-id=3D"4fafeed6"><em>Reusable scope:</em> Purchase orders, deliveri=
+es, business partners, production orders, and other SAP business objects</p=
+>
+<div class=3D"confluence-information-macro confluence-information-macro-inf=
+ormation">
+<span class=3D"aui-icon aui-icon-small aui-iconfont-info confluence-informa=
+tion-macro-icon"></span>
+<div class=3D"confluence-information-macro-body">
+<p local-id=3D"5192ec8b"><strong>Executive decision</strong></p>
+<p local-id=3D"0a68d923">Build a reusable SKP SAP Business Object Loader th=
+at stages migration-ready data in SAP-like relational tables, packages each=
+ complete business object into an immutable chunk, invokes one typed RFC pe=
+r chunk, and returns SAP keys and <code>BAPIRET2</code> messages with full =
+auditability.</p>
+</div>
+</div>
+<h2 local-id=3D"7b5d16bf" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-ExecutiveSummary">Executive Summary</h2>
+<p local-id=3D"2f48d810">The recommended architecture preserves standard SA=
+P business logic while removing unnecessary migration-framework overhead. I=
+t uses flat collections passed together in a single chunk package rather th=
+an nested JSON as the primary transport.</p>
+<h3 local-id=3D"64d0840e" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-Recommendedapproach">Recommended approach</h3>
+<ol start=3D"1" local-id=3D"02a67e2d">
+<li local-id=3D"716a8dfe">
+<p local-id=3D"08e449fb">SKP stores migration-ready data in SAP-like relati=
+onal tables.</p></li>
+<li local-id=3D"6c4962c4">
+<p local-id=3D"7c6d20a1">A manifest identifies one complete, immutable busi=
+ness-object chunk.</p></li>
+<li local-id=3D"3b928d89">
+<p local-id=3D"4f905c3c">Replicate reads every table belonging to that chun=
+k.</p></li>
+<li local-id=3D"4718dea0">
+<p local-id=3D"291f1886">Replicate makes one typed RFC invocation per chunk=
+, passing the tables as separate flat collections.</p></li>
+<li local-id=3D"1815c717">
+<p local-id=3D"66d1f7a1">A custom ABAP wrapper reconstructs each business o=
+bject, executes the standard BAPI, commits or rolls back at the individual-=
+object boundary, and returns generated SAP keys plus <code>BAPIRET2</code> =
+messages.</p></li>
+<li local-id=3D"4c45d726">
+<p local-id=3D"3539b7ac">Replicate writes results back to SKP result and me=
+ssage tables.</p></li>
+<li local-id=3D"34fd17e9">
+<p local-id=3D"4269f00e">Replicate and SAP jointly enforce a bounded parall=
+el-processing budget.</p></li>
+</ol>
+<div class=3D"table-wrap">
+<table data-layout=3D"default" data-local-id=3D"476564af" data-table-displa=
+y-mode=3D"default" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"2171301a">
+<th data-local-id=3D"394e6c9b" valign=3D"top" class=3D"confluenceTh">
+<p local-id=3D"5b178124">Area</p></th>
+<th data-local-id=3D"577667ba" valign=3D"top" class=3D"confluenceTh">
+<p local-id=3D"00b22152">Recommendation</p></th>
+</tr>
+<tr data-local-id=3D"102cf43b">
+<td data-local-id=3D"3c4e50c1" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"73ffcd15">Transport</p></td>
+<td data-local-id=3D"0e9db82f" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"4ba4da8f">RFC with multiple table parameters</p></td>
+</tr>
+<tr data-local-id=3D"5d652795">
+<td data-local-id=3D"604f73bb" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"4c71a59b">Transaction boundary</p></td>
+<td data-local-id=3D"27e55ed6" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"0e59fc25">One SAP business object per commit</p></td>
+</tr>
+<tr data-local-id=3D"177083c4">
+<td data-local-id=3D"2a535348" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"03b677e2">Parallelization</p></td>
+<td data-local-id=3D"434fd95c" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"4cd5b0b0">Independent chunks with bounded concurrency</p></t=
+d>
+</tr>
+<tr data-local-id=3D"0cc33f55">
+<td data-local-id=3D"60fca3e3" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"6a08a031">Recovery</p></td>
+<td data-local-id=3D"24e9afb8" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"5ef420f9">Idempotent retry using immutable correlation keys<=
+/p></td>
+</tr>
+<tr data-local-id=3D"4a319412">
+<td data-local-id=3D"32a8f155" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"3cc56637">Monitoring</p></td>
+<td data-local-id=3D"4e4244d4" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"7946292c">Result and message tables with full auditability</=
+p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 local-id=3D"4e3113cd" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-WhyaNewLoadPathIsNeeded">Why a New Load Path Is =
+Needed</h2>
+<p local-id=3D"7f57b82f">Traditional SAP migration technologies introduce a=
+dditional layers that can reduce throughput:</p>
+<ul local-id=3D"043843e0">
+<li local-id=3D"0f452d06">
+<p local-id=3D"3cacae30">LSMW</p></li>
+<li local-id=3D"005a0917">
+<p local-id=3D"19297f3c">LTMC</p></li>
+<li local-id=3D"6de31c2f">
+<p local-id=3D"542de7ea">Migration Cockpit</p></li>
+<li local-id=3D"1da771fe">
+<p local-id=3D"21191f1a">File-based migration objects</p></li>
+<li local-id=3D"57906733">
+<p local-id=3D"4d2df4ab">Generic IDoc processing</p></li>
+</ul>
+<p local-id=3D"1cba972b">The target scale includes <strong>500,000+ sales o=
+rders</strong>, millions of line items, and tens of millions of schedule li=
+nes. At this scale, bottlenecks are often caused by migration-framework ove=
+rhead, file handling, serialization, single-threaded execution, and generic=
+ object processing.</p>
+<div class=3D"confluence-information-macro confluence-information-macro-tip=
+">
+<span class=3D"aui-icon aui-icon-small aui-iconfont-approve confluence-info=
+rmation-macro-icon"></span>
+<div class=3D"confluence-information-macro-body">
+<p local-id=3D"62128a29">The proposed architecture keeps SAP=E2=80=99s supp=
+orted business logic while eliminating unnecessary migration layers from th=
+e high-volume path.</p>
+</div>
+</div>
+<h2 local-id=3D"454efe05" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-TargetArchitecture">Target Architecture</h2>
+<div class=3D"table-wrap">
+<table data-layout=3D"default" data-local-id=3D"651db4c7" data-table-displa=
+y-mode=3D"default" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"1d765030">
+<th data-local-id=3D"62523a1f" valign=3D"top" class=3D"confluenceTh">
+<p local-id=3D"04614c9a">Plane</p></th>
+<th data-local-id=3D"627c80e3" valign=3D"top" class=3D"confluenceTh">
+<p local-id=3D"3bf964c9">Primary responsibilities</p></th>
+</tr>
+<tr data-local-id=3D"73096b3c">
+<td data-local-id=3D"6a7904fe" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"500c4795"><strong>Control plane</strong></p></td>
+<td data-local-id=3D"535dd29a" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"7ed62429">Run management, chunk definitions, retry policies,=
+ concurrency limits, status tracking, and audit logging</p></td>
+</tr>
+<tr data-local-id=3D"73c3a323">
+<td data-local-id=3D"6b364c76" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"003654de"><strong>Data plane</strong></p></td>
+<td data-local-id=3D"2bb1de58" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"7a104a3b">SAP-like staging tables containing complete, corre=
+lated business-object data</p></td>
+</tr>
+<tr data-local-id=3D"430a687a">
+<td data-local-id=3D"09c2b865" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"48b6db96"><strong>Execution plane</strong></p></td>
+<td data-local-id=3D"4b1c09c4" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"50723710">ABAP wrapper validation, reconstruction, BAPI mapp=
+ing, execution, transaction handling, and result capture</p></td>
+</tr>
+<tr data-local-id=3D"20a391fa">
+<td data-local-id=3D"38b27727" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"1b0ba453"><strong>Result plane</strong></p></td>
+<td data-local-id=3D"5c564e23" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"272e839f">Generated SAP keys, source correlation keys, messa=
+ges, durations, and chunk status</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 local-id=3D"41713651" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-Architectureflow">Architecture flow</h3>
+<p local-id=3D"626f4c9a"><strong>SKP staging tables</strong> =E2=86=92 <str=
+ong>Chunk builder</strong> =E2=86=92 <strong>Replicate chunk orchestrator</=
+strong> =E2=86=92 <strong>RFC load invocation</strong> =E2=86=92 <strong>SA=
+P ABAP wrapper</strong> =E2=86=92 <strong>Standard SAP BAPI</strong> =E2=86=
+=92 <strong>Result capture</strong> =E2=86=92 <strong>SKP monitoring and re=
+conciliation</strong></p>
+<h3 local-id=3D"071d3165" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-Salesorderdataplane">Sales order data plane</h3>
+<ul local-id=3D"1ce10cc7">
+<li local-id=3D"57e309be">
+<p local-id=3D"7438de5d"><code>SO_VBAK_T</code> =E2=80=94 headers</p></li>
+<li local-id=3D"7d79d12d">
+<p local-id=3D"2c405460"><code>SO_VBAP_T</code> =E2=80=94 items</p></li>
+<li local-id=3D"5af3dec8">
+<p local-id=3D"57158f18"><code>SO_VBEP_T</code> =E2=80=94 schedule lines</p=
+></li>
+<li local-id=3D"0b5a1780">
+<p local-id=3D"3b818500"><code>SO_VBPA_T</code> =E2=80=94 partners</p></li>
+<li local-id=3D"792b334e">
+<p local-id=3D"62763a0e"><code>SO_CONDITION_T</code> =E2=80=94 conditions</=
+p></li>
+<li local-id=3D"51703e4c">
+<p local-id=3D"3baffa28"><code>SO_TEXT_T</code> =E2=80=94 texts</p></li>
+</ul>
+<h2 local-id=3D"5dc046fa" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-CanonicalSKPStagingModel">Canonical SKP Staging =
+Model</h2>
+<p local-id=3D"7f367f0d">All staging tables should contain the following co=
+mmon metadata:</p>
+<div class=3D"table-wrap">
+<table data-layout=3D"default" data-local-id=3D"48d8f204" data-table-displa=
+y-mode=3D"default" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"49af30ad">
+<th data-local-id=3D"44a952c4" valign=3D"top" class=3D"confluenceTh">
+<p local-id=3D"11a05a33">Column</p></th>
+<th data-local-id=3D"2ac751d2" valign=3D"top" class=3D"confluenceTh">
+<p local-id=3D"06c85907">Purpose</p></th>
+</tr>
+<tr data-local-id=3D"753f6bb5">
+<td data-local-id=3D"7bcf1aea" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"0e3745c2"><code>RUN_ID</code></p></td>
+<td data-local-id=3D"01df2b83" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"1225d507">Migration run identifier</p></td>
+</tr>
+<tr data-local-id=3D"551453f8">
+<td data-local-id=3D"46d95228" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"2a64406c"><code>OBJECT_TYPE</code></p></td>
+<td data-local-id=3D"3d59f64c" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"0680fcc2">Business-object contract</p></td>
+</tr>
+<tr data-local-id=3D"2fc6f378">
+<td data-local-id=3D"57f928d5" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"740feb13"><code>CONTRACT_VERSION</code></p></td>
+<td data-local-id=3D"3b33de1f" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"34fcffc0">Schema or contract version</p></td>
+</tr>
+<tr data-local-id=3D"3dccb45c">
+<td data-local-id=3D"7e37cb73" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"519ebbde"><code>SOURCE_OBJECT_ID</code></p></td>
+<td data-local-id=3D"2b296da4" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"6026f58e">Immutable source correlation key</p></td>
+</tr>
+<tr data-local-id=3D"65bef446">
+<td data-local-id=3D"0d8e7f0f" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"3fa5866c"><code>SOURCE_PARENT_ID</code></p></td>
+<td data-local-id=3D"654f9fec" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"121fecf1">Parent relationship key</p></td>
+</tr>
+<tr data-local-id=3D"0fe2a9fb">
+<td data-local-id=3D"46c41d7c" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"3f593a49"><code>ZCHUNK</code></p></td>
+<td data-local-id=3D"579af8e4" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"0864b97f">Chunk ownership key</p></td>
+</tr>
+<tr data-local-id=3D"7f3e49e8">
+<td data-local-id=3D"4dc07d1a" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"6d144190"><code>SEQUENCE_NO</code></p></td>
+<td data-local-id=3D"62ffe290" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"1daf1a6d">Deterministic record ordering</p></td>
+</tr>
+<tr data-local-id=3D"378fc2cc">
+<td data-local-id=3D"60d61628" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"74e4f952"><code>LOAD_STATUS</code></p></td>
+<td data-local-id=3D"7ba80d0a" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"7684b192">Current processing state</p></td>
+</tr>
+<tr data-local-id=3D"52709ab5">
+<td data-local-id=3D"5f1e82d9" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"441f11d9"><code>ATTEMPT_NO</code></p></td>
+<td data-local-id=3D"7d251dfa" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"2803126a">Retry attempt count</p></td>
+</tr>
+<tr data-local-id=3D"395a6002">
+<td data-local-id=3D"4e20f43b" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"4550e269"><code>DATA_HASH</code></p></td>
+<td data-local-id=3D"5febb57e" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"24be06e3">Payload integrity and idempotency value</p></td>
+</tr>
+<tr data-local-id=3D"794984c3">
+<td data-local-id=3D"3900dc4f" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"41bfcf31"><code>CREATED_TS</code></p></td>
+<td data-local-id=3D"51e22bd9" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"1119b787">Creation timestamp</p></td>
+</tr>
+<tr data-local-id=3D"1e0986d6">
+<td data-local-id=3D"18c59b27" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"7169c6a6"><code>UPDATED_TS</code></p></td>
+<td data-local-id=3D"43637eec" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"1a41a016">Last update timestamp</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 local-id=3D"2179e136" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-Salesorderstructures">Sales order structures</h3=
+>
+<div class=3D"table-wrap">
+<table data-layout=3D"default" data-local-id=3D"279c5ebe" data-table-displa=
+y-mode=3D"default" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"794e7425">
+<th data-local-id=3D"7fee1c37" valign=3D"top" class=3D"confluenceTh">
+<p local-id=3D"28ee7413">Table</p></th>
+<th data-local-id=3D"4f6e70ac" valign=3D"top" class=3D"confluenceTh">
+<p local-id=3D"71b0a20a">Purpose</p></th>
+</tr>
+<tr data-local-id=3D"2d1188c4">
+<td data-local-id=3D"6b5edce2" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"476ecf7b"><code>SO_VBAK_T</code></p></td>
+<td data-local-id=3D"09a44f20" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"6bb89af3">Header</p></td>
+</tr>
+<tr data-local-id=3D"740fa28d">
+<td data-local-id=3D"151bd166" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"5da45329"><code>SO_VBAP_T</code></p></td>
+<td data-local-id=3D"0170a3a3" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"13fc8ef5">Items</p></td>
+</tr>
+<tr data-local-id=3D"51fafb51">
+<td data-local-id=3D"2ec67224" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"0d0098f3"><code>SO_VBEP_T</code></p></td>
+<td data-local-id=3D"72248a9e" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"0523c934">Schedule lines</p></td>
+</tr>
+<tr data-local-id=3D"491aba3d">
+<td data-local-id=3D"3aeb8b8b" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"5634d8bf"><code>SO_VBPA_T</code></p></td>
+<td data-local-id=3D"564ace64" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"661143b3">Partners</p></td>
+</tr>
+<tr data-local-id=3D"01278db9">
+<td data-local-id=3D"729b0bbe" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"3798b6cd"><code>SO_CONDITION_T</code></p></td>
+<td data-local-id=3D"294a9ccd" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"6be3bbb8">Conditions</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 local-id=3D"42f324e9" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-ChunkingStrategy">Chunking Strategy</h2>
+<div class=3D"confluence-information-macro confluence-information-macro-not=
+e">
+<span class=3D"aui-icon aui-icon-small aui-iconfont-warning confluence-info=
+rmation-macro-icon"></span>
+<div class=3D"confluence-information-macro-body">
+<p local-id=3D"6717efc6"><strong>Chunk by header.</strong> Do not independe=
+ntly select TOP N rows from each table. Every chunk must contain complete b=
+usiness objects and all related child records.</p>
+</div>
+</div>
+<p local-id=3D"79637669"><strong>Example:</strong></p>
+<ul local-id=3D"65b5815d">
+<li local-id=3D"763db2cf">
+<p local-id=3D"3770355b"><strong>Chunk 1:</strong> 1,000 headers, all relat=
+ed items, and all related schedule lines</p></li>
+<li local-id=3D"133b3039">
+<p local-id=3D"48d03bf2"><strong>Chunk 2:</strong> the next 1,000 headers, =
+all related items, and all related schedule lines</p></li>
+</ul>
+<p local-id=3D"320acd7f"><code>ZCHUNK</code> must be propagated from each h=
+eader to all child records. This prevents cross-chunk relationships and mak=
+es each chunk independently restartable.</p>
+<h3 local-id=3D"338a8fa1" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-Weightedchunking">Weighted chunking</h3>
+<p local-id=3D"1cebeee5">Chunk size should consider header count, item coun=
+t, schedule count, condition count, and total payload size.</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: text; gutter: false; theme: Confluence" data-theme=3D"Confluence">ChunkWe=
+ight =3D HeaderCount
+            + ItemWeight * ItemCount
+            + ScheduleWeight * ScheduleCount
+            + ConditionWeight * ConditionCount</pre>
+</div>
+</div>
+<h2 local-id=3D"1bcf9754" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-TransportModelEvaluation">Transport Model Evalua=
+tion</h2>
+<div class=3D"table-wrap">
+<table data-layout=3D"default" data-local-id=3D"1d87f7fc" data-table-displa=
+y-mode=3D"default" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"2a0f4b5f">
+<th data-local-id=3D"78afb24b" valign=3D"top" class=3D"confluenceTh">
+<p local-id=3D"55c56786">Model</p></th>
+<th data-local-id=3D"5127599e" valign=3D"top" class=3D"confluenceTh">
+<p local-id=3D"390be109">Recommendation</p></th>
+</tr>
+<tr data-local-id=3D"317df17d">
+<td data-local-id=3D"577cb460" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"3e7391b7">Nested JSON</p></td>
+<td data-local-id=3D"03d965c3" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"3e71b879">Not preferred</p></td>
+</tr>
+<tr data-local-id=3D"6fcc76a8">
+<td data-local-id=3D"12c72e26" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"750cb048">Flat collections in JSON</p></td>
+<td data-local-id=3D"4ca542e5" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"355dbd8a">Good for logical representation</p></td>
+</tr>
+<tr data-local-id=3D"2778c4d1">
+<td data-local-id=3D"0cd07c02" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"75216cc6">Multiple files</p></td>
+<td data-local-id=3D"08b21778" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"475597c3">Compatibility only</p></td>
+</tr>
+<tr data-local-id=3D"758408f4">
+<td data-local-id=3D"17863faf" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"251cd4e8">Separate calls per table</p></td>
+<td data-local-id=3D"103a4808" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"07799346">Avoid</p></td>
+</tr>
+<tr data-local-id=3D"3e494c18">
+<td data-local-id=3D"156a7fe0" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"46025ec8">SAP staging tables</p></td>
+<td data-local-id=3D"33921ce2" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"26507a7c">Optional</p></td>
+</tr>
+<tr data-local-id=3D"342f8237">
+<td data-local-id=3D"116c8042" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"5bf3ce59">RFC table parameters</p></td>
+<td data-local-id=3D"35ac3a8b" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"77de399c">Recommended primary transport</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 local-id=3D"37de5cd9" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-Recommendedtransportcontract">Recommended transp=
+ort contract</h3>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">{
+  "manifest": {},
+  "headers": [],
+  "items": [],
+  "schedules": [],
+  "partners": [],
+  "conditions": []
+}</pre>
+</div>
+</div>
+<p local-id=3D"03c94525"><em>Logical representation only. The actual implem=
+entation should use RFC table parameters.</em></p>
+<h2 local-id=3D"11d58a05" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-MigrationSQLDeveloperResponsibilities">Migration=
+ SQL Developer Responsibilities</h2>
+<h3 local-id=3D"641dc378" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-Datashaping">Data shaping</h3>
+<ul local-id=3D"2732097b">
+<li local-id=3D"7ab3ee90">
+<p local-id=3D"3c4272f6">Normalize SAP formats</p></li>
+<li local-id=3D"23b21fa7">
+<p local-id=3D"44cdaa70">Generate item numbers</p></li>
+<li local-id=3D"2b622eaf">
+<p local-id=3D"1ef3a048">Generate schedule numbers</p></li>
+<li local-id=3D"46230364">
+<p local-id=3D"77646af7">Build partner records</p></li>
+<li local-id=3D"5e92c06f">
+<p local-id=3D"670fdecf">Build condition records</p></li>
+<li local-id=3D"29cd0ad0">
+<p local-id=3D"3d429968">Eliminate duplicates</p></li>
+</ul>
+<h3 local-id=3D"5f60a5d3" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-Relationshipintegrity">Relationship integrity</h=
+3>
+<p local-id=3D"3251d800">Validate that the header exists, each item belongs=
+ to its header, each schedule line belongs to its item, no relationships cr=
+oss chunk boundaries, and no records are orphaned.</p>
+<h3 local-id=3D"1d079de5" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-Validation">Validation</h3>
+<ul local-id=3D"2e878e7a">
+<li local-id=3D"0e58fe09">
+<p local-id=3D"6969d89d">Mandatory field checks</p></li>
+<li local-id=3D"45f2e24c">
+<p local-id=3D"49054305">Domain validations</p></li>
+<li local-id=3D"6361414b">
+<p local-id=3D"034818d5">Organizational assignment checks</p></li>
+<li local-id=3D"6e2bf1cb">
+<p local-id=3D"573e4c69">Cross-field validations</p></li>
+<li local-id=3D"05df8fa4">
+<p local-id=3D"0d5dc482">Quantity consistency checks</p></li>
+</ul>
+<h3 local-id=3D"320f68e5" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-Reconciliation">Reconciliation</h3>
+<ul local-id=3D"7ebd3f89">
+<li local-id=3D"24d309c3">
+<p local-id=3D"1f3b0e2b">Source counts</p></li>
+<li local-id=3D"02585ae8">
+<p local-id=3D"3eeb4f89">Loaded counts</p></li>
+<li local-id=3D"200e97c8">
+<p local-id=3D"62b21a1e">Success counts</p></li>
+<li local-id=3D"5b30a4c7">
+<p local-id=3D"0deb1bfa">Failure counts</p></li>
+<li local-id=3D"3abe4cf5">
+<p local-id=3D"51f7d49e">Exception reports</p></li>
+</ul>
+<h2 local-id=3D"249932c7" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-ReplicateDesign">Replicate Design</h2>
+<h3 local-id=3D"75a065b0" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-Recommendedmappingmodel">Recommended mapping mod=
+el</h3>
+<p local-id=3D"5906c049">Replicate should bind multiple source tables to a =
+single load function:</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">{
+  "objectType": "SALES_ORDER",
+  "loadFunction": "Z_SKP_BO_LOAD_CHUNK",
+  "bindings": [
+    { "source": "SO_VBAK_T", "parameter": "IT_HEADERS" },
+    { "source": "SO_VBAP_T", "parameter": "IT_ITEMS" },
+    { "source": "SO_VBEP_T", "parameter": "IT_SCHEDULES" },
+    { "source": "SO_VBPA_T", "parameter": "IT_PARTNERS" },
+    { "source": "SO_CONDITION_T", "parameter": "IT_CONDITIONS" }
+  ]
+}</pre>
+</div>
+</div>
+<h3 local-id=3D"354b9fa5" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-Runtimeprocess">Runtime process</h3>
+<ol start=3D"1" local-id=3D"6f7e38ca">
+<li local-id=3D"539b6353">
+<p local-id=3D"6752082e">Lease chunk</p></li>
+<li local-id=3D"1db7cce8">
+<p local-id=3D"5a2ba10d">Read all tables for the chunk</p></li>
+<li local-id=3D"5c472150">
+<p local-id=3D"5a60a0ea">Validate counts</p></li>
+<li local-id=3D"608eaae3">
+<p local-id=3D"2af79ea3">Validate relationships</p></li>
+<li local-id=3D"5ed4c923">
+<p local-id=3D"3c3ac199">Bind RFC parameters</p></li>
+<li local-id=3D"04c8521a">
+<p local-id=3D"37282e18">Invoke SAP load program</p></li>
+<li local-id=3D"6bf3c607">
+<p local-id=3D"6ada3c94">Capture results</p></li>
+<li local-id=3D"59b87ecb">
+<p local-id=3D"4700c653">Update status</p></li>
+</ol>
+<h2 local-id=3D"52402f74" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-SAPABAPWrapperDesign">SAP ABAP Wrapper Design</h=
+2>
+<h3 local-id=3D"1d94966a" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-Interface">Interface</h3>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: java; gutter: false; theme: Confluence" data-theme=3D"Confluence">IT_HEAD=
+ERS
+IT_ITEMS
+IT_SCHEDULES
+IT_PARTNERS
+IT_CONDITIONS
+ET_RESULTS
+ET_MESSAGES</pre>
+</div>
+</div>
+<h3 local-id=3D"1873cbf7" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-Processinglogic">Processing logic</h3>
+<ol start=3D"1" local-id=3D"10cca8c3">
+<li local-id=3D"3b9b011f">
+<p local-id=3D"795f1a9e">Group records by <code>SOURCE_OBJECT_ID</code></p>=
+</li>
+<li local-id=3D"31d18767">
+<p local-id=3D"69e1b3dd">Assemble the sales order</p></li>
+<li local-id=3D"5ddf6ab8">
+<p local-id=3D"78c024ea">Build BAPI structures</p></li>
+<li local-id=3D"4abc9bab">
+<p local-id=3D"55f02768">Call <code>BAPI_SALESORDER_CREATEFROMDAT2</code></=
+p></li>
+<li local-id=3D"6d61959e">
+<p local-id=3D"18d6b3af">Evaluate <code>BAPIRET2</code></p></li>
+<li local-id=3D"03ce1e4d">
+<p local-id=3D"72633296">Commit or roll back</p></li>
+<li local-id=3D"09ebe4b2">
+<p local-id=3D"4bb9ad99">Capture the result</p></li>
+</ol>
+<h3 local-id=3D"79cb70e3" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-Commitstrategy">Commit strategy</h3>
+<p local-id=3D"01e2b584"><strong>Recommended:</strong> one commit per sales=
+ order.</p>
+<ul local-id=3D"1857b3b6">
+<li local-id=3D"6a707cf4">
+<p local-id=3D"1b185a26">Simplified recovery</p></li>
+<li local-id=3D"3b1d9b78">
+<p local-id=3D"02349c8c">Minimal rollback scope</p></li>
+<li local-id=3D"12934702">
+<p local-id=3D"5d63a05b">Clear ownership</p></li>
+<li local-id=3D"4b84cb08">
+<p local-id=3D"06999dbb">Easier restartability</p></li>
+</ul>
+<h2 local-id=3D"79e736ee" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-ResultHandling">Result Handling</h2>
+<h3 local-id=3D"1e4d696d" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-Resulttable">Result table</h3>
+<div class=3D"table-wrap">
+<table data-layout=3D"default" data-local-id=3D"21d8e953" data-table-displa=
+y-mode=3D"default" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"75f0e7ba">
+<th data-local-id=3D"3387375b" valign=3D"top" class=3D"confluenceTh">
+<p local-id=3D"41e70cd6">Column</p></th>
+<th data-local-id=3D"64177716" valign=3D"top" class=3D"confluenceTh">
+<p local-id=3D"7312f982">Meaning</p></th>
+</tr>
+<tr data-local-id=3D"015a0459">
+<td data-local-id=3D"4f5dc9cb" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"31c904c1"><code>RUN_ID</code></p></td>
+<td data-local-id=3D"538f18bb" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"2707323d">Migration run</p></td>
+</tr>
+<tr data-local-id=3D"2ff6fb03">
+<td data-local-id=3D"5f2c56cf" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"4f6e76b5"><code>ZCHUNK</code></p></td>
+<td data-local-id=3D"0b370f32" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"01828079">Chunk identifier</p></td>
+</tr>
+<tr data-local-id=3D"755081f3">
+<td data-local-id=3D"6209d0b4" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"47b62159"><code>SOURCE_OBJECT_ID</code></p></td>
+<td data-local-id=3D"71dd69a8" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"23e68545">Source correlation key</p></td>
+</tr>
+<tr data-local-id=3D"147e9288">
+<td data-local-id=3D"316ec180" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"67a4cf11"><code>SAP_OBJECT_KEY</code></p></td>
+<td data-local-id=3D"40b07825" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"1730d260">Generated SAP document number</p></td>
+</tr>
+<tr data-local-id=3D"7b7ebae4">
+<td data-local-id=3D"04db0abe" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"101f3f1a"><code>STATUS</code></p></td>
+<td data-local-id=3D"1ef31379" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"354fbfe4">Success or failure state</p></td>
+</tr>
+<tr data-local-id=3D"0e38a155">
+<td data-local-id=3D"1b0f086a" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"392ee4f5"><code>ATTEMPT_NO</code></p></td>
+<td data-local-id=3D"3180e263" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"7918efaf">Processing attempt</p></td>
+</tr>
+<tr data-local-id=3D"27f2cd23">
+<td data-local-id=3D"48589fa6" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"22dba518"><code>COMPLETED_TS</code></p></td>
+<td data-local-id=3D"22f063d1" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"050ae987">Completion timestamp</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 local-id=3D"3cd80151" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-Messagetable">Message table</h3>
+<div class=3D"table-wrap">
+<table data-layout=3D"default" data-local-id=3D"651e6ac0" data-table-displa=
+y-mode=3D"default" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"25f4f530">
+<th data-local-id=3D"1e2f91df" valign=3D"top" class=3D"confluenceTh">
+<p local-id=3D"00673f8c">Column</p></th>
+<th data-local-id=3D"270104f6" valign=3D"top" class=3D"confluenceTh">
+<p local-id=3D"5b4b8c5e">Meaning</p></th>
+</tr>
+<tr data-local-id=3D"2d5287f5">
+<td data-local-id=3D"6e36b175" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"79974649"><code>RUN_ID</code></p></td>
+<td data-local-id=3D"4b06a1c0" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"72abc1c8">Migration run</p></td>
+</tr>
+<tr data-local-id=3D"1aae7fef">
+<td data-local-id=3D"207face8" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"2fdfa105"><code>SOURCE_OBJECT_ID</code></p></td>
+<td data-local-id=3D"19dc6d67" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"1dcb8b66">Source correlation key</p></td>
+</tr>
+<tr data-local-id=3D"1d824da5">
+<td data-local-id=3D"2f34000d" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"6bbd9285"><code>TYPE</code></p></td>
+<td data-local-id=3D"1c8f4add" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"03461068">BAPI message type</p></td>
+</tr>
+<tr data-local-id=3D"2716f3dc">
+<td data-local-id=3D"70e60c17" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"3a1cd693"><code>MESSAGE_ID</code></p></td>
+<td data-local-id=3D"1d5e55e8" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"10e26a5d">BAPI message class</p></td>
+</tr>
+<tr data-local-id=3D"07b11636">
+<td data-local-id=3D"7ab8c87f" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"51c7c46e"><code>MESSAGE_NUMBER</code></p></td>
+<td data-local-id=3D"36177f5d" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"27b653a1">BAPI message number</p></td>
+</tr>
+<tr data-local-id=3D"2b66fd26">
+<td data-local-id=3D"50083ff6" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"77f140ec"><code>MESSAGE_TEXT</code></p></td>
+<td data-local-id=3D"49cb5747" valign=3D"top" class=3D"confluenceTd">
+<p local-id=3D"545ff540">Rendered message text</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 local-id=3D"7dfd5611" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-ParallelProcessingandBenchmarking">Parallel Proc=
+essing and Benchmarking</h2>
+<p local-id=3D"6904df0d">Parallelism operates at two levels: Replicate chun=
+k parallelism and SAP worker parallelism.</p>
+<div class=3D"code panel pdl" style=3D"border-width: 1px;">
+<div class=3D"codeContent panelContent pdl">
+<pre class=3D"syntaxhighlighter-pre" data-syntaxhighlighter-params=3D"brush=
+: text; gutter: false; theme: Confluence" data-theme=3D"Confluence">Effecti=
+veConcurrency =3D MIN(
+  ReplicateInFlightChunks * SAPWorkersPerChunk,
+  SAPSystemLimit
+)</pre>
+</div>
+</div>
+<p local-id=3D"68eee2ff">Benchmark with chunks of 100, 250, 500, and 1,000 =
+orders. Measure:</p>
+<ul local-id=3D"6a3d3683">
+<li local-id=3D"6463d373">
+<p local-id=3D"7a1439c5">Orders per minute</p></li>
+<li local-id=3D"5ac3ff32">
+<p local-id=3D"0583ff9b">Lines per minute</p></li>
+<li local-id=3D"1100b476">
+<p local-id=3D"25464023">RFC payload size</p></li>
+<li local-id=3D"6a2bdc9c">
+<p local-id=3D"21288f7c">SAP memory usage</p></li>
+<li local-id=3D"0e552d7c">
+<p local-id=3D"1cddcb54">Work process utilization</p></li>
+</ul>
+<div class=3D"confluence-information-macro confluence-information-macro-not=
+e">
+<span class=3D"aui-icon aui-icon-small aui-iconfont-warning confluence-info=
+rmation-macro-icon"></span>
+<div class=3D"confluence-information-macro-body">
+<p local-id=3D"3e094e51">Concurrency must be bounded jointly by Replicate a=
+nd SAP. Increasing parallelism without capacity measurements can reduce thr=
+oughput and destabilize the source system.</p>
+</div>
+</div>
+<h2 local-id=3D"39b0d8ac" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-ReusableSKPBusinessObjectLoaderFramework">Reusab=
+le SKP Business Object Loader Framework</h2>
+<h3 local-id=3D"787aaa7e" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-Corecomponents">Core components</h3>
+<ol start=3D"1" local-id=3D"5941509c">
+<li local-id=3D"268e6519">
+<p local-id=3D"0a682508">Object contract registry</p></li>
+<li local-id=3D"6a02ca61">
+<p local-id=3D"1ed1120f">Chunk builder</p></li>
+<li local-id=3D"60852f68">
+<p local-id=3D"63ad23a9">Replicate transport adapter</p></li>
+<li local-id=3D"7ff8af53">
+<p local-id=3D"0afabbd5">SAP object adapter</p></li>
+<li local-id=3D"7e0195cf">
+<p local-id=3D"45b6d73f">Result and monitoring service</p></li>
+</ol>
+<h3 local-id=3D"10ecb6df" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-Supportedobjects">Supported objects</h3>
+<ul local-id=3D"73b59505">
+<li local-id=3D"65e0e5ce">
+<p local-id=3D"5048b28c">Sales orders</p></li>
+<li local-id=3D"2064523b">
+<p local-id=3D"23e7c04d">Purchase orders</p></li>
+<li local-id=3D"5abce7ff">
+<p local-id=3D"12a2a3cc">Deliveries</p></li>
+<li local-id=3D"540061a7">
+<p local-id=3D"7d57ab12">Business partners</p></li>
+<li local-id=3D"13742af5">
+<p local-id=3D"2662beab">Production orders</p></li>
+</ul>
+<h2 local-id=3D"179bb6d4" id=3D"High-VolumeSAPSalesOrderLoadingArchitecture=
+fromSKPUsingBAPIProcessing-FinalRecommendation">Final Recommendation</h2>
+<ol start=3D"1" local-id=3D"45d4df97">
+<li local-id=3D"1279eb74">
+<p local-id=3D"5a6d8b44">Use SAP-like relational staging tables.</p></li>
+<li local-id=3D"23326fda">
+<p local-id=3D"0a23c365">Chunk by header using <code>ZCHUNK</code>.</p></li=
+>
+<li local-id=3D"68676cfc">
+<p local-id=3D"13b780a9">Pass all related collections together.</p></li>
+<li local-id=3D"2e1919a7">
+<p local-id=3D"0051fd2b">Use immutable <code>SOURCE_OBJECT_ID</code> values=
+.</p></li>
+<li local-id=3D"39a15cef">
+<p local-id=3D"027c0150">Use RFC table parameters as the primary transport.=
+</p></li>
+<li local-id=3D"693640c4">
+<p local-id=3D"0ef250c7">Execute standard SAP BAPIs through custom ABAP wra=
+ppers.</p></li>
+<li local-id=3D"027a05f5">
+<p local-id=3D"2d1e59b1">Capture SAP keys and <code>BAPIRET2</code> message=
+s.</p></li>
+<li local-id=3D"3daa434f">
+<p local-id=3D"5da7019e">Process chunks in parallel with bounded concurrenc=
+y.</p></li>
+<li local-id=3D"5cd9c40d">
+<p local-id=3D"4eed52cb">Implement full restartability and auditability.</p=
+></li>
+<li local-id=3D"3ae21743">
+<p local-id=3D"7a59df8e">Standardize the framework for all SAP business obj=
+ects.</p></li>
+</ol>
+<div class=3D"confluence-information-macro confluence-information-macro-tip=
+">
+<span class=3D"aui-icon aui-icon-small aui-iconfont-approve confluence-info=
+rmation-macro-icon"></span>
+<div class=3D"confluence-information-macro-body">
+<p local-id=3D"55f044c8"><strong>Success criterion</strong></p>
+<p local-id=3D"2b0f6185">=E2=80=9COne million complete, correlated, indepen=
+dently restartable SAP business objects loaded through supported SAP interf=
+aces with full auditability, reconciliation, and monitoring.=E2=80=9D</p>
+</div>
+</div>
+    </div>
+</body>
+</html>
+------=_Part_26_115122367.1788464596457--
